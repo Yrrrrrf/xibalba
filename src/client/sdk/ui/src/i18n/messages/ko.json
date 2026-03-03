@@ -1,0 +1,4 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "hello_world": "{name}님, 안녕하세요 (한국어)"
+}

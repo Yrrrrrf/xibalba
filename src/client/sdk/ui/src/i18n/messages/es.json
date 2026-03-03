@@ -1,0 +1,18 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "hello_world": "Hola {name} en español",
+  "label_status_draft": "Borrador",
+  "label_status_published": "Publicado",
+  "label_status_pending_sale": "Venta Pendiente",
+  "label_status_sold": "Vendido",
+  "label_status_archived": "Archivado",
+  "label_op_sale": "En Venta",
+  "label_op_rent": "En Renta",
+  "label_op_presale": "Pre-venta",
+  "prop_bedrooms": "Hab",
+  "prop_bathrooms": "Baños",
+  "prop_title": "Propiedad",
+  "prop_status": "Estado",
+  "prop_price": "Precio",
+  "no_properties_found": "No se encontraron propiedades"
+}

@@ -1,0 +1,25 @@
+# all that start with a dot except .gitignore
+.*
+!.gitignore
+
+# lock files (from various package managers)
+*.lock
+
+# web-generated files
+node_modules
+build
+gen
+
+# sum files (from go modules)
+*.sum
+
+# all inside docs/ except .typ & .md files
+docs/**/*.*
+!docs/*.md
+
+# ide configuration files 
+**.code-workspace
+
+# one * means any characters except /
+# two ** means any characters including /
+temp

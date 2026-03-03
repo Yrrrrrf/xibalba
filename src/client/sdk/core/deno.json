@@ -1,0 +1,14 @@
+{
+  "name": "@sdk/core",
+  "version": "0.0.1",
+  "exports": "./src/mod.ts",
+  "imports": {
+    "zod": "npm:zod@^3.23.8"
+  },
+  "tasks": {
+    "test": "deno test --allow-all"
+  },
+  "compilerOptions": {
+    "strict": true
+  }
+}

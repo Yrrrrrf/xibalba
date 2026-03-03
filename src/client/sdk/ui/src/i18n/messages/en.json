@@ -1,0 +1,18 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "hello_world": "Hello {name} in English",
+  "label_status_draft": "Draft",
+  "label_status_published": "Published",
+  "label_status_pending_sale": "Pending Sale",
+  "label_status_sold": "Sold",
+  "label_status_archived": "Archived",
+  "label_op_sale": "For Sale",
+  "label_op_rent": "For Rent",
+  "label_op_presale": "Pre-sale",
+  "prop_bedrooms": "BR",
+  "prop_bathrooms": "BA",
+  "prop_title": "Property",
+  "prop_status": "Status",
+  "prop_price": "Price",
+  "no_properties_found": "No properties found"
+}

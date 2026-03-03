@@ -1,0 +1,24 @@
+{
+  "name": "@sdk/ui",
+  "version": "0.0.1",
+  "exports": "./src/mod.ts",
+  "tasks": {
+    "dev": "vite dev",
+    "build": "vite build && npm run prepack",
+    "preview": "vite preview",
+    "prepare": "svelte-kit sync || echo ''",
+    "prepack": "svelte-kit sync && svelte-package && publint",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+  },
+  "imports": {
+    "@sdk/core": "../core/src/mod.ts",
+    "@sdk/state": "../state/src/mod.ts",
+    "leaflet-choropleth": "npm:leaflet-choropleth@^1.1.4",
+    "leaflet.markercluster": "npm:leaflet.markercluster@^1.5.3"
+  },
+  "compilerOptions": {
+    "checkJs": false,
+    "strict": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@sdk/state",
+  "version": "0.0.1",
+  "exports": "./src/mod.ts",
+  "imports": {
+    "@sdk/core": "../core/src/mod.ts"
+  },
+  "compilerOptions": {
+    "strict": true
+  }
+}
