@@ -13,6 +13,9 @@ gen
 # sum files (from go modules)
 *.sum
 
+# generated
+*.pdf
+
 # ide configuration files 
 **.code-workspace
 
