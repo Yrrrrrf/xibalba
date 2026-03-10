@@ -1,10 +1,10 @@
 set shell := ["bash", "-cu"]
 
 # src code...
-# todo: Implement server.just file
-import 'scripts/server.just'
-# todo: Implement client.just file
-import 'scripts/client.just'
+# # todo: Implement server.just file
+# import 'scripts/server.just'
+# # todo: Implement client.just file
+# import 'scripts/client.just'
 # dev workflow
 # todo: Implement dev.just file
 import 'scripts/dev.just'
