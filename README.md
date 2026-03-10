@@ -28,7 +28,9 @@ packages, backed by a localized database setup.
 Specific client applications tailored for different operational contexts:
 
 - **Agent**: The command center and administrative interface for managing
-  inventory and operations. Built via **Vite** and packaged with **Tauri**, it leverages SvelteKit SSR/SSG combinations to deploy as a native application for Desktop (Windows, macOS, Linux) and Mobile (iOS, Android).
+  inventory and operations. Built via **Vite** and packaged with **Tauri**, it
+  leverages SvelteKit SSR/SSG combinations to deploy as a native application for
+  Desktop (Windows, macOS, Linux) and Mobile (iOS, Android).
 - **Explorer**: The public-facing or user-centric interface for discovering
   inventory.
 - **Vision**: The telemetry deck and visualization tool for monitoring system
