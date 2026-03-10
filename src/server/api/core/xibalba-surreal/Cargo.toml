@@ -1,0 +1,13 @@
+[package]
+name = "xibalba-surreal"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+xibalba-domain = { path = "../xibalba-domain" }
+surrealdb = { workspace = true }
+serde = { workspace = true }
+tokio = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+uuid = { workspace = true }

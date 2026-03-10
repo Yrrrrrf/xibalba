@@ -5,12 +5,13 @@
 # lock files (from various package managers)
 *.lock
 
-# web-generated files
+# client generated files
 node_modules
 build
 gen
 
-# sum files (from go modules)
+# server generated files
+target
 *.sum
 
 # generated

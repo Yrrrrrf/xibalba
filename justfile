@@ -3,6 +3,8 @@ set shell := ["bash", "-cu"]
 # src code...
 # # todo: Implement server.just file
 # import 'scripts/server.just'
+# todo: Add wasm just commands
+# import 'api/services/balam-wasm/build-wasm.just'
 # # todo: Implement client.just file
 # import 'scripts/client.just'
 # dev workflow
