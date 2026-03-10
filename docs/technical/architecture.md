@@ -20,7 +20,6 @@ graph TD
     DB["🗄️ SurrealDB<br/><small>Data Storage</small>"]:::database
     Svelte["🔥 Svelte 5<br/><small>Reactivity Engine</small>"]:::svelte
     Vite["⚡ Vite<br/><small>Build Tool</small>"]:::vite
-    Tauri["🦀 Tauri Core<br/><small>Native Bridge</small>"]:::tauri
     RuneLab["🧪 Rune-Lab<br/><small>Runes API & DevTools</small>"]:::runeLab
     
     %% The SDK Cluster
@@ -36,12 +35,20 @@ graph TD
         direction TB
         Hub("🌐 SvelteKit Hub<br/><small>Meta-Framework Router</small>"):::hub
         
-        subgraph APPS ["Applications"]
+        subgraph APPS ["Web Applications"]
             direction LR
             Agent("💼 Agent App<br/><small>CRM & Management</small>"):::appAgent
             Explorer("🗺️ Explorer App<br/><small>B2C Search & Map</small>"):::appExp
             Vision("👁️ Vision App<br/><small>3D Virtual Tours</small>"):::appVis
         end
+    end
+
+    %% Native Applications
+    subgraph NATIVE_APPS ["📦 NATIVE DEVICE PORTS"]
+        direction LR
+        AppDesktop("🖥️ Desktop<br/><small>macOS / Windows / Linux</small>"):::appAgent
+        AppIOS("📱 iOS<br/><small>Apple iPhone / iPad</small>"):::appAgent
+        AppAndroid("🤖 Android<br/><small>Google Play Store</small>"):::appAgent
     end
 
     %% SDK Internal Flow
@@ -58,14 +65,17 @@ graph TD
     RuneLab ==>|App Metadata| State
 
     %% Funneling into SvelteKit
-    UI ==>|UI Kit Injection| Hub
-    State ==>|Global Stores| Hub
-    Svelte -.->|SSR Engine| Hub
-    Vite -.->|Bundling| Hub
-    Tauri -.->|Native Packaging| Hub
-
-    %% Branching to Apps
+    %% Branching to Web Apps
     Hub ==>|B2B Route| Agent
     Hub ==>|B2C Route| Explorer
     Hub ==>|3D Route| Vision
+
+    %% Native Export / Packaging Layer
+    Tauri["🦀 Tauri Core<br/><small>Native Bridge</small>"]:::tauri
+    Hub -.->|Native SSG Export| Tauri
+    
+    %% Final Native Device Ports
+    Tauri -.->|Native App Build| AppDesktop
+    Tauri -.->|Native App Build| AppIOS
+    Tauri -.->|Native App Build| AppAndroid
 ```
