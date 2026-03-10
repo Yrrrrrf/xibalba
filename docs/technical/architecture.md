@@ -12,10 +12,16 @@ graph TD
     classDef appAgent fill:#0A0D18,stroke:#10B981,stroke-width:2px,color:#fff
     classDef appExp fill:#0A0D18,stroke:#06B6D4,stroke-width:2px,color:#fff
     classDef appVis fill:#0A0D18,stroke:#8B5CF6,stroke-width:2px,color:#fff
+    classDef tauri fill:#0A0D18,stroke:#FFC131,stroke-width:2px,color:#fff
+    classDef vite fill:#0A0D18,stroke:#646CFF,stroke-width:2px,color:#fff
+    classDef runeLab fill:#0A0D18,stroke:#F43F5E,stroke-width:2px,color:#fff
 
     %% Top Layer
     DB["🗄️ SurrealDB<br/><small>Data Storage</small>"]:::database
     Svelte["🔥 Svelte 5<br/><small>Reactivity Engine</small>"]:::svelte
+    Vite["⚡ Vite<br/><small>Build Tool</small>"]:::vite
+    Tauri["🦀 Tauri Core<br/><small>Native Bridge</small>"]:::tauri
+    RuneLab["🧪 Rune-Lab<br/><small>Runes API & DevTools</small>"]:::runeLab
     
     %% The SDK Cluster
     subgraph SDK ["📦 @XIBALBÁ / SDK (Deno Workspace)"]
@@ -47,11 +53,16 @@ graph TD
     %% Engine Injections
     Svelte -.->|$state Runes| State
     Svelte -.->|Compilation| UI
+    RuneLab -.->|Runes API| Svelte
+    RuneLab ==>|DevTools| UI
+    RuneLab ==>|App Metadata| State
 
     %% Funneling into SvelteKit
     UI ==>|UI Kit Injection| Hub
     State ==>|Global Stores| Hub
     Svelte -.->|SSR Engine| Hub
+    Vite -.->|Bundling| Hub
+    Tauri -.->|Native Packaging| Hub
 
     %% Branching to Apps
     Hub ==>|B2B Route| Agent
