@@ -8,7 +8,6 @@ tags:
 > Xibalbá is a project that is being developed to be used in the inventory
 > system.
 
-
 ## IDEAS
 
 - main typ file
