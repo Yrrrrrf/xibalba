@@ -1,5 +1,5 @@
 {
-  "name": "xibalba-agent",
+  "name": "xibalba-vision",
   "version": "0.0.1",
   "exports": {
     ".": "./src/app.d.ts"

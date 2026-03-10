@@ -1,0 +1,15 @@
+services:
+  surrealdb:
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+    ports:
+      - "8000:8000"
+    command: start --log trace --user root --pass root memory
+    # To persist data, use 'file://data' instead of 'memory'
+    # volumes:
+    #   - surreal_data:/data
+
+
+# volumes:
+#   surreal_data:

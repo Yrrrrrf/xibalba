@@ -1,0 +1,20 @@
+#!/bin/sh
+# Example script to execute the seed.surql file against a running SurrealDB instance using cURL
+
+URL="http://127.0.0.1:8000/sql"
+USER="root"
+PASS="root"
+NS="app"
+DB="main"
+
+echo "Executing seed.surql against SurrealDB at $URL ..."
+
+xh post "$URL" \
+  Accept:application/json \
+  NS:"$NS" \
+  DB:"$DB" \
+  -a "$USER:$PASS" \
+  @seed.surql
+
+echo ""
+echo "Done!"
