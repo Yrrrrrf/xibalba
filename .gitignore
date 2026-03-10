@@ -13,10 +13,6 @@ gen
 # sum files (from go modules)
 *.sum
 
-# all inside docs/ except .typ & .md files
-docs/**/*.*
-!docs/*.md
-
 # ide configuration files 
 **.code-workspace
 
