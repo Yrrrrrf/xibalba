@@ -6,7 +6,7 @@ members = ["core/domain", "core/store", "services/api", "services/wasm"]
 [profile.dev]
 opt-level = 1
 
-# Enable high optimizations for dependencies (incl. Bevy)
+# Enable high optimizations for dependencies
 [profile.dev.package."*"]
 opt-level = 3
 
@@ -16,7 +16,6 @@ lto = "thin"  # Enables Link Time Optimization (ThinLTO) for better performance 
 # lto = true  # Enables full LTO for maximum runtime performance at the cost of build time
 # codegen-units = 1  # Increases optimization potential by using a single codegen unit
 # strip = true  # Automatically strips symbols from the binary to reduce file size
-
 
 [workspace.dependencies]
 # Runtime

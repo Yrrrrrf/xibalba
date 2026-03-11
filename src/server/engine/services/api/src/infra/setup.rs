@@ -14,7 +14,7 @@ pub fn init_tracing() {
     // In production we would output JSON to a file and pretty logs to stdout
     tracing_subscriber::registry()
         .with(tracing_subscriber::EnvFilter::new(
-            std::env::var("RUST_LOG").unwrap_or_else(|_| "info,balam=debug".into()),
+            std::env::var("RUST_LOG").unwrap_or_else(|_| "info,api=debug".into()),
         ))
         .with(tracing_subscriber::fmt::layer())
         .init();

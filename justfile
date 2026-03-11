@@ -4,7 +4,7 @@ set shell := ["bash", "-cu"]
 # # todo: Implement server.just file
 # import 'scripts/server.just'
 # todo: Add wasm just commands
-# import 'api/services/balam-wasm/build-wasm.just'
+# import 'src/server/engine/services/wasm/build-wasm.just'
 # # todo: Implement client.just file
 # import 'scripts/client.just'
 # dev workflow

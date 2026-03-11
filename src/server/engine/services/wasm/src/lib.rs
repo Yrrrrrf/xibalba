@@ -7,7 +7,7 @@ use wasm_bindgen::prelude::*;
 // For typescript definitions, we just want to expose the types.
 // We can use a TS interface generation, or simply rely on tsify / schema.
 // The spec says: "Re-exports domain types wrapped with #[wasm_bindgen]"
-// However, since xibalba-domain types are not #[wasm_bindgen] natively (they are plain structs),
+// However, since domain types are not #[wasm_bindgen] natively (they are plain structs),
 // we use serde-wasm-bindgen for serialization boundary, or we can use tsify for TS types.
 // Wait, the spec says: "Re-exports domain types wrapped with #[wasm_bindgen] ... Exposes validation functions callable from JavaScript"
 // Since writing wrappers for every struct is tedious, we can do some basic TS exports or #[wasm_bindgen] stubs.
