@@ -1,14 +1,124 @@
-services:
-  surrealdb:
-    build:
-      context: .
-      dockerfile: db.Dockerfile
-    ports:
-      - "8000:8000"
-    command: start --log trace --user root --pass root memory
-    # To persist data, use 'file://data' instead of 'memory'
-    # volumes:
-    #   - surreal_data:/data
+# docker-compose.yml
+version: "3.8"
 
-# volumes:
-#   surreal_data:
+x-surreal-env: &surreal-env
+  SURREAL_DB_URL:  ws://${SURREAL_HOST:-db}:${SURREAL_PORT:-8000}/rpc
+  SURREAL_NS:      ${SURREAL_NS:-app}
+  SURREAL_DB:      ${SURREAL_DB:-main}
+  SURREAL_USER:    ${SURREAL_USER:-root}
+  SURREAL_PASS:    ${SURREAL_PASS:-root}
+
+x-api-env: &api-env
+  <<: *surreal-env
+  PORT:       ${PORT_API:-3000}
+  JWT_SECRET: ${JWT_SECRET}
+
+x-mail-env: &mail-env
+  <<: *surreal-env
+  SMTP_HOST:   ${SMTP_HOST}
+  SMTP_PORT:   ${SMTP_PORT}
+  SMTP_USER:   ${SMTP_USER}
+  SMTP_PASS:   ${SMTP_PASS}
+
+# x-client-env: &client-env
+#   VITE_API_URL:     http://api:${PORT_API:-3000}
+#   VITE_SURREAL_URL: ws://db:${SURREAL_PORT:-8000}/rpc
+
+services:
+
+  # ── SurrealDB ────────────────────────────────────────────
+  db:
+    container_name: xibalba-db
+    build:
+      context: ./src/server/db
+      dockerfile: db.Dockerfile
+    command: start --log trace --user ${SURREAL_USER:-root} --pass ${SURREAL_PASS:-root} memory
+    ports:
+      - "${SURREAL_PORT:-8000}:8000"
+    networks: [xibalba-net]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Rust API ─────────────────────────────────────────────
+  api:
+    container_name: xibalba-api
+    build:
+      context: ./src/server/engine
+      dockerfile: api.Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      <<: *api-env
+    ports:
+      - "${PORT_API:-3000}:3000"
+    networks: [xibalba-net]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ── Agent (B2B admin) ────────────────────────────────────
+  agent:
+    container_name: xibalba-agent
+    build:
+      context: ./src/client
+      dockerfile: apps/agent/agent.Dockerfile
+    depends_on:
+      api:
+        condition: service_healthy
+    # environment:
+    #   <<: *client-env
+    ports:
+      - "${PORT_AGENT:-5173}:5173"
+    networks: [xibalba-net]
+    volumes:
+      - ./src/client:/app
+      - /app/node_modules
+      - /app/apps/agent/.svelte-kit
+
+  # ── Explorer (B2C) ───────────────────────────────────────
+  explorer:
+    container_name: xibalba-explorer
+    build:
+      context: ./src/client
+      dockerfile: apps/explorer/agent.Dockerfile
+    depends_on:
+      api:
+        condition: service_healthy
+    # environment:
+    #   <<: *client-env
+    ports:
+      - "${PORT_EXPLORER:-5174}:5173"
+    networks: [xibalba-net]
+    volumes:
+      - ./src/client:/app
+      - /app/node_modules
+      - /app/apps/explorer/.svelte-kit
+
+  # ── Vision (telemetry) ───────────────────────────────────
+  vision:
+    container_name: xibalba-vision
+    build:
+      context: ./src/client
+      dockerfile: apps/vision/agent.Dockerfile
+    depends_on:
+      api:
+        condition: service_healthy
+    # environment:
+    #   <<: *client-env
+    ports:
+      - "${PORT_VISION:-5175}:5173"
+    networks: [xibalba-net]
+    volumes:
+      - ./src/client:/app
+      - /app/node_modules
+      - /app/apps/vision/.svelte-kit
+
+networks:
+  xibalba-net:
+    driver: bridge
