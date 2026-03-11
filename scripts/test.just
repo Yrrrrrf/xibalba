@@ -1,8 +1,3 @@
-[doc('Placeholder: System health check')]
-[group('Test')]
-test-health:
-    @echo "TODO: Implement sys-health"
-
 [doc('Test the server')]
 [group('Test')]
 test-server:
