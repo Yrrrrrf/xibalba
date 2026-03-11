@@ -104,7 +104,6 @@
           };
 
           commonArgs = {
-            src = ./engine;
             buildInputs = with pkgs; [ openssl ];
             nativeBuildInputs = with pkgs; [ pkg-config ];
             OPENSSL_DIR = "${pkgs.openssl.dev}";
@@ -114,6 +113,7 @@
         {
           api = naerskLib.buildPackage {
             src = ./engine;
+            inherit commonArgs;
             pname = "xibalba-api";
             cargoBuildOptions =
               opts:
@@ -122,14 +122,11 @@
                 "-p"
                 "api"
               ];
-            buildInputs = with pkgs; [ openssl ];
-            nativeBuildInputs = with pkgs; [ pkg-config ];
-            OPENSSL_DIR = "${pkgs.openssl.dev}";
-            OPENSSL_LIB_DIR = "${pkgs.openssl.out}/lib";
           };
 
           wasm = naerskLib.buildPackage {
             src = ./engine;
+            # inherit commonArgs;
             pname = "xibalba-wasm";
             cargoBuildOptions =
               opts:
@@ -141,7 +138,7 @@
                 "--target"
                 "wasm32-unknown-unknown"
               ];
-            # No OpenSSL — pure Rust only, as it should be
+            # No OpenSSL — pure Rust only, as it should be to build the WASM package
           };
 
           default = self.packages.${system}.api;
