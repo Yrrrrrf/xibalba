@@ -13,9 +13,11 @@
 ```
 src/
   client/          # Deno workspace — SvelteKit apps + shared SDK
+    sdk/           # Shared SDK packages
+    apps/          # SvelteKit apps
   server/
     db/            # SurrealDB container + seed
-    engine/        # Cargo workspace — domain, store, HTTP API, WASM bridge
+    engine/        # Rust workspace — domain, store, HTTP API, WASM bridge
 ```
 
 **Data flow (end to end):**
@@ -75,12 +77,12 @@ bindings for the Agent App command interface.
 
 ---
 
-### sdk/
+### [sdk/](/src/client/sdk/)
 
 The SDK is a Deno sub-workspace (`src/client/sdk/`) consumed by all three apps
 via path aliases (`@sdk/core`, `@sdk/state`, `@sdk/ui`). No circular imports.
 
-#### `@sdk/core`
+#### [`@sdk/core`](/src/client/sdk/core/)
 
 Pure TypeScript — zero framework dependencies. Defines domain entities,
 repository interfaces (port traits), and business logic. Nothing here may import
@@ -88,14 +90,14 @@ from `@sdk/state` or `@sdk/ui`. Also re-exports WASM-compiled types and
 validation functions from the server's `engine/services/wasm` crate, making Rust
 domain types available in TypeScript with zero duplication.
 
-#### `@sdk/state`
+#### [`@sdk/state`](/src/client/sdk/state/)
 
 Svelte-specific reactive layer. Wraps core services with `$state` / `$derived` /
 `$effect`. All data fetching (via `surrealdb` npm client or REST `fetch()` to
 the API) lives here. Apps never call `fetch()` directly — they read from state
 stores. Cannot import from `@sdk/ui`.
 
-#### `@sdk/ui`
+#### [`@sdk/ui`](/src/client/sdk/ui/)
 
 Svelte component library. Primitives → domain components → features → layouts.
 Imports types from `@sdk/core` and state from `@sdk/state`. No direct
@@ -104,25 +106,25 @@ locale files. Changes here propagate to all apps automatically.
 
 ---
 
-### apps/
+### [apps/](/src/client/apps/)
 
 Three independent SvelteKit apps, each with its own `deno.json`,
 `vite.config.ts`, and Dockerfile. They share deps via the workspace root and SDK
 packages via aliases. Each can be deployed independently.
 
-#### `agent` — CRM & Management (B2B)
+#### [agent](/src/client/apps/agent) — CRM & Management (B2B)
 
 Admin-facing. Inventory CRUD, document generation (PDF reports, item labels),
 user and session management. Planned Tauri packaging for desktop + mobile.
 Auth-gated via session cookie checked in `hooks.server.ts`.
 
-#### `explorer` — B2C Search & Map
+#### [explorer](/src/client/apps/explorer) — B2C Search & Map
 
 Public-facing discovery interface. Leaflet map, search, filters. Uses `@sdk/ui`
 map components (`MapView`, `PropertyClusterLayer`, etc.) and the `surrealdb`
 client for real-time queries.
 
-#### `vision` — Telemetry & 3D
+#### [vision](/src/client/apps/vision) — Telemetry & 3D
 
 Real-time system health and data visualization. 3D virtual tours. Read-only
 consumer of the API.
@@ -134,7 +136,7 @@ a WebView shell pointing at the compiled SPA.
 
 ---
 
-## Server
+## [Server](/src/server/)
 
 **Language:** [Rust](https://www.rust-lang.org) — chosen for performance, memory
 safety, and the ability to compile the same domain types to WASM for use on the
@@ -150,7 +152,7 @@ Currently runs SurrealDB only; the `engine` API Dockerfile is pending.
 
 ---
 
-### db/
+### [db/](/src/server/db/)
 
 [SurrealDB v3](https://surrealdb.com) running in Docker on port `8000`.
 Namespace `app`, database `main`. Chosen because it collapses the DB + API layer
@@ -167,7 +169,7 @@ The `seed.surql` file provisions initial records and graph relations. The
 
 ---
 
-### engine/
+### [engine/](/src/server/engine/)
 
 Cargo workspace at `src/server/engine/`. Four crates with strict unidirectional
 dependencies.
@@ -181,7 +183,7 @@ services/
   wasm      ← depends on domain only
 ```
 
-#### `core/domain`
+#### [`core/domain`](/src/server/engine/core/domain)
 
 Pure Rust. No infrastructure crates allowed. Contains:
 
@@ -194,7 +196,7 @@ Ports live here (not in `api`) so that `store` can implement them without
 creating a circular dependency. This is the Dependency Inversion Principle
 applied at the crate level.
 
-#### `core/store`
+#### [`core/store`](/src/server/engine/core/store)
 
 Implements `domain` ports against SurrealDB using the official
 [surrealdb](https://crates.io/crates/surrealdb) Rust crate. Wraps a shared
@@ -202,7 +204,7 @@ Implements `domain` ports against SurrealDB using the official
 across async tasks. Exposes `SurrealAuthRepo` and `SurrealInventoryRepo`. No
 HTTP, no WASM.
 
-#### `services/api`
+#### [`services/api`](/src/server/engine/services/api)
 
 [Axum](https://github.com/tokio-rs/axum) HTTP service on port `3000`. Clean
 architecture inside:
@@ -228,7 +230,7 @@ Observability via [tracing](https://crates.io/crates/tracing) +
 [tracing-subscriber](https://crates.io/crates/tracing-subscriber) with
 `EnvFilter`. Production target: JSON to file + pretty to stdout.
 
-#### `services/wasm`
+#### [`services/wasm`](/src/server/engine/services/wasm)
 
 Compiles `domain` types to WebAssembly using
 [wasm-bindgen](https://rustwasm.github.io/wasm-bindgen/). Exports TypeScript
