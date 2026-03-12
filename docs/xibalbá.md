@@ -8,27 +8,22 @@ tags:
 > Xibalbá is a project that is being developed to be used in the inventory
 > system.
 
-## IDEAS
+## Metadata
 
-- main typ file
-- add typ directory for main docs
-
-- create a main doc file :)
-- update this file
-- create some 'main architecture.md' files
-  - for client
-  - for server
-    - for database
-    - for api
-- add some build file! (to check it using github pages)
+### Integrantes:
+- [Fernando Bryan Reza Campos](https://github.com/Yrrrrrf)
+- [Yoed Eliel Alvarez Jimenez](https://github.com/yoedAlv/Game)
+- [Fernando Ramirez Lopez](https://github.com/FernandoRL2311)
+- [John Alexander Martinez Garcia](https://github.com/CyberBleyk)
 
 ## Arquitectura
 
-### Cliente
+- [Main architecture](./technical/architecture.md)
+  - [Client](./technical/architecture-diagram-client.md)
+  - [Server](./technical/architecture-diagram-server.md)
 
-- SvelteKit
-  - RuneLab
+## TODO:
 
-### Servidor
-
-- SurrealDB
+- Completar los todo :)
+- Subir archivo de [registro](https://app2.genius-arena.com/challenge_my_participation/23/talent-hackathon-2026)
+  - Crear achivo de registro :(

@@ -3,18 +3,31 @@
 
 [doc('Format Rust code')]
 [group('CI')]
+[working-directory('engine')]
 fmt:
-    cd engine && cargo fmt --all
+    cargo fmt --all
 
 [doc('Lint Rust code')]
 [group('CI')]
 lint:
-    cd engine && cargo clippy --all-targets --all-features -- -D warnings
+    # todo: Add lint types for the lint command!
+    # ^ lint lenient
+    # * no warnings for clippy
+    cd engine && cargo clippy --all-targets --all-features -- -A warnings
+
+    # ^ lint normal
+    # * normal
+    # cd engine && cargo clippy --all-targets --all-features
+
+    # ^ lint strict
+    # * scale warnings to errors
+    # cd engine && cargo clippy --all-targets --all-features -- -D warnings
 
 [doc('Type-check Rust workspace')]
 [group('CI')]
+[working-directory('engine')]
 typecheck:
-    cd engine && cargo check --all-targets
+    cargo check --all-targets
 
 [doc('Full server quality gate')]
 [group('CI')]

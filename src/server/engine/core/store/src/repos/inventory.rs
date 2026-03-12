@@ -3,7 +3,7 @@ use domain::entities::inventory::Item;
 use uuid::Uuid;
 
 pub struct SurrealInventoryRepo {
-    client: SurrealClient,
+    _client: SurrealClient,
 }
 
 use domain::ports::DomainError;
@@ -11,7 +11,7 @@ use domain::ports::inventory::InventoryRepository;
 
 impl SurrealInventoryRepo {
     pub fn new(client: SurrealClient) -> Self {
-        Self { client }
+        Self { _client: client }
     }
 }
 

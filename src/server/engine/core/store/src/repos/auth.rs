@@ -15,10 +15,8 @@
 
 use crate::client::SurrealClient;
 use domain::entities::user::{Session, User};
-use uuid::Uuid;
-
 pub struct SurrealAuthRepo {
-    client: SurrealClient,
+    _client: SurrealClient,
 }
 
 use domain::ports::DomainError;
@@ -26,7 +24,7 @@ use domain::ports::auth::AuthRepository;
 
 impl SurrealAuthRepo {
     pub fn new(client: SurrealClient) -> Self {
-        Self { client }
+        Self { _client: client }
     }
 }
 

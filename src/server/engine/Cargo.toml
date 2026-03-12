@@ -42,6 +42,7 @@ anyhow = { version = "1.0.102" }
 uuid = { version = "1.22.0", features = ["v4", "js", "serde"] }
 chrono = { version = "0.4.44", features = ["serde"] }
 secrecy = { version = "0.10.3", features = ["serde"] }
+trait-variant = { version = "0.1.2" }
 # WASM
 wasm-bindgen = { version = "0.2.114" }
 serde-wasm-bindgen = { version = "0.6.5" }

@@ -1,6 +1,3 @@
-use domain::entities::document::{DocumentOutput, DocumentRequest};
-use domain::entities::inventory::{Category, Item, Location};
-use domain::entities::user::{Role, Session, User};
 use wasm_bindgen::prelude::*;
 
 // Exporting domain types to WASM by wrapping them or using serde.

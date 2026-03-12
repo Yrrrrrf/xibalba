@@ -48,5 +48,8 @@
     "dinero.js": "npm:dinero.js@^2.0.0-alpha.16",
     "rune-lab": "npm:rune-lab@^0.1.2",
     "hotkeys-js": "npm:hotkeys-js@^4.0.0"
+  },
+  "lint": {
+    "exclude": ["**/app.d.ts"]
   }
 }
