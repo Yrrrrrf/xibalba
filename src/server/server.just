@@ -1,13 +1,14 @@
 # ── Xibalbá · Server ──────────────────────────────────────────
+
 #  CI
 
-[doc('Format Rust code')]
+[doc('Format Server code')]
 [group('CI')]
 [working-directory('engine')]
 fmt:
     cargo fmt --all
 
-[doc('Lint Rust code')]
+[doc('Lint Server code')]
 [group('CI')]
 lint:
     # todo: Add lint types for the lint command!
@@ -23,7 +24,7 @@ lint:
     # * scale warnings to errors
     # cd engine && cargo clippy --all-targets --all-features -- -D warnings
 
-[doc('Type-check Rust workspace')]
+[doc('Type-check Server workspace')]
 [group('CI')]
 [working-directory('engine')]
 typecheck:
@@ -35,6 +36,14 @@ quality: fmt lint typecheck
     @echo "✓ Server quality checks passed"
 
 # Deploy
+
+[doc('Build DB')]
+[group('Build')]
+build-db:
+    # todo: Add the db build command
+    # * build the db docker image
+    # docker build -f db.Dockerfile -t xibalba-db:local .
+    @echo "✓ DB built successfully"
 
 [doc('Build Engine')]
 [group('Build')]
@@ -48,14 +57,6 @@ build-engine:
     just -f engine/services/wasm/justfile build
     # cd engine && cargo build --release -p api
     @echo "✓ Engine built successfully"
-
-[doc('Build DB')]
-[group('Build')]
-build-db:
-    # todo: Add the db build command
-    # * build the db docker image
-    # docker build -f db.Dockerfile -t xibalba-db:local .
-    @echo "✓ DB built successfully"
 
 [doc('Build server')]
 [group('Build')]
@@ -82,6 +83,7 @@ run:
     @echo "✓ Server running in development mode"
 
 [doc('Test the server')]
+[group('Dev')]
 test:
     # todo: Add the test command
     # todo: Add a command to run the server tests

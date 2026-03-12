@@ -1,17 +1,18 @@
 # ── Xibalbá · Client ──────────────────────────────────────────
+
 #  CI
 
-[doc('Format Rust code')]
+[doc('Format Client code')]
 [group('CI')]
 fmt:
     deno fmt .
 
-[doc('Lint Rust code')]
+[doc('Lint Client code')]
 [group('CI')]
 lint:
     deno lint .
 
-[doc('Type-check Rust workspace')]
+[doc('Type-check Client workspace')]
 [group('CI')]
 typecheck:
     deno check .
@@ -66,6 +67,7 @@ run:
     @echo "✓ Client running in development mode"
 
 [doc('Test the client')]
+[group('Dev')]
 test:
     # todo: Add the test command
     # todo: Add a command to run the client tests
