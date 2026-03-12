@@ -1,60 +1,61 @@
 # XIBALBÁ
 
-> **The Inventory System Engine**
+> **Motor de Sistema de Inventario**
 >
 > ![Status](https://img.shields.io/badge/Status-Alpha_MVP-green)
-> ![Stack](https://img.shields.io/badge/Stack-SvelteKit_|_Deno_|_SurrealDB-blue)
-> ![Architecture](https://img.shields.io/badge/Arch-Client_Server-purple)
+> ![Stack](https://img.shields.io/badge/Stack-SvelteKit_|_Deno_|_Rust_|_SurrealDB-blue)
+> ![Plataformas](https://img.shields.io/badge/Plataformas-Web_|_Escritorio_|_Móvil-purple)
 
-**Xibalbá** is a project that is being developed to be used in the inventory
-system. It leverages a modern, streamlined architecture to deliver
-high-performance inventory management and visualization.
+**Xibalbá** es un motor integral para la gestión de inventarios multiplataforma
+diseñado para ofrecer una experiencia rápida, segura y altamente escalable. Fue
+concebido desde cero para funcionar de manera nativa y fluida en la web,
+escritorio y dispositivos móviles.
 
-## Architecture
+## ¿Qué puede hacer Xibalbá?
 
-Xibalbá implements a modernized **Client-Server Architecture**, using Deno
-Workspaces and connecting SvelteKit clients directly to a robust SurrealDB
-backend.
+El ecosistema de Xibalbá abarca diferentes perspectivas y necesidades operativas
+de inventario y comercialización:
 
-![Architecture Diagram](./docs/technical/architecture.md)
+- **Gestión y Control B2B:** Actúa como el centro de mando administrativo.
+  Facilita las altas, bajas y modificaciones de recursos, el rastreo de
+  movimientos, generación de reportes en PDF y creación de etiquetas para
+  distribución.
+- **Exploración Pública B2C:** Interface orientada a la vista pública. Los
+  usuarios finales pueden navegar por perfiles comerciales e identificar
+  disponibilidades a través de potentes buscadores y mapas geolocalizados
+  interactivos.
+- **Visión y Telemetría Avanzada:** Un entorno dedicado a monitorear la salud
+  global del sistema en tiempo real y desplegar reconstrucciones virtuales 3D de
+  áreas y capacidades físicas del inventario.
 
-## Ecosystem
+## Arquitectura de Alto Nivel
 
-The repository is a Deno Monorepo split between client apps and shared SDK
-packages, backed by a localized database setup.
+Para respaldar su potencia en cualquier dispositivo, Xibalbá implementa una
+estricta separación de responsabilidades cliente-servidor, que confía en
+herramientas de última generación:
 
-### **Apps**
+- **Cliente Universal:** Interfaz de usuario rica y reactiva cimentada en
+  **Svelte 5** sobre un entorno de trabajo **Deno**. Empaquetada con **Tauri**,
+  la aplicación web se transforma instantáneamente en binarios nativos sin
+  comprometer la velocidad ni la consistencia del diseño.
+- **Motor en Rust:** La validación lógica, manipulación de reportes y servidor
+  HTTP central están potenciados por **Rust**, lo que brinda máxima fiabilidad.
+  Este núcleo se compila parcialmente a _WebAssembly (WASM)_ para sincronizar
+  automáticamente el comportamiento con el navegador.
+- **SurrealDB:** Actúa como la única fuente de la verdad del sistema; una
+  solución avanzada que colapsa la gestión relacional, documental espacial y de
+  grafos en un clúster unificado.
 
-Specific client applications tailored for different operational contexts:
+> 🛠️ **¿Buscas el funcionamiento interno?** Para conocer las normativas de
+> código, directorios, manejo de estados, inyección de dependencias web y
+> detalles profundos sobre nuestro setup técnico, consulta el documento de
+> [Arquitectura Técnica](./docs/technical/architecture.md).
 
-- **Agent**: The command center and administrative interface for managing
-  inventory and operations. Built via **Vite** and packaged with **Tauri**, it
-  leverages SvelteKit SSR/SSG combinations to deploy as a native application for
-  Desktop (Windows, macOS, Linux) and Mobile (iOS, Android).
-- **Explorer**: The public-facing or user-centric interface for discovering
-  inventory.
-- **Vision**: The telemetry deck and visualization tool for monitoring system
-  health and tracking data in real-time.
 
-### **Shared Packages (SDK)**
+## Licencia
 
-- **`@sdk/ui`**: A unified visual language built with Svelte 5, TailwindCSS, and
-  DaisyUI. Change the brand once, update every app.
-- **`@sdk/core`**: Core utilities, domain logic, and configurations linking the
-  applications together.
-- **`@sdk/state`**: Centralized state management ensuring synchronized data
-  across all application views.
-
-## Philosophy
-
-1. **Streamlined Stack:** Utilizing SurrealDB consolidates the database and API
-   layer into a single, highly capable backend infrastructure.
-2. **Modular Frontend:** Splitting concerns into localized apps while sharing a
-   strong core SDK ensures stability, consistency, and type safety across the
-   ecosystem.
-3. **Data is Immutable Truth:** The database schema and structure dictate the
-   valid states of the UI.
+Este proyecto se distribuye bajo la licencia [Apache 2.0](./LICENSE).
 
 ---
 
-_© 2026 Xibalbá Project._
+_© 2026 Proyecto Xibalbá_
