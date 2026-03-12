@@ -110,7 +110,7 @@ DEFINE FIELD created_at ON location TYPE datetime DEFAULT time::now();
 
 -- item
 DEFINE FIELD name ON item TYPE string;
-DEFINE FIELD sku ON item TYPE string ASSERT string::is_alphanum($value) OR $value = /^[A-Z]{3}-\d{3,4}$/; -- Or custom regex match
+DEFINE FIELD sku ON item TYPE string ASSERT $value = /^[A-Z]{3}-\d{3,4}$/;
 DEFINE FIELD description ON item TYPE option<string>;
 DEFINE FIELD barcode ON item TYPE option<string>;
 DEFINE FIELD category ON item TYPE record<category> REFERENCE ON DELETE REJECT;
@@ -206,7 +206,7 @@ DEFINE INDEX locale_idx ON locale_string FIELDS key, locale UNIQUE;
 DEFINE EVENT stock_movement ON item WHEN $event = "UPDATE" AND $before.quantity != $after.quantity THEN (
     CREATE movement SET 
         item = $after.id,
-        performed_by = $auth.id,
+        performed_by = $auth.id OR user:admin1,
         delta = $after.quantity - $before.quantity,
         qty_before = $before.quantity,
         qty_after = $after.quantity,
@@ -239,10 +239,10 @@ CREATE category:monitors SET name='Monitors', slug='monitors', parent=category:e
 CREATE category:furniture SET name='Furniture', slug='furniture';
 
 -- 9. SEED — LOCATIONS
-CREATE location:cdmx_center SET name='CDMX Downtown', address='Centro 1', city='Mexico City', country='MXN', coordinates=(-99.1332, 19.4326);
-CREATE location:cdmx_south SET name='CDMX South', address='Pedregal', city='Mexico City', country='MXN', coordinates=(-99.1992, 19.3000);
-CREATE location:ny_warehouse SET name='NY Warehouse', address='Brooklyn', city='New York', country='USA', coordinates=(-73.935242, 40.730610);
-CREATE location:tokyo_hub SET name='Tokyo Hub', address='Shibuya', city='Tokyo', country='JPN', coordinates=(139.6917, 35.6895);
+CREATE location:cdmx_center SET name='CDMX Downtown', address='Centro 1', city='Mexico City', country='MXN', coordinates={ type: 'Point', coordinates: [-99.1332, 19.4326] };
+CREATE location:cdmx_south SET name='CDMX South', address='Pedregal', city='Mexico City', country='MXN', coordinates={ type: 'Point', coordinates: [-99.1992, 19.3000] };
+CREATE location:ny_warehouse SET name='NY Warehouse', address='Brooklyn', city='New York', country='USA', coordinates={ type: 'Point', coordinates: [-73.935242, 40.730610] };
+CREATE location:tokyo_hub SET name='Tokyo Hub', address='Shibuya', city='Tokyo', country='JPN', coordinates={ type: 'Point', coordinates: [139.6917, 35.6895] };
 
 -- 10. SEED — ITEMS
 CREATE item:laptop_01 SET name='Pro Laptop 15', sku='LAP-001', category=category:laptops, location=location:cdmx_center, quantity=50, min_quantity=10, price=999.00dec, cost=700.00dec, currency='USD', weight_kg=1.5, image_urls=[], tags=['apple', 'macbook'], is_active=true;

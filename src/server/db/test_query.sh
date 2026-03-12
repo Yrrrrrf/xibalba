@@ -1,5 +1,4 @@
-#!/bin/sh
-set -e
+#!/usr/bin/env bash
 
 URL="http://127.0.0.1:8000/sql"
 USER="root"
@@ -46,7 +45,7 @@ else
 fi
 
 echo "=== GROUP C: Computed fields ==="
-RES=$(run_query "SELECT VALUE is_low_stock FROM item:monitor_01")
+RES=$(run_query "SELECT VALUE is_low_stock FROM item:monitor_01;")
 if echo "$RES" | grep -q 'true'; then
     echo "✔ Passed is_low_stock computation"
 else
@@ -56,11 +55,45 @@ else
 fi
 
 echo "=== GROUP F: Functions ==="
-RES=$(run_query "SELECT VALUE fn::is_low_stock(item:monitor_01)")
+RES=$(run_query "RETURN fn::is_low_stock(item:monitor_01);")
 if echo "$RES" | grep -q 'true'; then
     echo "✔ Passed fn::is_low_stock"
 else
     echo "❌ Failed: fn::is_low_stock did not return true"
+    echo "$RES"
+    FAILS=$((FAILS + 1))
+fi
+
+echo "========================="
+
+echo "=== GROUP D: Events ==="
+run_query "UPDATE item:laptop_01 SET quantity = 48;" > /dev/null
+RES=$(run_query "SELECT * FROM movement WHERE item = item:laptop_01 AND reason = 'adjustment';")
+if echo "$RES" | grep -q '"delta":-2'; then
+    echo "✔ Passed event movement creation"
+else
+    echo "❌ Failed: event movement not created correctly!"
+    echo "$RES"
+    FAILS=$((FAILS + 1))
+fi
+
+echo "=== GROUP E: Graph traversal ==="
+RES=$(run_query "SELECT ->manages->location.name AS locations FROM user:agent1;")
+if echo "$RES" | grep -qi 'CDMX Downtown'; then
+    echo "✔ Passed forward graph traversal"
+else
+    echo "❌ Failed: forward graph traversal did not return correct location!"
+    echo "$RES"
+    FAILS=$((FAILS + 1))
+fi
+
+echo "=== GROUP H: Transactions ==="
+run_query "BEGIN TRANSACTION; UPDATE item:laptop_01 SET quantity -= 2; UPDATE item:laptop_02 SET quantity += 2; COMMIT TRANSACTION;" > /dev/null
+RES=$(run_query "SELECT quantity FROM item:laptop_01;")
+if echo "$RES" | grep -q '46'; then
+    echo "✔ Passed ACID transactions"
+else
+    echo "❌ Failed: transaction did not commit correctly!"
     echo "$RES"
     FAILS=$((FAILS + 1))
 fi
