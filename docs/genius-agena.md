@@ -1,4 +1,4 @@
-# [Talent Hackathon 2026](https://app2.genius-arena.com/challenge/23/talent-hackathon-2026)
+# [Genius Arena](https://app2.genius-arena.com/challenge/23/talent-hackathon-2026)
 
 ## Objetivo
 

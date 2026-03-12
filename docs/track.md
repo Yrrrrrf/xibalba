@@ -1,6 +1,6 @@
-# [Genius Arena 2026](https://hackathon.genius-arena.com/)
+# [Hackathon 2026](https://hackathon.genius-arena.com/)
 
-> [Cancha justa en el mundial para los negocios turísticos locales](https://hackathon.genius-arena.com/hackathon/fundacion-coppel-2026/)
+> Track: [Cancha justa en el mundial para los negocios turísticos locales](https://hackathon.genius-arena.com/hackathon/fundacion-coppel-2026/)
 
 ## Objetivo Particular
 
