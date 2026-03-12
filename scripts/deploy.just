@@ -1,26 +1,31 @@
 [doc('Build all services')]
 [group('Deploy')]
-build: build-server build-client
+build:
+    just -f src/client/client.just build
+    just -f src/server/server.just build
+    @echo "✓ Server built successfully"
 
-[private]
-build-server:
-    cd src/server/
-    just build
 
-[private]
-build-client:
-    cd src/client/
-    just build
+# todo: Add more deployment targets (Tauri)
+# todo: Add more deployment targets (Tauri)
+# todo: Add more deployment targets (Tauri)
+# * Deploy (Tauri)
 
-[doc('Run on local machine (based on build output)')]
-[group('Deploy')]
-run-local: build
-    # todo: Add a run local setup
+# [doc('Build the Tauri app for production')]
+# [group('Deploy')]
+# deploy:
+#     # todo: Add the Tauri build command
+#     @echo "✓ Tauri app built for production"
 
-[doc('Run on remote machine via SSH')]
-[group('Deploy')]
-run-remote:
-    # todo: Add a remote setup
-    @echo "Deploying remotely..."
-    @echo "Error: Remote deployment script not yet configured."
-    exit 1
+# * Deploy (Google Cloud)
+
+# todo: Add more deployment targets (Google Cloud)
+# todo: Add more deployment targets (Google Cloud)
+# todo: Add more deployment targets (Google Cloud)
+# [doc('Run on remote machine via SSH')]
+# [group('Deploy')]
+# run-remote:
+#     # todo: Add a remote setup
+#     @echo "Deploying remotely..."
+#     @echo "Error: Remote deployment script not yet configured."
+#     exit 1

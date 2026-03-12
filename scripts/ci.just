@@ -1,27 +1,25 @@
 [doc('Format all code')]
 [group('CI')]
 fmt:
-    cd src/server/engine && cargo fmt --all
-    cd src/client && deno fmt .
+    just -f src/client/client.just fmt
+    just -f src/server/server.just fmt
 
 [doc('Lint all code')]
 [group('CI')]
 lint:
-    cd src/server/engine && cargo clippy -- -D warnings
-    cd src/client && deno lint 
+    just -f src/client/client.just lint
+    just -f src/server/server.just lint
 
-[doc('Type-check client')]
+[doc('Type-check all code')]
 [group('CI')]
 typecheck:
-    # todo: Add a correct ts + svelte typecheck on client
-    # cd src/client && deno check src/**/*.ts
-    @echo "Add client typecheck"
-    cd src/server/engine && cargo check
+    just -f src/client/client.just typecheck
+    just -f src/server/server.just typecheck
 
+[doc('Full quality gate — fmt + lint + typecheck')]
 [group('CI')]
-[doc('Check formatting and linting')]
 quality: fmt lint typecheck
-    @echo "Quality checks passed ✓"
+    @echo "✓ All quality checks passed"
 
 # todo: Add the imports to make it work the build-all and test-all tasks
 # [group('CI')]
