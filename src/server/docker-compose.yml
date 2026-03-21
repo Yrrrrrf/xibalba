@@ -1,7 +1,7 @@
 services:
   surrealdb:
     build:
-      context: .
+      context: ./db/
       dockerfile: db.Dockerfile
     ports:
       - "${SURREAL_PORT:-8000}:8000"

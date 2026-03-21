@@ -1,5 +1,4 @@
 # ── Xibalbá · Server ──────────────────────────────────────────
-
 #  CI
 
 [doc('Format Server code')]
@@ -7,6 +6,7 @@
 [working-directory('engine')]
 fmt:
     cargo fmt --all
+    @echo "✓ Server formatted successfully"
 
 [doc('Lint Server code')]
 [group('CI')]
@@ -23,12 +23,14 @@ lint:
     # ^ lint strict
     # * scale warnings to errors
     # cd engine && cargo clippy --all-targets --all-features -- -D warnings
+    @echo "✓ Server lint passed"
 
 [doc('Type-check Server workspace')]
 [group('CI')]
 [working-directory('engine')]
 typecheck:
     cargo check --all-targets
+    @echo "Type-checking Server workspace..."
 
 [doc('Full server quality gate')]
 [group('CI')]
@@ -36,13 +38,17 @@ quality: fmt lint typecheck
     @echo "✓ Server quality checks passed"
 
 # Deploy
+# Deploy
 
 [doc('Build DB')]
 [group('Build')]
 build-db:
-    # todo: Add the db build command
-    # * build the db docker image
-    # docker build -f db.Dockerfile -t xibalba-db:local .
+    # stop the db container and remove the volume
+    podman-compose down -v
+    # build the db docker image and start the db container
+    # todo: separate 'build' and 'run' commands
+    # build command:
+    podman-compose build --no-cache
     @echo "✓ DB built successfully"
 
 [doc('Build Engine')]
@@ -54,30 +60,21 @@ build-engine:
     # * build services (api)
     #todo: Add build commands for the wasm service
     # * build services (wasm)
-    just -f engine/services/wasm/justfile build
+    # just -f engine/services/wasm/justfile build
     # cd engine && cargo build --release -p api
     @echo "✓ Engine built successfully"
 
 [doc('Build server')]
 [group('Build')]
-build:
-    just build-engine
-    just build-db
+build: build-db build-engine
     @echo "✓ Server built successfully"
 
-[doc('Build the WASM bridge and emit to sdk/core/src/pkg/')]
-[group('Build')]
-wasm:
-    just -f engine/services/wasm/build-wasm.just build
-
-#  Dev
 [doc('Run the server in development mode')]
 [group('Dev')]
-run:
+run: build
     # todo: Add the dev command
-    # todo: Add a command to instantiate the server
-    # todo: Init db
-    # docker run -p 8000:8000 xibalba-db:local
+    # just -f server.just build
+    podman-compose up
     # todo: Init engine
     # cd engine && cargo run -p api
     @echo "✓ Server running in development mode"
@@ -86,43 +83,13 @@ run:
 [group('Dev')]
 test:
     # todo: Add the test command
-    # todo: Add a command to run the server tests
-    cd engine && cargo test
-
-# todo: Add the new level of the test layer
-# todo: Add the new level of the test layer
-# todo: Add the new level of the test layer
-# todo: Add the new level of the test layer
-# todo: Add the new level of the test layer
-# todo: Add the new level of the test layer
-# todo: Add the new level of the test layer
-# todo: Add the new level of the test layer
-# todo: Add the new level of the test layer
-# todo: Add the new level of the test layer
-# todo: Add the new level of the test layer
-# [doc('Run the test script against the local SurrealDB testing container')]
-# [group('Test')]
-# [working-directory('src/server')]
-# test-db URL="http://127.0.0.1:8000/sql" USER="root" PASS="root" NS="app" DB="main":
-#     @echo "Executing seed.surql against SurrealDB at {{ URL }} ..."
-#     xh post "{{ URL }}" \
-#       Accept:application/json \
-#       NS:"{{ NS }}" \
-#       DB:"{{ DB }}" \
-#       -a "{{ USER }}:{{ PASS }}" \
-#       @seed.surql
-#     @echo ""
-#     @echo "Done!"
-
-
-# todo: Implement the deploy tasks!
-# todo: Implement the deploy tasks!
-# todo: Implement the deploy tasks!
-# todo: Implement the deploy tasks!
-# todo: Implement the deploy tasks!
+    # cd engine && cargo test
+    sh db/test/run-all.sh
+    # todo: Add a command to run the engine tests
+    # cd engine && cargo test
+    @echo "✓ Server tests passed"
 
 # ── Deploy (Google Cloud) ─────────────────────────────────────
-
 
 [doc('Deploy the app image to Cloud Run')]
 [group('Deploy')]

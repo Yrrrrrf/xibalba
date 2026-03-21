@@ -16,9 +16,9 @@
   "compilerOptions": {
     "checkJs": false,
     "paths": {
-      "@sdk/core": [ "./sdk/core/src/mod.ts" ],
-      "@sdk/state": [ "./sdk/state/src/mod.ts" ],
-      "@sdk/ui": [ "./sdk/ui/src/mod.ts" ]
+      "@sdk/core": ["./sdk/core/src/mod.ts"],
+      "@sdk/state": ["./sdk/state/src/mod.ts"],
+      "@sdk/ui": ["./sdk/ui/src/mod.ts"]
     }
   },
   "nodeModulesDir": "manual",

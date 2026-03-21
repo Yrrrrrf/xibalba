@@ -8,10 +8,11 @@ COPY --from=surrealdb/surrealdb:v3 /surreal /bin/surreal
 ENV LANG=C.UTF-8
 ENV TZ=UTC
 
-COPY entrypoint.sh /entrypoint.sh
-COPY seed.surql /seed.surql
-RUN chmod +x /entrypoint.sh
+COPY scripts/ /scripts/
+COPY init/    /init/
+
+RUN chmod +x /scripts/entrypoint.sh /scripts/init-db.sh
 
 EXPOSE 8000
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/scripts/entrypoint.sh"]
