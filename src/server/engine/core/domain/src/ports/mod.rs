@@ -1,6 +1,6 @@
 pub mod auth;
-pub mod documents;
-pub mod inventory;
+pub mod business;
+pub mod review;
 
 use std::fmt;
 

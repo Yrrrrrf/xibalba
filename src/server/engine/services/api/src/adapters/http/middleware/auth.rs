@@ -2,15 +2,14 @@ use crate::adapters::http::app_state::AppState;
 use crate::application::AppError;
 use axum::{
     extract::{Request, State},
-    http::{StatusCode, header},
+    http::header,
     middleware::Next,
     response::Response,
 };
-use domain::ports::auth::AuthRepository;
 
 pub async fn auth_middleware(
     State(state): State<AppState>,
-    mut req: Request,
+    req: Request,
     next: Next,
 ) -> Result<Response, AppError> {
     let auth_header = req.headers().get(header::AUTHORIZATION);
@@ -35,14 +34,15 @@ pub async fn auth_middleware(
     let token = &auth_header[7..];
 
     // Verify session
-    let session = state
+    let _session = state
         .auth_repo
-        .get_session(token)
-        .await?
+        .find_session_by_token(token)
+        .await
+        .map_err(|e| AppError::Internal(e.to_string()))?
         .ok_or_else(|| AppError::Unauthorized("Invalid or expired session".into()))?;
 
     // In a real app we might attach the user or session to the request extensions
-    // req.extensions_mut().insert(session);
+    // req.extensions_mut().insert(_session);
 
     Ok(next.run(req).await)
 }

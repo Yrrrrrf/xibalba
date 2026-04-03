@@ -1,47 +1,104 @@
-// These use cases belong to api, but they define the traits.
-// In the new architecture, the traits should technically be in domain or we define them here
-// But the spec says: api/application/use_cases/auth.rs stays. So store MUST DEPEND on api? No!
-// "NO: axum, wasm-bindgen"
-// Ah, if the Traits are in api/application/use_cases, and store doesn't depend on api,
-// Then store CANNOT implement them.
-// Let's check the spec again: "Only store changes. api/application/ trait impls stay identical."
-// Oh, the traits must either be in domain OR store defines the types and api wraps them.
-// Wait, the spec says domain contains: "Item, Category, StockLevel, Location... DocumentRequest... User, Role".
-// It says api contains: "application/use_cases/auth.rs" and "application/use_cases/inventory.rs".
-// If api defines the `AuthRepository` trait, how does store implement it without depending on api?
-// Solution: store just implements its own structs with the methods. Then `api/infra/setup.rs`
-// can either wrap them or if we want, we can move the traits to domain later.
-// For now, let's just make sure the methods exist on the struct.
-
 use crate::client::SurrealClient;
+use async_trait::async_trait;
 use domain::entities::user::{Session, User};
-pub struct SurrealAuthRepo {
-    _client: SurrealClient,
-}
-
 use domain::ports::DomainError;
+use domain::ports::Result as DomainResult;
 use domain::ports::auth::AuthRepository;
+use serde_json;
+use surrealdb_types::RecordId;
+use surrealdb_types::SurrealValue;
+use surrealdb_types::Value;
+
+pub struct SurrealAuthRepo {
+    client: SurrealClient,
+}
 
 impl SurrealAuthRepo {
     pub fn new(client: SurrealClient) -> Self {
-        Self { _client: client }
+        Self { client }
+    }
+
+    fn to_domain<T: serde::de::DeserializeOwned>(value: Value) -> DomainResult<T> {
+        let json = value.into_json_value();
+        serde_json::from_value(json).map_err(|e| DomainError::Internal(e.to_string()))
+    }
+
+    fn from_domain<T: serde::Serialize>(data: T) -> DomainResult<Value> {
+        let json = serde_json::to_value(data).map_err(|e| DomainError::Internal(e.to_string()))?;
+        Ok(json.into_value())
     }
 }
 
+#[async_trait]
 impl AuthRepository for SurrealAuthRepo {
-    async fn find_user_by_email(&self, _email: &str) -> Result<Option<User>, DomainError> {
-        Ok(None)
+    async fn find_user_by_email(&self, email: &str) -> DomainResult<Option<User>> {
+        let mut response = self
+            .client
+            .db
+            .query("SELECT * FROM user WHERE email = $email")
+            .bind(("email", email.to_string()))
+            .await
+            .map_err(|e| DomainError::Repository(e.to_string()))?;
+
+        let value: Option<Value> = response
+            .take(0)
+            .map_err(|e| DomainError::Repository(e.to_string()))?;
+        value.map(Self::to_domain).transpose()
     }
 
-    async fn create_session(&self, _session: Session) -> Result<(), DomainError> {
+    async fn find_user_by_id(&self, id: &str) -> DomainResult<Option<User>> {
+        let parts: Vec<&str> = id.split(':').collect();
+        if parts.len() != 2 {
+            return Err(DomainError::Internal(format!("Invalid record ID: {}", id)));
+        }
+        let rid = RecordId::new(parts[0], parts[1]);
+
+        let value: Option<Value> = self
+            .client
+            .db
+            .select(rid)
+            .await
+            .map_err(|e| DomainError::Repository(e.to_string()))?;
+
+        value.map(Self::to_domain).transpose()
+    }
+
+    async fn create_session(&self, session: Session) -> DomainResult<()> {
+        let surreal_value = Self::from_domain(session)?;
+
+        self.client
+            .db
+            .create::<Option<Value>>("session")
+            .content(surreal_value)
+            .await
+            .map_err(|e| DomainError::Repository(e.to_string()))?;
+
         Ok(())
     }
 
-    async fn get_session(&self, _token: &str) -> Result<Option<Session>, DomainError> {
-        Ok(None)
+    async fn find_session_by_token(&self, token: &str) -> DomainResult<Option<Session>> {
+        let mut response = self
+            .client
+            .db
+            .query("SELECT * FROM session WHERE token = $token")
+            .bind(("token", token.to_string()))
+            .await
+            .map_err(|e| DomainError::Repository(e.to_string()))?;
+
+        let value: Option<Value> = response
+            .take(0)
+            .map_err(|e| DomainError::Repository(e.to_string()))?;
+        value.map(Self::to_domain).transpose()
     }
 
-    async fn delete_session(&self, _token: &str) -> Result<(), DomainError> {
+    async fn delete_session(&self, token: &str) -> DomainResult<()> {
+        self.client
+            .db
+            .query("DELETE FROM session WHERE token = $token")
+            .bind(("token", token.to_string()))
+            .await
+            .map_err(|e| DomainError::Repository(e.to_string()))?;
+
         Ok(())
     }
 }

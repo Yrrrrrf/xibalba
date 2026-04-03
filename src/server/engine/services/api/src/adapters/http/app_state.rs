@@ -1,11 +1,11 @@
-use crate::adapters::documents::typst::compiler::TypstCompiler;
+use domain::ports::auth::AuthRepository;
+use domain::ports::business::BusinessRepository;
+use domain::ports::review::ReviewRepository;
 use std::sync::Arc;
-use store::repos::auth::SurrealAuthRepo;
-use store::repos::inventory::SurrealInventoryRepo;
 
 #[derive(Clone)]
 pub struct AppState {
-    pub auth_repo: Arc<SurrealAuthRepo>,
-    pub inventory_repo: Arc<SurrealInventoryRepo>,
-    pub document_renderer: Arc<TypstCompiler>,
+    pub auth_repo: Arc<dyn AuthRepository>,
+    pub business_repo: Arc<dyn BusinessRepository>,
+    pub review_repo: Arc<dyn ReviewRepository>,
 }

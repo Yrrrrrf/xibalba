@@ -7,19 +7,24 @@ use tower_http::trace::TraceLayer;
 
 pub fn create_app(state: AppState) -> Router {
     let auth_routes = routes::auth::r();
-    let inventory_routes = routes::inventory::r().layer(middleware::from_fn_with_state(
+
+    let business_routes = routes::businesses::r();
+
+    let review_routes = routes::reviews::r().layer(middleware::from_fn_with_state(
         state.clone(),
         app_middleware::auth::auth_middleware,
     ));
-    let documents_routes = routes::documents::r().layer(middleware::from_fn_with_state(
+
+    let recommendation_routes = routes::recommendations::r().layer(middleware::from_fn_with_state(
         state.clone(),
         app_middleware::auth::auth_middleware,
     ));
 
     Router::new()
         .nest("/auth", auth_routes)
-        .nest("/inventory", inventory_routes)
-        .nest("/documents", documents_routes)
+        .nest("/businesses", business_routes)
+        .nest("/reviews", review_routes)
+        .nest("/recommendations", recommendation_routes)
         .with_state(state)
         // Global middlewares
         .layer(CorsLayer::permissive()) // Configure properly in production

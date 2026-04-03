@@ -1,3 +1,4 @@
 pub mod auth;
-pub mod documents;
-pub mod inventory;
+pub mod businesses;
+pub mod recommendations;
+pub mod reviews;
