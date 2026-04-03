@@ -120,6 +120,15 @@ mod tests {
     #[tokio::test]
     async fn c4_rating_recomputed_after_review() {
         let client = test_client().await;
+
+        // Pre-cleanup: ensure no previous test run left a review
+        let _ = client
+            .db
+            .query(
+                "DELETE review WHERE in = user:tourist_james AND out = business:cantina_la_perla",
+            )
+            .await;
+
         let biz_repo = SurrealBusinessRepo::new(client.clone());
         let rev_repo = SurrealReviewRepo::new(client.clone());
 
@@ -144,8 +153,12 @@ mod tests {
         // Cleanup: remove the test review so the DB returns to seed state
         client
             .db
-            .query("DELETE FROM review WHERE in = user:tourist_james AND out = business:cantina_la_perla")
+            .query("DELETE review WHERE in = type::record($user) AND out = type::record($business)")
+            .bind(("user", "user:tourist_james"))
+            .bind(("business", biz_id))
             .await
+            .unwrap()
+            .check()
             .unwrap();
     }
 

@@ -53,6 +53,22 @@ DEFINE EVENT on_review_created ON review WHEN $event = 'CREATE' THEN {
 };
 
 -- ---------------------------------------------------------------------------
+-- on_review_deleted
+-- When a review is deleted, recalculate business stats.
+-- ---------------------------------------------------------------------------
+DEFINE EVENT on_review_deleted ON review WHEN $event = 'DELETE' THEN {
+    LET $biz = $before.out;
+    LET $stats = (SELECT 
+        math::mean(rating) AS avg_rating,
+        count()            AS total
+        FROM review WHERE out = $biz GROUP ALL);
+    
+    UPDATE $biz SET 
+        rating       = $stats[0].avg_rating OR 0,
+        review_count = $stats[0].total OR 0;
+};
+
+-- ---------------------------------------------------------------------------
 -- on_business_verified
 -- When a business goes from unverified → verified, it appears on the tourist
 -- map for the first time. The owner gets a milestone notification.
