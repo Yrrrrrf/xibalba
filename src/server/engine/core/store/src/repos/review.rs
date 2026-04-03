@@ -29,7 +29,9 @@ impl SurrealReviewRepo {
 #[async_trait]
 impl ReviewRepository for SurrealReviewRepo {
     async fn create(&self, review: Review) -> DomainResult<()> {
-        let sql = "RELATE $user -> review -> $business 
+        let sql = "LET $user_id = type::record($user);
+            LET $business_id = type::record($business);
+            RELATE $user_id -> review -> $business_id 
             SET rating = $rating, body = $body, locale = $locale, created_at = $created_at";
 
         self.client
@@ -42,6 +44,8 @@ impl ReviewRepository for SurrealReviewRepo {
             .bind(("locale", review.locale.to_string()))
             .bind(("created_at", review.created_at))
             .await
+            .map_err(|e| DomainError::Repository(e.to_string()))?
+            .check()
             .map_err(|e| DomainError::Repository(e.to_string()))?;
 
         Ok(())

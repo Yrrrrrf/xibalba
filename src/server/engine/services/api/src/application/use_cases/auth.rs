@@ -1,7 +1,22 @@
-use crate::application::{AppError, AppResult};
-use domain::entities::user::{Session, User};
+use domain::entities::user::User;
+use serde::{Deserialize, Serialize};
 
-pub use domain::ports::auth::AuthRepository;
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Claims {
+    pub sub: String, // user id ("user:tourist_akiko")
+    pub email: String,
+    pub role: String, // "tourist", "owner", "admin"
+    pub exp: usize,   // expiry timestamp
+}
 
-// In a real app, you'd also have use cases like login, validate, etc.
-// For now, we provide the trait definitions to satisfy the architecture spec.
+#[derive(Debug, Deserialize)]
+pub struct LoginRequest {
+    pub email: String,
+    pub password: String,
+}
+
+#[derive(Debug, Serialize)]
+pub struct LoginResponse {
+    pub token: String,
+    pub user: User,
+}

@@ -25,14 +25,14 @@ pub async fn init_app_state(config: &AppConfig) -> AppState {
         .expect("Failed to connect to SurrealDB");
 
     db.signin(Root {
-        username: "root".to_string(),
-        password: "root".to_string(),
+        username: config.db_user.clone(),
+        password: config.db_pass.clone(),
     })
     .await
     .expect("Failed to sign in to SurrealDB");
 
-    db.use_ns("app")
-        .use_db("main")
+    db.use_ns(&config.db_ns)
+        .use_db(&config.db_db)
         .await
         .expect("Failed to use namespace/db");
 
@@ -46,5 +46,6 @@ pub async fn init_app_state(config: &AppConfig) -> AppState {
         auth_repo,
         business_repo,
         review_repo,
+        jwt_secret: config.jwt_secret.clone(),
     }
 }

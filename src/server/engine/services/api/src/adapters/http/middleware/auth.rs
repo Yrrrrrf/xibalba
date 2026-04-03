@@ -1,15 +1,17 @@
 use crate::adapters::http::app_state::AppState;
 use crate::application::AppError;
+use crate::application::use_cases::auth::Claims;
 use axum::{
     extract::{Request, State},
     http::header,
     middleware::Next,
     response::Response,
 };
+use jsonwebtoken::{Algorithm, DecodingKey, Validation, decode};
 
 pub async fn auth_middleware(
     State(state): State<AppState>,
-    req: Request,
+    mut req: Request,
     next: Next,
 ) -> Result<Response, AppError> {
     let auth_header = req.headers().get(header::AUTHORIZATION);
@@ -33,16 +35,26 @@ pub async fn auth_middleware(
 
     let token = &auth_header[7..];
 
-    // Verify session
+    // Decode JWT
+    let token_data = decode::<Claims>(
+        token,
+        &DecodingKey::from_secret(state.jwt_secret.as_ref()),
+        &Validation::new(Algorithm::HS256),
+    )
+    .map_err(|e| AppError::Unauthorized(format!("Invalid token: {}", e)))?;
+
+    let claims = token_data.claims;
+
+    // Verify session still exists in DB
     let _session = state
         .auth_repo
         .find_session_by_token(token)
         .await
         .map_err(|e| AppError::Internal(e.to_string()))?
-        .ok_or_else(|| AppError::Unauthorized("Invalid or expired session".into()))?;
+        .ok_or_else(|| AppError::Unauthorized("Session expired or logged out".into()))?;
 
-    // In a real app we might attach the user or session to the request extensions
-    // req.extensions_mut().insert(_session);
+    // Inject claims into request extensions
+    req.extensions_mut().insert(claims);
 
     Ok(next.run(req).await)
 }

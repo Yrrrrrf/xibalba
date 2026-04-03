@@ -20,7 +20,7 @@ lto = "thin"  # Enables Link Time Optimization (ThinLTO) for better performance 
 [workspace.dependencies]
 # Runtime
 tokio = { version = "1.50.0", features = ["full"] }
-async-trait = { version = "0.1.86" }
+async-trait = { version = "0.1.89" }
 # Web
 axum = { version = "0.8.8" }
 tower = { version = "0.5.3" }

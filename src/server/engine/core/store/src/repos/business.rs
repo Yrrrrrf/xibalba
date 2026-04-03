@@ -67,7 +67,7 @@ impl BusinessRepository for SurrealBusinessRepo {
         city_id: Option<&str>,
         category_id: Option<&str>,
     ) -> DomainResult<Vec<Business>> {
-        let sql = "SELECT * FROM fn::search_businesses($query, $locale, $city, $category)";
+        let sql = "SELECT * FROM fn::search_businesses($query, $locale, if $city { type::record($city) } else { NONE }, if $category { type::record($category) } else { NONE })";
         let mut response = self
             .client
             .db
@@ -86,8 +86,7 @@ impl BusinessRepository for SurrealBusinessRepo {
     }
 
     async fn find_near(&self, point: Point, radius_km: f64) -> DomainResult<Vec<Business>> {
-        let sql =
-            "RETURN fn::businesses_near({ type: 'Point', coordinates: [$lon, $lat] }, $radius)";
+        let sql = "RETURN fn::businesses_near(type::point([$lon, $lat]), $radius)";
         let mut response = self
             .client
             .db
@@ -109,7 +108,7 @@ impl BusinessRepository for SurrealBusinessRepo {
         user_id: &str,
         limit: usize,
     ) -> DomainResult<Vec<Business>> {
-        let sql = "RETURN fn::tourist_recommendations($user, $limit)";
+        let sql = "RETURN fn::tourist_recommendations(type::record($user), $limit)";
         let mut response = self
             .client
             .db

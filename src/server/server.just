@@ -82,12 +82,11 @@ run: build
 [doc('Test the server')]
 [group('Dev')]
 test:
-    # todo: Add the test command
-    # cd engine && cargo test
+    @echo "Running DB shell tests..."
     sh db/test/run-all.sh
-    # todo: Add a command to run the engine tests
-    # cd engine && cargo test
-    @echo "✓ Server tests passed"
+    @echo "Running Rust engine tests..."
+    cd engine && cargo test -p store -- --test-threads=1
+    @echo "✓ All server tests passed"
 
 # ── Deploy (Google Cloud) ─────────────────────────────────────
 
