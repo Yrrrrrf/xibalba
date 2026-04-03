@@ -1,8 +1,8 @@
 <script lang="ts">
     import "./layout.css";
-    import { RuneProvider } from "rune-lab";
-    import * as m from "$lib/paraglide/messages.js";
-    import AppLayout from "./AppLayout.svelte";
+    // import { RuneProvider } from "rune-lab";
+    // import * as m from "$lib/paraglide/messages.js";
+    // import AppLayout from "./AppLayout.svelte";
 
     let { children } = $props();
 
@@ -29,16 +29,4 @@
     ];
 </script>
 
-<RuneProvider
-    config={{
-        app: { name: "Chimera", version: "0.1.1" },
-        apiUrl: "https://api.example.com",
-        apiHealthCheck: async () => true,
-        dictionary: m,
-        favicon: "/img/rune.png",
-    }}
->
-    <AppLayout {sections}>
-        {@render children()}
-    </AppLayout>
-</RuneProvider>
+{@render children()}

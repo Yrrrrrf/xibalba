@@ -3,13 +3,11 @@
     "./sdk/core",
     "./sdk/state",
     "./sdk/ui",
-    "./apps/agent",
     "./apps/explorer",
     "./apps/vision"
   ],
   "tasks": {
     "prepare": "deno task --cwd sdk/ui prepack",
-    "agent": "deno task --cwd apps/agent dev",
     "explorer": "deno task --cwd apps/explorer dev",
     "vision": "deno task --cwd apps/vision dev"
   },
@@ -36,7 +34,6 @@
     "vite": "npm:vite",
     "typescript": "npm:typescript@^5.9.3",
     "svelte": "npm:svelte",
-    "svelte-check": "npm:svelte-check",
     "@sveltejs/kit": "npm:@sveltejs/kit",
     "@sveltejs/adapter-static": "npm:@sveltejs/adapter-static",
     "@sveltejs/vite-plugin-svelte": "npm:@sveltejs/vite-plugin-svelte",
@@ -49,10 +46,5 @@
     "dinero.js": "npm:dinero.js",
     "rune-lab": "npm:rune-lab",
     "hotkeys-js": "npm:hotkeys-js"
-  },
-  "lint": {
-    "exclude": [
-      "**/app.d.ts"
-    ]
   }
 }

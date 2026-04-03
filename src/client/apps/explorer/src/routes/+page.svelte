@@ -1,17 +1,22 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    import { goto } from "$app/navigation";
+  // @ts-ignore
+  import { createAuthStore } from "@sdk/state";
+  import { onMount } from "svelte";
+  import { goto } from "$app/navigation";
 
-    onMount(() => {
-        goto("/overview");
-    });
+  const auth = createAuthStore();
+
+  onMount(() => {
+    if (!auth.role) {
+      goto('/login');
+    } else if (auth.role === 'tourist') {
+      goto('/discover');
+    } else {
+      goto('/dashboard');
+    }
+  });
 </script>
 
-<div class="hero min-h-screen">
-    <div class="hero-content text-center flex flex-col items-center">
-        <span class="loading loading-spinner loading-lg text-primary"></span>
-        <p class="mt-4 font-medium opacity-70">
-            Redirecting to your workspace...
-        </p>
-    </div>
+<div class="flex-1 flex items-center justify-center bg-neutral-950">
+  <span class="loading loading-spinner loading-lg text-orange-500"></span>
 </div>

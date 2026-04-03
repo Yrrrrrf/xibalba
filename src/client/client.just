@@ -19,6 +19,7 @@ lint:
 [group('CI')]
 typecheck:
     deno check .
+    deno run -A npm:svelte-check
     @echo "✓ Client type-checked"
 
 [doc('Full client quality gate')]
