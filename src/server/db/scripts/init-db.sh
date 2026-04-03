@@ -1,10 +1,4 @@
 #!/bin/sh
-# =============================================================================
-# Xibalbá — SurrealDB Initialization Runner
-# =============================================================================
-# Discovers and executes all *.surql files under /init in numeric order.
-# Provides colored, per-file output with ✓/✗ indicators.
-# =============================================================================
 set -e
 
 RED='\033[0;31m'
@@ -26,7 +20,8 @@ DB="${SURREAL_DB:-main}"
 
 # ---------------------------------------------------------------------------
 run_surql() {
-    curl -sf -X POST "$URL" \
+    # REMOVED -f so we can actually see the error body
+    curl -s -X POST "$URL" \
         -H "Accept: application/json" \
         -H "surreal-ns: $NS" \
         -H "surreal-db: $DB" \
@@ -36,17 +31,21 @@ run_surql() {
 
 execute_surql_file() {
     local file="$1"
-    local filename
-    filename=$(basename "$file")
-    local dirname
-    dirname=$(basename "$(dirname "$file")")
+    local filename=$(basename "$file")
+    local dirname=$(basename "$(dirname "$file")")
     printf "\t${GRAY}${BULLET} %s/%s${NC} " "$dirname" "$filename"
-    if run_surql "$file" > /dev/null 2>&1; then
-        printf "${GREEN}${CHECK}${NC}\n"
-    else
+
+    # CAPTURE the output instead of discarding it
+    RESPONSE=$(run_surql "$file")
+
+    # SurrealDB returns errors in the JSON body even if HTTP is 200
+    # So we check if the response contains "ERR"
+    if echo "$RESPONSE" | grep -q '"status":"ERR"'; then
         printf "${RED}${CROSS}${NC}\n"
-        printf "${RED}    Failed: %s${NC}\n" "$file"
+        printf "${RED}    %s${NC}\n" "$RESPONSE" # <--- THIS PRINTS THE RAW ERROR
         return 1
+    else
+        printf "${GREEN}${CHECK}${NC}\n"
     fi
 }
 
@@ -58,7 +57,8 @@ main() {
     for dir in $(find "$base" -mindepth 1 -maxdepth 1 -type d | sort); do
         printf "${BLUE}${ARROW} %s${NC}\n" "$(basename "$dir")"
         for f in $(find "$dir" -name "*.surql" | sort); do
-            execute_surql_file "$f"
+            # The logic stays the same: if it returns 1, the script exits
+            execute_surql_file "$f" || exit 1
         done
         printf "\n"
     done

@@ -1,88 +1,65 @@
 # ── Xibalbá · Client ──────────────────────────────────────────
-
+#  CI
+# ── Xibalbá · Client ──────────────────────────────────────────
 #  CI
 
 [doc('Format Client code')]
 [group('CI')]
 fmt:
-    deno fmt .
+    deno fmt
+    @echo "✓ Client code formatted"
 
 [doc('Lint Client code')]
 [group('CI')]
 lint:
     deno lint .
+    @echo "✓ Client code linted"
 
 [doc('Type-check Client workspace')]
 [group('CI')]
 typecheck:
     deno check .
+    @echo "✓ Client type-checked"
 
 [doc('Full client quality gate')]
 [group('CI')]
 quality: fmt lint typecheck
     @echo "✓ Client quality checks passed"
 
-# Deploy
+# Build
 
-[doc('Build SDK (from wasm to ui)')]
+[doc('Sync SvelteKit and Build SDK')]
 [group('Build')]
-build-sdk:
-    # todo: Add the sdk build command
-    # * build the wasm bridge and emit to sdk/core/src/pkg/
-    just -f engine/services/wasm/build-wasm.just build
-    # * build the ui sdk
-    # todo: Add build commands for the ui sdk
-    # deno run ...
-    @echo "✓ SDK built successfully"
-
-[doc('Build Apps')]
-[group('Build')]
-build-apps:
-    # todo: Add the apps build command
-    # * build agent
-    # * build explorer
-    # * build vision
-    @echo "✓ Apps built successfully"
+sync-ui:
+    # Ensure SvelteKit syncs the generated tsconfig that the apps extend
+    deno task --cwd sdk/ui prepare
+    deno task --cwd apps/agent check
+    deno task --cwd apps/explorer check
+    deno task --cwd apps/vision check
 
 [doc('Build Client')]
 [group('Build')]
-build:
-    just build-sdk
-    just build-apps
-    @echo "✓ Client built successfully"
-
-# Dev
+build: sync-ui
+    @echo "✓ Client built and synced successfully"
 
 [doc('Run the client in development mode')]
 [group('Dev')]
-run:
-    # todo: Add the dev command
-    # todo: Add a command to instantiate the client
-    # todo: Init agent
-    # deno run agent
-    # todo: Init explorer
-    # deno run explorer
-    # todo: Init vision
-    # deno run vision
-    @echo "✓ Client running in development mode"
+run app=`ls apps/`:
+    yog reborn --deep
+    deno task --cwd sdk/ui prepare
+    # todo: Add a way to run all apps at once
+    # todo: Somehow orchestrate the apps to run in parallel
+    deno task --cwd apps/{{ app }} dev
 
 [doc('Test the client')]
 [group('Dev')]
 test:
-    # todo: Add the test command
-    # todo: Add a command to run the client tests
-    cd engine && cargo test
-
-# todo: Implement the deploy tasks!
-# todo: Implement the deploy tasks!
-# todo: Implement the deploy tasks!
-# todo: Implement the deploy tasks!
-# todo: Implement the deploy tasks!
+    cd sdk/infrastructure && deno task test
+    @echo "✓ Client tests passed"
 
 # ── Deploy (Tauri) ─────────────────────────────────────
 
 [doc('Build the Tauri app for production')]
 [group('Deploy')]
 deploy:
-    # todo: Add the Tauri build command
     @echo "✓ Tauri app built for production"

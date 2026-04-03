@@ -1,125 +1,141 @@
 -- =============================================================================
--- Xibalbá — Field Definitions
+-- Xibalbá — Field Definitions (Tourism Domain)
+-- This file is the schema contract. Every ASSERT and VALUE field here is
+-- a domain invariant enforced at the DB level, regardless of which client connects.
 -- =============================================================================
 
--- user
-DEFINE FIELD username ON user TYPE string;
-DEFINE FIELD email ON user TYPE string ASSERT string::is_email($value);
-DEFINE FIELD password_hash ON user TYPE string;
-DEFINE FIELD role ON user TYPE string ASSERT $value IN ['admin', 'agent', 'viewer'];
-DEFINE FIELD display_name ON user TYPE option<string>;
-DEFINE FIELD avatar_url ON user TYPE option<string>;
-DEFINE FIELD locale ON user TYPE string;
-DEFINE FIELD preferred_currency ON user TYPE string;
-DEFINE FIELD created_at ON user TYPE datetime DEFAULT time::now();
-DEFINE FIELD updated_at ON user TYPE datetime DEFAULT time::now();
+-- ---------------------------------------------------------------------------
+-- locale_string: i18n key-value store
+-- ---------------------------------------------------------------------------
+DEFINE FIELD key        ON locale_string TYPE string;
+DEFINE FIELD locale     ON locale_string TYPE string;
+DEFINE FIELD value      ON locale_string TYPE string;
+DEFINE FIELD updated_at ON locale_string TYPE datetime DEFAULT time::now();
 
--- session
-DEFINE FIELD user ON session TYPE record<user> REFERENCE ON DELETE CASCADE;
-DEFINE FIELD token ON session TYPE string;
-DEFINE FIELD user_agent ON session TYPE string;
-DEFINE FIELD ip_address ON session TYPE string;
+-- ---------------------------------------------------------------------------
+-- category: tourism taxonomy with parent hierarchy
+-- ---------------------------------------------------------------------------
+DEFINE FIELD slug        ON category TYPE string;
+DEFINE FIELD icon        ON category TYPE option<string>;
+DEFINE FIELD name        ON category TYPE string;
+DEFINE FIELD description ON category TYPE option<string>;
+DEFINE FIELD parent      ON category TYPE option<record<category>>;
+DEFINE FIELD path        ON category VALUE
+    IF parent != NONE THEN parent.path + ' > ' + name
+    ELSE name END;
+DEFINE FIELD created_at  ON category TYPE datetime DEFAULT time::now();
+
+-- ---------------------------------------------------------------------------
+-- city: geo anchor for businesses
+-- ---------------------------------------------------------------------------
+DEFINE FIELD name          ON city TYPE string;
+DEFINE FIELD slug          ON city TYPE string;
+DEFINE FIELD country_code  ON city TYPE string;
+DEFINE FIELD coordinates   ON city TYPE geometry<point>;
+DEFINE FIELD is_venue_city ON city TYPE bool DEFAULT false;
+DEFINE FIELD created_at    ON city TYPE datetime DEFAULT time::now();
+
+-- ---------------------------------------------------------------------------
+-- user: tourists, owners, admins
+-- ---------------------------------------------------------------------------
+DEFINE FIELD username     ON user TYPE string;
+DEFINE FIELD email        ON user TYPE string ASSERT string::is_email($value);
+DEFINE FIELD password_hash ON user TYPE string;
+DEFINE FIELD role         ON user TYPE string
+    ASSERT $value IN ['tourist', 'owner', 'admin'];
+DEFINE FIELD display_name ON user TYPE option<string>;
+DEFINE FIELD avatar_url   ON user TYPE option<string>;
+DEFINE FIELD locale       ON user TYPE string DEFAULT 'en';
+DEFINE FIELD country_code ON user TYPE option<string>;
+DEFINE FIELD created_at   ON user TYPE datetime DEFAULT time::now();
+DEFINE FIELD updated_at   ON user TYPE datetime DEFAULT time::now();
+
+-- ---------------------------------------------------------------------------
+-- session: auth tokens linked to users
+-- ---------------------------------------------------------------------------
+DEFINE FIELD user       ON session TYPE record<user> REFERENCE ON DELETE CASCADE;
+DEFINE FIELD token      ON session TYPE string;
+DEFINE FIELD user_agent ON session TYPE option<string>;
+DEFINE FIELD ip_address ON session TYPE option<string>;
 DEFINE FIELD expires_at ON session TYPE datetime;
 DEFINE FIELD created_at ON session TYPE datetime DEFAULT time::now();
 
--- category
-DEFINE FIELD name ON category TYPE string;
-DEFINE FIELD description ON category TYPE option<string>;
-DEFINE FIELD slug ON category TYPE string;
-DEFINE FIELD parent ON category TYPE option<record<category>>;
-DEFINE FIELD path ON category VALUE 
-    IF parent != NONE THEN parent.path + ' > ' + name
-    ELSE name END;
-DEFINE FIELD created_at ON category TYPE datetime DEFAULT time::now();
+-- ---------------------------------------------------------------------------
+-- business: the core domain entity
+-- ---------------------------------------------------------------------------
+DEFINE FIELD name             ON business TYPE string;
+DEFINE FIELD slug             ON business TYPE string;
+DEFINE FIELD description      ON business TYPE option<string>;
+DEFINE FIELD category         ON business TYPE record<category> REFERENCE ON DELETE REJECT;
+DEFINE FIELD city             ON business TYPE record<city>     REFERENCE ON DELETE REJECT;
+DEFINE FIELD coordinates      ON business TYPE geometry<point>;
+DEFINE FIELD address          ON business TYPE option<string>;
+DEFINE FIELD neighborhood     ON business TYPE option<string>;
+DEFINE FIELD price_range      ON business TYPE string
+    ASSERT $value IN ['$', '$$', '$$$'];
+DEFINE FIELD languages_spoken ON business TYPE array<string>
+    ASSERT array::all($value, |$l| $l IN ['es','en','fr','ja','de','pt','zh','it','ko','ar','ru','nl','pl']);
+DEFINE FIELD phone            ON business TYPE option<string>;
+DEFINE FIELD website          ON business TYPE option<string>;
+DEFINE FIELD opening_hours    ON business TYPE option<string>;
+DEFINE FIELD is_active        ON business TYPE bool DEFAULT true;
+DEFINE FIELD is_verified      ON business TYPE bool DEFAULT false;
+DEFINE FIELD is_ola_mexico    ON business TYPE bool DEFAULT false
+    PERMISSIONS FOR update WHERE $auth.role = 'admin';
+DEFINE FIELD internal_notes   ON business TYPE option<string>
+    PERMISSIONS FOR select WHERE $auth.role IN ['owner', 'admin'];
 
--- location
-DEFINE FIELD name ON location TYPE string;
-DEFINE FIELD address ON location TYPE string;
-DEFINE FIELD city ON location TYPE string;
-DEFINE FIELD country ON location TYPE string;
-DEFINE FIELD coordinates ON location TYPE geometry<point>;
-DEFINE FIELD capacity ON location TYPE option<int>;
-DEFINE FIELD item_count ON location VALUE (SELECT VALUE count() FROM item WHERE location = $parent.id)[0];
-DEFINE FIELD is_at_capacity ON location VALUE capacity != NONE AND item_count >= capacity;
-DEFINE FIELD notes ON location TYPE option<string>;
-DEFINE FIELD created_at ON location TYPE datetime DEFAULT time::now();
+-- Computed VALUE fields: always correct, zero maintenance, evaluated on read
+DEFINE FIELD rating ON business VALUE
+    (SELECT VALUE math::mean(rating) FROM review WHERE out = $this.id)[0];
+DEFINE FIELD review_count ON business VALUE
+    (SELECT VALUE count() FROM review WHERE out = $this.id)[0] OR 0;
 
--- item
-DEFINE FIELD name ON item TYPE string;
-DEFINE FIELD sku ON item TYPE string ASSERT $value = /^[A-Z]{3}-\d{3,4}$/;
-DEFINE FIELD description ON item TYPE option<string>;
-DEFINE FIELD barcode ON item TYPE option<string>;
-DEFINE FIELD category ON item TYPE record<category> REFERENCE ON DELETE REJECT;
-DEFINE FIELD location ON item TYPE record<location> REFERENCE ON DELETE REJECT;
-DEFINE FIELD quantity ON item TYPE int ASSERT $value >= 0;
-DEFINE FIELD min_quantity ON item TYPE int;
-DEFINE FIELD price ON item TYPE decimal ASSERT $value >= 0dec;
-DEFINE FIELD cost ON item TYPE decimal
-    PERMISSIONS FOR select WHERE $auth.role != 'viewer';
-DEFINE FIELD currency ON item TYPE string;
-DEFINE FIELD weight_kg ON item TYPE option<decimal>;
-DEFINE FIELD image_urls ON item TYPE array<string>;
-DEFINE FIELD tags ON item TYPE array<string>;
-DEFINE FIELD is_active ON item TYPE bool;
-DEFINE FIELD is_low_stock ON item VALUE quantity <= min_quantity;
-DEFINE FIELD total_value ON item VALUE <decimal>quantity * price;
-DEFINE FIELD created_at ON item TYPE datetime DEFAULT time::now();
-DEFINE FIELD updated_at ON item TYPE datetime DEFAULT time::now();
+DEFINE FIELD created_at ON business TYPE datetime DEFAULT time::now();
+DEFINE FIELD updated_at ON business TYPE datetime DEFAULT time::now();
 
--- movement
-DEFINE FIELD item ON movement TYPE record<item>;
-DEFINE FIELD performed_by ON movement TYPE record<user>;
-DEFINE FIELD delta ON movement TYPE int;
-DEFINE FIELD qty_before ON movement TYPE int;
-DEFINE FIELD qty_after ON movement TYPE int;
-DEFINE FIELD reason ON movement TYPE string ASSERT $value IN ['purchase', 'sale', 'transfer', 'adjustment', 'return', 'damage', 'initial'];
-DEFINE FIELD reference_id ON movement TYPE option<string>;
-DEFINE FIELD note ON movement TYPE option<string>;
-DEFINE FIELD recorded_at ON movement TYPE datetime DEFAULT time::now();
+-- ---------------------------------------------------------------------------
+-- review: tourist → review → business (immutable relation)
+-- ---------------------------------------------------------------------------
+DEFINE FIELD rating     ON review TYPE int
+    ASSERT $value >= 1 AND $value <= 5;
+DEFINE FIELD body       ON review TYPE option<string>;
+DEFINE FIELD locale     ON review TYPE string DEFAULT 'en';
+DEFINE FIELD created_at ON review TYPE datetime DEFAULT time::now();
 
--- transfer
-DEFINE FIELD item ON transfer TYPE record<item>;
-DEFINE FIELD from_location ON transfer TYPE record<location>;
-DEFINE FIELD to_location ON transfer TYPE record<location>;
-DEFINE FIELD quantity ON transfer TYPE int;
-DEFINE FIELD status ON transfer TYPE string ASSERT $value IN ['pending', 'in_transit', 'completed', 'cancelled'];
-DEFINE FIELD initiated_by ON transfer TYPE record<user>;
-DEFINE FIELD completed_by ON transfer TYPE option<record<user>>;
-DEFINE FIELD initiated_at ON transfer TYPE datetime DEFAULT time::now();
-DEFINE FIELD completed_at ON transfer TYPE option<datetime>;
-DEFINE FIELD notes ON transfer TYPE option<string>;
+-- ---------------------------------------------------------------------------
+-- media: external asset URLs linked to a business
+-- ---------------------------------------------------------------------------
+DEFINE FIELD business   ON media TYPE record<business> REFERENCE ON DELETE CASCADE;
+DEFINE FIELD url        ON media TYPE string;
+DEFINE FIELD caption_es ON media TYPE option<string>;
+DEFINE FIELD caption_en ON media TYPE option<string>;
+DEFINE FIELD sort_order ON media TYPE int DEFAULT 0;
+DEFINE FIELD created_at ON media TYPE datetime DEFAULT time::now();
 
--- document_request
-DEFINE FIELD requested_by ON document_request TYPE record<user>;
-DEFINE FIELD template ON document_request TYPE string ASSERT $value IN ['inventory_report', 'item_label', 'transfer_manifest'];
-DEFINE FIELD parameters ON document_request TYPE object;
-DEFINE FIELD status ON document_request TYPE string ASSERT $value IN ['pending', 'processing', 'completed', 'failed'];
-DEFINE FIELD output_url ON document_request TYPE option<string>;
-DEFINE FIELD error ON document_request TYPE option<string>;
-DEFINE FIELD requested_at ON document_request TYPE datetime DEFAULT time::now();
-DEFINE FIELD completed_at ON document_request TYPE option<datetime>;
-DEFINE FIELD processing_time_ms ON document_request VALUE 
-    IF completed_at != NONE THEN time::unix(completed_at) - time::unix(requested_at)
-    ELSE NONE END;
+-- ---------------------------------------------------------------------------
+-- manages: owner → manages → business (graph edge)
+-- ---------------------------------------------------------------------------
+DEFINE FIELD since ON manages TYPE datetime DEFAULT time::now();
 
--- activity
-DEFINE FIELD actor ON activity TYPE record<user>;
-DEFINE FIELD action ON activity TYPE string;
-DEFINE FIELD target_table ON activity TYPE string;
-DEFINE FIELD target_id ON activity TYPE record;
-DEFINE FIELD meta ON activity TYPE option<object>;
-DEFINE FIELD occurred_at ON activity TYPE datetime DEFAULT time::now();
+-- ---------------------------------------------------------------------------
+-- visits: tourist → visits → business (behavioral graph fact)
+-- ---------------------------------------------------------------------------
+DEFINE FIELD source     ON visits TYPE string
+    ASSERT $value IN ['map', 'search', 'qr', 'link', 'recommendation'];
+DEFINE FIELD visited_at ON visits TYPE datetime DEFAULT time::now();
 
--- snapshot
-DEFINE FIELD location ON snapshot TYPE record<location>;
-DEFINE FIELD total_items ON snapshot TYPE int;
-DEFINE FIELD total_quantity ON snapshot TYPE int;
-DEFINE FIELD total_value ON snapshot TYPE decimal;
-DEFINE FIELD low_stock_count ON snapshot TYPE int;
-DEFINE FIELD snapped_at ON snapshot TYPE datetime DEFAULT time::now();
+-- ---------------------------------------------------------------------------
+-- favorites: tourist → favorites → business (graph edge)
+-- ---------------------------------------------------------------------------
+DEFINE FIELD added_at ON favorites TYPE datetime DEFAULT time::now();
 
--- locale_string
-DEFINE FIELD key ON locale_string TYPE string;
-DEFINE FIELD locale ON locale_string TYPE string;
-DEFINE FIELD value ON locale_string TYPE string;
-DEFINE FIELD updated_at ON locale_string TYPE datetime DEFAULT time::now();
+-- ---------------------------------------------------------------------------
+-- activity: audit log, written only by DB events
+-- ---------------------------------------------------------------------------
+DEFINE FIELD type            ON activity TYPE string;
+DEFINE FIELD target_owner    ON activity TYPE option<record<user>>;
+DEFINE FIELD target_business ON activity TYPE option<record<business>>;
+DEFINE FIELD meta            ON activity TYPE option<object>;
+DEFINE FIELD meta.*          ON activity TYPE any;
+DEFINE FIELD occurred_at     ON activity TYPE datetime DEFAULT time::now();

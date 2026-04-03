@@ -2,7 +2,6 @@
     import "./layout.css";
     import { RuneProvider } from "rune-lab";
     import * as m from "$lib/paraglide/messages.js";
-    import AppLayout from "./AppLayout.svelte";
 
     let { children } = $props();
 
@@ -38,7 +37,5 @@
         favicon: "/img/rune.png",
     }}
 >
-    <AppLayout {sections}>
-        {@render children()}
-    </AppLayout>
+    {@render children()}
 </RuneProvider>

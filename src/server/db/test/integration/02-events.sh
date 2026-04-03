@@ -3,30 +3,36 @@
 # GROUP D — Events (live DB, side effects)
 # =============================================================================
 
-# D1: stock_movement — movement recorded on quantity UPDATE
-run_query "UPDATE item:laptop_01 SET quantity = 48;" > /dev/null
+# D1: on_review_created — activity record produced
+# Cantina La Perla (business:cantina_la_perla) currently has 0 reviews.
+# Its owner is Roberto (user:owner_roberto).
+run_query "RELATE user:tourist_rafael->review->business:cantina_la_perla SET rating=5, locale='pt';" > /dev/null
 sleep 1 # allow event to fire
-RES=$(run_query "SELECT delta, reason FROM movement WHERE item = item:laptop_01 AND reason = 'adjustment';")
-if echo "$RES" | grep -q '"delta":-2'; then
-    pass "D1 · stock_movement event: movement record created on UPDATE"
+RES=$(run_query "SELECT type FROM activity WHERE target_business = business:cantina_la_perla AND type = 'review.received';")
+if echo "$RES" | grep -q 'review.received'; then
+    pass "D1 · on_review_created event: activity record 'review.received' produced"
 else
-    fail "D1 · A movement record with delta -2 should exist" "$RES"
+    fail "D1 · An activity record 'review.received' should be auto-created" "$RES"
 fi
 
-# D2: document_status_change — activity recorded on 'completed' status
-RES=$(run_query "
-    CREATE document_request SET
-        requested_by = user:agent1,
-        template = 'inventory_report',
-        parameters = {},
-        status = 'pending';
-")
-DOC_ID=$(echo "$RES" | grep -oE '"id":"[^"]*"' | head -1 | cut -d'"' -f4)
-run_query "UPDATE $DOC_ID SET status = 'completed';" > /dev/null
-sleep 1
-RES2=$(run_query "SELECT action FROM activity WHERE target_id = $DOC_ID;")
-if echo "$RES2" | grep -q 'document.generated'; then
-    pass "D2 · document_status_change event: activity record created on 'completed'"
+# D2: on_review_created — first-review milestone produced
+RES=$(run_query "SELECT type FROM activity WHERE target_business = business:cantina_la_perla AND type = 'review.first';")
+if echo "$RES" | grep -q 'review.first'; then
+    pass "D2 · on_review_created event: activity record 'review.first' produced"
 else
-    fail "D2 · An activity record should be auto-created" "$RES2"
+    fail "D2 · An activity record 'review.first' should be auto-created" "$RES"
+fi
+
+# D3: on_business_verified — activity record produced on verification
+# Create a new unverified business
+run_query "CREATE business:new_biz SET name='New Biz', slug='new-biz', category=category:gastronomy, city=city:cdmx, coordinates={type:'Point',coordinates:[0,0]}, price_range='$', languages_spoken=['es'], is_verified=false;" > /dev/null
+run_query "RELATE user:owner_carlos->manages->business:new_biz;" > /dev/null
+# Verify it
+run_query "UPDATE business:new_biz SET is_verified = true;" > /dev/null
+sleep 1
+RES=$(run_query "SELECT type FROM activity WHERE target_business = business:new_biz AND type = 'business.verified';")
+if echo "$RES" | grep -q 'business.verified'; then
+    pass "D3 · on_business_verified event: activity record produced"
+else
+    fail "D3 · An activity record 'business.verified' should be auto-created" "$RES"
 fi
