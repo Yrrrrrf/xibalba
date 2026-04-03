@@ -1,13 +1,11 @@
 #[cfg(test)]
 mod tests {
     use crate::client::SurrealClient;
-    use crate::repos::auth::SurrealAuthRepo;
     use crate::repos::business::SurrealBusinessRepo;
     use crate::repos::review::SurrealReviewRepo;
     use chrono::Utc;
     use domain::entities::business::Point;
     use domain::entities::review::Review;
-    use domain::ports::auth::AuthRepository;
     use domain::ports::business::BusinessRepository;
     use domain::ports::review::ReviewRepository;
     use std::sync::Arc;
@@ -142,6 +140,13 @@ mod tests {
 
         let biz_after = biz_repo.find_by_id(biz_id).await.unwrap().unwrap();
         assert!(biz_after.review_count > biz_before.review_count);
+
+        // Cleanup: remove the test review so the DB returns to seed state
+        client
+            .db
+            .query("DELETE FROM review WHERE in = user:tourist_james AND out = business:cantina_la_perla")
+            .await
+            .unwrap();
     }
 
     // --- GROUP D: Events ---
@@ -284,14 +289,13 @@ mod tests {
             .query("SELECT count() FROM user GROUP ALL")
             .await
             .unwrap();
-        let count: Option<i64> = res
-            .take(0)
-            .map(|v: Value| {
-                let json = v.into_json_value();
-                json.get("count").and_then(|c| c.as_i64()).unwrap_or(0)
-            })
-            .ok();
-        assert!(count.unwrap_or(0) >= 8);
+        let counts: Vec<Value> = res.take(0).unwrap();
+        let count = counts
+            .first()
+            .map(|v| v.clone().into_json_value())
+            .and_then(|j| j.get("count").and_then(|c| c.as_i64()))
+            .unwrap_or(0);
+        assert!(count >= 8);
     }
 
     #[tokio::test]
@@ -302,14 +306,13 @@ mod tests {
             .query("SELECT count() FROM business GROUP ALL")
             .await
             .unwrap();
-        let count: Option<i64> = res
-            .take(0)
-            .map(|v: Value| {
-                let json = v.into_json_value();
-                json.get("count").and_then(|c| c.as_i64()).unwrap_or(0)
-            })
-            .ok();
-        assert!(count.unwrap_or(0) >= 7);
+        let counts: Vec<Value> = res.take(0).unwrap();
+        let count = counts
+            .first()
+            .map(|v| v.clone().into_json_value())
+            .and_then(|j| j.get("count").and_then(|c| c.as_i64()))
+            .unwrap_or(0);
+        assert!(count >= 8);
     }
 
     #[tokio::test]
@@ -320,14 +323,13 @@ mod tests {
             .query("SELECT count() FROM review GROUP ALL")
             .await
             .unwrap();
-        let count: Option<i64> = res
-            .take(0)
-            .map(|v: Value| {
-                let json = v.into_json_value();
-                json.get("count").and_then(|c| c.as_i64()).unwrap_or(0)
-            })
-            .ok();
-        assert!(count.unwrap_or(0) >= 7);
+        let counts: Vec<Value> = res.take(0).unwrap();
+        let count = counts
+            .first()
+            .map(|v| v.clone().into_json_value())
+            .and_then(|j| j.get("count").and_then(|c| c.as_i64()))
+            .unwrap_or(0);
+        assert!(count >= 9);
     }
 
     // --- GROUP I: Geo Search ---

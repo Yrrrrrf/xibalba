@@ -90,7 +90,8 @@ DEFINE FUNCTION fn::tourist_recommendations($user_id: record<user>, $limit: int)
         ORDER BY overlap DESC
         LIMIT $limit
     );
-    RETURN $recommendations.business;
+    LET $biz_ids = $recommendations.business;
+    RETURN SELECT * FROM business WHERE id IN $biz_ids;
 };
 
 -- ---------------------------------------------------------------------------
