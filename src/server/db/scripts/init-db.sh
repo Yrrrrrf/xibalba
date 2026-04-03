@@ -52,6 +52,21 @@ execute_surql_file() {
 # ---------------------------------------------------------------------------
 main() {
     printf "${BOLD}Xibalbá — SurrealDB Initialization${NC}\n\n"
+
+    # Provision NS and DB WITHOUT headers first
+    printf "${BLUE}${ARROW} Provisioning Namespace/DB${NC}\n"
+    RESPONSE=$(curl -s -X POST "$URL" \
+        -H "Accept: application/json" \
+        -u "$SURREAL_USER:$SURREAL_PASS" \
+        -d "DEFINE NAMESPACE IF NOT EXISTS $NS; DEFINE DATABASE IF NOT EXISTS $DB ON NAMESPACE $NS;")
+    
+    if echo "$RESPONSE" | grep -q '"status":"ERR"'; then
+        printf "\t${RED}${CROSS} Provisioning failed${NC}\n"
+        printf "${RED}    %s${NC}\n" "$RESPONSE"
+        exit 1
+    fi
+    printf "\t${GREEN}${CHECK} Namespace: %s, Database: %s${NC}\n\n" "$NS" "$DB"
+
     local base="/init"
 
     for dir in $(find "$base" -mindepth 1 -maxdepth 1 -type d | sort); do

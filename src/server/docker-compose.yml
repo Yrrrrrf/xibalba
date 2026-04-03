@@ -10,7 +10,7 @@ services:
     environment:
       - SURREAL_USER=${SURREAL_USER:-root}
       - SURREAL_PASS=${SURREAL_PASS}
-      - SURREAL_NS=${SURREAL_NS:-dev}
+      - SURREAL_NS=${SURREAL_NS:-app}
       - SURREAL_DB=${SURREAL_DB:-main}
       - SURREAL_PATH=${SURREAL_PATH:-memory}
       - SURREAL_LOG=${SURREAL_LOG:-info}

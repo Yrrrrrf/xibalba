@@ -3,12 +3,12 @@
 # GROUP C — Computed fields
 # =============================================================================
 
-# C1: business.rating average (Mezcalería has 1 review: 4)
+# C1: business.rating average (Mezcalería has 2 reviews: 4 and 5)
 RES=$(run_query "SELECT rating FROM business:mezcaleria_la_condesa;")
-if echo "$RES" | grep -q '4'; then
-    pass "C1 · business.rating computed correctly for mezcaleria_la_condesa"
+if echo "$RES" | grep -q '4.5'; then
+    pass "C1 · business.rating computed correctly for mezcaleria_la_condesa (avg: 4.5)"
 else
-    fail "C1 · rating should be 4 for mezcaleria_la_condesa" "$RES"
+    fail "C1 · rating should be 4.5 for mezcaleria_la_condesa" "$RES"
 fi
 
 # C2: business.review_count (Tacos El Memo has 1 review)

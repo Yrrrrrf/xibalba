@@ -85,11 +85,9 @@ DEFINE FIELD is_ola_mexico    ON business TYPE bool DEFAULT false
 DEFINE FIELD internal_notes   ON business TYPE option<string>
     PERMISSIONS FOR select WHERE $auth.role IN ['owner', 'admin'];
 
--- Computed VALUE fields: always correct, zero maintenance, evaluated on read
-DEFINE FIELD rating ON business VALUE
-    (SELECT VALUE math::mean(rating) FROM review WHERE out = $this.id)[0];
-DEFINE FIELD review_count ON business VALUE
-    (SELECT VALUE count() FROM review WHERE out = $this.id)[0] OR 0;
+-- Rating and Review Count: explicitly updated by events for performance and consistency
+DEFINE FIELD rating       ON business TYPE option<float> DEFAULT 0;
+DEFINE FIELD review_count ON business TYPE int            DEFAULT 0;
 
 DEFINE FIELD created_at ON business TYPE datetime DEFAULT time::now();
 DEFINE FIELD updated_at ON business TYPE datetime DEFAULT time::now();

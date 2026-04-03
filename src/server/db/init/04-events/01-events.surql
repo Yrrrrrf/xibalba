@@ -12,7 +12,19 @@
 -- Also serves as the trigger point for the first-review milestone check.
 -- ---------------------------------------------------------------------------
 DEFINE EVENT on_review_created ON review WHEN $event = 'CREATE' THEN {
-    LET $owner = (SELECT VALUE in FROM manages WHERE out = $after.out LIMIT 1)[0];
+    LET $biz = $after.out;
+    LET $owner = (SELECT VALUE in FROM manages WHERE out = $biz LIMIT 1)[0];
+
+    -- Recalculate and update business stats (rating/review_count)
+    -- Using GROUP ALL ensures we get a single result with the aggregates
+    LET $stats = (SELECT 
+        math::mean(rating) AS avg_rating,
+        count()            AS total
+        FROM review WHERE out = $biz GROUP ALL);
+    
+    UPDATE $biz SET 
+        rating       = $stats[0].avg_rating OR 0,
+        review_count = $stats[0].total OR 0;
 
     -- Notify owner of new review
     IF $owner != NONE {
