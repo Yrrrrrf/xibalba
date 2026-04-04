@@ -1,8 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  // @ts-ignore
   import { createAuthStore } from "@sdk/state";
-  // @ts-ignore
   import * as m from "$lib/paraglide/messages.js";
 
   const auth = createAuthStore();
@@ -12,12 +10,12 @@
     loading = role;
     await new Promise((r) => setTimeout(r, 600));
     auth.setRole(role);
-    if (role === 'tourist') {
-      goto('/discover');
-    } else if (role === 'business') {
-      goto('/dashboard');
+    if (role === "tourist") {
+      goto("/discover");
+    } else if (role === "business") {
+      goto("/dashboard");
     } else {
-      goto('/dashboard'); // Admin for now
+      goto("/dashboard"); // Admin for now
     }
   }
 
@@ -56,15 +54,23 @@
   <title>{m.login_title()} — {m.nav_login()}</title>
 </svelte:head>
 
-<div class="min-h-screen flex flex-col items-center justify-center p-5 bg-neutral-950">
+<div
+  class="min-h-screen flex flex-col items-center justify-center p-5 bg-neutral-950"
+>
   <!-- Brand hero -->
   <div class="text-center mb-10 space-y-3">
-    <div class="relative inline-flex items-center justify-center w-24 h-24 mb-2">
-      <div class="absolute inset-0 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 opacity-20 blur-xl animate-pulse"></div>
+    <div
+      class="relative inline-flex items-center justify-center w-24 h-24 mb-2"
+    >
+      <div
+        class="absolute inset-0 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 opacity-20 blur-xl animate-pulse"
+      ></div>
       <span class="text-6xl">⚽</span>
     </div>
 
-    <h1 class="text-5xl font-extrabold tracking-tight bg-gradient-to-br from-orange-600 via-amber-500 to-orange-700 bg-clip-text text-transparent">
+    <h1
+      class="text-5xl font-extrabold tracking-tight bg-gradient-to-br from-orange-600 via-amber-500 to-orange-700 bg-clip-text text-transparent"
+    >
       {m.login_title()}
     </h1>
     <p class="text-stone-500 text-sm max-w-xs mx-auto leading-relaxed">
@@ -74,7 +80,9 @@
 
   <!-- Role selector -->
   <div class="w-full max-w-sm space-y-3">
-    <p class="text-center text-xs font-bold text-stone-400 uppercase tracking-widest mb-5">
+    <p
+      class="text-center text-xs font-bold text-stone-400 uppercase tracking-widest mb-5"
+    >
       {m.login_select_role()}
     </p>
 
@@ -92,10 +100,12 @@
                transition-all duration-300 ease-out
                text-left cursor-pointer"
       >
-        <div class="w-14 h-14 rounded-2xl flex-shrink-0 flex items-center justify-center
+        <div
+          class="w-14 h-14 rounded-2xl flex-shrink-0 flex items-center justify-center
                     bg-gradient-to-br {rol.gradient} shadow-md {rol.glow}
                     group-hover:scale-110 group-hover:rotate-3
-                    transition-transform duration-300 text-3xl">
+                    transition-transform duration-300 text-3xl"
+        >
           {rol.emoji}
         </div>
 
@@ -104,12 +114,24 @@
           <p class="text-neutral-500 text-xs truncate mt-0.5">{rol.sublabel}</p>
         </div>
 
-        <div class="flex-shrink-0 text-stone-300 group-hover:text-orange-500 group-hover:translate-x-1 transition-all duration-300">
+        <div
+          class="flex-shrink-0 text-stone-300 group-hover:text-orange-500 group-hover:translate-x-1 transition-all duration-300"
+        >
           {#if loading === rol.id}
             <span class="loading loading-spinner loading-sm"></span>
           {:else}
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           {/if}
         </div>
@@ -117,7 +139,9 @@
     {/each}
   </div>
 
-  <p class="mt-10 text-[10px] text-stone-500 text-center max-w-xs leading-relaxed uppercase font-bold tracking-widest">
+  <p
+    class="mt-10 text-[10px] text-stone-500 text-center max-w-xs leading-relaxed uppercase font-bold tracking-widest"
+  >
     {m.login_demo_note()}
   </p>
 </div>

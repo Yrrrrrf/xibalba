@@ -8,11 +8,11 @@
 
   onMount(() => {
     if (!auth.role) {
-      goto('/login');
-    } else if (auth.role === 'tourist') {
-      goto('/discover');
+      goto("/login");
+    } else if (auth.role === "tourist") {
+      goto("/discover");
     } else {
-      goto('/dashboard');
+      goto("/dashboard");
     }
   });
 </script>

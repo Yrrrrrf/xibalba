@@ -1,7 +1,5 @@
 # ── Xibalbá · Client ──────────────────────────────────────────
 #  CI
-# ── Xibalbá · Client ──────────────────────────────────────────
-#  CI
 
 [doc('Format Client code')]
 [group('CI')]
@@ -48,6 +46,7 @@ build: sync-ui
 run app=`ls apps/`:
     yog reborn --deep
     bun run --cwd sdk/ui prepare
+
     # todo: Add a way to run all apps at once
     # todo: Somehow orchestrate the apps to run in parallel
     bun run --cwd apps/{{ app }} dev
