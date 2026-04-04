@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { createAuthStore } from "@sdk/state";
-  import * as m from "$lib/paraglide/messages.js";
+  import { m } from "@sdk/ui";
 
   const auth = createAuthStore();
   let loading = $state<string | null>(null);

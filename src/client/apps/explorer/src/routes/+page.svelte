@@ -1,5 +1,4 @@
 <script lang="ts">
-  // @ts-ignore
   import { createAuthStore } from "@sdk/state";
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";

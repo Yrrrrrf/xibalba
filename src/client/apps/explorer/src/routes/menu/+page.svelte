@@ -1,9 +1,7 @@
 <script lang="ts">
-  // @ts-ignore
   import { createDishStore } from "@sdk/state";
   import { GlassCard, PriceTag, StatusBadge } from "@sdk/ui";
-  // @ts-ignore
-  import * as m from "$lib/paraglide/messages.js";
+  import { m } from "@sdk/ui";
 
   const dishStore = createDishStore();
 </script>
@@ -38,24 +36,36 @@
             <h3 class="font-bold text-neutral-100 truncate">{dish.name}</h3>
             <p class="text-xs text-neutral-500">{dish.category}</p>
           </div>
-          <StatusBadge status={dish.available ? 'active_food' : 'hidden_food'} />
+          <StatusBadge
+            status={dish.available ? "active_food" : "hidden_food"}
+          />
         </div>
 
         <div class="mt-4 flex items-center justify-between">
           <PriceTag amount={dish.price} size="sm" />
           <div class="flex gap-2">
-            <button class="btn btn-xs btn-ghost hover:bg-orange-500/10 text-orange-400">{m.merchant_edit()}</button>
-            <button class="btn btn-xs btn-ghost hover:bg-rose-500/10 text-rose-400">{m.merchant_pause()}</button>
+            <button
+              class="btn btn-xs btn-ghost hover:bg-orange-500/10 text-orange-400"
+              >{m.merchant_edit()}</button
+            >
+            <button
+              class="btn btn-xs btn-ghost hover:bg-rose-500/10 text-rose-400"
+              >{m.merchant_pause()}</button
+            >
           </div>
         </div>
       </GlassCard>
     {/each}
 
     {#if dishStore.all.length === 0}
-      <div class="col-span-full text-center py-20 bg-neutral-900/40 rounded-3xl border border-dashed border-white/10">
+      <div
+        class="col-span-full text-center py-20 bg-neutral-900/40 rounded-3xl border border-dashed border-white/10"
+      >
         <p class="text-4xl mb-3">🍽️</p>
         <p class="text-stone-400">{m.merchant_no_dishes()}</p>
-        <a href="/menu/new" class="btn btn-link text-orange-500 mt-2">{m.merchant_no_dishes_sub()}</a>
+        <a href="/menu/new" class="btn btn-link text-orange-500 mt-2"
+          >{m.merchant_no_dishes_sub()}</a
+        >
       </div>
     {/if}
   </div>

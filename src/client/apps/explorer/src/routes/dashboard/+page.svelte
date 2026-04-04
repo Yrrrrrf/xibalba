@@ -1,16 +1,30 @@
 <script lang="ts">
-  // @ts-ignore
   import { createDishStore, createBusinessStore } from "@sdk/state";
   import { MerchantDashboard, StatsCard } from "@sdk/ui";
-  // @ts-ignore
-  import * as m from "$lib/paraglide/messages.js";
+  import { m } from "@sdk/ui";
 
   const dishStore = createDishStore();
   const businessStore = createBusinessStore();
 
   const stats = $derived([
-    { title: m.merchant_total_dishes(), value: dishStore.all.length, icon: '🍽️', variant: 'primary' as const, trend: 'neutral' as const },
-    { title: m.merchant_total_sales(), value: dishStore.all.reduce((acc: number, d: any) => acc + d.sales_count, 0), icon: '💰', variant: 'success' as const, trend: 'up' as const, trendValue: '+5%' },
+    {
+      title: m.merchant_total_dishes(),
+      value: dishStore.all.length,
+      icon: "🍽️",
+      variant: "primary" as const,
+      trend: "neutral" as const,
+    },
+    {
+      title: m.merchant_total_sales(),
+      value: dishStore.all.reduce(
+        (acc: number, d: any) => acc + d.sales_count,
+        0,
+      ),
+      icon: "💰",
+      variant: "success" as const,
+      trend: "up" as const,
+      trendValue: "+5%",
+    },
   ]);
 </script>
 

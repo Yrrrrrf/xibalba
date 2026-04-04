@@ -1,9 +1,7 @@
 <script lang="ts">
-  // @ts-ignore
   import { createBusinessStore } from "@sdk/state";
   import { BusinessProfileEditor, LocationPicker } from "@sdk/ui";
-  // @ts-ignore
-  import * as m from "$lib/paraglide/messages.js";
+  import { m } from "@sdk/ui";
 
   const businessStore = createBusinessStore();
 
@@ -12,7 +10,7 @@
   }
 
   function handleLocation(lat: number, lng: number, address?: string) {
-    console.log('Location updated:', { lat, lng, address });
+    console.log("Location updated:", { lat, lng, address });
   }
 </script>
 
@@ -32,8 +30,11 @@
 
   <div class="space-y-8 pb-12">
     <section>
-      <h2 class="text-lg font-bold text-neutral-300 mb-4 flex items-center gap-2">
-        <span>📋</span> {m.profile_general()}
+      <h2
+        class="text-lg font-bold text-neutral-300 mb-4 flex items-center gap-2"
+      >
+        <span>📋</span>
+        {m.profile_general()}
       </h2>
       <BusinessProfileEditor
         profile={businessStore.profile}
@@ -42,13 +43,16 @@
     </section>
 
     <section>
-      <h2 class="text-lg font-bold text-neutral-300 mb-4 flex items-center gap-2">
-        <span>📍</span> {m.profile_location()}
+      <h2
+        class="text-lg font-bold text-neutral-300 mb-4 flex items-center gap-2"
+      >
+        <span>📍</span>
+        {m.profile_location()}
       </h2>
-      <div class="bg-neutral-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-xl">
-        <LocationPicker
-          onlocationchange={handleLocation}
-        />
+      <div
+        class="bg-neutral-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-xl"
+      >
+        <LocationPicker onlocationchange={handleLocation} />
       </div>
     </section>
   </div>

@@ -18,7 +18,9 @@ lint:
 [doc('Type-check Client workspace')]
 [group('CI')]
 typecheck:
-    bun run svelte-check --tsconfig ./tsconfig.json
+    # bun run svelte-check --tsconfig ./tsconfig.json
+    bun run svelte-check
+    deno check .
     @echo "✓ Client type-checked"
 
 [doc('Full client quality gate')]
@@ -31,10 +33,14 @@ quality: typecheck
 [doc('Sync SvelteKit and Build SDK')]
 [group('Build')]
 sync-ui:
-    # Ensure SvelteKit syncs the generated tsconfig that the apps extend
+    # 1. Compile Paraglide
+    deno run -A npm:@inlang/paraglide-js compile --project ./sdk/ui/src/i18n/project.inlang --outdir ./sdk/ui/src/i18n/paraglide
+    # 2. Verify output exists
+    test -f sdk/ui/src/i18n/paraglide/messages.js || exit 1
+    # 3. Remove stale .gitignore
+    # rm -f sdk/ui/src/i18n/paraglide/.gitignore
+    # 4. SvelteKit sync
     bun run --cwd sdk/ui prepare
-    bun run --cwd apps/explorer check
-    bun run --cwd apps/vision check
 
 [doc('Build Client')]
 [group('Build')]
@@ -43,10 +49,8 @@ build: sync-ui
 
 [doc('Run the client in development mode')]
 [group('Dev')]
-run app=`ls apps/`:
+run app=`ls apps/`: sync-ui
     yog reborn --deep
-    bun run --cwd sdk/ui prepare
-
     # todo: Add a way to run all apps at once
     # todo: Somehow orchestrate the apps to run in parallel
     bun run --cwd apps/{{ app }} dev

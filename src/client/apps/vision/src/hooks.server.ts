@@ -1,5 +1,5 @@
 import type { Handle } from "@sveltejs/kit";
-import { paraglideMiddleware } from "$lib/paraglide/server";
+import { paraglideMiddleware } from "@sdk/ui";
 
 export const handle: Handle = ({ event, resolve }) => {
   if (

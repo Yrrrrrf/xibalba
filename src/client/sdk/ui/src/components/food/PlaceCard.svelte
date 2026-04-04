@@ -1,8 +1,11 @@
 <script lang="ts">
-  import { GlassCard, ImageWithFallback, RatingDisplay } from '../primitives/mod.ts';
-  import { tilt } from '../../actions/tilt.ts';
-  // @ts-ignore
-  import * as m from '../../paraglide/messages.js';
+  import {
+    GlassCard,
+    ImageWithFallback,
+    RatingDisplay,
+  } from "../primitives/mod.ts";
+  import { tilt } from "../../actions/tilt.ts";
+  import * as m from "../../paraglide/messages.js";
 
   interface Props {
     id: string | number;
@@ -49,7 +52,9 @@
   style="transform-style: preserve-3d;"
 >
   <!-- Image -->
-  <figure class="relative overflow-hidden rounded-t-3xl h-44 bg-gradient-to-br {colorAccent}">
+  <figure
+    class="relative overflow-hidden rounded-t-3xl h-44 bg-gradient-to-br {colorAccent}"
+  >
     <ImageWithFallback
       src={image_url}
       alt={name}
@@ -59,13 +64,17 @@
              transition-all duration-700 ease-out"
     />
     <!-- Overlay on hover -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent
-                opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent
+                opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+    ></div>
 
     <!-- Type badge top-left -->
     <div class="absolute top-3 left-3 z-10">
-      <span class="px-2.5 py-1 text-xs font-bold rounded-full
-                   bg-black/60 backdrop-blur-sm text-neutral-200 border border-white/10">
+      <span
+        class="px-2.5 py-1 text-xs font-bold rounded-full
+                   bg-black/60 backdrop-blur-sm text-neutral-200 border border-white/10"
+      >
         {emoji}
         {type}
       </span>
@@ -73,10 +82,12 @@
 
     <!-- Open/Closed badge top-right -->
     <div class="absolute top-3 right-3 z-10">
-      <span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase backdrop-blur-sm border
+      <span
+        class="px-2 py-1 rounded-full text-[10px] font-bold uppercase backdrop-blur-sm border
                    {open
           ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/30'
-          : 'bg-neutral-700/60 text-neutral-400 border-neutral-500/30'}">
+          : 'bg-neutral-700/60 text-neutral-400 border-neutral-500/30'}"
+      >
         {open ? "● " + m.place_open() : "● " + m.place_closed()}
       </span>
     </div>
@@ -84,7 +95,9 @@
 
   <!-- Body -->
   <div class="flex flex-col flex-1 p-4 gap-2">
-    <h3 class="font-bold text-neutral-100 text-[15px] leading-snug line-clamp-1">
+    <h3
+      class="font-bold text-neutral-100 text-[15px] leading-snug line-clamp-1"
+    >
       {name}
     </h3>
     <p class="text-neutral-500 text-xs leading-relaxed line-clamp-2">
@@ -96,7 +109,9 @@
       <span>📍</span>
       <span class="line-clamp-1">{address}</span>
       {#if distance}
-        <span class="ml-auto flex-shrink-0 text-orange-400 font-semibold">{distance}</span>
+        <span class="ml-auto flex-shrink-0 text-orange-400 font-semibold"
+          >{distance}</span
+        >
       {/if}
     </div>
 
@@ -104,8 +119,10 @@
     {#if tags.length > 0}
       <div class="flex flex-wrap gap-1 mt-1">
         {#each tags.slice(0, 3) as tag}
-          <span class="px-2 py-0.5 rounded-full text-[10px] font-medium
-                       bg-white/5 border border-white/10 text-neutral-400">
+          <span
+            class="px-2 py-0.5 rounded-full text-[10px] font-medium
+                       bg-white/5 border border-white/10 text-neutral-400"
+          >
             {tag}
           </span>
         {/each}
@@ -123,7 +140,11 @@
         {/if}
       </div>
       {#if price}
-        <span class="text-sm font-extrabold {price === 'Gratis' ? 'text-emerald-400' : 'text-orange-400'}">
+        <span
+          class="text-sm font-extrabold {price === 'Gratis'
+            ? 'text-emerald-400'
+            : 'text-orange-400'}"
+        >
           {price}
         </span>
       {/if}

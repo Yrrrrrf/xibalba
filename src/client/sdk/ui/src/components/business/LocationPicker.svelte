@@ -1,8 +1,7 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
-  import { makeIcon } from '../../utils/map-icons.ts';
-  // @ts-ignore
-  import * as m from '../../paraglide/messages.js';
+  import { onMount, onDestroy } from "svelte";
+  import { makeIcon } from "../../utils/map-icons.ts";
+  import * as m from "../../paraglide/messages.js";
 
   interface Props {
     height?: string;
@@ -12,31 +11,31 @@
   }
 
   let {
-    height = '380px',
+    height = "380px",
     initialLat = 19.4326,
     initialLng = -99.1332,
     onlocationchange,
   }: Props = $props();
 
   let mapEl: HTMLDivElement;
-  let map: import('leaflet').Map | null = null;
-  let marker: import('leaflet').Marker | null = null;
-  let L: typeof import('leaflet') | null = null;
+  let map: import("leaflet").Map | null = null;
+  let marker: import("leaflet").Marker | null = null;
+  let L: typeof import("leaflet") | null = null;
 
   let pickedLat = $state(initialLat);
   let pickedLng = $state(initialLng);
-  let address = $state('');
+  let address = $state("");
   let geocoding = $state(false);
   let confirmed = $state(false);
   let locating = $state(false);
 
   async function reverseGeocode(lat: number, lng: number) {
     geocoding = true;
-    address = '';
+    address = "";
     try {
       const res = await fetch(
         `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`,
-        { headers: { 'Accept-Language': 'es' } }
+        { headers: { "Accept-Language": "es" } },
       );
       const data = await res.json();
       address = data.display_name ?? `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
@@ -66,8 +65,10 @@
         updatePickedLocation(latitude, longitude);
         locating = false;
       },
-      () => { locating = false; },
-      { timeout: 8000, enableHighAccuracy: true }
+      () => {
+        locating = false;
+      },
+      { timeout: 8000, enableHighAccuracy: true },
     );
   }
 
@@ -77,29 +78,34 @@
   }
 
   async function initMap() {
-    if (typeof window === 'undefined') return;
-    L = (await import('leaflet')).default;
+    if (typeof window === "undefined") return;
+    L = (await import("leaflet")).default;
 
-    // @ts-ignore
     delete L.Icon.Default.prototype._getIconUrl;
     L.Icon.Default.mergeOptions({
-      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-      iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+      iconRetinaUrl:
+        "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+      shadowUrl:
+        "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
     });
 
     if (!mapEl) return;
-    map = L.map(mapEl, { zoomControl: false }).setView([initialLat, initialLng], 15);
+    map = L.map(mapEl, { zoomControl: false }).setView(
+      [initialLat, initialLng],
+      15,
+    );
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       maxZoom: 19,
     }).addTo(map);
 
-    L.control.zoom({ position: 'bottomright' }).addTo(map);
+    L.control.zoom({ position: "bottomright" }).addTo(map);
 
     const icon = L.icon({
-      iconUrl: makeIcon('#f59e0b'),
+      iconUrl: makeIcon("#f59e0b"),
       iconSize: [40, 50],
       iconAnchor: [20, 50],
       popupAnchor: [0, -50],
@@ -107,14 +113,14 @@
 
     marker = L.marker([initialLat, initialLng], { icon, draggable: true })
       .addTo(map!)
-      .bindPopup('📍 ' + m.map_marker_popup(), { closeButton: false });
+      .bindPopup("📍 " + m.map_marker_popup(), { closeButton: false });
 
-    marker.on('dragend', (e) => {
-      const latlng = (e.target as import('leaflet').Marker).getLatLng();
+    marker.on("dragend", (e) => {
+      const latlng = (e.target as import("leaflet").Marker).getLatLng();
       updatePickedLocation(latlng.lat, latlng.lng);
     });
 
-    map.on('click', (e: import('leaflet').LeafletMouseEvent) => {
+    map.on("click", (e: import("leaflet").LeafletMouseEvent) => {
       map?.flyTo(e.latlng, map.getZoom(), { duration: 0.5 });
       updatePickedLocation(e.latlng.lat, e.latlng.lng);
     });
@@ -123,19 +129,40 @@
     reverseGeocode(initialLat, initialLng);
   }
 
-  onMount(() => { initMap(); });
-  onDestroy(() => { if (map) map.remove(); map = null; });
+  onMount(() => {
+    initMap();
+  });
+  onDestroy(() => {
+    if (map) map.remove();
+    map = null;
+  });
 </script>
 
 <svelte:head>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
 </svelte:head>
 
 <div class="space-y-3">
   <!-- Instrucción -->
-  <div class="alert bg-cyan-500/10 border-cyan-500/20 text-cyan-400 py-2 text-xs font-bold uppercase tracking-wider">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  <div
+    class="alert bg-cyan-500/10 border-cyan-500/20 text-cyan-400 py-2 text-xs font-bold uppercase tracking-wider"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-4 w-4 shrink-0"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
     </svg>
     <span>{m.map_drag_hint()}</span>
   </div>
@@ -150,9 +177,25 @@
       {#if locating}
         <span class="loading loading-spinner loading-xs"></span>
       {:else}
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+          />
         </svg>
       {/if}
       {m.map_use_location()}
@@ -160,12 +203,22 @@
   </div>
 
   <!-- Map -->
-  <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl" style="height:{height}">
-    <div bind:this={mapEl} class="w-full h-full z-0 grayscale-[0.3] invert-[0.05]"></div>
+  <div
+    class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
+    style="height:{height}"
+  >
+    <div
+      bind:this={mapEl}
+      class="w-full h-full z-0 grayscale-[0.3] invert-[0.05]"
+    ></div>
 
     <!-- Crosshair hint -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-[999] pointer-events-none">
-      <div class="bg-black/60 backdrop-blur-md rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white/80 border border-white/10 shadow-lg">
+    <div
+      class="absolute bottom-10 left-1/2 -translate-x-1/2 z-[999] pointer-events-none"
+    >
+      <div
+        class="bg-black/60 backdrop-blur-md rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white/80 border border-white/10 shadow-lg"
+      >
         👆 {m.map_touch_hint()}
       </div>
     </div>
@@ -175,7 +228,10 @@
   <div class="grid grid-cols-2 gap-3">
     <div class="form-control">
       <label class="label py-1">
-        <span class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500">{m.map_latitude()}</span>
+        <span
+          class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
+          >{m.map_latitude()}</span
+        >
       </label>
       <input
         type="text"
@@ -186,7 +242,10 @@
     </div>
     <div class="form-control">
       <label class="label py-1">
-        <span class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500">{m.map_longitude()}</span>
+        <span
+          class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
+          >{m.map_longitude()}</span
+        >
       </label>
       <input
         type="text"
@@ -200,16 +259,25 @@
   <!-- Address display -->
   <div class="form-control">
     <label class="label py-1">
-      <span class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500">📍 {m.map_address_detected()}</span>
+      <span
+        class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
+        >📍 {m.map_address_detected()}</span
+      >
     </label>
     <div class="flex items-center gap-2">
       {#if geocoding}
-        <div class="flex items-center gap-2 text-xs font-bold text-neutral-500 px-3 py-2.5 bg-white/5 border border-white/5 rounded-xl w-full">
+        <div
+          class="flex items-center gap-2 text-xs font-bold text-neutral-500 px-3 py-2.5 bg-white/5 border border-white/5 rounded-xl w-full"
+        >
           <span class="loading loading-dots loading-xs"></span>
           {m.map_loading_address()}
         </div>
       {:else}
-        <p class="text-xs px-3 py-2.5 bg-white/5 border border-white/5 rounded-xl flex-1 leading-snug text-neutral-300 italic">{address || '—'}</p>
+        <p
+          class="text-xs px-3 py-2.5 bg-white/5 border border-white/5 rounded-xl flex-1 leading-snug text-neutral-300 italic"
+        >
+          {address || "—"}
+        </p>
       {/if}
     </div>
   </div>
@@ -217,11 +285,24 @@
   <!-- Confirm button -->
   <button
     onclick={confirmLocation}
-    class="btn btn-warning w-full gap-2 {confirmed ? 'btn-success' : 'btn-warning'}"
+    class="btn btn-warning w-full gap-2 {confirmed
+      ? 'btn-success'
+      : 'btn-warning'}"
   >
     {#if confirmed}
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 13l4 4L19 7"
+        />
       </svg>
       {m.map_confirmed()}
     {:else}

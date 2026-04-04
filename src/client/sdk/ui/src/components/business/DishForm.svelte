@@ -1,8 +1,7 @@
 <script lang="ts">
-  import type { DishFormData } from '@sdk/core';
-  import { DISH_CATEGORIES } from '@sdk/core';
-  // @ts-ignore
-  import * as m from '../../paraglide/messages.js';
+  import type { DishFormData } from "@sdk/core";
+  import { DISH_CATEGORIES } from "@sdk/core";
+  import * as m from "../../paraglide/messages.js";
 
   interface Props {
     initial?: DishFormData | null;
@@ -12,21 +11,24 @@
 
   let { initial, onsubmit, oncancel }: Props = $props();
 
-  let form = $state<DishFormData>(initial ?? {
-    name: '',
-    price: 0,
-    category: 'mexican',
-    description: '',
-    image_url: '',
-    available: true,
-  });
+  let form = $state<DishFormData>(
+    initial ?? {
+      name: "",
+      price: 0,
+      category: "mexican",
+      description: "",
+      image_url: "",
+      available: true,
+    },
+  );
 
   let errors = $state<Partial<Record<keyof DishFormData, string>>>({});
 
   function validate(): boolean {
     errors = {};
     if (!form.name.trim()) errors.name = m.form_name_required();
-    if (!form.price || Number(form.price) <= 0) errors.price = m.form_price_invalid();
+    if (!form.price || Number(form.price) <= 0)
+      errors.price = m.form_price_invalid();
     if (!form.description.trim()) errors.description = m.form_desc_required();
     return Object.keys(errors).length === 0;
   }
@@ -50,7 +52,9 @@
         id="prod-nombre"
         type="text"
         placeholder="ej. Tacos al Pastor x3"
-        class="input bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 {errors.name ? 'border-error' : ''}"
+        class="input bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 {errors.name
+          ? 'border-error'
+          : ''}"
         bind:value={form.name}
       />
       {#if errors.name}
@@ -71,7 +75,9 @@
         placeholder="ej. 8.50"
         step="0.01"
         min="0"
-        class="input bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 {errors.price ? 'border-error' : ''}"
+        class="input bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 {errors.price
+          ? 'border-error'
+          : ''}"
         bind:value={form.price}
       />
       {#if errors.price}
@@ -87,9 +93,15 @@
     <label class="label" for="prod-cat">
       <span class="label-text font-semibold">🏷️ {m.food_category()}</span>
     </label>
-    <select id="prod-cat" class="select bg-black/20 border-white/10 text-white focus:border-orange-500/50" bind:value={form.category}>
+    <select
+      id="prod-cat"
+      class="select bg-black/20 border-white/10 text-white focus:border-orange-500/50"
+      bind:value={form.category}
+    >
       {#each DISH_CATEGORIES as cat}
-        <option value={cat.key} class="bg-neutral-900 text-white">{cat.label}</option>
+        <option value={cat.key} class="bg-neutral-900 text-white"
+          >{cat.label}</option
+        >
       {/each}
     </select>
   </div>
@@ -103,7 +115,9 @@
       id="prod-desc"
       rows="3"
       placeholder="Describe tu platillo, ingredientes especiales..."
-      class="textarea bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 {errors.description ? 'border-error' : ''}"
+      class="textarea bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 {errors.description
+        ? 'border-error'
+        : ''}"
       bind:value={form.description}
     ></textarea>
     {#if errors.description}
@@ -130,14 +144,20 @@
   <!-- Disponible -->
   <div class="form-control">
     <label class="label cursor-pointer justify-start gap-3">
-      <input type="checkbox" class="toggle toggle-primary" bind:checked={form.available} />
+      <input
+        type="checkbox"
+        class="toggle toggle-primary"
+        bind:checked={form.available}
+      />
       <span class="label-text font-semibold">{m.form_available_now()}</span>
     </label>
   </div>
 
   <div class="flex justify-end gap-3 mt-2">
     {#if oncancel}
-      <button type="button" onclick={oncancel} class="btn btn-ghost">{m.form_cancel()}</button>
+      <button type="button" onclick={oncancel} class="btn btn-ghost"
+        >{m.form_cancel()}</button
+      >
     {/if}
     <button type="submit" class="btn btn-primary">
       ➕ {m.form_submit()}

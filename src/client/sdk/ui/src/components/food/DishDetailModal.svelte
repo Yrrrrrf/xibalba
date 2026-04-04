@@ -1,10 +1,14 @@
 <script lang="ts">
-  import { type Dish } from '@sdk/core';
-  import { MapView } from '../map/mod.ts';
-  import { CategoryBadge, RatingDisplay, PriceTag, ImageWithFallback } from '../primitives/mod.ts';
-  import { CATEGORY_GRADIENT_ACCENTS } from '../../utils/category-colors.ts';
-  // @ts-ignore
-  import * as m from '../../paraglide/messages.js';
+  import { type Dish } from "@sdk/core";
+  import { MapView } from "../map/mod.ts";
+  import {
+    CategoryBadge,
+    RatingDisplay,
+    PriceTag,
+    ImageWithFallback,
+  } from "../primitives/mod.ts";
+  import { CATEGORY_GRADIENT_ACCENTS } from "../../utils/category-colors.ts";
+  import * as m from "../../paraglide/messages.js";
 
   interface Props {
     dish: Dish | null;
@@ -14,14 +18,19 @@
 
   let { dish, open, onclose }: Props = $props();
 
-  const accent = $derived(dish ? (CATEGORY_GRADIENT_ACCENTS[dish.category] ?? 'from-orange-500 to-amber-500') : '');
+  const accent = $derived(
+    dish
+      ? (CATEGORY_GRADIENT_ACCENTS[dish.category] ??
+          "from-orange-500 to-amber-500")
+      : "",
+  );
 
   function handleBackdrop(e: MouseEvent) {
     if (e.target === e.currentTarget) onclose();
   }
 
   function handleKey(e: KeyboardEvent) {
-    if (e.key === 'Escape') onclose();
+    if (e.key === "Escape") onclose();
   }
 </script>
 
@@ -45,7 +54,9 @@
              flex flex-col"
     >
       <!-- ── HERO IMAGE ─────────────────────────────────── -->
-      <div class="relative h-64 sm:h-72 flex-shrink-0 overflow-hidden rounded-t-3xl">
+      <div
+        class="relative h-64 sm:h-72 flex-shrink-0 overflow-hidden rounded-t-3xl"
+      >
         <ImageWithFallback
           src={dish.image_url}
           alt={dish.name}
@@ -53,10 +64,14 @@
           class="w-full h-full object-cover"
         />
         <!-- Gradient overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent"></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent"
+        ></div>
 
         <!-- Top accent bar -->
-        <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r {accent}"></div>
+        <div
+          class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r {accent}"
+        ></div>
 
         <!-- Close button -->
         <button
@@ -69,8 +84,18 @@
                  transition-all duration-200"
           aria-label={m.detail_close()}
         >
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
 
@@ -81,7 +106,9 @@
 
         <!-- Name + price over image bottom -->
         <div class="absolute bottom-0 inset-x-0 p-5">
-          <h2 class="text-2xl font-extrabold text-white tracking-tight leading-tight mb-1">
+          <h2
+            class="text-2xl font-extrabold text-white tracking-tight leading-tight mb-1"
+          >
             {dish.name}
           </h2>
           <div class="flex items-center gap-3">
@@ -93,33 +120,38 @@
 
       <!-- ── CONTENT ─────────────────────────────────────── -->
       <div class="flex flex-col gap-6 p-5 sm:p-6">
-
         <!-- Description -->
         {#if dish.description}
-          <p class="text-neutral-400 text-sm leading-relaxed italic border-l-2 border-orange-500/40 pl-3">
+          <p
+            class="text-neutral-400 text-sm leading-relaxed italic border-l-2 border-orange-500/40 pl-3"
+          >
             {dish.description}
           </p>
         {/if}
 
         <!-- Nutrition + Ingredients Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
           <!-- Nutrition Panel -->
           {#if dish.nutrition}
-            <div class="bg-neutral-900/60 border border-white/8 rounded-2xl p-4">
-              <p class="text-[10px] font-bold uppercase tracking-widest text-orange-400 mb-3">
+            <div
+              class="bg-neutral-900/60 border border-white/8 rounded-2xl p-4"
+            >
+              <p
+                class="text-[10px] font-bold uppercase tracking-widest text-orange-400 mb-3"
+              >
                 📊 {m.food_nutrition()}
               </p>
               <div class="grid grid-cols-2 gap-3">
-                {#each [
-                  { label: m.food_calories(), value: dish.nutrition.calories, unit: 'kcal', color: 'text-orange-400' },
-                  { label: m.food_protein(), value: dish.nutrition.protein, unit: 'g', color: 'text-blue-400' },
-                  { label: m.food_fat(), value: dish.nutrition.fat, unit: 'g', color: 'text-yellow-400' },
-                  { label: m.food_carbs(), value: dish.nutrition.carbs, unit: 'g', color: 'text-green-400' },
-                ] as stat}
+                {#each [{ label: m.food_calories(), value: dish.nutrition.calories, unit: "kcal", color: "text-orange-400" }, { label: m.food_protein(), value: dish.nutrition.protein, unit: "g", color: "text-blue-400" }, { label: m.food_fat(), value: dish.nutrition.fat, unit: "g", color: "text-yellow-400" }, { label: m.food_carbs(), value: dish.nutrition.carbs, unit: "g", color: "text-green-400" }] as stat}
                   <div class="bg-neutral-800/50 rounded-xl p-3 text-center">
-                    <p class="text-[10px] text-neutral-500 uppercase tracking-wider mb-1">{stat.label}</p>
-                    <p class="font-extrabold text-lg {stat.color} leading-none">{stat.value}</p>
+                    <p
+                      class="text-[10px] text-neutral-500 uppercase tracking-wider mb-1"
+                    >
+                      {stat.label}
+                    </p>
+                    <p class="font-extrabold text-lg {stat.color} leading-none">
+                      {stat.value}
+                    </p>
                     <p class="text-[10px] text-neutral-600">{stat.unit}</p>
                   </div>
                 {/each}
@@ -129,14 +161,20 @@
 
           <!-- Ingredients Panel -->
           {#if dish.ingredients && dish.ingredients.length > 0}
-            <div class="bg-neutral-900/60 border border-white/8 rounded-2xl p-4">
-              <p class="text-[10px] font-bold uppercase tracking-widest text-orange-400 mb-3">
+            <div
+              class="bg-neutral-900/60 border border-white/8 rounded-2xl p-4"
+            >
+              <p
+                class="text-[10px] font-bold uppercase tracking-widest text-orange-400 mb-3"
+              >
                 🧂 {m.food_ingredients()}
               </p>
               <div class="flex flex-wrap gap-1.5">
                 {#each dish.ingredients as ing}
-                  <span class="px-2.5 py-1 rounded-full text-[11px] font-medium
-                               bg-white/5 border border-white/10 text-neutral-300">
+                  <span
+                    class="px-2.5 py-1 rounded-full text-[11px] font-medium
+                               bg-white/5 border border-white/10 text-neutral-300"
+                  >
                     {ing}
                   </span>
                 {/each}

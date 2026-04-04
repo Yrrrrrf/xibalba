@@ -1,20 +1,19 @@
 <script lang="ts">
-  // @ts-ignore
-  import * as m from '../../paraglide/messages.js';
+  import * as m from "../../paraglide/messages.js";
 
   interface Props {
     status: string;
     class?: string;
   }
 
-  let { status, class: className = '' }: Props = $props();
+  let { status, class: className = "" }: Props = $props();
 
   const statusMap: Record<string, string> = {
-    active: 'badge-success',
-    inactive: 'badge-ghost',
-    pending: 'badge-warning',
-    active_food: 'badge-success',
-    hidden_food: 'badge-ghost',
+    active: "badge-success",
+    inactive: "badge-ghost",
+    pending: "badge-warning",
+    active_food: "badge-success",
+    hidden_food: "badge-ghost",
   };
 
   const labelMap: Record<string, () => string> = {
@@ -28,6 +27,9 @@
   const label = $derived(labelMap[status]?.() ?? status);
 </script>
 
-<div class="badge {statusMap[status] ?? 'badge-ghost'} badge-sm font-bold uppercase text-[9px] {className}">
+<div
+  class="badge {statusMap[status] ??
+    'badge-ghost'} badge-sm font-bold uppercase text-[9px] {className}"
+>
   {label}
 </div>
