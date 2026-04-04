@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
   import { makeIcon } from "../../utils/map-icons.ts";
-  import * as m from "../../paraglide/messages.js";
+  import * as m from "../../../src/i18n/paraglide/messages.js";
 
   interface Props {
     height?: string;

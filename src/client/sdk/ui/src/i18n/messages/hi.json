@@ -1,5 +1,5 @@
 {
-  "": "https://inlang.com/schema/inlang-message-format",
+  "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello_world": "नमस्ते {name} हिंदी में",
   "label_status_draft": "ड्राफ्ट",
   "label_status_published": "प्रकाशित",

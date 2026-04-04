@@ -1,6 +1,6 @@
 <script lang="ts">
   import { DISH_CATEGORIES } from "@sdk/core";
-  import * as m from "../../paraglide/messages.js";
+  import * as m from "../../../src/i18n/paraglide/messages.js";
 
   interface Props {
     category: string;

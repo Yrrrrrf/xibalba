@@ -1,5 +1,5 @@
 {
-  "": "https://inlang.com/schema/inlang-message-format",
+  "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello_world": "你好 {name} 中文",
   "label_status_draft": "草稿",
   "label_status_published": "已发布",

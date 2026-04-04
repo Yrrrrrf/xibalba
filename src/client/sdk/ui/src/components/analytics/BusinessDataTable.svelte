@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { BusinessSummary } from "@sdk/core";
   import { StatusBadge, GlassCard } from "../primitives/mod.ts";
-  import * as m from "../../paraglide/messages.js";
+  import * as m from "../../../src/i18n/paraglide/messages.js";
 
   interface Props {
     data?: BusinessSummary[];

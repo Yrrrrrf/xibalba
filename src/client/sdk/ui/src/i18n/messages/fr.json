@@ -1,5 +1,5 @@
 {
-  "": "https://inlang.com/schema/inlang-message-format",
+  "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello_world": "Bonjour {name} en français",
   "label_status_draft": "Brouillon",
   "label_status_published": "Publié",

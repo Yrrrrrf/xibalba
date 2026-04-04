@@ -9,7 +9,7 @@
   } from "../primitives/mod.ts";
   import { tilt } from "../../actions/tilt.ts";
   import { CATEGORY_BG_ACCENTS } from "../../utils/category-colors.ts";
-  import * as m from "../../paraglide/messages.js";
+  import * as m from "../../../src/i18n/paraglide/messages.js";
 
   interface Props {
     dish: Dish;

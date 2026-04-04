@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { DishFormData } from "@sdk/core";
   import { DISH_CATEGORIES } from "@sdk/core";
-  import * as m from "../../paraglide/messages.js";
+  import * as m from "../../../src/i18n/paraglide/messages.js";
 
   interface Props {
     initial?: DishFormData | null;

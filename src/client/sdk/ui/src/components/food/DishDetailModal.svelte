@@ -8,7 +8,7 @@
     ImageWithFallback,
   } from "../primitives/mod.ts";
   import { CATEGORY_GRADIENT_ACCENTS } from "../../utils/category-colors.ts";
-  import * as m from "../../paraglide/messages.js";
+  import * as m from "../../../src/i18n/paraglide/messages.js";
 
   interface Props {
     dish: Dish | null;

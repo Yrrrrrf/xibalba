@@ -1,5 +1,5 @@
 {
-  "": "https://inlang.com/schema/inlang-message-format",
+  "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello_world": "Olá {name} em português",
   "label_status_draft": "Rascunho",
   "label_status_published": "Publicado",

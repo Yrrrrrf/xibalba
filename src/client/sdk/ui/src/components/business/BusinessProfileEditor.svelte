@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { BusinessProfile } from "@sdk/core";
   import { GlassCard } from "../primitives/mod.ts";
-  import * as m from "../../paraglide/messages.js";
+  import * as m from "../../../src/i18n/paraglide/messages.js";
 
   interface Props {
     profile: BusinessProfile;

@@ -1,5 +1,5 @@
 {
-  "": "https://inlang.com/schema/inlang-message-format",
+  "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello_world": "안녕하세요, {name}님",
   "label_status_draft": "초안",
   "label_status_published": "게시됨",

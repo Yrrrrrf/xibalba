@@ -1,5 +1,5 @@
 {
-  "": "https://inlang.com/schema/inlang-message-format",
+  "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello_world": "مرحباً {name} باللغة العربية",
   "label_status_draft": "مسودة",
   "label_status_published": "منشور",
