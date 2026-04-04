@@ -14,12 +14,16 @@ export default defineConfig({
       strategy: ["localStorage", "preferredLanguage", "baseLocale"],
     }),
   ],
-  // optimizeDeps: {
-  //   exclude: ["rune-lab"],
-  // },
-  // ssr: {
-  //   noExternal: ["rune-lab"],
-  // },
+  optimizeDeps: {
+    exclude: [
+      "rune-lab"
+    ],
+  },
+  ssr: {
+    noExternal: [
+      "rune-lab"
+    ],
+  },
   server: {
     fs: {
       allow: [
