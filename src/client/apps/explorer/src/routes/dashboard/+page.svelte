@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createDishStore, createBusinessStore } from "@sdk/state";
-  import { MerchantDashboard, StatsCard } from "@sdk/ui";
+  import { MerchantDashboard, StatsCard, ICONS } from "@sdk/ui";
   import { m } from "@sdk/ui";
 
   const dishStore = createDishStore();
@@ -10,7 +10,7 @@
     {
       title: m.merchant_total_dishes(),
       value: dishStore.all.length,
-      icon: "🍽️",
+      icon: ICONS.nav_menu,
       variant: "primary" as const,
       trend: "neutral" as const,
     },
@@ -20,7 +20,7 @@
         (acc: number, d: any) => acc + d.sales_count,
         0,
       ),
-      icon: "💰",
+      icon: ICONS.money,
       variant: "success" as const,
       trend: "up" as const,
       trendValue: "+5%",
@@ -34,8 +34,8 @@
 
 <main class="container mx-auto px-4 pt-6 pb-10 max-w-5xl">
   <div class="mb-8">
-    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight">
-      {m.dashboard_title()} 🍽️
+    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight flex items-center gap-3">
+      {m.dashboard_title()} <ICONS.nav_menu size={32} class="text-orange-500" />
     </h1>
     <p class="text-neutral-500 text-xs mt-1 font-medium italic">
       {m.dashboard_subtitle()}

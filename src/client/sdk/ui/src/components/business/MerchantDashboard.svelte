@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Package } from 'lucide-svelte';
   import type { Dish } from "@sdk/core";
   import {
     PriceTag,
@@ -79,7 +80,8 @@
               <span
                 class="text-[10px] text-neutral-500 flex items-center gap-1 font-bold uppercase"
               >
-                📦 {dish.sales_count}
+                <Package size={10} class="text-neutral-600" />
+                {dish.sales_count}
                 {m.merchant_sales_label()}
               </span>
             </div>

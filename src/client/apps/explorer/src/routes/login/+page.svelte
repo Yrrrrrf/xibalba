@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { createAuthStore } from "@sdk/state";
-  import { m } from "@sdk/ui";
+  import { m, ICONS } from "@sdk/ui";
 
   const auth = createAuthStore();
   let loading = $state<string | null>(null);
@@ -22,7 +22,7 @@
   const roles = $derived([
     {
       id: "tourist" as const,
-      emoji: "🧳",
+      icon: ICONS.tourist,
       label: m.login_tourist(),
       sublabel: m.login_tourist_sub(),
       gradient: "from-orange-500 to-amber-600",
@@ -31,7 +31,7 @@
     },
     {
       id: "business" as const,
-      emoji: "🍽️",
+      icon: ICONS.nav_menu,
       label: m.login_business(),
       sublabel: m.login_business_sub(),
       gradient: "from-amber-600 to-yellow-600",
@@ -40,7 +40,7 @@
     },
     {
       id: "admin" as const,
-      emoji: "🛡️",
+      icon: ICONS.admin,
       label: m.login_admin(),
       sublabel: m.login_admin_sub(),
       gradient: "from-rose-600 to-pink-600",
@@ -65,7 +65,9 @@
       <div
         class="absolute inset-0 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 opacity-20 blur-xl animate-pulse"
       ></div>
-      <span class="text-6xl">⚽</span>
+      <div class="text-6xl text-orange-500">
+        <ICONS.brand size={64} />
+      </div>
     </div>
 
     <h1
@@ -104,9 +106,9 @@
           class="w-14 h-14 rounded-2xl flex-shrink-0 flex items-center justify-center
                     bg-gradient-to-br {rol.gradient} shadow-md {rol.glow}
                     group-hover:scale-110 group-hover:rotate-3
-                    transition-transform duration-300 text-3xl"
+                    transition-transform duration-300 text-white"
         >
-          {rol.emoji}
+          <rol.icon size={32} />
         </div>
 
         <div class="flex-1 min-w-0">
@@ -120,19 +122,7 @@
           {#if loading === rol.id}
             <span class="loading loading-spinner loading-sm"></span>
           {:else}
-            <svg
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
+            <ICONS.chevron_right size={20} />
           {/if}
         </div>
       </button>

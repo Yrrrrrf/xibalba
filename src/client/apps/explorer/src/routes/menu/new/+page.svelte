@@ -1,6 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { DishForm, GlassCard } from "@sdk/ui";
+  import { DishForm, GlassCard, ICONS } from "@sdk/ui";
   import type { DishFormData } from "@sdk/core";
   import { m } from "@sdk/ui";
 
@@ -19,25 +19,13 @@
   <div class="mb-8">
     <a
       href="/menu"
-      class="text-xs font-bold text-neutral-500 hover:text-orange-500 flex items-center gap-1 mb-2"
+      class="text-xs font-bold text-neutral-500 hover:text-orange-500 flex items-center gap-1 mb-2 transition-colors"
     >
-      <svg
-        class="h-3 w-3"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="3"
-          d="M15 19l-7-7 7-7"
-        />
-      </svg>
+      <ICONS.chevron_left size={14} strokeWidth={3} />
       {m.nav_menu()}
     </a>
-    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight">
-      {m.menu_new_title()} ➕
+    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight flex items-center gap-3">
+      {m.menu_new_title()} <ICONS.add size={32} class="text-orange-500" />
     </h1>
     <p class="text-neutral-500 text-xs mt-1 font-medium italic">
       {m.menu_subtitle()}

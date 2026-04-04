@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Heart, Utensils } from 'lucide-svelte';
   import { type Dish } from "@sdk/core";
   import {
     GlassCard,
@@ -34,7 +35,7 @@
   onclick={onselect}
   use={[tilt]}
   {accent}
-  class="cursor-pointer will-change-transform"
+  class="cursor-pointer will-change-transform group"
   style="transform-style: preserve-3d;"
 >
   <!-- ── IMAGEN con efecto pop-out ──────────────────────────── -->
@@ -75,8 +76,8 @@
                 translate-y-full group-hover:translate-y-0
                 transition-transform duration-400 ease-out z-10"
     >
-      <p class="text-white text-xs font-medium drop-shadow">
-        🍽️ {dish.restaurant}
+      <p class="text-white text-xs font-medium drop-shadow flex items-center gap-1.5">
+        <Utensils size={12} /> {dish.restaurant}
       </p>
     </div>
   </figure>
@@ -106,21 +107,12 @@
           : 'bg-white/5 border border-white/10 text-neutral-400 hover:bg-rose-500/10 hover:text-rose-400'}"
         aria-label={m.food_dish()}
       >
-        <svg
-          class="h-4 w-4 transition-transform duration-300 {liked
-            ? 'scale-125'
-            : ''}"
-          viewBox="0 0 24 24"
-          fill={liked ? "currentColor" : "none"}
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-          />
-        </svg>
+        <Heart 
+          size={16} 
+          class="transition-transform duration-300 {liked ? 'scale-125' : ''}"
+          fill={liked ? "currentColor" : "none"} 
+          strokeWidth={2}
+        />
         <span class="text-xs font-semibold">{localLikes}</span>
       </button>
     </div>

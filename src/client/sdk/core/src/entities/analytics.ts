@@ -1,5 +1,5 @@
 export interface StatSnapshot {
-  icon: string;
+  icon: any;
   title: string;
   value: string | number;
   variant: "primary" | "secondary" | "accent" | "success" | "warning" | "error";

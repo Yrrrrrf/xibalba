@@ -4,7 +4,7 @@
     createGeoStore,
     createBusinessStore,
   } from "@sdk/state";
-  import { DishCard, DishDetailModal, ZoneSelector, MapView } from "@sdk/ui";
+  import { DishCard, DishDetailModal, ZoneSelector, MapView, ICONS } from "@sdk/ui";
   import { DISH_CATEGORIES } from "@sdk/core";
   import type { Dish } from "@sdk/core";
   import { m } from "@sdk/ui";
@@ -57,8 +57,8 @@
 
 <main class="container mx-auto px-4 pt-6 pb-10 max-w-6xl">
   <div class="mb-8">
-    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight">
-      {m.discover_hello()} 👋
+    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight flex items-center gap-3">
+      {m.discover_hello()} <ICONS.wave size={32} class="text-amber-500" />
     </h1>
     <p class="text-neutral-500 text-xs mt-1 font-medium italic">
       {m.discover_subtitle()}
@@ -105,8 +105,10 @@
   </div>
 
   {#if filteredDishes.length === 0}
-    <div class="text-center py-20">
-      <p class="text-5xl mb-3">🔍</p>
+    <div class="text-center py-20 flex flex-col items-center justify-center">
+      <div class="text-neutral-600 mb-3">
+        <ICONS.search size={48} strokeWidth={1.5} />
+      </div>
       <p class="text-stone-400 font-medium">{m.discover_no_results()}</p>
     </div>
   {/if}

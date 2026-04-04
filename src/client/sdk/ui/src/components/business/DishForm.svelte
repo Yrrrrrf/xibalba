@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount, onDestroy } from "svelte";
+  import { Utensils, DollarSign, Tag, FileText, Image, Plus } from 'lucide-svelte';
   import type { DishFormData } from "@sdk/core";
   import { DISH_CATEGORIES } from "@sdk/core";
   import * as m from "../../../src/i18n/paraglide/messages.js";
@@ -50,7 +52,10 @@
     <!-- Nombre -->
     <div class="form-control">
       <label class="label" for="prod-nombre">
-        <span class="label-text font-semibold">🍽️ {m.food_dish()}</span>
+        <span class="label-text font-semibold flex items-center gap-1.5">
+          <Utensils size={14} class="text-orange-500" />
+          {m.food_dish()}
+        </span>
       </label>
       <input
         id="prod-nombre"
@@ -71,7 +76,10 @@
     <!-- Precio -->
     <div class="form-control">
       <label class="label" for="prod-precio">
-        <span class="label-text font-semibold">💲 {m.food_price()} (USD)</span>
+        <span class="label-text font-semibold flex items-center gap-1.5">
+          <DollarSign size={14} class="text-emerald-500" />
+          {m.food_price()} (USD)
+        </span>
       </label>
       <input
         id="prod-precio"
@@ -95,7 +103,10 @@
   <!-- Categoría -->
   <div class="form-control">
     <label class="label" for="prod-cat">
-      <span class="label-text font-semibold">🏷️ {m.food_category()}</span>
+      <span class="label-text font-semibold flex items-center gap-1.5">
+        <Tag size={14} class="text-cyan-500" />
+        {m.food_category()}
+      </span>
     </label>
     <select
       id="prod-cat"
@@ -113,7 +124,10 @@
   <!-- Descripción -->
   <div class="form-control">
     <label class="label" for="prod-desc">
-      <span class="label-text font-semibold">📝 {m.biz_description()}</span>
+      <span class="label-text font-semibold flex items-center gap-1.5">
+        <FileText size={14} class="text-neutral-500" />
+        {m.biz_description()}
+      </span>
     </label>
     <textarea
       id="prod-desc"
@@ -134,7 +148,10 @@
   <!-- URL Imagen -->
   <div class="form-control">
     <label class="label" for="prod-img">
-      <span class="label-text font-semibold">🖼️ {m.form_image_label()}</span>
+      <span class="label-text font-semibold flex items-center gap-1.5">
+        <Image size={14} class="text-neutral-500" />
+        {m.form_image_label()}
+      </span>
     </label>
     <input
       id="prod-img"
@@ -164,8 +181,8 @@
         >{m.form_cancel()}</button
       >
     {/if}
-    <button type="submit" class="btn btn-primary">
-      ➕ {m.form_submit()}
+    <button type="submit" class="btn btn-primary gap-2">
+      <Plus size={18} /> {m.form_submit()}
     </button>
   </div>
 </form>

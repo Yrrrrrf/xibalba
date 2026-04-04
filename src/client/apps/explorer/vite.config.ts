@@ -20,9 +20,12 @@ export default defineConfig({
       "@sdk/ui",
     ],
   },
-  // ssr: {
-  //   noExternal: ["rune-lab"],
-  // },
+  ssr: {
+    noExternal: [
+      "rune-lab",
+      "lucide-svelte",
+    ],
+  },
   server: {
     fs: {
       allow: [

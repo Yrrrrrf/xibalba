@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-  import { makeIcon } from "../../utils/map-icons.ts";
+  import { Info, MapPin, Pointer, MapPinned, Check } from 'lucide-svelte';
+  import { makeMarkerIcon } from "../../icons/mod.ts";
   import * as m from "../../../src/i18n/paraglide/messages.js";
 
   interface Props {
@@ -111,7 +112,7 @@
     L.control.zoom({ position: "bottomright" }).addTo(map);
 
     const icon = L.icon({
-      iconUrl: makeIcon("#f59e0b"),
+      iconUrl: makeMarkerIcon("MapPin", "#f59e0b"),
       iconSize: [40, 50],
       iconAnchor: [20, 50],
       popupAnchor: [0, -50],
@@ -119,7 +120,7 @@
 
     marker = L.marker([initialLat, initialLng], { icon, draggable: true })
       .addTo(map!)
-      .bindPopup("📍 " + m.map_marker_popup(), { closeButton: false });
+      .bindPopup(m.map_marker_popup(), { closeButton: false });
 
     marker.on("dragend", (e) => {
       const latlng = (e.target as import("leaflet").Marker).getLatLng();
@@ -156,20 +157,7 @@
   <div
     class="alert bg-cyan-500/10 border-cyan-500/20 text-cyan-400 py-2 text-xs font-bold uppercase tracking-wider"
   >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-4 w-4 shrink-0"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-      />
-    </svg>
+    <Info size={16} />
     <span>{m.map_drag_hint()}</span>
   </div>
 
@@ -183,26 +171,7 @@
       {#if locating}
         <span class="loading loading-spinner loading-xs"></span>
       {:else}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-4 w-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-          />
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </svg>
+        <MapPin size={16} />
       {/if}
       {m.map_use_location()}
     </button>
@@ -223,9 +192,9 @@
       class="absolute bottom-10 left-1/2 -translate-x-1/2 z-[999] pointer-events-none"
     >
       <div
-        class="bg-black/60 backdrop-blur-md rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white/80 border border-white/10 shadow-lg"
+        class="bg-black/60 backdrop-blur-md rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white/80 border border-white/10 shadow-lg flex items-center gap-2"
       >
-        👆 {m.map_touch_hint()}
+        <Pointer size={12} /> {m.map_touch_hint()}
       </div>
     </div>
   </div>
@@ -268,9 +237,11 @@
   <div class="form-control">
     <label class="label py-1" for="loc-addr">
       <span
-        class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
-        >📍 {m.map_address_detected()}</span
-      >
+        class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500 flex items-center gap-1.5"
+        >
+        <MapPin size={10} class="text-neutral-600" />
+        {m.map_address_detected()}
+      </span>
     </label>
     <div class="flex items-center gap-2" id="loc-addr">
       {#if geocoding}
@@ -293,28 +264,15 @@
   <!-- Confirm button -->
   <button
     onclick={confirmLocation}
-    class="btn btn-warning w-full gap-2 {confirmed
+    class="btn w-full gap-2 {confirmed
       ? 'btn-success'
       : 'btn-warning'}"
   >
     {#if confirmed}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-5 w-5"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M5 13l4 4L19 7"
-        />
-      </svg>
+      <Check size={18} />
       {m.map_confirmed()}
     {:else}
-      📌 {m.map_confirm()}
+      <MapPinned size={18} /> {m.map_confirm()}
     {/if}
   </button>
 </div>

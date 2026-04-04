@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createBusinessStore } from "@sdk/state";
-  import { BusinessProfileEditor, LocationPicker } from "@sdk/ui";
+  import { BusinessProfileEditor, LocationPicker, ICONS } from "@sdk/ui";
   import { m } from "@sdk/ui";
 
   const businessStore = createBusinessStore();
@@ -20,8 +20,8 @@
 
 <main class="container mx-auto px-4 pt-6 pb-10 max-w-4xl">
   <div class="mb-8">
-    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight">
-      {m.profile_title()} 🏪
+    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight flex items-center gap-3">
+      {m.profile_title()} <ICONS.nav_profile size={32} class="text-orange-500" />
     </h1>
     <p class="text-neutral-500 text-xs mt-1 font-medium italic">
       {m.profile_subtitle()}
@@ -33,7 +33,7 @@
       <h2
         class="text-lg font-bold text-neutral-300 mb-4 flex items-center gap-2"
       >
-        <span>📋</span>
+        <ICONS.clipboard size={20} class="text-orange-500" />
         {m.profile_general()}
       </h2>
       <BusinessProfileEditor
@@ -46,7 +46,7 @@
       <h2
         class="text-lg font-bold text-neutral-300 mb-4 flex items-center gap-2"
       >
-        <span>📍</span>
+        <ICONS.map_pin size={20} class="text-orange-500" />
         {m.profile_location()}
       </h2>
       <div

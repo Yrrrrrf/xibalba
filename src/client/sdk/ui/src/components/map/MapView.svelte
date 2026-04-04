@@ -1,5 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
+  import { MapPin, Store, TriangleAlert } from 'lucide-svelte';
+  import { makeMarkerIcon, CATEGORY_ICONS } from "../../icons/mod.ts";
   import type { Business } from "@sdk/core";
   import * as m from "../../../src/i18n/paraglide/messages.js";
 
@@ -28,43 +30,35 @@
   let userLat = $state(DEFAULT_LAT);
   let userLng = $state(DEFAULT_LNG);
 
-  // ── Iconos SVG inline codificados ──────────────────────────────────
-  function makeIcon(color: string, emoji: string) {
-    const svg = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="44" viewBox="0 0 36 44">
-        <filter id="s"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/></filter>
-        <path filter="url(#s)" d="M18 2C10.3 2 4 8.3 4 16c0 10.5 14 26 14 26S32 26.5 32 16C32 8.3 25.7 2 18 2z" fill="${color}"/>
-        <circle cx="18" cy="16" r="9" fill="white" opacity="0.95"/>
-        <text x="18" y="20" text-anchor="middle" font-size="11">${emoji}</text>
-      </svg>`;
-    return `data:image/svg+xml;base64,${btoa(svg)}`;
-  }
-
-  const categoryEmoji: Record<string, string> = {
-    mexican: "🌮",
-    seafood: "🦐",
-    street_food: "🫔",
-    drinks: "🥤",
-    desserts: "🍩",
-    vegetarian: "🥗",
-    fast_food: "🍔",
-    international: "🍜",
-  };
-
-  function getCategoryEmoji(cat: string) {
-    return categoryEmoji[cat] ?? "🍽️";
+  function getCategoryIconName(cat: string): string {
+    const iconMap: Record<string, string> = {
+      mexican: "ChefHat",
+      seafood: "Fish",
+      street_food: "Flame",
+      drinks: "CupSoda",
+      desserts: "CakeSlice",
+      vegetarian: "Salad",
+      fast_food: "Hamburger",
+      international: "Soup",
+    };
+    return iconMap[cat] ?? "Utensils";
   }
 
   function buildPopup(c: Business) {
     const statusText = c.open ? m.badge_open() : m.badge_closed();
+    
+    // Inline SVGs for popup
+    const starSvg = `<svg style="width:12px;height:12px;display:inline;vertical-align:middle;margin-right:2px" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg>`;
+    const pinSvg = `<svg style="width:10px;height:10px;display:inline;vertical-align:middle;margin-right:4px;color:#888" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>`;
+
     return `
-      <div style="min-width:180px;font-family:system-ui">
-        <p style="font-weight:700;font-size:14px;margin:0 0 2px">${c.name}</p>
-        <p style="font-size:11px;color:#888;margin:0 0 6px">${getCategoryEmoji(c.category)} ${c.category}</p>
-        <p style="font-size:11px;margin:0 0 4px">📍 ${c.address}</p>
+      <div style="min-width:180px;font-family:system-ui;color:#e5e5e5">
+        <p style="font-weight:700;font-size:14px;margin:0 0 2px;color:#fff">${c.name}</p>
+        <p style="font-size:11px;color:#888;margin:0 0 6px">${c.category}</p>
+        <p style="font-size:11px;margin:0 0 4px">${pinSvg}${c.address}</p>
         <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
-          <span style="font-size:12px">⭐ <strong>${c.rating}</strong></span>
-          <span style="font-size:11px;padding:2px 8px;border-radius:999px;background:${c.open ? "#d1fae5" : "#fee2e2"};color:${c.open ? "#065f46" : "#991b1b"}">
+          <span style="font-size:12px">${starSvg}<strong>${c.rating}</strong></span>
+          <span style="font-size:11px;padding:2px 8px;border-radius:999px;background:${c.open ? "rgba(16,185,129,0.15)" : "rgba(239,68,68,0.15)"};color:${c.open ? "#10b981" : "#ef4444"};border:1px solid ${c.open ? "rgba(16,185,129,0.2)" : "rgba(239,68,68,0.2)"}">
             ● ${statusText}
           </span>
         </div>
@@ -102,9 +96,9 @@
     // Business markers
     for (const c of businesses) {
       const icon = L.icon({
-        iconUrl: makeIcon(
+        iconUrl: makeMarkerIcon(
+          getCategoryIconName(c.category),
           c.open ? "#10b981" : "#6b7280",
-          getCategoryEmoji(c.category),
         ),
         iconSize: [36, 44],
         iconAnchor: [18, 44],
@@ -118,7 +112,7 @@
     // User marker placeholder
     if (showUserLocation) {
       const userIcon = L.icon({
-        iconUrl: makeIcon("#6366f1", "📍"),
+        iconUrl: makeMarkerIcon("MapPin", "#6366f1"),
         iconSize: [40, 48],
         iconAnchor: [20, 48],
         popupAnchor: [0, -48],
@@ -128,7 +122,7 @@
         zIndexOffset: 1000,
       })
         .addTo(map!)
-        .bindPopup("<strong>📍 " + m.map_use_location() + "</strong>");
+        .bindPopup("<strong>" + m.map_use_location() + "</strong>");
     }
   }
 
@@ -198,26 +192,7 @@
           <span class="loading loading-spinner loading-xs"></span>
           ...
         {:else}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-            />
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-          </svg>
+          <MapPin size={16} />
           {m.map_use_location()}
         {/if}
       </button>
@@ -246,18 +221,20 @@
   <!-- Error toast -->
   {#if locationError}
     <div
-      class="absolute bottom-4 left-1/2 -translate-x-1/2 z-[999] alert alert-warning shadow-lg py-2 px-4 text-xs max-w-xs text-center"
+      class="absolute bottom-4 left-1/2 -translate-x-1/2 z-[999] alert alert-warning shadow-lg py-2 px-4 text-xs max-w-xs text-center flex items-center gap-2"
     >
-      ⚠️ {locationError}
+      <TriangleAlert size={14} />
+      {locationError}
     </div>
   {/if}
 
   <!-- Businesses count badge -->
   <div class="absolute top-3 right-3 z-[999]">
     <div
-      class="badge badge-neutral badge-lg shadow font-semibold gap-1 border-white/10 bg-neutral-900/80 backdrop-blur text-neutral-100"
+      class="badge badge-neutral badge-lg shadow font-semibold gap-2 border-white/10 bg-neutral-900/80 backdrop-blur text-neutral-100"
     >
-      🏪 {businesses.length}
+      <Store size={14} />
+      {businesses.length}
       {m.map_businesses_count()}
     </div>
   </div>

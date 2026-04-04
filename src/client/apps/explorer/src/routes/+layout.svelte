@@ -4,7 +4,7 @@
   import { page } from "$app/stores";
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
-  import { m } from "@sdk/ui";
+  import { m, ICONS } from "@sdk/ui";
 
   let { children } = $props();
   const auth = createAuthStore();
@@ -16,15 +16,15 @@
   });
 
   const touristNav = $derived([
-    { href: "/discover", label: m.nav_discover(), icon: "🗺️" },
-    { href: "/saved", label: m.nav_saved(), icon: "❤️" },
+    { href: "/discover", label: m.nav_discover(), icon: ICONS.nav_discover },
+    { href: "/saved", label: m.nav_saved(), icon: ICONS.nav_saved },
   ]);
 
   const businessNav = $derived([
-    { href: "/dashboard", label: m.nav_dashboard(), icon: "📊" },
-    { href: "/menu", label: m.nav_menu(), icon: "🍽️" },
-    { href: "/profile", label: m.nav_profile(), icon: "🏪" },
-    { href: "/discover", label: m.nav_discover(), icon: "🧳" }, // View as tourist
+    { href: "/dashboard", label: m.nav_dashboard(), icon: ICONS.nav_dashboard },
+    { href: "/menu", label: m.nav_menu(), icon: ICONS.nav_menu },
+    { href: "/profile", label: m.nav_profile(), icon: ICONS.nav_profile },
+    { href: "/discover", label: m.nav_discover(), icon: ICONS.tourist }, // View as tourist
   ]);
 
   const navItems = $derived(
@@ -47,9 +47,9 @@
       <div class="container mx-auto flex items-center justify-between">
         <div class="flex items-center gap-2">
           <div
-            class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center shadow-lg shadow-orange-900/20"
+            class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center shadow-lg shadow-orange-900/20 text-white"
           >
-            <span class="text-lg">⚽</span>
+            <ICONS.brand size={18} />
           </div>
           <span
             class="text-xl font-black tracking-tighter bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent"
@@ -88,7 +88,7 @@
               ? 'text-orange-500'
               : 'text-neutral-500 hover:text-neutral-300'}"
           >
-            <span class="text-xl">{item.icon}</span>
+            <item.icon size={20} />
             <span class="text-[9px] font-bold uppercase tracking-wider"
               >{item.label}</span
             >

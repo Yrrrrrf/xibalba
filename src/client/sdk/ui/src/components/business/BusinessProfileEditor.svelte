@@ -1,4 +1,17 @@
 <script lang="ts">
+  import { 
+    X, 
+    Pencil, 
+    User, 
+    MapPin, 
+    House, 
+    Phone, 
+    Mail, 
+    Clock, 
+    MessageSquare, 
+    Save,
+    ChefHat
+  } from 'lucide-svelte';
   import type { BusinessProfile } from "@sdk/core";
   import { GlassCard } from "../primitives/mod.ts";
   import * as m from "../../../src/i18n/paraglide/messages.js";
@@ -30,8 +43,8 @@
   >
     <div class="flex items-center gap-3">
       <div class="avatar placeholder">
-        <div class="bg-primary text-primary-content w-14 rounded-full">
-          <span class="text-2xl">🌮</span>
+        <div class="bg-primary text-primary-content w-14 rounded-full flex items-center justify-center">
+          <ChefHat size={28} />
         </div>
       </div>
       <div>
@@ -48,21 +61,28 @@
         : 'bg-orange-500/10 text-orange-400 border border-orange-500/20 hover:bg-orange-500/20'}"
     >
       {#if editing}
-        ✕ {m.editor_cancel()}
+        <X size={14} /> {m.editor_cancel()}
       {:else}
-        ✏️ {m.editor_edit()}
+        <Pencil size={14} /> {m.editor_edit()}
       {/if}
     </button>
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    {#each [{ label: m.biz_owner(), field: "owner_name" as const, icon: "👤" }, { label: m.biz_zone(), field: "zone" as const, icon: "📍" }, { label: m.biz_address(), field: "address" as const, icon: "🏠" }, { label: m.biz_phone(), field: "phone" as const, icon: "📞" }, { label: m.biz_email(), field: "email" as const, icon: "✉️" }, { label: m.biz_hours(), field: "hours" as const, icon: "⏰" }] as item}
+    {#each [
+      { label: m.biz_owner(), field: "owner_name" as const, icon: User }, 
+      { label: m.biz_zone(), field: "zone" as const, icon: MapPin }, 
+      { label: m.biz_address(), field: "address" as const, icon: House }, 
+      { label: m.biz_phone(), field: "phone" as const, icon: Phone }, 
+      { label: m.biz_email(), field: "email" as const, icon: Mail }, 
+      { label: m.biz_hours(), field: "hours" as const, icon: Clock }
+    ] as item}
       <div class="form-control">
         <label class="label py-1" for="field-{item.field}">
           <span
-            class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
+            class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500 flex items-center gap-1.5"
           >
-            {item.icon}
+            <item.icon size={12} class="text-neutral-600" />
             {item.label}
           </span>
         </label>
@@ -86,9 +106,11 @@
   <div class="form-control mt-2">
     <label class="label py-1" for="biz-desc">
       <span
-        class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
-        >💬 {m.biz_description()}</span
-      >
+        class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500 flex items-center gap-1.5"
+        >
+        <MessageSquare size={12} class="text-neutral-600" />
+        {m.biz_description()}
+      </span>
     </label>
     {#if editing}
       <textarea
@@ -108,8 +130,8 @@
 
   {#if editing}
     <div class="card-actions justify-end mt-4">
-      <button onclick={handleSave} class="btn btn-primary">
-        💾 {m.editor_save()}
+      <button onclick={handleSave} class="btn btn-primary gap-2">
+        <Save size={18} /> {m.editor_save()}
       </button>
     </div>
   {/if}

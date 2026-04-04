@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createDishStore, createVisitorStore } from "@sdk/state";
-  import { SavedDishCard } from "@sdk/ui";
+  import { SavedDishCard, ICONS } from "@sdk/ui";
   import type { Dish } from "@sdk/core";
   import { m } from "@sdk/ui";
 
@@ -20,8 +20,8 @@
 
 <main class="container mx-auto px-4 pt-6 pb-10 max-w-lg">
   <div class="mb-8">
-    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight">
-      {m.saved_title()} ❤️
+    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight flex items-center gap-3">
+      {m.saved_title()} <ICONS.nav_saved size={32} class="text-rose-500 fill-rose-500" />
     </h1>
     <p class="text-neutral-500 text-xs mt-1 font-medium italic">
       {m.saved_subtitle()}
@@ -38,8 +38,10 @@
     {/each}
 
     {#if savedDishes.length === 0}
-      <div class="text-center py-20">
-        <p class="text-5xl mb-3">❤️</p>
+      <div class="text-center py-20 flex flex-col items-center justify-center">
+        <div class="text-neutral-600 mb-3">
+          <ICONS.nav_saved size={48} strokeWidth={1.5} />
+        </div>
         <p class="text-stone-400 font-medium">{m.saved_empty()}</p>
         <a href="/discover" class="btn btn-link text-orange-500 mt-2"
           >{m.saved_explore()}</a

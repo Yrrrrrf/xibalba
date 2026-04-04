@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { MapPin, Clock } from 'lucide-svelte';
   import {
     GlassCard,
     ImageWithFallback,
@@ -21,7 +22,7 @@
     hours?: string;
     tags?: string[];
     colorAccent?: string;
-    emoji?: string;
+    icon?: any;
     onselect?: () => void;
   }
 
@@ -39,7 +40,7 @@
     hours,
     tags = [],
     colorAccent = "from-blue-400/20 to-indigo-400/10",
-    emoji = "📍",
+    icon: Icon = MapPin,
     onselect,
   }: Props = $props();
 </script>
@@ -48,7 +49,7 @@
   onclick={onselect}
   use={[tilt]}
   accent={colorAccent}
-  class="cursor-pointer will-change-transform"
+  class="cursor-pointer will-change-transform group"
   style="transform-style: preserve-3d;"
 >
   <!-- Image -->
@@ -72,10 +73,10 @@
     <!-- Type badge top-left -->
     <div class="absolute top-3 left-3 z-10">
       <span
-        class="px-2.5 py-1 text-xs font-bold rounded-full
+        class="flex items-center gap-1 px-2.5 py-1 text-xs font-bold rounded-full
                    bg-black/60 backdrop-blur-sm text-neutral-200 border border-white/10"
       >
-        {emoji}
+        <Icon size={12} class="text-white" />
         {type}
       </span>
     </div>
@@ -106,7 +107,7 @@
 
     <!-- Address & Distance -->
     <div class="flex items-center gap-1.5 text-neutral-500 text-[11px] mt-0.5">
-      <span>📍</span>
+      <MapPin size={10} />
       <span class="line-clamp-1">{address}</span>
       {#if distance}
         <span class="ml-auto flex-shrink-0 text-orange-400 font-semibold"
@@ -136,7 +137,9 @@
           <RatingDisplay value={rating} />
         {/if}
         {#if hours}
-          <span class="text-neutral-600 text-[10px] ml-2">🕐 {hours}</span>
+          <span class="text-neutral-600 text-[10px] ml-2 flex items-center gap-1">
+            <Clock size={10} /> {hours}
+          </span>
         {/if}
       </div>
       {#if price}

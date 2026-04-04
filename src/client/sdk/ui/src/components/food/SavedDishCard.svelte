@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Utensils, Trash2 } from 'lucide-svelte';
   import { type Dish } from '@sdk/core';
   import { CategoryBadge, PriceTag, ImageWithFallback } from '../primitives/mod.ts';
 
@@ -26,7 +27,9 @@
   <!-- Info -->
   <div class="flex-1 min-w-0">
     <p class="font-bold text-neutral-100 text-sm truncate">{dish.name}</p>
-    <p class="text-neutral-400 text-xs truncate mt-0.5">🍽️ {dish.restaurant}</p>
+    <p class="text-neutral-400 text-xs truncate mt-0.5 flex items-center gap-1">
+      <Utensils size={10} /> {dish.restaurant}
+    </p>
     <div class="mt-1">
       <CategoryBadge category={dish.category} />
     </div>
@@ -43,10 +46,7 @@
                transition-all duration-200"
         aria-label="Eliminar guardado"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-        </svg>
+        <Trash2 size={16} />
       </button>
     {/if}
   </div>

@@ -20,7 +20,7 @@ export * from "./components/map/mod.ts";
 export * from "./actions/tilt.ts";
 
 // Util Exports
-export * from "./utils/map-icons.ts";
+export * from "./icons/mod.ts";
 export * from "./utils/category-colors.ts";
 
 // I18n Exports

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Search, Eye, Ban } from 'lucide-svelte';
   import type { BusinessSummary } from "@sdk/core";
   import { StatusBadge, GlassCard } from "../primitives/mod.ts";
   import * as m from "../../../src/i18n/paraglide/messages.js";
@@ -30,12 +31,15 @@
 <div class="space-y-4">
   <!-- Filtros -->
   <div class="flex flex-col sm:flex-row gap-3">
-    <input
-      type="text"
-      placeholder="🔍 {m.table_search()}"
-      class="input bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 input-sm flex-1"
-      bind:value={search}
-    />
+    <div class="relative flex-1">
+      <Search size={14} class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" />
+      <input
+        type="text"
+        placeholder={m.table_search()}
+        class="input bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 input-sm w-full pl-9"
+        bind:value={search}
+      />
+    </div>
     <select
       class="select bg-black/20 border-white/10 text-white select-sm focus:border-orange-500/50"
       bind:value={filterZona}
@@ -105,12 +109,13 @@
                   class="btn btn-xs btn-ghost hover:bg-orange-500/10 text-orange-400"
                   aria-label="Ver"
                 >
-                  👁️
+                  <Eye size={14} />
                 </button>
                 <button
                   class="btn btn-xs btn-ghost hover:bg-rose-500/10 text-rose-400"
-                  aria-label="Suspender">🚫</button
-                >
+                  aria-label="Suspender">
+                  <Ban size={14} />
+                </button>
               </div>
             </td>
           </tr>

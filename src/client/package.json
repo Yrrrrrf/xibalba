@@ -26,13 +26,17 @@
     "dinero.js": "*",
     "hotkeys-js": "*",
     "leaflet": "*",
-    "lucide-svelte": "",
+    "lucide-static": "*",
+    "lucide-svelte": "1.0.1",
     "rune-lab": "*",
     "surrealdb": "",
     "svelte": "*",
     "sveltekit-superforms": "*",
     "tailwindcss": "*",
-    "typescript": "^5.9.3",
+    "typescript": "5.9.3",
     "vite": "*"
+  },
+  "devDependencies": {
+    "svelte-check": "^4.4.6"
   }
 }

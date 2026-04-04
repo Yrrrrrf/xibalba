@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { X, BarChart3, CookingPot, ShoppingCart } from 'lucide-svelte';
   import { type Dish } from "@sdk/core";
   import { MapView } from "../map/mod.ts";
   import {
@@ -84,19 +85,7 @@
                  transition-all duration-200"
           aria-label={m.detail_close()}
         >
-          <svg
-            class="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2.5"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          <X size={18} strokeWidth={2.5} />
         </button>
 
         <!-- Category & Rating badges -->
@@ -137,9 +126,9 @@
               class="bg-neutral-900/60 border border-white/8 rounded-2xl p-4"
             >
               <p
-                class="text-[10px] font-bold uppercase tracking-widest text-orange-400 mb-3"
+                class="text-[10px] font-bold uppercase tracking-widest text-orange-400 mb-3 flex items-center gap-1.5"
               >
-                📊 {m.food_nutrition()}
+                <BarChart3 size={12} /> {m.food_nutrition()}
               </p>
               <div class="grid grid-cols-2 gap-3">
                 {#each [{ label: m.food_calories(), value: dish.nutrition.calories, unit: "kcal", color: "text-orange-400" }, { label: m.food_protein(), value: dish.nutrition.protein, unit: "g", color: "text-blue-400" }, { label: m.food_fat(), value: dish.nutrition.fat, unit: "g", color: "text-yellow-400" }, { label: m.food_carbs(), value: dish.nutrition.carbs, unit: "g", color: "text-green-400" }] as stat}
@@ -165,9 +154,9 @@
               class="bg-neutral-900/60 border border-white/8 rounded-2xl p-4"
             >
               <p
-                class="text-[10px] font-bold uppercase tracking-widest text-orange-400 mb-3"
+                class="text-[10px] font-bold uppercase tracking-widest text-orange-400 mb-3 flex items-center gap-1.5"
               >
-                🧂 {m.food_ingredients()}
+                <CookingPot size={12} /> {m.food_ingredients()}
               </p>
               <div class="flex flex-wrap gap-1.5">
                 {#each dish.ingredients as ing}
@@ -190,10 +179,10 @@
         <div class="flex gap-3 pb-1">
           <button
             class="flex-1 py-3 rounded-2xl font-bold text-[13px] uppercase tracking-wider
-                   bg-orange-500 hover:bg-orange-600 text-white
+                   bg-orange-500 hover:bg-orange-600 text-white flex items-center justify-center gap-2
                    shadow-lg shadow-orange-900/20 transition-all duration-200 hover:-translate-y-0.5"
           >
-            🛒 {m.detail_order()}
+            <ShoppingCart size={18} /> {m.detail_order()}
           </button>
           <button
             onclick={onclose}

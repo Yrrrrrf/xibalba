@@ -1,7 +1,8 @@
 <script lang="ts">
   import { createDishStore } from "@sdk/state";
-  import { GlassCard, PriceTag, StatusBadge } from "@sdk/ui";
+  import { GlassCard, PriceTag, StatusBadge, ICONS } from "@sdk/ui";
   import { m } from "@sdk/ui";
+  import { Plus } from 'lucide-svelte';
 
   const dishStore = createDishStore();
 </script>
@@ -13,8 +14,8 @@
 <main class="container mx-auto px-4 pt-6 pb-10 max-w-5xl">
   <div class="flex items-center justify-between mb-8">
     <div>
-      <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight">
-        {m.menu_title()} 📖
+      <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight flex items-center gap-3">
+        {m.menu_title()} <ICONS.book_menu size={32} class="text-orange-500" />
       </h1>
       <p class="text-neutral-500 text-xs mt-1 font-medium italic">
         {m.menu_subtitle()}
@@ -22,9 +23,9 @@
     </div>
     <a
       href="/menu/new"
-      class="btn bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-2xl border-none shadow-lg shadow-orange-900/20"
+      class="btn bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-2xl border-none shadow-lg shadow-orange-900/20 gap-2"
     >
-      + {m.menu_add()}
+      <Plus size={18} /> {m.menu_add()}
     </a>
   </div>
 
@@ -59,9 +60,11 @@
 
     {#if dishStore.all.length === 0}
       <div
-        class="col-span-full text-center py-20 bg-neutral-900/40 rounded-3xl border border-dashed border-white/10"
+        class="col-span-full text-center py-20 bg-neutral-900/40 rounded-3xl border border-dashed border-white/10 flex flex-col items-center justify-center"
       >
-        <p class="text-4xl mb-3">🍽️</p>
+        <div class="text-neutral-600 mb-3">
+          <ICONS.nav_menu size={48} strokeWidth={1.5} />
+        </div>
         <p class="text-stone-400">{m.merchant_no_dishes()}</p>
         <a href="/menu/new" class="btn btn-link text-orange-500 mt-2"
           >{m.merchant_no_dishes_sub()}</a
