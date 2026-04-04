@@ -2,6 +2,8 @@
   import { goto } from "$app/navigation";
   // @ts-ignore
   import { createAuthStore } from "@sdk/state";
+  // @ts-ignore
+  import * as m from "$lib/paraglide/messages.js";
 
   const auth = createAuthStore();
   let loading = $state<string | null>(null);
@@ -19,12 +21,12 @@
     }
   }
 
-  const roles = [
+  const roles = $derived([
     {
       id: "tourist" as const,
       emoji: "🧳",
-      label: "Entrar como Turista",
-      sublabel: "Explora la mejor gastronomía del Mundial",
+      label: m.login_tourist(),
+      sublabel: m.login_tourist_sub(),
       gradient: "from-orange-500 to-amber-600",
       glow: "shadow-orange-900/40",
       border: "border-orange-500/20",
@@ -32,8 +34,8 @@
     {
       id: "business" as const,
       emoji: "🍽️",
-      label: "Entrar como Comerciante",
-      sublabel: "Gestiona tu negocio y tus platillos",
+      label: m.login_business(),
+      sublabel: m.login_business_sub(),
       gradient: "from-amber-600 to-yellow-600",
       glow: "shadow-amber-900/40",
       border: "border-amber-500/20",
@@ -41,17 +43,17 @@
     {
       id: "admin" as const,
       emoji: "🛡️",
-      label: "Entrar como Administrador",
-      sublabel: "Panel de control y analíticas globales",
+      label: m.login_admin(),
+      sublabel: m.login_admin_sub(),
       gradient: "from-rose-600 to-pink-600",
       glow: "shadow-rose-900/40",
       border: "border-rose-500/20",
     },
-  ] as const;
+  ]);
 </script>
 
 <svelte:head>
-  <title>Xibalbá — Acceso</title>
+  <title>{m.login_title()} — {m.nav_login()}</title>
 </svelte:head>
 
 <div class="min-h-screen flex flex-col items-center justify-center p-5 bg-neutral-950">
@@ -63,17 +65,17 @@
     </div>
 
     <h1 class="text-5xl font-extrabold tracking-tight bg-gradient-to-br from-orange-600 via-amber-500 to-orange-700 bg-clip-text text-transparent">
-      Xibalbá
+      {m.login_title()}
     </h1>
     <p class="text-stone-500 text-sm max-w-xs mx-auto leading-relaxed">
-      Descubre la gastronomía más auténtica durante el Mundial · Qatar 2026
+      {m.login_subtitle()}
     </p>
   </div>
 
   <!-- Role selector -->
   <div class="w-full max-w-sm space-y-3">
     <p class="text-center text-xs font-bold text-stone-400 uppercase tracking-widest mb-5">
-      Selecciona tu rol
+      {m.login_select_role()}
     </p>
 
     {#each roles as rol}
@@ -114,4 +116,8 @@
       </button>
     {/each}
   </div>
+
+  <p class="mt-10 text-[10px] text-stone-500 text-center max-w-xs leading-relaxed uppercase font-bold tracking-widest">
+    {m.login_demo_note()}
+  </p>
 </div>

@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { Business } from '@sdk/core';
+  // @ts-ignore
+  import * as m from '../../paraglide/messages.js';
 
   interface Props {
     height?: string;
@@ -55,6 +57,7 @@
   }
 
   function buildPopup(c: Business) {
+    const statusText = c.open ? m.badge_open() : m.badge_closed();
     return `
       <div style="min-width:180px;font-family:system-ui">
         <p style="font-weight:700;font-size:14px;margin:0 0 2px">${c.name}</p>
@@ -63,7 +66,7 @@
         <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
           <span style="font-size:12px">⭐ <strong>${c.rating}</strong></span>
           <span style="font-size:11px;padding:2px 8px;border-radius:999px;background:${c.open ? '#d1fae5' : '#fee2e2'};color:${c.open ? '#065f46' : '#991b1b'}">
-            ${c.open ? '● Abierto' : '● Cerrado'}
+            ● ${statusText}
           </span>
         </div>
       </div>`;
@@ -115,7 +118,7 @@
       });
       userMarker = L.marker([userLat, userLng], { icon: userIcon, zIndexOffset: 1000 })
         .addTo(map!)
-        .bindPopup('<strong>📍 Tu ubicación</strong>');
+        .bindPopup('<strong>📍 ' + m.map_use_location() + '</strong>');
     }
   }
 
@@ -175,17 +178,17 @@
         onclick={locateMe}
         disabled={locating}
         class="btn btn-sm btn-primary shadow-lg gap-2"
-        title="Ir a mi ubicación"
+        title={m.map_use_location()}
       >
         {#if locating}
           <span class="loading loading-spinner loading-xs"></span>
-          Localizando...
+          ...
         {:else}
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
           </svg>
-          Mi ubicación
+          {m.map_use_location()}
         {/if}
       </button>
 
@@ -194,11 +197,11 @@
         <p class="font-semibold text-neutral-400 mb-1">Leyenda</p>
         <div class="flex items-center gap-2">
           <span class="inline-block w-3 h-3 rounded-full bg-emerald-500"></span>
-          <span>Abierto</span>
+          <span>{m.badge_open()}</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="inline-block w-3 h-3 rounded-full bg-gray-400"></span>
-          <span>Cerrado</span>
+          <span>{m.badge_closed()}</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="inline-block w-3 h-3 rounded-full bg-indigo-500"></span>
@@ -218,7 +221,7 @@
   <!-- Businesses count badge -->
   <div class="absolute top-3 right-3 z-[999]">
     <div class="badge badge-neutral badge-lg shadow font-semibold gap-1 border-white/10 bg-neutral-900/80 backdrop-blur text-neutral-100">
-      🏪 {businesses.length} negocios
+      🏪 {businesses.length} {m.map_businesses_count()}
     </div>
   </div>
 </div>

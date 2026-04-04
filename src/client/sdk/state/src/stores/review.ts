@@ -19,13 +19,38 @@ export function createReviewStore() {
       comment: "Muy buenos, pero la salsa estaba muy picante.",
       created_at: new Date().toISOString(),
     },
+    {
+      id: "r3",
+      business_id: "2",
+      user_id: "u3",
+      rating: 5,
+      comment: "Fresh seafood and great view!",
+      created_at: new Date().toISOString(),
+    },
+    {
+      id: "r4",
+      business_id: "3",
+      user_id: "u4",
+      rating: 5,
+      comment: "Best churros in town.",
+      created_at: new Date().toISOString(),
+    }
   ]);
+
+  let loading = $state(false);
+  let error = $state<string | null>(null);
 
   return {
     get all() {
       return reviews;
     },
-    forBusiness(business_id: string) {
+    get loading() {
+      return loading;
+    },
+    get error() {
+      return error;
+    },
+    getByBusiness(business_id: string) {
       return reviews.filter((r) => r.business_id === business_id);
     },
   };

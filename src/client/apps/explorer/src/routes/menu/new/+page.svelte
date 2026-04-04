@@ -2,6 +2,8 @@
   import { goto } from "$app/navigation";
   import { DishForm, GlassCard } from "@sdk/ui";
   import type { DishFormData } from "@sdk/core";
+  // @ts-ignore
+  import * as m from "$lib/paraglide/messages.js";
 
   function handleSubmit(data: DishFormData) {
     console.log('New dish data:', data);
@@ -11,7 +13,7 @@
 </script>
 
 <svelte:head>
-  <title>Xibalbá — Nuevo Platillo</title>
+  <title>{m.app_name()} — {m.menu_new_title()}</title>
 </svelte:head>
 
 <main class="container mx-auto px-4 pt-6 pb-10 max-w-2xl">
@@ -20,13 +22,13 @@
       <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7" />
       </svg>
-      Volver al menú
+      {m.nav_menu()}
     </a>
     <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight">
-      Nuevo Platillo ➕
+      {m.menu_new_title()} ➕
     </h1>
     <p class="text-neutral-500 text-xs mt-1 font-medium italic">
-      Registra un nuevo integrante para tu oferta gastronómica
+      {m.menu_subtitle()}
     </p>
   </div>
 

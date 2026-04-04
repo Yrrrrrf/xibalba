@@ -1,0 +1,38 @@
+{
+  "name": "xibalba-client",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "sdk/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "explorer": "bun run --cwd apps/explorer dev",
+    "vision": "bun run --cwd apps/vision dev",
+    "check": "bun run --cwd sdk/ui check",
+    "prepare": "bun run --cwd sdk/ui prepare"
+  },
+  "dependencies": {
+    "@chenglou/pretext": "*",
+    "@inlang/paraglide-js": "*",
+    "@sveltejs/adapter-static": "*",
+    "@sveltejs/kit": "*",
+    "@sveltejs/vite-plugin-svelte": "*",
+    "@tailwindcss/forms": "*",
+    "@tailwindcss/typography": "*",
+    "@tailwindcss/vite": "*",
+    "@types/leaflet": "*",
+    "daisyui": "*",
+    "dinero.js": "*",
+    "hotkeys-js": "*",
+    "leaflet": "*",
+    "rune-lab": "*",
+    "surrealdb": "*",
+    "svelte": "*",
+    "svelte-check": "*",
+    "sveltekit-superforms": "*",
+    "tailwindcss": "*",
+    "typescript": "^5.9.3",
+    "vite": "*"
+  }
+}

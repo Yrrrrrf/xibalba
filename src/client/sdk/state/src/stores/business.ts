@@ -39,18 +39,21 @@ export function createBusinessStore() {
     },
   ]);
 
-  const activeProfile = $state<BusinessProfile>({
-    nombre: "Taquería El Campeón",
-    propietario: "Carlos Ramírez",
-    zona: "Zona Centro Histórico",
-    direccion: "Calle Libertad #42, Local 3",
-    telefono: "+52 55 1234 5678",
-    correo: "campeontacos@ejemplo.com",
-    descripcion:
+  let activeProfile = $state<BusinessProfile>({
+    name: "Taquería El Campeón",
+    owner_name: "Carlos Ramírez",
+    zone: "Zona Centro Histórico",
+    address: "Calle Libertad #42, Local 3",
+    phone: "+52 55 1234 5678",
+    email: "campeontacos@ejemplo.com",
+    description:
       "Auténtica comida mexicana para los turistas del Mundial. Especialidad en tacos al pastor y quesadillas.",
-    horario: "8:00 AM – 10:00 PM",
-    categoria: "mexican",
-  } as any); // Type mismatch between inventory and core, will fix during UI migration
+    hours: "8:00 AM – 10:00 PM",
+    category: "mexican",
+  });
+
+  let loading = $state(false);
+  let error = $state<string | null>(null);
 
   return {
     get all() {
@@ -58,6 +61,15 @@ export function createBusinessStore() {
     },
     get profile() {
       return activeProfile;
+    },
+    get loading() {
+      return loading;
+    },
+    get error() {
+      return error;
+    },
+    updateProfile(updated: BusinessProfile) {
+      activeProfile = { ...updated };
     },
   };
 }

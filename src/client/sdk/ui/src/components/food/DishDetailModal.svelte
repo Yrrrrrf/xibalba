@@ -2,6 +2,7 @@
   import { type Dish } from '@sdk/core';
   import { MapView } from '../map/mod.ts';
   import { CategoryBadge, RatingDisplay, PriceTag, ImageWithFallback } from '../primitives/mod.ts';
+  import { CATEGORY_GRADIENT_ACCENTS } from '../../utils/category-colors.ts';
   // @ts-ignore
   import * as m from '../../paraglide/messages.js';
 
@@ -13,16 +14,7 @@
 
   let { dish, open, onclose }: Props = $props();
 
-  const categoryColorAccent: Record<string, string> = {
-    mexican:    'from-orange-500 to-red-500',
-    seafood:    'from-blue-500 to-cyan-500',
-    vegetarian: 'from-green-500 to-emerald-500',
-    street_food: 'from-yellow-500 to-orange-500',
-    drinks:     'from-purple-500 to-pink-500',
-    desserts:   'from-pink-500 to-rose-500',
-  };
-
-  const accent = $derived(dish ? (categoryColorAccent[dish.category] ?? 'from-orange-500 to-amber-500') : '');
+  const accent = $derived(dish ? (CATEGORY_GRADIENT_ACCENTS[dish.category] ?? 'from-orange-500 to-amber-500') : '');
 
   function handleBackdrop(e: MouseEvent) {
     if (e.target === e.currentTarget) onclose();
@@ -75,7 +67,7 @@
                  flex items-center justify-center
                  text-neutral-300 hover:text-white hover:bg-black/70
                  transition-all duration-200"
-          aria-label="Cerrar"
+          aria-label={m.detail_close()}
         >
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -163,7 +155,7 @@
                    bg-orange-500 hover:bg-orange-600 text-white
                    shadow-lg shadow-orange-900/20 transition-all duration-200 hover:-translate-y-0.5"
           >
-            🛒 Ordenar ahora
+            🛒 {m.detail_order()}
           </button>
           <button
             onclick={onclose}
@@ -172,7 +164,7 @@
                    hover:bg-white/10 hover:text-neutral-200
                    transition-all duration-200"
           >
-            Cerrar
+            {m.detail_close()}
           </button>
         </div>
       </div>

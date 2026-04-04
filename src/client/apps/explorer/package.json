@@ -1,13 +1,17 @@
 {
   "name": "xibalba-explorer",
   "version": "0.0.1",
-  "exports": {
-    ".": "./src/app.d.ts"
-  },
-  "tasks": {
+  "private": true,
+  "type": "module",
+  "scripts": {
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
+  },
+  "dependencies": {
+    "@sdk/core": "workspace:*",
+    "@sdk/state": "workspace:*",
+    "@sdk/ui": "workspace:*"
   }
 }

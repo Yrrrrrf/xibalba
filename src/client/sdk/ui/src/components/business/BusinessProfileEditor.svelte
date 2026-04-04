@@ -37,21 +37,21 @@
       class="group flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 {editing ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20' : 'bg-orange-500/10 text-orange-400 border border-orange-500/20 hover:bg-orange-500/20'}"
     >
       {#if editing}
-        ✕ Cancelar
+        ✕ {m.editor_cancel()}
       {:else}
-        ✏️ {m.biz_description()}
+        ✏️ {m.editor_edit()}
       {/if}
     </button>
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     {#each [
-      { label: m.biz_owner(), field: 'owner_name', icon: '👤' },
-      { label: m.biz_zone(), field: 'zone', icon: '📍' },
-      { label: m.biz_address(), field: 'address', icon: '🏠' },
-      { label: m.biz_phone(), field: 'phone', icon: '📞' },
-      { label: m.biz_email(), field: 'email', icon: '✉️' },
-      { label: m.biz_hours(), field: 'hours', icon: '⏰' },
+      { label: m.biz_owner(), field: 'owner_name' as const, icon: '👤' },
+      { label: m.biz_zone(), field: 'zone' as const, icon: '📍' },
+      { label: m.biz_address(), field: 'address' as const, icon: '🏠' },
+      { label: m.biz_phone(), field: 'phone' as const, icon: '📞' },
+      { label: m.biz_email(), field: 'email' as const, icon: '✉️' },
+      { label: m.biz_hours(), field: 'hours' as const, icon: '⏰' },
     ] as item}
       <div class="form-control">
         <label class="label py-1">
@@ -62,10 +62,10 @@
         {#if editing}
           <input
             class="input bg-black/20 border-white/10 text-white input-sm focus:border-orange-500/50"
-            bind:value={localProfile[item.field as keyof BusinessProfile]}
+            bind:value={localProfile[item.field]}
           />
         {:else}
-          <p class="text-sm py-2 px-3 bg-white/5 rounded-xl border border-white/5 text-neutral-200">{localProfile[item.field as keyof BusinessProfile]}</p>
+          <p class="text-sm py-2 px-3 bg-white/5 rounded-xl border border-white/5 text-neutral-200">{localProfile[item.field]}</p>
         {/if}
       </div>
     {/each}
@@ -85,7 +85,7 @@
   {#if editing}
     <div class="card-actions justify-end mt-4">
       <button onclick={handleSave} class="btn btn-primary">
-        💾 Guardar cambios
+        💾 {m.editor_save()}
       </button>
     </div>
   {/if}

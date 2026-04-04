@@ -4,18 +4,20 @@
   interface Props {
     children: Snippet;
     class?: string;
+    style?: string;
     accent?: string;
     onclick?: () => void;
     use?: any[];
   }
 
-  let { children, class: className = '', accent = '', onclick, use = [] }: Props = $props();
+  let { children, class: className = '', style = '', accent = '', onclick, use = [] }: Props = $props();
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
   {onclick}
+  {style}
   class="group relative flex flex-col
          bg-neutral-900/60 backdrop-blur-xl
          border border-white/10

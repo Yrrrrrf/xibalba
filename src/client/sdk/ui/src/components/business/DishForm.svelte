@@ -25,9 +25,9 @@
 
   function validate(): boolean {
     errors = {};
-    if (!form.name.trim()) errors.name = 'El nombre es requerido';
-    if (!form.price || Number(form.price) <= 0) errors.price = 'Precio inválido';
-    if (!form.description.trim()) errors.description = 'La descripción es requerida';
+    if (!form.name.trim()) errors.name = m.form_name_required();
+    if (!form.price || Number(form.price) <= 0) errors.price = m.form_price_invalid();
+    if (!form.description.trim()) errors.description = m.form_desc_required();
     return Object.keys(errors).length === 0;
   }
 
@@ -116,7 +116,7 @@
   <!-- URL Imagen -->
   <div class="form-control">
     <label class="label" for="prod-img">
-      <span class="label-text font-semibold">🖼️ URL de imagen (opcional)</span>
+      <span class="label-text font-semibold">🖼️ {m.form_image_label()}</span>
     </label>
     <input
       id="prod-img"
@@ -131,16 +131,16 @@
   <div class="form-control">
     <label class="label cursor-pointer justify-start gap-3">
       <input type="checkbox" class="toggle toggle-primary" bind:checked={form.available} />
-      <span class="label-text font-semibold">Disponible ahora</span>
+      <span class="label-text font-semibold">{m.form_available_now()}</span>
     </label>
   </div>
 
   <div class="flex justify-end gap-3 mt-2">
     {#if oncancel}
-      <button type="button" onclick={oncancel} class="btn btn-ghost">Cancelar</button>
+      <button type="button" onclick={oncancel} class="btn btn-ghost">{m.form_cancel()}</button>
     {/if}
     <button type="submit" class="btn btn-primary">
-      ➕ Registrar platillo
+      ➕ {m.form_submit()}
     </button>
   </div>
 </form>

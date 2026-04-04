@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import { makeIcon } from '../../utils/map-icons.ts';
+  // @ts-ignore
+  import * as m from '../../paraglide/messages.js';
 
   interface Props {
     height?: string;
@@ -105,7 +107,7 @@
 
     marker = L.marker([initialLat, initialLng], { icon, draggable: true })
       .addTo(map!)
-      .bindPopup('📍 Arrastra el marcador<br>o haz clic en el mapa', { closeButton: false });
+      .bindPopup('📍 ' + m.map_marker_popup(), { closeButton: false });
 
     marker.on('dragend', (e) => {
       const latlng = (e.target as import('leaflet').Marker).getLatLng();
@@ -135,7 +137,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
-    <span>Haz clic en el mapa o arrastra el marcador 🏪 para fijar la ubicación de tu negocio</span>
+    <span>{m.map_drag_hint()}</span>
   </div>
 
   <!-- Botones top -->
@@ -153,7 +155,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
         </svg>
       {/if}
-      Usar mi ubicación
+      {m.map_use_location()}
     </button>
   </div>
 
@@ -164,7 +166,7 @@
     <!-- Crosshair hint -->
     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-[999] pointer-events-none">
       <div class="bg-black/60 backdrop-blur-md rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white/80 border border-white/10 shadow-lg">
-        👆 Toca para mover el marcador
+        👆 {m.map_touch_hint()}
       </div>
     </div>
   </div>
@@ -173,7 +175,7 @@
   <div class="grid grid-cols-2 gap-3">
     <div class="form-control">
       <label class="label py-1">
-        <span class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500">Latitud</span>
+        <span class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500">{m.map_latitude()}</span>
       </label>
       <input
         type="text"
@@ -184,7 +186,7 @@
     </div>
     <div class="form-control">
       <label class="label py-1">
-        <span class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500">Longitud</span>
+        <span class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500">{m.map_longitude()}</span>
       </label>
       <input
         type="text"
@@ -198,13 +200,13 @@
   <!-- Address display -->
   <div class="form-control">
     <label class="label py-1">
-      <span class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500">📍 Dirección detectada</span>
+      <span class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500">📍 {m.map_address_detected()}</span>
     </label>
     <div class="flex items-center gap-2">
       {#if geocoding}
         <div class="flex items-center gap-2 text-xs font-bold text-neutral-500 px-3 py-2.5 bg-white/5 border border-white/5 rounded-xl w-full">
           <span class="loading loading-dots loading-xs"></span>
-          Obteniendo dirección...
+          {m.map_loading_address()}
         </div>
       {:else}
         <p class="text-xs px-3 py-2.5 bg-white/5 border border-white/5 rounded-xl flex-1 leading-snug text-neutral-300 italic">{address || '—'}</p>
@@ -221,9 +223,9 @@
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
       </svg>
-      ¡Ubicación guardada!
+      {m.map_confirmed()}
     {:else}
-      📌 Confirmar ubicación del negocio
+      📌 {m.map_confirm()}
     {/if}
   </button>
 </div>

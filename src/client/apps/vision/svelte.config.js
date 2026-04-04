@@ -13,7 +13,6 @@ const config = {
       "@sdk/ui": "../../sdk/ui/src/mod.ts",
       "@sdk/core": "../../sdk/core/src/mod.ts",
       "@sdk/state": "../../sdk/state/src/mod.ts",
-      // "$lib": "./src/lib",
     },
   },
 };

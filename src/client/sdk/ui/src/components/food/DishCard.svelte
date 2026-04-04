@@ -2,12 +2,13 @@
   import { type Dish } from '@sdk/core';
   import { GlassCard, ImageWithFallback, CategoryBadge, RatingDisplay, PriceTag } from '../primitives/mod.ts';
   import { tilt } from '../../actions/tilt.ts';
+  import { CATEGORY_BG_ACCENTS } from '../../utils/category-colors.ts';
   // @ts-ignore
   import * as m from '../../paraglide/messages.js';
 
   interface Props {
     dish: Dish;
-    onselect?: (e: PointerEvent) => void;
+    onselect?: () => void;
   }
 
   let { dish, onselect }: Props = $props();
@@ -20,20 +21,11 @@
     localLikes = liked ? localLikes + 1 : localLikes - 1;
   }
 
-  const categoryColorAccent: Record<string, string> = {
-    mexican:    'from-orange-400/20 to-red-400/10',
-    seafood:    'from-blue-400/20 to-cyan-400/10',
-    vegetarian: 'from-green-400/20 to-emerald-400/10',
-    street_food: 'from-yellow-400/20 to-orange-400/10',
-    drinks:     'from-purple-400/20 to-pink-400/10',
-    desserts:   'from-pink-400/20 to-rose-400/10',
-  };
-
-  const accent = $derived(categoryColorAccent[dish.category] ?? 'from-amber-400/20 to-orange-400/10');
+  const accent = $derived(CATEGORY_BG_ACCENTS[dish.category] ?? 'from-amber-400/20 to-orange-400/10');
 </script>
 
 <GlassCard
-  {onclick}
+  onclick={onselect}
   use={[tilt]}
   accent={accent}
   class="cursor-pointer will-change-transform"

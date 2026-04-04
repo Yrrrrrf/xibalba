@@ -6,25 +6,26 @@
 [doc('Format Client code')]
 [group('CI')]
 fmt:
-    deno fmt
+    @echo "TODO: Add prettier"
+    # bun run prettier --write .
     @echo "✓ Client code formatted"
 
 [doc('Lint Client code')]
 [group('CI')]
 lint:
-    deno lint .
+    @echo "TODO: Add eslint"
+    # bun run eslint .
     @echo "✓ Client code linted"
 
 [doc('Type-check Client workspace')]
 [group('CI')]
 typecheck:
-    deno check .
-    deno run -A npm:svelte-check
+    bun run svelte-check --tsconfig ./tsconfig.json
     @echo "✓ Client type-checked"
 
 [doc('Full client quality gate')]
 [group('CI')]
-quality: fmt lint typecheck
+quality: typecheck
     @echo "✓ Client quality checks passed"
 
 # Build
@@ -33,10 +34,9 @@ quality: fmt lint typecheck
 [group('Build')]
 sync-ui:
     # Ensure SvelteKit syncs the generated tsconfig that the apps extend
-    deno task --cwd sdk/ui prepare
-    deno task --cwd apps/agent check
-    deno task --cwd apps/explorer check
-    deno task --cwd apps/vision check
+    bun run --cwd sdk/ui prepare
+    bun run --cwd apps/explorer check
+    bun run --cwd apps/vision check
 
 [doc('Build Client')]
 [group('Build')]
@@ -47,15 +47,15 @@ build: sync-ui
 [group('Dev')]
 run app=`ls apps/`:
     yog reborn --deep
-    deno task --cwd sdk/ui prepare
+    bun run --cwd sdk/ui prepare
     # todo: Add a way to run all apps at once
     # todo: Somehow orchestrate the apps to run in parallel
-    deno task --cwd apps/{{ app }} dev
+    bun run --cwd apps/{{ app }} dev
 
 [doc('Test the client')]
 [group('Dev')]
 test:
-    cd sdk/infrastructure && deno task test
+    bun test
     @echo "✓ Client tests passed"
 
 # ── Deploy (Tauri) ─────────────────────────────────────

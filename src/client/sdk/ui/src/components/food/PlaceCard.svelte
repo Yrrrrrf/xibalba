@@ -1,19 +1,21 @@
 <script lang="ts">
   import { GlassCard, ImageWithFallback, RatingDisplay } from '../primitives/mod.ts';
   import { tilt } from '../../actions/tilt.ts';
+  // @ts-ignore
+  import * as m from '../../paraglide/messages.js';
 
   interface Props {
     id: string | number;
-    nombre: string;
-    tipo: string;
-    descripcion: string;
-    imagen: string;
-    direccion: string;
+    name: string;
+    type: string;
+    description: string;
+    image_url: string;
+    address: string;
     rating?: number;
-    precio?: string;
-    distancia?: string;
-    abierto?: boolean;
-    horario?: string;
+    price?: string;
+    distance?: string;
+    open?: boolean;
+    hours?: string;
     tags?: string[];
     colorAccent?: string;
     emoji?: string;
@@ -22,16 +24,16 @@
 
   let {
     id,
-    nombre,
-    tipo,
-    descripcion,
-    imagen,
-    direccion,
+    name,
+    type,
+    description,
+    image_url,
+    address,
     rating,
-    precio,
-    distancia,
-    abierto = true,
-    horario,
+    price,
+    distance,
+    open = true,
+    hours,
     tags = [],
     colorAccent = "from-blue-400/20 to-indigo-400/10",
     emoji = "📍",
@@ -40,7 +42,7 @@
 </script>
 
 <GlassCard
-  {onclick}
+  onclick={onselect}
   use={[tilt]}
   accent={colorAccent}
   class="cursor-pointer will-change-transform"
@@ -49,8 +51,8 @@
   <!-- Image -->
   <figure class="relative overflow-hidden rounded-t-3xl h-44 bg-gradient-to-br {colorAccent}">
     <ImageWithFallback
-      src={imagen}
-      alt={nombre}
+      src={image_url}
+      alt={name}
       seed={String(id)}
       class="w-full h-full object-cover transform-gpu
              group-hover:scale-[1.10] group-hover:-translate-y-1
@@ -65,17 +67,17 @@
       <span class="px-2.5 py-1 text-xs font-bold rounded-full
                    bg-black/60 backdrop-blur-sm text-neutral-200 border border-white/10">
         {emoji}
-        {tipo}
+        {type}
       </span>
     </div>
 
     <!-- Open/Closed badge top-right -->
     <div class="absolute top-3 right-3 z-10">
       <span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase backdrop-blur-sm border
-                   {abierto
+                   {open
           ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/30'
           : 'bg-neutral-700/60 text-neutral-400 border-neutral-500/30'}">
-        {abierto ? "● Abierto" : "● Cerrado"}
+        {open ? "● " + m.place_open() : "● " + m.place_closed()}
       </span>
     </div>
   </figure>
@@ -83,18 +85,18 @@
   <!-- Body -->
   <div class="flex flex-col flex-1 p-4 gap-2">
     <h3 class="font-bold text-neutral-100 text-[15px] leading-snug line-clamp-1">
-      {nombre}
+      {name}
     </h3>
     <p class="text-neutral-500 text-xs leading-relaxed line-clamp-2">
-      {descripcion}
+      {description}
     </p>
 
     <!-- Address & Distance -->
     <div class="flex items-center gap-1.5 text-neutral-500 text-[11px] mt-0.5">
       <span>📍</span>
-      <span class="line-clamp-1">{direccion}</span>
-      {#if distancia}
-        <span class="ml-auto flex-shrink-0 text-orange-400 font-semibold">{distancia}</span>
+      <span class="line-clamp-1">{address}</span>
+      {#if distance}
+        <span class="ml-auto flex-shrink-0 text-orange-400 font-semibold">{distance}</span>
       {/if}
     </div>
 
@@ -116,13 +118,13 @@
         {#if rating}
           <RatingDisplay value={rating} />
         {/if}
-        {#if horario}
-          <span class="text-neutral-600 text-[10px] ml-2">🕐 {horario}</span>
+        {#if hours}
+          <span class="text-neutral-600 text-[10px] ml-2">🕐 {hours}</span>
         {/if}
       </div>
-      {#if precio}
-        <span class="text-sm font-extrabold {precio === 'Gratis' ? 'text-emerald-400' : 'text-orange-400'}">
-          {precio}
+      {#if price}
+        <span class="text-sm font-extrabold {price === 'Gratis' ? 'text-emerald-400' : 'text-orange-400'}">
+          {price}
         </span>
       {/if}
     </div>

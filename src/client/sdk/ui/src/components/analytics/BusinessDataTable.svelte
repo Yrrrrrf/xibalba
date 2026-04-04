@@ -1,6 +1,8 @@
 <script lang="ts">
   import type { BusinessSummary } from '@sdk/core';
   import { StatusBadge, GlassCard } from '../primitives/mod.ts';
+  // @ts-ignore
+  import * as m from '../../paraglide/messages.js';
 
   interface Props {
     data?: BusinessSummary[];
@@ -31,18 +33,18 @@
   <div class="flex flex-col sm:flex-row gap-3">
     <input
       type="text"
-      placeholder="🔍 Buscar comerciante..."
+      placeholder="🔍 {m.table_search()}"
       class="input bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 input-sm flex-1"
       bind:value={search}
     />
     <select class="select bg-black/20 border-white/10 text-white select-sm focus:border-orange-500/50" bind:value={filterZona}>
-      <option value="" class="bg-neutral-900">Todas las zonas</option>
+      <option value="" class="bg-neutral-900">{m.table_all_zones()}</option>
       {#each zonas as zona}
         <option value={zona} class="bg-neutral-900">{zona}</option>
       {/each}
     </select>
     <div class="badge bg-white/5 border border-white/10 text-neutral-400 self-center px-3 py-3 text-[10px] font-bold uppercase">
-      {filtered.length} resultado{filtered.length !== 1 ? 's' : ''}
+      {filtered.length} {m.table_results()}
     </div>
   </div>
 
@@ -52,14 +54,14 @@
       <thead class="bg-white/5 text-neutral-400">
         <tr>
           <th class="text-xs">#</th>
-          <th class="text-xs">Negocio</th>
-          <th class="text-xs hidden md:table-cell">Propietario</th>
-          <th class="text-xs hidden sm:table-cell">Zona</th>
-          <th class="text-xs">Categoría</th>
-          <th class="text-xs hidden lg:table-cell">Platillos</th>
-          <th class="text-xs">Ventas</th>
-          <th class="text-xs">Estado</th>
-          <th class="text-xs">Acción</th>
+          <th class="text-xs">{m.table_business()}</th>
+          <th class="text-xs hidden md:table-cell">{m.table_owner()}</th>
+          <th class="text-xs hidden sm:table-cell">{m.table_zone()}</th>
+          <th class="text-xs">{m.table_category()}</th>
+          <th class="text-xs hidden lg:table-cell">{m.table_dishes()}</th>
+          <th class="text-xs">{m.table_sales()}</th>
+          <th class="text-xs">{m.table_status()}</th>
+          <th class="text-xs">{m.table_action()}</th>
         </tr>
       </thead>
       <tbody>
@@ -97,7 +99,7 @@
         {#if filtered.length === 0}
           <tr>
             <td colspan="9" class="text-center py-12 text-neutral-500 font-bold uppercase tracking-widest text-xs">
-              No se encontraron comerciantes con esos filtros.
+              {m.table_no_results()}
             </td>
           </tr>
         {/if}

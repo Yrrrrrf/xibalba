@@ -21,3 +21,4 @@ export * from "./actions/tilt.ts";
 
 // Util Exports
 export * from "./utils/map-icons.ts";
+export * from "./utils/category-colors.ts";

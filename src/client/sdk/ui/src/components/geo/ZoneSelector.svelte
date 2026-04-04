@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { Zone } from '@sdk/core';
+  // @ts-ignore
+  import * as m from '../../paraglide/messages.js';
 
   interface Props {
     zones: Zone[];
@@ -19,7 +21,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
-      <h2 class="font-bold text-base text-neutral-100">Tu ubicación actual</h2>
+      <h2 class="font-bold text-base text-neutral-100">{m.zone_your_location()}</h2>
     </div>
 
     <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
@@ -42,7 +44,7 @@
 
     {#if selected}
       <p class="text-[10px] text-neutral-500 mt-2 flex items-center gap-1 font-bold uppercase tracking-widest">
-        <span>📡</span> GPS simulado — Mostrando negocios en <strong>{selected.name}</strong>
+        <span>📡</span> {m.zone_gps_simulated()} <strong>{selected.name}</strong>
       </p>
     {/if}
   </div>
