@@ -11,18 +11,16 @@
 
   let { initial, onsubmit, oncancel }: Props = $props();
 
-  let form = $state<DishFormData>(
-    initial ?? {
-      name: "",
-      price: 0,
-      category: "mexican",
-      description: "",
-      image_url: "",
-      available: true,
-    },
-  );
+  let form = $state<DishFormData>({
+    name: "",
+    price: 0,
+    category: "mexican",
+    description: "",
+    image_url: "",
+    available: true,
+  });
 
-  $effect(() => {
+  $effect.pre(() => {
     if (initial) {
       form = { ...initial };
     }

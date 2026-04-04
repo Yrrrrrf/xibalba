@@ -22,8 +22,14 @@
   let marker: import("leaflet").Marker | null = null;
   let L: typeof import("leaflet") | null = null;
 
-  let pickedLat = $state(initialLat);
-  let pickedLng = $state(initialLng);
+  let pickedLat = $state(19.4326);
+  let pickedLng = $state(-99.1332);
+
+  $effect.pre(() => {
+    pickedLat = initialLat;
+    pickedLng = initialLng;
+  });
+
   let address = $state("");
   let geocoding = $state(false);
   let confirmed = $state(false);
@@ -227,13 +233,14 @@
   <!-- Coordinates display -->
   <div class="grid grid-cols-2 gap-3">
     <div class="form-control">
-      <label class="label py-1">
+      <label class="label py-1" for="loc-lat">
         <span
           class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
           >{m.map_latitude()}</span
         >
       </label>
       <input
+        id="loc-lat"
         type="text"
         class="input bg-black/20 border-white/10 text-white input-sm font-mono"
         readonly
@@ -241,13 +248,14 @@
       />
     </div>
     <div class="form-control">
-      <label class="label py-1">
+      <label class="label py-1" for="loc-lng">
         <span
           class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
           >{m.map_longitude()}</span
         >
       </label>
       <input
+        id="loc-lng"
         type="text"
         class="input bg-black/20 border-white/10 text-white input-sm font-mono"
         readonly
@@ -309,10 +317,4 @@
       📌 {m.map_confirm()}
     {/if}
   </button>
-</div>
-_confirm()}
-    {/if}
-  </button>
-</div>
-ton>
 </div>

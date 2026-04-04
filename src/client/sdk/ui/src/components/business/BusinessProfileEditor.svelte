@@ -10,9 +10,9 @@
 
   let { profile, onsave }: Props = $props();
   let editing = $state(false);
-  let localProfile = $state({ ...profile });
+  let localProfile = $state<BusinessProfile>(undefined!);
 
-  $effect(() => {
+  $effect.pre(() => {
     if (!editing) {
       localProfile = { ...profile };
     }
