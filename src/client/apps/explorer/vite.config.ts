@@ -17,7 +17,7 @@ export default defineConfig({
   optimizeDeps: {
     exclude: [
       // "rune-lab",
-      "@sdk/ui"
+      "@sdk/ui",
     ],
   },
   // ssr: {

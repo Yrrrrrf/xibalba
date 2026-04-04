@@ -62,12 +62,20 @@ export function createDishStore() {
       name: "Quesadilla de Flor de Calabaza",
       price: 5.5,
       restaurant: "Antojitos Doña Rosa",
-      image_url: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=400&q=80",
+      image_url:
+        "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=400&q=80",
       category: "street_food",
       rating: 4.7,
       likes: 156,
-      description: "Quesadilla artesanal hecha a mano con masa de maíz azul, rellena de flor de calabaza fresca, epazote y queso Oaxaca fundido.",
-      ingredients: ["Maíz azul", "Flor de calabaza", "Queso Oaxaca", "Epazote", "Chile serrano"],
+      description:
+        "Quesadilla artesanal hecha a mano con masa de maíz azul, rellena de flor de calabaza fresca, epazote y queso Oaxaca fundido.",
+      ingredients: [
+        "Maíz azul",
+        "Flor de calabaza",
+        "Queso Oaxaca",
+        "Epazote",
+        "Chile serrano",
+      ],
       nutrition: { calories: 310, protein: 14, fat: 12, carbs: 35 },
       available: true,
       sales_count: 567,
@@ -77,11 +85,13 @@ export function createDishStore() {
       name: "Margarita de Mango",
       price: 8.0,
       restaurant: "Bar El Faro",
-      image_url: "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=400&q=80",
+      image_url:
+        "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=400&q=80",
       category: "drinks",
       rating: 4.6,
       likes: 120,
-      description: "Refrescante margarita de mango natural con tequila reposado, un toque de limón y escarchada con chile tajín.",
+      description:
+        "Refrescante margarita de mango natural con tequila reposado, un toque de limón y escarchada con chile tajín.",
       ingredients: ["Mango", "Tequila", "Limón", "Triple sec", "Tajín"],
       nutrition: { calories: 220, protein: 0, fat: 0, carbs: 28 },
       available: true,
@@ -92,11 +102,13 @@ export function createDishStore() {
       name: "Churros con Chocolate",
       price: 6.0,
       restaurant: "Dulcería Mundial",
-      image_url: "https://images.unsplash.com/photo-1571115177098-24ec4209b5d5?w=400&q=80",
+      image_url:
+        "https://images.unsplash.com/photo-1571115177098-24ec4209b5d5?w=400&q=80",
       category: "desserts",
       rating: 4.9,
       likes: 310,
-      description: "Churros crujientes recién hechos, espolvoreados con azúcar y canela, acompañados de una taza de chocolate caliente espeso.",
+      description:
+        "Churros crujientes recién hechos, espolvoreados con azúcar y canela, acompañados de una taza de chocolate caliente espeso.",
       ingredients: ["Harina", "Azúcar", "Canela", "Chocolate", "Leche"],
       nutrition: { calories: 550, protein: 6, fat: 22, carbs: 78 },
       available: true,
@@ -107,16 +119,25 @@ export function createDishStore() {
       name: "Bowl Vegano",
       price: 10.5,
       restaurant: "Verde Vida",
-      image_url: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80",
+      image_url:
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80",
       category: "vegetarian",
       rating: 4.5,
       likes: 95,
-      description: "Nutritivo bowl con quinoa, garbanzos rostizados, aguacate, camote, espinacas baby y aderezo de tahini.",
-      ingredients: ["Quinoa", "Garbanzos", "Aguacate", "Camote", "Espinacas", "Tahini"],
+      description:
+        "Nutritivo bowl con quinoa, garbanzos rostizados, aguacate, camote, espinacas baby y aderezo de tahini.",
+      ingredients: [
+        "Quinoa",
+        "Garbanzos",
+        "Aguacate",
+        "Camote",
+        "Espinacas",
+        "Tahini",
+      ],
       nutrition: { calories: 480, protein: 18, fat: 24, carbs: 56 },
       available: true,
       sales_count: 342,
-    }
+    },
   ]);
 
   let loading = $state(false);

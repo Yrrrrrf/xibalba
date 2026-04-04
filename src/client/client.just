@@ -4,15 +4,13 @@
 [doc('Format Client code')]
 [group('CI')]
 fmt:
-    @echo "TODO: Add prettier"
-    # bun run prettier --write .
+    deno fmt .
     @echo "✓ Client code formatted"
 
 [doc('Lint Client code')]
 [group('CI')]
 lint:
-    @echo "TODO: Add eslint"
-    # bun run eslint .
+    deno lint .
     @echo "✓ Client code linted"
 
 [doc('Type-check Client workspace')]

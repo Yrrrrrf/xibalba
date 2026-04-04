@@ -34,7 +34,7 @@ export function createReviewStore() {
       rating: 5,
       comment: "Best churros in town.",
       created_at: new Date().toISOString(),
-    }
+    },
   ]);
 
   let loading = $state(false);

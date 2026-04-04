@@ -9,7 +9,7 @@ const config = {
     alias: {
       "@sdk/core": "../core/src/mod.ts",
       "@sdk/state": "../state/src/mod.ts",
-      "@sdk/ui": "./src/mod.ts"
+      "@sdk/ui": "./src/mod.ts",
     },
   },
 };

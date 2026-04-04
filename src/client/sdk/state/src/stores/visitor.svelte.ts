@@ -32,6 +32,6 @@ export function createVisitorStore() {
     },
     isSaved(dish_id: string) {
       return saved.some((s) => s.dish_id === dish_id);
-    }
+    },
   };
 }

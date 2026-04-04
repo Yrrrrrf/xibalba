@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM", "DOM.Iterable", "DOM.AsyncIterable"],
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable",
+      "DOM.AsyncIterable"
+    ],
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
@@ -14,10 +19,21 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "paths": {
-      "@sdk/core": ["./sdk/core/src/mod.ts"],
-      "@sdk/state": ["./sdk/state/src/mod.ts"],
-      "@sdk/ui": ["./sdk/ui/src/mod.ts"]
+      "@sdk/core": [
+        "./sdk/core/src/mod.ts"
+      ],
+      "@sdk/state": [
+        "./sdk/state/src/mod.ts"
+      ],
+      "@sdk/ui": [
+        "./sdk/ui/src/mod.ts"
+      ]
     }
   },
-  "exclude": [".*", "dist/**", "**/*.test.ts", "node_modules"]
+  "exclude": [
+    ".*",
+    "dist/**",
+    "**/*.test.ts",
+    "node_modules"
+  ]
 }
