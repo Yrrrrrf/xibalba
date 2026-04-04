@@ -81,7 +81,7 @@
     if (typeof window === "undefined") return;
     L = (await import("leaflet")).default;
 
-    delete L.Icon.Default.prototype._getIconUrl;
+    delete (L.Icon.Default.prototype as any)._getIconUrl;
     L.Icon.Default.mergeOptions({
       iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
       iconRetinaUrl:
@@ -258,13 +258,13 @@
 
   <!-- Address display -->
   <div class="form-control">
-    <label class="label py-1">
+    <label class="label py-1" for="loc-addr">
       <span
         class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
         >📍 {m.map_address_detected()}</span
       >
     </label>
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-2" id="loc-addr">
       {#if geocoding}
         <div
           class="flex items-center gap-2 text-xs font-bold text-neutral-500 px-3 py-2.5 bg-white/5 border border-white/5 rounded-xl w-full"
@@ -309,4 +309,10 @@
       📌 {m.map_confirm()}
     {/if}
   </button>
+</div>
+_confirm()}
+    {/if}
+  </button>
+</div>
+ton>
 </div>

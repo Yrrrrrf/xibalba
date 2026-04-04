@@ -12,6 +12,12 @@
   let editing = $state(false);
   let localProfile = $state({ ...profile });
 
+  $effect(() => {
+    if (!editing) {
+      localProfile = { ...profile };
+    }
+  });
+
   function handleSave() {
     editing = false;
     onsave?.(localProfile);
@@ -36,7 +42,6 @@
     <button
       onclick={() => {
         editing = !editing;
-        if (!editing) localProfile = { ...profile };
       }}
       class="group flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 {editing
         ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
@@ -53,7 +58,7 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     {#each [{ label: m.biz_owner(), field: "owner_name" as const, icon: "👤" }, { label: m.biz_zone(), field: "zone" as const, icon: "📍" }, { label: m.biz_address(), field: "address" as const, icon: "🏠" }, { label: m.biz_phone(), field: "phone" as const, icon: "📞" }, { label: m.biz_email(), field: "email" as const, icon: "✉️" }, { label: m.biz_hours(), field: "hours" as const, icon: "⏰" }] as item}
       <div class="form-control">
-        <label class="label py-1">
+        <label class="label py-1" for="field-{item.field}">
           <span
             class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
           >
@@ -63,6 +68,7 @@
         </label>
         {#if editing}
           <input
+            id="field-{item.field}"
             class="input bg-black/20 border-white/10 text-white input-sm focus:border-orange-500/50"
             bind:value={localProfile[item.field]}
           />
@@ -78,7 +84,7 @@
   </div>
 
   <div class="form-control mt-2">
-    <label class="label py-1">
+    <label class="label py-1" for="biz-desc">
       <span
         class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
         >💬 {m.biz_description()}</span
@@ -86,6 +92,7 @@
     </label>
     {#if editing}
       <textarea
+        id="biz-desc"
         class="textarea bg-black/20 border-white/10 text-white textarea-sm focus:border-orange-500/50"
         bind:value={localProfile.description}
         rows="3"

@@ -19,11 +19,10 @@
   let { dish, onselect }: Props = $props();
 
   let liked = $state(false);
-  let localLikes = $state(dish.likes);
+  let localLikes = $derived(dish.likes + (liked ? 1 : 0));
 
   function toggleLike() {
     liked = !liked;
-    localLikes = liked ? localLikes + 1 : localLikes - 1;
   }
 
   const accent = $derived(

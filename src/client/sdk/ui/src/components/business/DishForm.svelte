@@ -22,6 +22,12 @@
     },
   );
 
+  $effect(() => {
+    if (initial) {
+      form = { ...initial };
+    }
+  });
+
   let errors = $state<Partial<Record<keyof DishFormData, string>>>({});
 
   function validate(): boolean {
@@ -58,9 +64,9 @@
         bind:value={form.name}
       />
       {#if errors.name}
-        <label class="label">
+        <div class="label">
           <span class="label-text-alt text-error">{errors.name}</span>
-        </label>
+        </div>
       {/if}
     </div>
 
@@ -81,9 +87,9 @@
         bind:value={form.price}
       />
       {#if errors.price}
-        <label class="label">
+        <div class="label">
           <span class="label-text-alt text-error">{errors.price}</span>
-        </label>
+        </div>
       {/if}
     </div>
   </div>
@@ -121,9 +127,9 @@
       bind:value={form.description}
     ></textarea>
     {#if errors.description}
-      <label class="label">
+      <div class="label">
         <span class="label-text-alt text-error">{errors.description}</span>
-      </label>
+      </div>
     {/if}
   </div>
 
@@ -143,8 +149,9 @@
 
   <!-- Disponible -->
   <div class="form-control">
-    <label class="label cursor-pointer justify-start gap-3">
+    <label class="label cursor-pointer justify-start gap-3" for="prod-avail">
       <input
+        id="prod-avail"
         type="checkbox"
         class="toggle toggle-primary"
         bind:checked={form.available}

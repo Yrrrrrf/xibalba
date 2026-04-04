@@ -16,8 +16,8 @@ lint:
 [doc('Type-check Client workspace')]
 [group('CI')]
 typecheck:
-    # bun run svelte-check --tsconfig ./tsconfig.json
-    bun run svelte-check
+    # deno run -A npm:svelte-check --tsconfig ./tsconfig.json
+    deno run -A npm:svelte-check
     deno check .
     @echo "✓ Client type-checked"
 

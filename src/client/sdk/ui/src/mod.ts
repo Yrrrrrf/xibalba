@@ -25,5 +25,5 @@ export * from "./utils/category-colors.ts";
 
 // I18n Exports
 export * from "./i18n/paraglide/messages.js";
-export * from "./i18n/paraglide/runtime.js";
+export { deLocalizeUrl } from "./i18n/paraglide/runtime.js";
 export * from "./i18n/paraglide/server.js";
