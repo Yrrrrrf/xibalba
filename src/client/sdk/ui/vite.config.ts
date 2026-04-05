@@ -16,12 +16,12 @@ export default defineConfig({
   ],
   optimizeDeps: {
     exclude: [
-      "rune-lab"
+      "rune-lab",
     ],
   },
   ssr: {
     noExternal: [
-      "rune-lab"
+      "rune-lab",
     ],
   },
   server: {

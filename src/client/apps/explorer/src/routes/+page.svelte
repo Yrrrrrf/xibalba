@@ -2,6 +2,7 @@
   import { createAuthStore } from "@sdk/state";
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
+  import LabNavBar from "$lib/components/LabNavBar.svelte";
 
   const auth = createAuthStore();
 
