@@ -155,7 +155,7 @@
 <div class="space-y-3">
   <!-- Instrucción -->
   <div
-    class="alert bg-cyan-500/10 border-cyan-500/20 text-cyan-400 py-2 text-xs font-bold uppercase tracking-wider"
+    class="alert alert-info py-2 text-xs font-bold uppercase tracking-wider bg-info/10 border-info/20 text-info"
   >
     <Info size={16} />
     <span>{m.map_drag_hint()}</span>
@@ -179,7 +179,7 @@
 
   <!-- Map -->
   <div
-    class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
+    class="relative rounded-2xl overflow-hidden border border-base-content/10 shadow-2xl"
     style="height:{height}"
   >
     <div
@@ -192,7 +192,7 @@
       class="absolute bottom-10 left-1/2 -translate-x-1/2 z-[999] pointer-events-none"
     >
       <div
-        class="bg-black/60 backdrop-blur-md rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white/80 border border-white/10 shadow-lg flex items-center gap-2"
+        class="bg-base-300/60 backdrop-blur-md rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-base-content/80 border border-base-content/10 shadow-lg flex items-center gap-2"
       >
         <Pointer size={12} /> {m.map_touch_hint()}
       </div>
@@ -204,14 +204,14 @@
     <div class="form-control">
       <label class="label py-1" for="loc-lat">
         <span
-          class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
+          class="label-text text-[10px] font-bold uppercase tracking-wider text-base-content/50"
           >{m.map_latitude()}</span
         >
       </label>
       <input
         id="loc-lat"
         type="text"
-        class="input bg-black/20 border-white/10 text-white input-sm font-mono"
+        class="input input-bordered bg-base-200/50 text-base-content input-sm font-mono"
         readonly
         value={pickedLat.toFixed(6)}
       />
@@ -219,14 +219,14 @@
     <div class="form-control">
       <label class="label py-1" for="loc-lng">
         <span
-          class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500"
+          class="label-text text-[10px] font-bold uppercase tracking-wider text-base-content/50"
           >{m.map_longitude()}</span
         >
       </label>
       <input
         id="loc-lng"
         type="text"
-        class="input bg-black/20 border-white/10 text-white input-sm font-mono"
+        class="input input-bordered bg-base-200/50 text-base-content input-sm font-mono"
         readonly
         value={pickedLng.toFixed(6)}
       />
@@ -237,23 +237,23 @@
   <div class="form-control">
     <label class="label py-1" for="loc-addr">
       <span
-        class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500 flex items-center gap-1.5"
+        class="label-text text-[10px] font-bold uppercase tracking-wider text-base-content/50 flex items-center gap-1.5"
         >
-        <MapPin size={10} class="text-neutral-600" />
+        <MapPin size={10} class="text-base-content/40" />
         {m.map_address_detected()}
       </span>
     </label>
     <div class="flex items-center gap-2" id="loc-addr">
       {#if geocoding}
         <div
-          class="flex items-center gap-2 text-xs font-bold text-neutral-500 px-3 py-2.5 bg-white/5 border border-white/5 rounded-xl w-full"
+          class="flex items-center gap-2 text-xs font-bold text-base-content/50 px-3 py-2.5 bg-base-content/5 border border-base-content/5 rounded-xl w-full"
         >
           <span class="loading loading-dots loading-xs"></span>
           {m.map_loading_address()}
         </div>
       {:else}
         <p
-          class="text-xs px-3 py-2.5 bg-white/5 border border-white/5 rounded-xl flex-1 leading-snug text-neutral-300 italic"
+          class="text-xs px-3 py-2.5 bg-base-content/5 border border-base-content/5 rounded-xl flex-1 leading-snug text-base-content/80 italic"
         >
           {address || "—"}
         </p>

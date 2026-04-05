@@ -34,10 +34,10 @@
 
 <main class="container mx-auto px-4 pt-6 pb-10 max-w-5xl">
   <div class="mb-8">
-    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight flex items-center gap-3">
-      {m.dashboard_title()} <ICONS.nav_menu size={32} class="text-orange-500" />
+    <h1 class="text-3xl font-extrabold text-base-content tracking-tight flex items-center gap-3">
+      {m.dashboard_title()} <ICONS.nav_menu size={32} class="text-primary" />
     </h1>
-    <p class="text-neutral-500 text-xs mt-1 font-medium italic">
+    <p class="text-base-content/50 text-xs mt-1 font-medium italic">
       {m.dashboard_subtitle()}
     </p>
   </div>

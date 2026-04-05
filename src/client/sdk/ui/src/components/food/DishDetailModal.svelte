@@ -22,7 +22,7 @@
   const accent = $derived(
     dish
       ? (CATEGORY_GRADIENT_ACCENTS[dish.category] ??
-          "from-orange-500 to-amber-500")
+          "from-primary to-primary/80")
       : "",
   );
 
@@ -43,15 +43,15 @@
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div
     class="fixed inset-0 z-[1000] flex items-center justify-center p-4
-           bg-black/70 backdrop-blur-sm"
+           bg-base-300/80 backdrop-blur-sm"
     onclick={handleBackdrop}
   >
     <!-- Modal Panel -->
     <div
       class="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto
-             bg-neutral-950/95 backdrop-blur-2xl
-             border border-white/10
-             rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.6)]
+             bg-base-100 backdrop-blur-2xl
+             border border-base-content/10
+             rounded-3xl shadow-2xl
              flex flex-col"
     >
       <!-- ── HERO IMAGE ─────────────────────────────────── -->
@@ -66,7 +66,7 @@
         />
         <!-- Gradient overlay -->
         <div
-          class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent"
+          class="absolute inset-0 bg-gradient-to-t from-base-100 via-base-100/40 to-transparent"
         ></div>
 
         <!-- Top accent bar -->
@@ -79,9 +79,9 @@
           onclick={onclose}
           class="absolute top-4 right-4 z-10
                  w-9 h-9 rounded-full
-                 bg-black/50 backdrop-blur-md border border-white/20
+                 bg-base-200/50 backdrop-blur-md border border-base-content/10
                  flex items-center justify-center
-                 text-neutral-300 hover:text-white hover:bg-black/70
+                 text-base-content/60 hover:text-base-content hover:bg-base-200/80
                  transition-all duration-200"
           aria-label={m.detail_close()}
         >
@@ -96,7 +96,7 @@
         <!-- Name + price over image bottom -->
         <div class="absolute bottom-0 inset-x-0 p-5">
           <h2
-            class="text-2xl font-extrabold text-white tracking-tight leading-tight mb-1"
+            class="text-2xl font-extrabold text-base-content tracking-tight leading-tight mb-1"
           >
             {dish.name}
           </h2>
@@ -112,7 +112,7 @@
         <!-- Description -->
         {#if dish.description}
           <p
-            class="text-neutral-400 text-sm leading-relaxed italic border-l-2 border-orange-500/40 pl-3"
+            class="text-base-content/60 text-sm leading-relaxed italic border-l-2 border-primary/40 pl-3"
           >
             {dish.description}
           </p>
@@ -123,25 +123,25 @@
           <!-- Nutrition Panel -->
           {#if dish.nutrition}
             <div
-              class="bg-neutral-900/60 border border-white/8 rounded-2xl p-4"
+              class="bg-base-200/60 border border-base-content/5 rounded-2xl p-4"
             >
               <p
-                class="text-[10px] font-bold uppercase tracking-widest text-orange-400 mb-3 flex items-center gap-1.5"
+                class="text-[10px] font-bold uppercase tracking-widest text-primary mb-3 flex items-center gap-1.5"
               >
                 <BarChart3 size={12} /> {m.food_nutrition()}
               </p>
               <div class="grid grid-cols-2 gap-3">
-                {#each [{ label: m.food_calories(), value: dish.nutrition.calories, unit: "kcal", color: "text-orange-400" }, { label: m.food_protein(), value: dish.nutrition.protein, unit: "g", color: "text-blue-400" }, { label: m.food_fat(), value: dish.nutrition.fat, unit: "g", color: "text-yellow-400" }, { label: m.food_carbs(), value: dish.nutrition.carbs, unit: "g", color: "text-green-400" }] as stat}
-                  <div class="bg-neutral-800/50 rounded-xl p-3 text-center">
+                {#each [{ label: m.food_calories(), value: dish.nutrition.calories, unit: "kcal", color: "text-primary" }, { label: m.food_protein(), value: dish.nutrition.protein, unit: "g", color: "text-info" }, { label: m.food_fat(), value: dish.nutrition.fat, unit: "g", color: "text-warning" }, { label: m.food_carbs(), value: dish.nutrition.carbs, unit: "g", color: "text-success" }] as stat}
+                  <div class="bg-base-300/50 rounded-xl p-3 text-center">
                     <p
-                      class="text-[10px] text-neutral-500 uppercase tracking-wider mb-1"
+                      class="text-[10px] text-base-content/50 uppercase tracking-wider mb-1"
                     >
                       {stat.label}
                     </p>
                     <p class="font-extrabold text-lg {stat.color} leading-none">
                       {stat.value}
                     </p>
-                    <p class="text-[10px] text-neutral-600">{stat.unit}</p>
+                    <p class="text-[10px] text-base-content/40">{stat.unit}</p>
                   </div>
                 {/each}
               </div>
@@ -151,10 +151,10 @@
           <!-- Ingredients Panel -->
           {#if dish.ingredients && dish.ingredients.length > 0}
             <div
-              class="bg-neutral-900/60 border border-white/8 rounded-2xl p-4"
+              class="bg-base-200/60 border border-base-content/5 rounded-2xl p-4"
             >
               <p
-                class="text-[10px] font-bold uppercase tracking-widest text-orange-400 mb-3 flex items-center gap-1.5"
+                class="text-[10px] font-bold uppercase tracking-widest text-primary mb-3 flex items-center gap-1.5"
               >
                 <CookingPot size={12} /> {m.food_ingredients()}
               </p>
@@ -162,7 +162,7 @@
                 {#each dish.ingredients as ing}
                   <span
                     class="px-2.5 py-1 rounded-full text-[11px] font-medium
-                               bg-white/5 border border-white/10 text-neutral-300"
+                               bg-base-content/5 border border-base-content/10 text-base-content/70"
                   >
                     {ing}
                   </span>
@@ -178,17 +178,16 @@
         <!-- Action Buttons -->
         <div class="flex gap-3 pb-1">
           <button
-            class="flex-1 py-3 rounded-2xl font-bold text-[13px] uppercase tracking-wider
-                   bg-orange-500 hover:bg-orange-600 text-white flex items-center justify-center gap-2
-                   shadow-lg shadow-orange-900/20 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex-1 btn btn-primary font-bold text-[13px] uppercase tracking-wider rounded-2xl h-auto py-3
+                   shadow-lg shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5"
           >
             <ShoppingCart size={18} /> {m.detail_order()}
           </button>
           <button
             onclick={onclose}
-            class="px-5 py-3 rounded-2xl font-bold text-[13px] uppercase tracking-wider
-                   bg-white/5 border border-white/10 text-neutral-400
-                   hover:bg-white/10 hover:text-neutral-200
+            class="px-5 btn btn-ghost font-bold text-[13px] uppercase tracking-wider rounded-2xl h-auto py-3
+                   bg-base-content/5 border border-base-content/10 text-base-content/60
+                   hover:bg-base-content/10 hover:text-base-content
                    transition-all duration-200"
           >
             {m.detail_close()}

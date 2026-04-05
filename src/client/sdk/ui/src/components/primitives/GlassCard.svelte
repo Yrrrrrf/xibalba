@@ -19,9 +19,9 @@
   {onclick}
   {style}
   class="group relative flex flex-col
-         bg-neutral-900/60 backdrop-blur-xl
-         border border-white/10
-         shadow-[0_8px_32px_rgba(0,0,0,0.30)]
+         glass bg-base-200/60
+         border border-base-content/10
+         shadow-xl
          rounded-3xl overflow-hidden
          {className}"
 >
@@ -32,6 +32,6 @@
   {@render children()}
 
   <!-- Bottom shimmer glow on hover -->
-  <div class="absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-orange-400/40 to-transparent
+  <div class="absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent
               opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 </div>

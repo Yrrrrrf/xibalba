@@ -32,25 +32,25 @@
   <!-- Filtros -->
   <div class="flex flex-col sm:flex-row gap-3">
     <div class="relative flex-1">
-      <Search size={14} class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" />
+      <Search size={14} class="absolute left-3 top-1/2 -translate-y-1/2 text-base-content/50" />
       <input
         type="text"
         placeholder={m.table_search()}
-        class="input bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 input-sm w-full pl-9"
+        class="input input-bordered bg-base-200/50 text-base-content placeholder:text-base-content/40 focus:border-primary/50 input-sm w-full pl-9"
         bind:value={search}
       />
     </div>
     <select
-      class="select bg-black/20 border-white/10 text-white select-sm focus:border-orange-500/50"
+      class="select select-bordered bg-base-200/50 text-base-content select-sm focus:border-primary/50"
       bind:value={filterZona}
     >
-      <option value="" class="bg-neutral-900">{m.table_all_zones()}</option>
-      {#each zonas as zona}
-        <option value={zona} class="bg-neutral-900">{zona}</option>
+      <option value="" class="bg-base-100">{m.table_all_zones()}</option>
+      {#each zonas as zona (zona)}
+        <option value={zona} class="bg-base-100">{zona}</option>
       {/each}
     </select>
     <div
-      class="badge bg-white/5 border border-white/10 text-neutral-400 self-center px-3 py-3 text-[10px] font-bold uppercase"
+      class="badge bg-base-content/5 border border-base-content/10 text-base-content/60 self-center px-3 py-3 text-[10px] font-bold uppercase"
     >
       {filtered.length}
       {m.table_results()}
@@ -59,10 +59,10 @@
 
   <!-- Tabla -->
   <div
-    class="overflow-x-auto rounded-xl border border-white/10 shadow-2xl bg-neutral-900/40 backdrop-blur-md"
+    class="overflow-x-auto rounded-xl border border-base-content/10 shadow-2xl bg-base-200/40 backdrop-blur-md"
   >
-    <table class="table table-zebra table-sm w-full text-neutral-200">
-      <thead class="bg-white/5 text-neutral-400">
+    <table class="table table-zebra table-sm w-full text-base-content/80">
+      <thead class="bg-base-content/5 text-base-content/60">
         <tr>
           <th class="text-xs">#</th>
           <th class="text-xs">{m.table_business()}</th>
@@ -76,28 +76,28 @@
         </tr>
       </thead>
       <tbody>
-        {#each filtered as c}
+        {#each filtered as c (c.id)}
           <tr
-            class="hover:bg-white/5 border-b border-white/5 last:border-0 transition-colors"
+            class="hover:bg-base-content/5 border-b border-base-content/5 last:border-0 transition-colors"
           >
-            <td class="text-[10px] font-bold text-neutral-600">{c.id}</td>
+            <td class="text-[10px] font-bold text-base-content/30">{c.id}</td>
             <td>
-              <div class="font-bold text-sm text-neutral-100">{c.name}</div>
+              <div class="font-bold text-sm text-base-content">{c.name}</div>
             </td>
-            <td class="hidden md:table-cell text-sm text-neutral-400"
+            <td class="hidden md:table-cell text-sm text-base-content/60"
               >{c.owner}</td
             >
             <td class="hidden sm:table-cell">
               <span
-                class="badge bg-white/5 border border-white/10 text-neutral-400 badge-sm text-[9px] font-bold uppercase"
+                class="badge bg-base-content/5 border border-base-content/10 text-base-content/60 badge-sm text-[9px] font-bold uppercase"
                 >{c.zone}</span
               >
             </td>
-            <td class="text-xs text-neutral-400 italic">{c.category}</td>
-            <td class="hidden lg:table-cell text-center font-bold text-white"
+            <td class="text-xs text-base-content/60 italic">{c.category}</td>
+            <td class="hidden lg:table-cell text-center font-bold text-base-content"
               >{c.dish_count}</td
             >
-            <td class="font-extrabold text-orange-400 text-center">{c.sales}</td
+            <td class="font-extrabold text-primary text-center">{c.sales}</td
             >
             <td>
               <StatusBadge status={c.status} />
@@ -106,13 +106,13 @@
               <div class="flex gap-1">
                 <button
                   onclick={() => onselect?.(c.id)}
-                  class="btn btn-xs btn-ghost hover:bg-orange-500/10 text-orange-400"
+                  class="btn btn-xs btn-ghost hover:bg-primary/10 text-primary"
                   aria-label="Ver"
                 >
                   <Eye size={14} />
                 </button>
                 <button
-                  class="btn btn-xs btn-ghost hover:bg-rose-500/10 text-rose-400"
+                  class="btn btn-xs btn-ghost hover:bg-error/10 text-error"
                   aria-label="Suspender">
                   <Ban size={14} />
                 </button>
@@ -125,7 +125,7 @@
           <tr>
             <td
               colspan="9"
-              class="text-center py-12 text-neutral-500 font-bold uppercase tracking-widest text-xs"
+              class="text-center py-12 text-base-content/50 font-bold uppercase tracking-widest text-xs"
             >
               {m.table_no_results()}
             </td>

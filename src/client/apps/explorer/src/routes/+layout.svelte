@@ -63,21 +63,21 @@
   onLanguageChange={handleLanguageChange}
 >
   <div
-    class="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col selection:bg-orange-500/30"
+    class="min-h-screen bg-base-100 text-base-content flex flex-col selection:bg-primary/30"
   >
     <!-- Top Brand Bar -->
     <header
-      class="sticky top-0 z-[100] bg-neutral-950/80 backdrop-blur-xl border-b border-white/5 px-4 py-3"
+      class="sticky top-0 z-[100] bg-base-100/80 backdrop-blur-xl border-b border-base-content/5 px-4 py-3"
     >
       <div class="container mx-auto flex items-center justify-between">
         <div class="flex items-center gap-2">
           <div
-            class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center shadow-lg shadow-orange-900/20 text-white"
+            class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shadow-lg shadow-primary/20 text-primary-content"
           >
             <ICONS.brand size={18} />
           </div>
           <span
-            class="text-xl font-black tracking-tighter bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent"
+            class="text-xl font-black tracking-tighter text-base-content"
           >
             {m.app_name()}
           </span>
@@ -86,7 +86,7 @@
         <div class="flex items-center gap-3">
           <!-- Rune Lab Global Selectors -->
           <div
-            class="flex items-center gap-1 bg-white/5 rounded-xl border border-white/10 px-1 py-0.5"
+            class="flex items-center gap-1 bg-base-content/5 rounded-xl border border-base-content/10 px-1 py-0.5"
           >
             <ThemeSelector />
             <LanguageSelector />
@@ -98,7 +98,7 @@
               auth.logout();
               goto("/login");
             }}
-            class="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:bg-rose-500/10 hover:text-rose-400 transition-all duration-300"
+            class="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-xl bg-base-content/5 border border-base-content/10 hover:bg-error/10 hover:text-error transition-all duration-300"
           >
             {m.nav_logout()}
           </button>

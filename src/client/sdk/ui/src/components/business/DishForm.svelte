@@ -53,7 +53,7 @@
     <div class="form-control">
       <label class="label" for="prod-nombre">
         <span class="label-text font-semibold flex items-center gap-1.5">
-          <Utensils size={14} class="text-orange-500" />
+          <Utensils size={14} class="text-primary" />
           {m.food_dish()}
         </span>
       </label>
@@ -61,7 +61,7 @@
         id="prod-nombre"
         type="text"
         placeholder="ej. Tacos al Pastor x3"
-        class="input bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 {errors.name
+        class="input input-bordered bg-base-200/50 text-base-content placeholder:text-base-content/40 focus:border-primary/50 {errors.name
           ? 'border-error'
           : ''}"
         bind:value={form.name}
@@ -77,7 +77,7 @@
     <div class="form-control">
       <label class="label" for="prod-precio">
         <span class="label-text font-semibold flex items-center gap-1.5">
-          <DollarSign size={14} class="text-emerald-500" />
+          <DollarSign size={14} class="text-success" />
           {m.food_price()} (USD)
         </span>
       </label>
@@ -87,7 +87,7 @@
         placeholder="ej. 8.50"
         step="0.01"
         min="0"
-        class="input bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 {errors.price
+        class="input input-bordered bg-base-200/50 text-base-content placeholder:text-base-content/40 focus:border-primary/50 {errors.price
           ? 'border-error'
           : ''}"
         bind:value={form.price}
@@ -104,17 +104,17 @@
   <div class="form-control">
     <label class="label" for="prod-cat">
       <span class="label-text font-semibold flex items-center gap-1.5">
-        <Tag size={14} class="text-cyan-500" />
+        <Tag size={14} class="text-info" />
         {m.food_category()}
       </span>
     </label>
     <select
       id="prod-cat"
-      class="select bg-black/20 border-white/10 text-white focus:border-orange-500/50"
+      class="select select-bordered bg-base-200/50 text-base-content focus:border-primary/50"
       bind:value={form.category}
     >
       {#each DISH_CATEGORIES as cat}
-        <option value={cat.key} class="bg-neutral-900 text-white"
+        <option value={cat.key} class="bg-base-100 text-base-content"
           >{cat.label}</option
         >
       {/each}
@@ -125,7 +125,7 @@
   <div class="form-control">
     <label class="label" for="prod-desc">
       <span class="label-text font-semibold flex items-center gap-1.5">
-        <FileText size={14} class="text-neutral-500" />
+        <FileText size={14} class="text-base-content/50" />
         {m.biz_description()}
       </span>
     </label>
@@ -133,7 +133,7 @@
       id="prod-desc"
       rows="3"
       placeholder="Describe tu platillo, ingredientes especiales..."
-      class="textarea bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 {errors.description
+      class="textarea textarea-bordered bg-base-200/50 text-base-content placeholder:text-base-content/40 focus:border-primary/50 {errors.description
         ? 'border-error'
         : ''}"
       bind:value={form.description}
@@ -149,7 +149,7 @@
   <div class="form-control">
     <label class="label" for="prod-img">
       <span class="label-text font-semibold flex items-center gap-1.5">
-        <Image size={14} class="text-neutral-500" />
+        <Image size={14} class="text-base-content/50" />
         {m.form_image_label()}
       </span>
     </label>
@@ -157,7 +157,7 @@
       id="prod-img"
       type="url"
       placeholder="https://..."
-      class="input bg-black/20 border-white/10 text-white placeholder:text-neutral-600 focus:border-orange-500/50 input-sm"
+      class="input input-bordered bg-base-200/50 text-base-content placeholder:text-base-content/40 focus:border-primary/50 input-sm"
       bind:value={form.image_url}
     />
   </div>

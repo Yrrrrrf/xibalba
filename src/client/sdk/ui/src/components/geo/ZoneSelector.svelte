@@ -15,31 +15,31 @@
 </script>
 
 <div
-  class="card bg-neutral-900/60 backdrop-blur-xl shadow-xl border border-white/10 mb-4"
+  class="card bg-base-200/60 backdrop-blur-xl shadow-xl border border-base-content/10 mb-4"
 >
   <div class="card-body p-4">
     <div class="flex items-center gap-2 mb-3">
-      <MapPin size={20} class="text-orange-500" />
-      <h2 class="font-bold text-base text-neutral-100">
+      <MapPin size={20} class="text-primary" />
+      <h2 class="font-bold text-base text-base-content">
         {m.zone_your_location()}
       </h2>
     </div>
 
     <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
       <select
-        class="select bg-black/20 border-white/10 text-white focus:border-orange-500/50 w-full sm:max-w-xs"
+        class="select select-bordered bg-base-200/50 border-base-content/10 text-base-content focus:border-primary/50 w-full sm:max-w-xs"
         value={selectedZoneId}
         onchange={(e) => onchange?.(e.currentTarget.value)}
       >
         {#each zones as zone}
-          <option value={zone.id} class="bg-neutral-900 text-white"
+          <option value={zone.id} class="bg-base-100 text-base-content"
             >{zone.name}</option
           >{/each}
       </select>
 
       {#if selected}
         <div
-          class="badge bg-orange-500/10 text-orange-400 border border-orange-500/20 gap-1 py-3 px-3"
+          class="badge bg-primary/10 text-primary border border-primary/20 gap-1 py-3 px-3"
         >
           <span class="text-xs font-bold uppercase tracking-tighter"
             >{selected.name}</span
@@ -50,9 +50,9 @@
 
     {#if selected}
       <p
-        class="text-[10px] text-neutral-500 mt-2 flex items-center gap-1 font-bold uppercase tracking-widest"
+        class="text-[10px] text-base-content/50 mt-2 flex items-center gap-1 font-bold uppercase tracking-widest"
       >
-        <Radio size={10} class="text-orange-500" />
+        <Radio size={10} class="text-primary" />
         {m.zone_gps_simulated()} <strong>{selected.name}</strong>
       </p>
     {/if}

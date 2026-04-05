@@ -16,8 +16,8 @@
 </script>
 
 <div class="flex flex-col {className}">
-  <span class="text-orange-500 font-extrabold {sizeClasses[size]} leading-none">
+  <span class="text-primary font-extrabold {sizeClasses[size]} leading-none">
     ${amount.toFixed(2)}
   </span>
-  <span class="text-neutral-500 text-[10px] tracking-wide uppercase">{currency}</span>
+  <span class="text-base-content/50 text-[10px] tracking-wide uppercase">{currency}</span>
 </div>

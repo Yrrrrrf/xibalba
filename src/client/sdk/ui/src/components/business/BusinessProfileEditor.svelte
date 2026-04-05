@@ -48,8 +48,8 @@
         </div>
       </div>
       <div>
-        <h2 class="card-title text-xl text-neutral-100">{localProfile.name}</h2>
-        <p class="text-sm text-neutral-400">{localProfile.category}</p>
+        <h2 class="card-title text-xl text-base-content">{localProfile.name}</h2>
+        <p class="text-sm text-base-content/60">{localProfile.category}</p>
       </div>
     </div>
     <button
@@ -57,8 +57,8 @@
         editing = !editing;
       }}
       class="group flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 {editing
-        ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
-        : 'bg-orange-500/10 text-orange-400 border border-orange-500/20 hover:bg-orange-500/20'}"
+        ? 'bg-error/10 text-error border border-error/20'
+        : 'bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20'}"
     >
       {#if editing}
         <X size={14} /> {m.editor_cancel()}
@@ -80,21 +80,21 @@
       <div class="form-control">
         <label class="label py-1" for="field-{item.field}">
           <span
-            class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500 flex items-center gap-1.5"
+            class="label-text text-[10px] font-bold uppercase tracking-wider text-base-content/50 flex items-center gap-1.5"
           >
-            <item.icon size={12} class="text-neutral-600" />
+            <item.icon size={12} class="text-base-content/40" />
             {item.label}
           </span>
         </label>
         {#if editing}
           <input
             id="field-{item.field}"
-            class="input bg-black/20 border-white/10 text-white input-sm focus:border-orange-500/50"
+            class="input input-bordered bg-base-200/50 border-base-content/10 text-base-content input-sm focus:border-primary/50"
             bind:value={localProfile[item.field]}
           />
         {:else}
           <p
-            class="text-sm py-2 px-3 bg-white/5 rounded-xl border border-white/5 text-neutral-200"
+            class="text-sm py-2 px-3 bg-base-content/5 rounded-xl border border-base-content/5 text-base-content/80"
           >
             {localProfile[item.field]}
           </p>
@@ -106,22 +106,22 @@
   <div class="form-control mt-2">
     <label class="label py-1" for="biz-desc">
       <span
-        class="label-text text-[10px] font-bold uppercase tracking-wider text-neutral-500 flex items-center gap-1.5"
+        class="label-text text-[10px] font-bold uppercase tracking-wider text-base-content/50 flex items-center gap-1.5"
         >
-        <MessageSquare size={12} class="text-neutral-600" />
+        <MessageSquare size={12} class="text-base-content/40" />
         {m.biz_description()}
       </span>
     </label>
     {#if editing}
       <textarea
         id="biz-desc"
-        class="textarea bg-black/20 border-white/10 text-white textarea-sm focus:border-orange-500/50"
+        class="textarea textarea-bordered bg-base-200/50 border-base-content/10 text-base-content textarea-sm focus:border-primary/50"
         bind:value={localProfile.description}
         rows="3"
       ></textarea>
     {:else}
       <p
-        class="text-sm py-2.5 px-3 bg-white/5 rounded-xl border border-white/5 text-neutral-200 leading-relaxed"
+        class="text-sm py-2.5 px-3 bg-base-content/5 rounded-xl border border-base-content/5 text-base-content/80 leading-relaxed"
       >
         {localProfile.description}
       </p>

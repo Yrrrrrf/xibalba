@@ -20,10 +20,10 @@
 
 <main class="container mx-auto px-4 pt-6 pb-10 max-w-lg">
   <div class="mb-8">
-    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight flex items-center gap-3">
-      {m.saved_title()} <ICONS.nav_saved size={32} class="text-rose-500 fill-rose-500" />
+    <h1 class="text-3xl font-extrabold text-base-content tracking-tight flex items-center gap-3">
+      {m.saved_title()} <ICONS.nav_saved size={32} class="text-error fill-error" />
     </h1>
-    <p class="text-neutral-500 text-xs mt-1 font-medium italic">
+    <p class="text-base-content/50 text-xs mt-1 font-medium italic">
       {m.saved_subtitle()}
     </p>
   </div>
@@ -31,7 +31,7 @@
   <div class="space-y-4 pb-12">
     {#each savedDishes as dish}
       <div
-        class="bg-neutral-900/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl"
+        class="bg-base-200/60 backdrop-blur-xl border border-base-content/10 rounded-2xl shadow-xl"
       >
         <SavedDishCard {dish} onremove={(id) => visitorStore.remove(id)} />
       </div>
@@ -39,11 +39,11 @@
 
     {#if savedDishes.length === 0}
       <div class="text-center py-20 flex flex-col items-center justify-center">
-        <div class="text-neutral-600 mb-3">
+        <div class="text-base-content/30 mb-3">
           <ICONS.nav_saved size={48} strokeWidth={1.5} />
         </div>
-        <p class="text-stone-400 font-medium">{m.saved_empty()}</p>
-        <a href="/discover" class="btn btn-link text-orange-500 mt-2"
+        <p class="text-base-content/40 font-medium">{m.saved_empty()}</p>
+        <a href="/discover" class="btn btn-link text-primary mt-2"
           >{m.saved_explore()}</a
         >
       </div>

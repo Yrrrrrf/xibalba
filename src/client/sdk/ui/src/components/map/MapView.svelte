@@ -48,17 +48,17 @@
     const statusText = c.open ? m.badge_open() : m.badge_closed();
     
     // Inline SVGs for popup
-    const starSvg = `<svg style="width:12px;height:12px;display:inline;vertical-align:middle;margin-right:2px" viewBox="0 0 24 24" fill="#fbbf24" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg>`;
-    const pinSvg = `<svg style="width:10px;height:10px;display:inline;vertical-align:middle;margin-right:4px;color:#888" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>`;
+    const starSvg = `<svg style="width:12px;height:12px;display:inline;vertical-align:middle;margin-right:2px" viewBox="0 0 24 24" fill="oklch(var(--wa))" stroke="oklch(var(--wa))" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg>`;
+    const pinSvg = `<svg style="width:10px;height:10px;display:inline;vertical-align:middle;margin-right:4px;color:oklch(var(--bc)/0.5)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>`;
 
     return `
-      <div style="min-width:180px;font-family:system-ui;color:#e5e5e5">
-        <p style="font-weight:700;font-size:14px;margin:0 0 2px;color:#fff">${c.name}</p>
-        <p style="font-size:11px;color:#888;margin:0 0 6px">${c.category}</p>
+      <div style="min-width:180px;font-family:system-ui;color:oklch(var(--bc))">
+        <p style="font-weight:700;font-size:14px;margin:0 0 2px;color:oklch(var(--bc))">${c.name}</p>
+        <p style="font-size:11px;color:oklch(var(--bc)/0.6);margin:0 0 6px">${c.category}</p>
         <p style="font-size:11px;margin:0 0 4px">${pinSvg}${c.address}</p>
         <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
           <span style="font-size:12px">${starSvg}<strong>${c.rating}</strong></span>
-          <span style="font-size:11px;padding:2px 8px;border-radius:999px;background:${c.open ? "rgba(16,185,129,0.15)" : "rgba(239,68,68,0.15)"};color:${c.open ? "#10b981" : "#ef4444"};border:1px solid ${c.open ? "rgba(16,185,129,0.2)" : "rgba(239,68,68,0.2)"}">
+          <span style="font-size:11px;padding:2px 8px;border-radius:999px;background:${c.open ? "oklch(var(--su)/0.15)" : "oklch(var(--er)/0.15)"};color:${c.open ? "oklch(var(--su))" : "oklch(var(--er))"};border:1px solid ${c.open ? "oklch(var(--su)/0.2)" : "oklch(var(--er)/0.2)"}">
             ● ${statusText}
           </span>
         </div>
@@ -199,19 +199,19 @@
 
       <!-- Legend -->
       <div
-        class="bg-neutral-900/90 backdrop-blur rounded-xl px-3 py-2 shadow text-xs space-y-1 text-neutral-200 border border-white/10"
+        class="bg-base-200/90 backdrop-blur rounded-xl px-3 py-2 shadow text-xs space-y-1 text-base-content/80 border border-base-content/10"
       >
-        <p class="font-semibold text-neutral-400 mb-1">Leyenda</p>
+        <p class="font-semibold text-base-content/60 mb-1">Leyenda</p>
         <div class="flex items-center gap-2">
-          <span class="inline-block w-3 h-3 rounded-full bg-emerald-500"></span>
+          <span class="inline-block w-3 h-3 rounded-full bg-success"></span>
           <span>{m.badge_open()}</span>
         </div>
         <div class="flex items-center gap-2">
-          <span class="inline-block w-3 h-3 rounded-full bg-gray-400"></span>
+          <span class="inline-block w-3 h-3 rounded-full bg-base-content/40"></span>
           <span>{m.badge_closed()}</span>
         </div>
         <div class="flex items-center gap-2">
-          <span class="inline-block w-3 h-3 rounded-full bg-indigo-500"></span>
+          <span class="inline-block w-3 h-3 rounded-full bg-primary"></span>
           <span>Tú</span>
         </div>
       </div>
@@ -231,7 +231,7 @@
   <!-- Businesses count badge -->
   <div class="absolute top-3 right-3 z-[999]">
     <div
-      class="badge badge-neutral badge-lg shadow font-semibold gap-2 border-white/10 bg-neutral-900/80 backdrop-blur text-neutral-100"
+      class="badge badge-neutral badge-lg shadow font-semibold gap-2 border-base-content/10 bg-base-300/80 backdrop-blur text-base-content"
     >
       <Store size={14} />
       {businesses.length}

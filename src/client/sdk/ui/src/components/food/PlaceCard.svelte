@@ -39,7 +39,7 @@
     open = true,
     hours,
     tags = [],
-    colorAccent = "from-blue-400/20 to-indigo-400/10",
+    colorAccent = "from-info/20 to-info/10",
     icon: Icon = MapPin,
     onselect,
   }: Props = $props();
@@ -66,7 +66,7 @@
     />
     <!-- Overlay on hover -->
     <div
-      class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent
+      class="absolute inset-0 bg-gradient-to-t from-base-300/60 via-base-300/10 to-transparent
                 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
     ></div>
 
@@ -74,9 +74,9 @@
     <div class="absolute top-3 left-3 z-10">
       <span
         class="flex items-center gap-1 px-2.5 py-1 text-xs font-bold rounded-full
-                   bg-black/60 backdrop-blur-sm text-neutral-200 border border-white/10"
+                   bg-neutral/60 backdrop-blur-sm text-neutral-content border border-neutral-content/10"
       >
-        <Icon size={12} class="text-white" />
+        <Icon size={12} class="text-neutral-content" />
         {type}
       </span>
     </div>
@@ -86,8 +86,8 @@
       <span
         class="px-2 py-1 rounded-full text-[10px] font-bold uppercase backdrop-blur-sm border
                    {open
-          ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/30'
-          : 'bg-neutral-700/60 text-neutral-400 border-neutral-500/30'}"
+          ? 'bg-success/20 text-success border-success/30'
+          : 'bg-neutral/60 text-neutral-content/60 border-neutral-content/30'}"
       >
         {open ? "● " + m.place_open() : "● " + m.place_closed()}
       </span>
@@ -97,20 +97,20 @@
   <!-- Body -->
   <div class="flex flex-col flex-1 p-4 gap-2">
     <h3
-      class="font-bold text-neutral-100 text-[15px] leading-snug line-clamp-1"
+      class="font-bold text-base-content text-[15px] leading-snug line-clamp-1"
     >
       {name}
     </h3>
-    <p class="text-neutral-500 text-xs leading-relaxed line-clamp-2">
+    <p class="text-base-content/60 text-xs leading-relaxed line-clamp-2">
       {description}
     </p>
 
     <!-- Address & Distance -->
-    <div class="flex items-center gap-1.5 text-neutral-500 text-[11px] mt-0.5">
+    <div class="flex items-center gap-1.5 text-base-content/50 text-[11px] mt-0.5">
       <MapPin size={10} />
       <span class="line-clamp-1">{address}</span>
       {#if distance}
-        <span class="ml-auto flex-shrink-0 text-orange-400 font-semibold"
+        <span class="ml-auto flex-shrink-0 text-primary font-semibold"
           >{distance}</span
         >
       {/if}
@@ -122,7 +122,7 @@
         {#each tags.slice(0, 3) as tag}
           <span
             class="px-2 py-0.5 rounded-full text-[10px] font-medium
-                       bg-white/5 border border-white/10 text-neutral-400"
+                       bg-base-content/5 border border-base-content/10 text-base-content/60"
           >
             {tag}
           </span>
@@ -137,16 +137,16 @@
           <RatingDisplay value={rating} />
         {/if}
         {#if hours}
-          <span class="text-neutral-600 text-[10px] ml-2 flex items-center gap-1">
+          <span class="text-base-content/40 text-[10px] ml-2 flex items-center gap-1">
             <Clock size={10} /> {hours}
           </span>
         {/if}
       </div>
       {#if price}
         <span
-          class="text-sm font-extrabold {price === 'Gratis'
-            ? 'text-emerald-400'
-            : 'text-orange-400'}"
+          class="text-sm font-extrabold {price === 'Gratis' || price === 'Free'
+            ? 'text-success'
+            : 'text-primary'}"
         >
           {price}
         </span>

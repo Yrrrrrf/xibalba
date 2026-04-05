@@ -57,10 +57,10 @@
 
 <main class="container mx-auto px-4 pt-6 pb-10 max-w-6xl">
   <div class="mb-8">
-    <h1 class="text-3xl font-extrabold text-neutral-100 tracking-tight flex items-center gap-3">
-      {m.discover_hello()} <ICONS.wave size={32} class="text-amber-500" />
+    <h1 class="text-3xl font-extrabold text-base-content tracking-tight flex items-center gap-3">
+      {m.discover_hello()} <ICONS.wave size={32} class="text-warning" />
     </h1>
-    <p class="text-neutral-500 text-xs mt-1 font-medium italic">
+    <p class="text-base-content/50 text-xs mt-1 font-medium italic">
       {m.discover_subtitle()}
     </p>
   </div>
@@ -72,7 +72,7 @@
   />
 
   <div
-    class="mb-8 rounded-3xl overflow-hidden shadow-2xl border border-white/10"
+    class="mb-8 rounded-3xl overflow-hidden shadow-2xl border border-base-content/10"
   >
     <MapView businesses={businessesForMap} height="300px" />
   </div>
@@ -87,8 +87,8 @@
         class="flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider
                  flex-shrink-0 border transition-all duration-300
                  {categoriaActiva === cat.key
-          ? 'bg-orange-500 text-white border-orange-500 shadow-lg shadow-orange-900/20'
-          : 'bg-neutral-900/40 backdrop-blur-sm text-neutral-400 border-white/10 hover:bg-white/5'}"
+          ? 'bg-primary text-primary-content border-primary shadow-lg shadow-primary/20'
+          : 'bg-base-200/40 backdrop-blur-sm text-base-content/60 border-base-content/10 hover:bg-base-content/5'}"
       >
         <span>{cat.label}</span>
       </button>
@@ -106,10 +106,10 @@
 
   {#if filteredDishes.length === 0}
     <div class="text-center py-20 flex flex-col items-center justify-center">
-      <div class="text-neutral-600 mb-3">
+      <div class="text-base-content/30 mb-3">
         <ICONS.search size={48} strokeWidth={1.5} />
       </div>
-      <p class="text-stone-400 font-medium">{m.discover_no_results()}</p>
+      <p class="text-base-content/40 font-medium">{m.discover_no_results()}</p>
     </div>
   {/if}
 </main>

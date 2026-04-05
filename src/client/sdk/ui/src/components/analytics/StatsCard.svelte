@@ -18,21 +18,21 @@
   }: Props = $props();
 
   const variantGradient: Record<string, string> = {
-    primary: "from-orange-400 to-amber-500",
-    secondary: "from-violet-400 to-purple-500",
-    accent: "from-cyan-400 to-blue-500",
-    success: "from-emerald-400 to-green-500",
-    warning: "from-yellow-400 to-amber-400",
-    error: "from-rose-400 to-red-500",
+    primary: "from-primary to-primary/80",
+    secondary: "from-secondary to-secondary/80",
+    accent: "from-accent to-accent/80",
+    success: "from-success to-success/80",
+    warning: "from-warning to-warning/80",
+    error: "from-error to-error/80",
   };
 
   const variantText: Record<string, string> = {
-    primary: "text-orange-400",
-    secondary: "text-violet-400",
-    accent: "text-cyan-400",
-    success: "text-emerald-400",
-    warning: "text-amber-400",
-    error: "text-rose-400",
+    primary: "text-primary",
+    secondary: "text-secondary",
+    accent: "text-accent",
+    success: "text-success",
+    warning: "text-warning",
+    error: "text-error",
   };
 
   const TrendIcon = $derived(
@@ -40,10 +40,10 @@
   );
   const trendColor = $derived(
     trend === "up"
-      ? "text-emerald-500"
+      ? "text-success"
       : trend === "down"
-        ? "text-rose-500"
-        : "text-stone-400",
+        ? "text-error"
+        : "text-base-content/40",
   );
   const gradient = $derived(
     variantGradient[variant] ?? variantGradient.primary,
@@ -58,7 +58,7 @@
   <!-- Icon circle -->
   <div
     class="w-11 h-11 rounded-xl flex items-center justify-center mb-3
-              bg-gradient-to-br {gradient} shadow-md text-white
+              bg-gradient-to-br {gradient} shadow-md text-primary-content
               group-hover:scale-110 group-hover:rotate-3
               transition-transform duration-300"
   >
@@ -66,7 +66,7 @@
   </div>
 
   <!-- Title -->
-  <p class="text-[10px] font-bold uppercase tracking-widest text-neutral-500 mb-1">
+  <p class="text-[10px] font-bold uppercase tracking-widest text-base-content/50 mb-1">
     {title}
   </p>
 
@@ -82,7 +82,7 @@
       </span>
     {/if}
     {#if desc}
-      <span class="text-xs text-neutral-500">{desc}</span>
+      <span class="text-xs text-base-content/50">{desc}</span>
     {/if}
   </div>
 

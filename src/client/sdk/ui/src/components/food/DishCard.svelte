@@ -27,7 +27,7 @@
   }
 
   const accent = $derived(
-    CATEGORY_BG_ACCENTS[dish.category] ?? "from-amber-400/20 to-orange-400/10",
+    CATEGORY_BG_ACCENTS[dish.category] ?? "from-primary/20 to-primary/10",
   );
 </script>
 
@@ -50,13 +50,13 @@
              transform-gpu
              group-hover:scale-[1.12]
              group-hover:-translate-y-2
-             group-hover:drop-shadow-[0_20px_24px_rgba(0,0,0,0.35)]
+             group-hover:drop-shadow-2xl
              transition-all duration-700 ease-out"
     />
 
     <!-- Dark gradient overlay for text readability -->
     <div
-      class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent
+      class="absolute inset-0 bg-gradient-to-t from-base-300/50 via-base-300/10 to-transparent
                 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
     ></div>
 
@@ -76,7 +76,7 @@
                 translate-y-full group-hover:translate-y-0
                 transition-transform duration-400 ease-out z-10"
     >
-      <p class="text-white text-xs font-medium drop-shadow flex items-center gap-1.5">
+      <p class="text-primary-content text-xs font-medium drop-shadow flex items-center gap-1.5">
         <Utensils size={12} /> {dish.restaurant}
       </p>
     </div>
@@ -85,7 +85,7 @@
   <!-- ── BODY ────────────────────────────────────────────────── -->
   <div class="flex flex-col flex-1 p-4 gap-2">
     <h3
-      class="font-bold text-neutral-100 text-[15px] leading-snug line-clamp-2"
+      class="font-bold text-base-content text-[15px] leading-snug line-clamp-2"
     >
       {dish.name}
     </h3>
@@ -103,8 +103,8 @@
         class="flex items-center gap-1.5 px-3 py-2 rounded-2xl
                transition-all duration-300
                {liked
-          ? 'bg-rose-500 text-white shadow-lg shadow-rose-900/20'
-          : 'bg-white/5 border border-white/10 text-neutral-400 hover:bg-rose-500/10 hover:text-rose-400'}"
+          ? 'bg-error text-error-content shadow-lg shadow-error/20'
+          : 'bg-base-content/5 border border-base-content/10 text-base-content/60 hover:bg-error/10 hover:text-error'}"
         aria-label={m.food_dish()}
       >
         <Heart 

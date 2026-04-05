@@ -12,11 +12,11 @@
   let { icon: Icon = Utensils, title, subtitle, action }: Props = $props();
 </script>
 
-<div class="flex flex-col items-center justify-center py-12 text-center text-neutral-500">
-  <div class="mb-3 text-neutral-600">
+<div class="flex flex-col items-center justify-center py-12 text-center text-base-content/50">
+  <div class="mb-3 text-base-content/30">
     <Icon size={48} strokeWidth={1.5} />
   </div>
-  <p class="font-bold text-neutral-300">{title}</p>
+  <p class="font-bold text-base-content/80">{title}</p>
   {#if subtitle}
     <p class="text-sm">{subtitle}</p>
   {/if}

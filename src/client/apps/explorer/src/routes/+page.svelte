@@ -16,6 +16,6 @@
   });
 </script>
 
-<div class="flex-1 flex items-center justify-center bg-neutral-950">
-  <span class="loading loading-spinner loading-lg text-orange-500"></span>
+<div class="flex-1 flex items-center justify-center bg-base-100">
+  <span class="loading loading-spinner loading-lg text-primary"></span>
 </div>
