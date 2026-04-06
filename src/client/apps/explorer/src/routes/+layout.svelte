@@ -2,8 +2,6 @@
   import "./layout.css";
   import {
     RuneProvider as RP,
-    LayoutPlugin,
-    PalettesPlugin,
     MoneyPlugin,
     localStorageDriver,
     ThemeSelector,
@@ -13,6 +11,7 @@
   import { createAuthStore } from "@sdk/state";
   import { goto } from "$app/navigation";
   import { m, ICONS } from "@sdk/ui";
+  import { setLocale } from "$lib/paraglide/runtime";
 
   const RuneProvider: any = RP;
 
@@ -37,18 +36,6 @@
       },
     },
   };
-
-  function handleThemeChange(newTheme: string) {
-    if (typeof document !== "undefined") {
-      document.documentElement.setAttribute("data-theme", newTheme);
-    }
-  }
-
-  function handleLanguageChange(newLang: string, oldLang: string) {
-    if (typeof window !== "undefined" && oldLang && newLang !== oldLang) {
-      window.location.reload();
-    }
-  }
 </script>
 
 <RuneProvider
@@ -58,9 +45,8 @@
     dictionary: m,
     "rune-lab.money": moneyConfig,
   }}
-  plugins={[LayoutPlugin, PalettesPlugin, MoneyPlugin]}
-  onThemeChange={handleThemeChange}
-  onLanguageChange={handleLanguageChange}
+  plugins={[MoneyPlugin]}
+  onLanguageChange={(l) => setLocale(l.code)}
 >
   <div
     class="min-h-screen bg-base-100 text-base-content flex flex-col selection:bg-primary/30"
@@ -76,9 +62,7 @@
           >
             <ICONS.brand size={18} />
           </div>
-          <span
-            class="text-xl font-black tracking-tighter text-base-content"
-          >
+          <span class="text-xl font-black tracking-tighter text-base-content">
             {m.app_name()}
           </span>
         </div>

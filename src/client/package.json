@@ -34,7 +34,8 @@
     "sveltekit-superforms": "*",
     "tailwindcss": "*",
     "typescript": "5.9.3",
-    "vite": "*"
+    "vite": "*",
+    "vite-plus": "*"
   },
   "devDependencies": {
     "svelte-check": "^4.4.6"

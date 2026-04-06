@@ -1,22 +1,22 @@
+// vite plus
+import { defineConfig } from "vite-plus";
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import tailwindcss from "@tailwindcss/vite";
 import { sveltekit } from "@sveltejs/kit/vite";
-import { defineConfig, searchForWorkspaceRoot } from "vite";
 
 export default defineConfig({
   plugins: [
-    tailwindcss(),
     sveltekit(),
+    tailwindcss(),
     paraglideVitePlugin({
-      project: "./src/i18n/project.inlang",
-      outdir: "./src/lib/paraglide",
+      project: "./src/lib/i18n/project.inlang",
+      outdir: "./src/lib/i18n/paraglide",
       // first it checks localStorage, then the preferred language of the browser, and finally falls back to the base locale
       strategy: ["localStorage", "preferredLanguage", "baseLocale"],
     }),
   ],
   optimizeDeps: {
     exclude: [
-      "rune-lab",
       "@sdk/ui",
     ],
   },
