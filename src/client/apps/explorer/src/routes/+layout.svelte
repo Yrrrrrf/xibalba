@@ -4,6 +4,7 @@
     RuneProvider as RP,
     MoneyPlugin,
     localStorageDriver,
+    PalettesPlugin,
     ThemeSelector,
     LanguageSelector,
     CurrencySelector,
@@ -17,25 +18,6 @@
 
   let { children } = $props();
   const auth = createAuthStore();
-
-  const moneyConfig = {
-    defaultCurrency: "USD",
-    // Provide explicit currency definitions to ensure the store is not empty
-    currencies: [
-      { code: "USD", symbol: "$", decimals: 2 },
-      { code: "MXN", symbol: "$", decimals: 2 },
-      { code: "EUR", symbol: "€", decimals: 2 },
-      { code: "JPY", symbol: "¥", decimals: 0 },
-    ],
-    exchangeRates: {
-      base: "USD",
-      rates: {
-        MXN: 17.23,
-        EUR: 0.91,
-        JPY: 151.3,
-      },
-    },
-  };
 </script>
 
 <RuneProvider
@@ -43,10 +25,9 @@
     app: { name: "Xibalbá", version: "1.0.0" },
     persistence: localStorageDriver,
     dictionary: m,
-    "rune-lab.money": moneyConfig,
   }}
-  plugins={[MoneyPlugin]}
-  onLanguageChange={(l) => setLocale(l.code)}
+  plugins={[MoneyPlugin, PalettesPlugin]}
+  onLanguageChange={(l: any) => setLocale(l.code)}
 >
   <div
     class="min-h-screen bg-base-100 text-base-content flex flex-col selection:bg-primary/30"
@@ -68,15 +49,6 @@
         </div>
 
         <div class="flex items-center gap-3">
-          <!-- Rune Lab Global Selectors -->
-          <div
-            class="flex items-center gap-1 bg-base-content/5 rounded-xl border border-base-content/10 px-1 py-0.5"
-          >
-            <ThemeSelector />
-            <LanguageSelector />
-            <CurrencySelector />
-          </div>
-
           <button
             onclick={() => {
               auth.logout();
