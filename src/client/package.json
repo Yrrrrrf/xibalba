@@ -8,9 +8,7 @@
   ],
   "scripts": {
     "explorer": "bun run --cwd apps/explorer dev",
-    "vision": "bun run --cwd apps/vision dev",
-    "check": "bun run --cwd sdk/ui check",
-    "prepare": "bun run --cwd sdk/ui prepare"
+    "vision": "bun run --cwd apps/vision dev"
   },
   "dependencies": {
     "@chenglou/pretext": "*",
@@ -36,8 +34,5 @@
     "typescript": "5.9.3",
     "vite": "*",
     "vite-plus": "*"
-  },
-  "devDependencies": {
-    "svelte-check": "^4.4.6"
   }
 }

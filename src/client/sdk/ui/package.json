@@ -5,15 +5,6 @@
   "type": "module",
   "main": "./src/mod.ts",
   "types": "./src/mod.ts",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview",
-    "prepare": "svelte-kit sync || echo ''",
-    "prepack": "svelte-kit sync && svelte-package && publint",
-    "check": "svelte-kit sync && svelte-check --tsconfig ../../tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ../../tsconfig.json --watch"
-  },
   "dependencies": {
     "@sdk/core": "workspace:*",
     "@sdk/state": "workspace:*",

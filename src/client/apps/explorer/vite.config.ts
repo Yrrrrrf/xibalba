@@ -21,7 +21,6 @@ export default defineConfig({
   },
   ssr: {
     noExternal: [
-      "rune-lab",
       "lucide-svelte",
     ],
   },

@@ -1,4 +1,3 @@
-// vite plus
 import { defineConfig } from "vite-plus";
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import tailwindcss from "@tailwindcss/vite";
@@ -22,7 +21,6 @@ export default defineConfig({
   },
   ssr: {
     noExternal: [
-      "rune-lab",
       "lucide-svelte",
     ],
   },

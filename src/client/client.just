@@ -33,14 +33,10 @@ quality: typecheck
 [doc('Sync SvelteKit and Build SDK')]
 [group('Build')]
 sync-ui:
-    # 1. Compile Paraglide
+    # Compile Paraglide
     deno run -A npm:@inlang/paraglide-js compile --project ./sdk/ui/src/i18n/project.inlang --outdir ./sdk/ui/src/i18n/paraglide
-    # 2. Verify output exists
-    test -f sdk/ui/src/i18n/paraglide/messages.js || exit 1
-    # 3. Remove stale .gitignore
-    # rm -f sdk/ui/src/i18n/paraglide/.gitignore
-    # 4. SvelteKit sync
-    bun run --cwd sdk/ui prepare
+    # SvelteKit sync
+    bun run --cwd sdk/ui svelte-kit sync
 
 [doc('Build Client')]
 [group('Build')]
