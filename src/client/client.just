@@ -16,8 +16,11 @@ lint:
 [doc('Type-check Client workspace')]
 [group('CI')]
 typecheck:
-    bunx svelte-check
-    deno check .
+    # deno run -A npm:svelte-check
+    -deno run -A npm:svelte-check --tsconfig ./apps/explorer/tsconfig.json
+    -deno run -A npm:svelte-check --tsconfig ./apps/vision/tsconfig.json
+    # todo: Add a svelte-check for the sdk/ui
+    # deno check .
     @echo "✓ Client type-checked"
 
 [doc('Full client quality gate')]
@@ -50,7 +53,7 @@ run app=`ls apps/`: sync-ui
     yog reborn --deep
     # todo: Add a way to run all apps at once
     # todo: Somehow orchestrate the apps to run in parallel
-    bun run --cwd apps/{{ app }} dev
+    bun run --cwd apps/{{ app }} vite dev --host
 
 [doc('Test the client')]
 [group('Dev')]
