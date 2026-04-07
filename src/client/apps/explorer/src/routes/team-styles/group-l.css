@@ -1,0 +1,89 @@
+/* ── Group L: England, Croatia, Ghana, Panama ── */
+
+/* England */
+[data-theme="england"] {
+  --color-primary: #CF081F;
+  --color-primary-content: #ffffff;
+  --color-secondary: #FFFFFF;
+  --color-secondary-content: #CF081F;
+  --color-accent: #1C2C5B;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1A0D0D;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FFFAFB;
+  --color-base-200: #FFF2F4;
+  --color-base-300: #FFE5E9;
+  --color-base-content: #1C1A1A;
+
+  --color-info: #1C2C5B;
+  --color-success: #36d399;
+  --color-warning: #fbbd23;
+  --color-error: #CF081F;
+}
+
+/* Croatia */
+[data-theme="croatia"] {
+  --color-primary: #FF0000;
+  --color-primary-content: #ffffff;
+  --color-secondary: #171796;
+  --color-secondary-content: #ffffff;
+  --color-accent: #FFFFFF;
+  --color-accent-content: #FF0000;
+  --color-neutral: #1A0A14;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FFFAFA;
+  --color-base-200: #FFF2F2;
+  --color-base-300: #FFE5E5;
+  --color-base-content: #1C1A1A;
+
+  --color-info: #171796;
+  --color-success: #36d399;
+  --color-warning: #fbbd23;
+  --color-error: #FF0000;
+}
+
+/* Ghana */
+[data-theme="ghana"] {
+  --color-primary: #CE1126;
+  --color-primary-content: #ffffff;
+  --color-secondary: #FCD116;
+  --color-secondary-content: #1A1400;
+  --color-accent: #006B3F;
+  --color-accent-content: #ffffff;
+  --color-neutral: #111111;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FFFCF5;
+  --color-base-200: #FFF8EB;
+  --color-base-300: #FFF1DD;
+  --color-base-content: #1C1B1A;
+
+  --color-info: #3abff8;
+  --color-success: #006B3F;
+  --color-warning: #FCD116;
+  --color-error: #CE1126;
+}
+
+/* Panama */
+[data-theme="panama"] {
+  --color-primary: #005EB8;
+  --color-primary-content: #ffffff;
+  --color-secondary: #D21034;
+  --color-secondary-content: #ffffff;
+  --color-accent: #003D7A;
+  --color-accent-content: #ffffff;
+  --color-neutral: #0D1528;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #F8FAFD;
+  --color-base-200: #F1F5FA;
+  --color-base-300: #E6EDF5;
+  --color-base-content: #1A1B1C;
+
+  --color-info: #005EB8;
+  --color-success: #36d399;
+  --color-warning: #fbbd23;
+  --color-error: #D21034;
+}

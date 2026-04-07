@@ -1,0 +1,89 @@
+/* ── Group J: Argentina, Algeria, Austria, Jordan ── */
+
+/* Argentina */
+[data-theme="argentina"] {
+  --color-primary: #74ACDF;
+  --color-primary-content: #0A1E2F;
+  --color-secondary: #F6B40E;
+  --color-secondary-content: #1A1400;
+  --color-accent: #3B7BBE;
+  --color-accent-content: #ffffff;
+  --color-neutral: #0D1828;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #F8FCFF;
+  --color-base-200: #F1F8FA;
+  --color-base-300: #E6F1F5;
+  --color-base-content: #1A1B1C;
+
+  --color-info: #74ACDF;
+  --color-success: #36d399;
+  --color-warning: #F6B40E;
+  --color-error: #f87272;
+}
+
+/* Algeria */
+[data-theme="algeria"] {
+  --color-primary: #006233;
+  --color-primary-content: #ffffff;
+  --color-secondary: #D21034;
+  --color-secondary-content: #ffffff;
+  --color-accent: #004225;
+  --color-accent-content: #ffffff;
+  --color-neutral: #0D1A10;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #F5FAF6;
+  --color-base-200: #EBF7EE;
+  --color-base-300: #DDF1E2;
+  --color-base-content: #1A1C1A;
+
+  --color-info: #3abff8;
+  --color-success: #006233;
+  --color-warning: #fbbd23;
+  --color-error: #D21034;
+}
+
+/* Austria */
+[data-theme="austria"] {
+  --color-primary: #ED2939;
+  --color-primary-content: #ffffff;
+  --color-secondary: #FFFFFF;
+  --color-secondary-content: #ED2939;
+  --color-accent: #A31D28;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1E0C0C;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FFFAFA;
+  --color-base-200: #FFF2F2;
+  --color-base-300: #FFE5E5;
+  --color-base-content: #1C1A1A;
+
+  --color-info: #3abff8;
+  --color-success: #36d399;
+  --color-warning: #fbbd23;
+  --color-error: #ED2939;
+}
+
+/* Jordan */
+[data-theme="jordan"] {
+  --color-primary: #CE1126;
+  --color-primary-content: #ffffff;
+  --color-secondary: #007A3D;
+  --color-secondary-content: #ffffff;
+  --color-accent: #000000;
+  --color-accent-content: #ffffff;
+  --color-neutral: #111111;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FAFAFA;
+  --color-base-200: #F2F2F2;
+  --color-base-300: #E5E5E5;
+  --color-base-content: #1A1A1A;
+
+  --color-info: #3abff8;
+  --color-success: #007A3D;
+  --color-warning: #fbbd23;
+  --color-error: #CE1126;
+}

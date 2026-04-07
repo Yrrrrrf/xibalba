@@ -1,0 +1,89 @@
+/* ── Group C: Brazil, Morocco, Haiti, Scotland ── */
+
+/* Brazil */
+[data-theme="brazil"] {
+  --color-primary: #FEDD00;
+  --color-primary-content: #1A1600;
+  --color-secondary: #009739;
+  --color-secondary-content: #ffffff;
+  --color-accent: #002776;
+  --color-accent-content: #ffffff;
+  --color-neutral: #0D2818;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FFFEF5;
+  --color-base-200: #FFFDF0;
+  --color-base-300: #FFFCE5;
+  --color-base-content: #1C1C1A;
+
+  --color-info: #002776;
+  --color-success: #009739;
+  --color-warning: #FEDD00;
+  --color-error: #f87272;
+}
+
+/* Morocco */
+[data-theme="morocco"] {
+  --color-primary: #C1272D;
+  --color-primary-content: #ffffff;
+  --color-secondary: #006233;
+  --color-secondary-content: #ffffff;
+  --color-accent: #8B1A1F;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1A0F0F;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FDF7F7;
+  --color-base-200: #F9EFEF;
+  --color-base-300: #F3E2E2;
+  --color-base-content: #1C1A1A;
+
+  --color-info: #3abff8;
+  --color-success: #006233;
+  --color-warning: #fbbd23;
+  --color-error: #C1272D;
+}
+
+/* Haiti */
+[data-theme="haiti"] {
+  --color-primary: #00209F;
+  --color-primary-content: #ffffff;
+  --color-secondary: #D21034;
+  --color-secondary-content: #ffffff;
+  --color-accent: #001A7A;
+  --color-accent-content: #ffffff;
+  --color-neutral: #0D1226;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #F5F7FD;
+  --color-base-200: #EBF0FA;
+  --color-base-300: #DDE5F5;
+  --color-base-content: #1A1B1C;
+
+  --color-info: #00209F;
+  --color-success: #36d399;
+  --color-warning: #fbbd23;
+  --color-error: #D21034;
+}
+
+/* Scotland */
+[data-theme="scotland"] {
+  --color-primary: #005EB8;
+  --color-primary-content: #ffffff;
+  --color-secondary: #FFFFFF;
+  --color-secondary-content: #005EB8;
+  --color-accent: #003D7A;
+  --color-accent-content: #ffffff;
+  --color-neutral: #0D1B2A;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #F5F9FD;
+  --color-base-200: #EBF3FA;
+  --color-base-300: #DDE9F5;
+  --color-base-content: #1A1B1C;
+
+  --color-info: #005EB8;
+  --color-success: #36d399;
+  --color-warning: #fbbd23;
+  --color-error: #f87272;
+}

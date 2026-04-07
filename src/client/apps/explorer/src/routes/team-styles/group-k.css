@@ -1,0 +1,84 @@
+/* ── Group K: Portugal, Playoff IC 1, Uzbekistan, Colombia ── */
+
+/* Portugal */
+[data-theme="portugal"] {
+  --color-primary: #FF0000;
+  --color-primary-content: #ffffff;
+  --color-secondary: #006600;
+  --color-secondary-content: #ffffff;
+  --color-accent: #FFCC00;
+  --color-accent-content: #000000;
+  --color-neutral: #1E0A0A;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FFFAF5;
+  --color-base-200: #FFF3EB;
+  --color-base-300: #FFE6DD;
+  --color-base-content: #1C1B1A;
+
+  --color-info: #3abff8;
+  --color-success: #006600;
+  --color-warning: #FFCC00;
+  --color-error: #FF0000;
+}
+
+/* Playoff IC 1 */
+[data-theme="playoff-ic1"] {
+  --color-primary: #2D6A4F;
+  --color-primary-content: #ffffff;
+  --color-secondary: #CCCCCC;
+  --color-secondary-content: #1a1a1a;
+  --color-accent: #1B4332;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1a1a1a;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #f5f5f5;
+  --color-base-200: #eeeeee;
+  --color-base-300: #e0e0e0;
+  --color-base-content: #1a1a1a;
+}
+
+/* Uzbekistan */
+[data-theme="uzbekistan"] {
+  --color-primary: #0099B5;
+  --color-primary-content: #ffffff;
+  --color-secondary: #1EB53A;
+  --color-secondary-content: #ffffff;
+  --color-accent: #CE1126;
+  --color-accent-content: #ffffff;
+  --color-neutral: #0D1E28;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #F5FCFD;
+  --color-base-200: #EBF7FA;
+  --color-base-300: #DDF1F5;
+  --color-base-content: #1A1C1C;
+
+  --color-info: #0099B5;
+  --color-success: #1EB53A;
+  --color-warning: #fbbd23;
+  --color-error: #CE1126;
+}
+
+/* Colombia */
+[data-theme="colombia"] {
+  --color-primary: #FCD116;
+  --color-primary-content: #1A1400;
+  --color-secondary: #003893;
+  --color-secondary-content: #ffffff;
+  --color-accent: #CE1126;
+  --color-accent-content: #ffffff;
+  --color-neutral: #0D1528;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FFFEF5;
+  --color-base-200: #FFFDF0;
+  --color-base-300: #FFFCE5;
+  --color-base-content: #1C1C1A;
+
+  --color-info: #003893;
+  --color-success: #36d399;
+  --color-warning: #FCD116;
+  --color-error: #CE1126;
+}

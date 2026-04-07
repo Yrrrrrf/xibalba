@@ -1,0 +1,89 @@
+/* ── Group G: Belgium, Egypt, Iran, New Zealand ── */
+
+/* Belgium */
+[data-theme="belgium"] {
+  --color-primary: #EF3340;
+  --color-primary-content: #ffffff;
+  --color-secondary: #FDDA24;
+  --color-secondary-content: #1a1400;
+  --color-accent: #000000;
+  --color-accent-content: #FDDA24;
+  --color-neutral: #111111;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FFFAF5;
+  --color-base-200: #FFF3EB;
+  --color-base-300: #FFE6DD;
+  --color-base-content: #1C1B1A;
+
+  --color-info: #3abff8;
+  --color-success: #36d399;
+  --color-warning: #FDDA24;
+  --color-error: #EF3340;
+}
+
+/* Egypt */
+[data-theme="egypt"] {
+  --color-primary: #CE1126;
+  --color-primary-content: #ffffff;
+  --color-secondary: #C09300;
+  --color-secondary-content: #ffffff;
+  --color-accent: #000000;
+  --color-accent-content: #C09300;
+  --color-neutral: #1A0D0D;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FDFAF5;
+  --color-base-200: #F9F2EB;
+  --color-base-300: #F3E5DD;
+  --color-base-content: #1C1B1A;
+
+  --color-info: #3abff8;
+  --color-success: #36d399;
+  --color-warning: #C09300;
+  --color-error: #CE1126;
+}
+
+/* Iran */
+[data-theme="iran"] {
+  --color-primary: #239F40;
+  --color-primary-content: #ffffff;
+  --color-secondary: #DA0000;
+  --color-secondary-content: #ffffff;
+  --color-accent: #FFFFFF;
+  --color-accent-content: #239F40;
+  --color-neutral: #0D1E12;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #F6FDF7;
+  --color-base-200: #EEFAEF;
+  --color-base-300: #E2F5E5;
+  --color-base-content: #1A1C1A;
+
+  --color-info: #3abff8;
+  --color-success: #239F40;
+  --color-warning: #fbbd23;
+  --color-error: #DA0000;
+}
+
+/* New Zealand */
+[data-theme="new-zealand"] {
+  --color-primary: #00247D;
+  --color-primary-content: #ffffff;
+  --color-secondary: #CC142B;
+  --color-secondary-content: #ffffff;
+  --color-accent: #001A5E;
+  --color-accent-content: #ffffff;
+  --color-neutral: #0D1228;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #F5F7FD;
+  --color-base-200: #EBF0FA;
+  --color-base-300: #DDE5F5;
+  --color-base-content: #1A1B1C;
+
+  --color-info: #00247D;
+  --color-success: #36d399;
+  --color-warning: #fbbd23;
+  --color-error: #CC142B;
+}

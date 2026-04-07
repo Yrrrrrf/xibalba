@@ -1,0 +1,84 @@
+/* ── Group F: Netherlands, Japan, Playoff B, Tunisia ── */
+
+/* Netherlands */
+[data-theme="netherlands"] {
+  --color-primary: #FF6600;
+  --color-primary-content: #ffffff;
+  --color-secondary: #21468B;
+  --color-secondary-content: #ffffff;
+  --color-accent: #AE1C28;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1A0E05;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FFFAF5;
+  --color-base-200: #FFF3EB;
+  --color-base-300: #FFE6DD;
+  --color-base-content: #1C1B1A;
+
+  --color-info: #21468B;
+  --color-success: #36d399;
+  --color-warning: #FF6600;
+  --color-error: #AE1C28;
+}
+
+/* Japan */
+[data-theme="japan"] {
+  --color-primary: #BC002D;
+  --color-primary-content: #ffffff;
+  --color-secondary: #FFFFFF;
+  --color-secondary-content: #BC002D;
+  --color-accent: #002B5C;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1A0A10;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FFFBFC;
+  --color-base-200: #FFF5F7;
+  --color-base-300: #FFEBEF;
+  --color-base-content: #1C1A1A;
+
+  --color-info: #002B5C;
+  --color-success: #36d399;
+  --color-warning: #fbbd23;
+  --color-error: #BC002D;
+}
+
+/* UEFA Playoff B */
+[data-theme="playoff-b"] {
+  --color-primary: #003399;
+  --color-primary-content: #ffffff;
+  --color-secondary: #CCCCCC;
+  --color-secondary-content: #1a1a1a;
+  --color-accent: #333333;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1a1a1a;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #f5f5f5;
+  --color-base-200: #eeeeee;
+  --color-base-300: #e0e0e0;
+  --color-base-content: #1a1a1a;
+}
+
+/* Tunisia */
+[data-theme="tunisia"] {
+  --color-primary: #E70013;
+  --color-primary-content: #ffffff;
+  --color-secondary: #FFFFFF;
+  --color-secondary-content: #E70013;
+  --color-accent: #9B000D;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1E0A0A;
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #FFFAFA;
+  --color-base-200: #FFF2F2;
+  --color-base-300: #FFE5E5;
+  --color-base-content: #1C1A1A;
+
+  --color-info: #3abff8;
+  --color-success: #36d399;
+  --color-warning: #fbbd23;
+  --color-error: #E70013;
+}
