@@ -1,148 +1,48 @@
 {
-  description = "Xibalbá — Server (Rust API + WASM bridge)";
+  description = "Xibalbá · Server — DB & Infrastructure workspace";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    naersk = {
-      url = "github:nix-community/naersk";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # 1. Add rust-overlay to get customized toolchains (like WASM targets)
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      naersk,
-      rust-overlay,
+      flake-utils,
     }:
-    let
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-      forAllSystems = nixpkgs.lib.genAttrs systems;
-    in
-    {
-      devShells = forAllSystems (
-        system:
-        let
-          # 2. Apply the overlay to our pkgs
-          overlays = [ (import rust-overlay) ];
-          pkgs = import nixpkgs { inherit system overlays; };
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          name = "xibalba-server";
 
-          # 3. Define a custom Rust toolchain that INCLUDES the wasm32 target!
-          rustToolchain = pkgs.rust-bin.stable.latest.default.override {
-            targets = [ "wasm32-unknown-unknown" ];
-          };
-        in
-        {
-          default = pkgs.mkShell {
-            name = "xibalba-server";
+          packages = with pkgs; [
+            just # command runner
+            podman # container engine
+            podman-compose # container orchestration
+            curl # needed for db/scripts/init-db.sh
+            xh # needed for db/test/fixtures.sh
+          ];
 
-            buildInputs = with pkgs; [
-              openssl
-              rustToolchain # Replaces cargo, rustc, rustfmt, clippy
-              rust-analyzer
+          shellHook = ''
+            # Set colors for a nicer output
+            PURPLE=$(tput setaf 5)
+            CYAN=$(tput setaf 6)
+            RESET=$(tput sgr0)
 
-              just
-              wasm-bindgen-cli
-              deno
-              xh
-              docker
-              docker-compose
-              cargo-watch
-              bacon
-            ];
+            # Get clean versions
+            JUST_V=$(just --version | awk '{print $2}')
+            PODMAN_V=$(podman --version | awk '{print $3}')
 
-            nativeBuildInputs = with pkgs; [ pkg-config ];
-
-            env = {
-              OPENSSL_DIR = "${pkgs.openssl.dev}";
-              OPENSSL_LIB_DIR = "${pkgs.openssl.out}/lib";
-              RUST_LOG = "info,api=debug";
-              RUST_BACKTRACE = "1";
-            };
-
-            shellHook = ''
-              echo ""
-              echo "  ⚙️  Xibalbá · Server Dev Shell"
-              echo "  ─────────────────────────────────────────────────────"
-              echo "  Rust  : $(rustc --version)"
-              echo "  Cargo : $(cargo --version)"
-              echo "  just  : $(just --version)"
-              echo "  ─────────────────────────────────────────────────────"
-              echo "  Target 'wasm32-unknown-unknown' is natively injected by Nix!"
-              echo "  ─────────────────────────────────────────────────────"
-            '';
-          };
-        }
-      );
-
-      packages = forAllSystems (
-        system:
-        let
-          # Apply the overlay here too so naersk uses the WASM-enabled toolchain
-          overlays = [ (import rust-overlay) ];
-          pkgs = import nixpkgs { inherit system overlays; };
-
-          rustToolchain = pkgs.rust-bin.stable.latest.default.override {
-            targets = [ "wasm32-unknown-unknown" ];
-          };
-
-          # Tell naersk to use our custom toolchain
-          naerskLib = pkgs.callPackage naersk {
-            cargo = rustToolchain;
-            rustc = rustToolchain;
-          };
-
-          commonArgs = {
-            buildInputs = with pkgs; [ openssl ];
-            nativeBuildInputs = with pkgs; [ pkg-config ];
-            OPENSSL_DIR = "${pkgs.openssl.dev}";
-            OPENSSL_LIB_DIR = "${pkgs.openssl.out}/lib";
-          };
-        in
-        {
-          api = naerskLib.buildPackage {
-            src = ./engine;
-            inherit commonArgs;
-            pname = "xibalba-api";
-            cargoBuildOptions =
-              opts:
-              opts
-              ++ [
-                "-p"
-                "api"
-              ];
-          };
-
-          wasm = naerskLib.buildPackage {
-            src = ./engine;
-            # inherit commonArgs;
-            pname = "xibalba-wasm";
-            cargoBuildOptions =
-              opts:
-              opts
-              ++ [
-                "-p"
-                "wasm"
-                "--lib"
-                "--target"
-                "wasm32-unknown-unknown"
-              ];
-            # No OpenSSL — pure Rust only, as it should be to build the WASM package
-          };
-
-          default = self.packages.${system}.api;
-        }
-      );
-    };
+            # Use ''${} so Nix ignores it and lets bash evaluate the variables!
+            echo "🦇 ''${PURPLE}Xibalbá Server ''${RESET}[✅ ''${CYAN}v''${JUST_V}''${RESET} | 📦 ''${CYAN}v''${PODMAN_V}''${RESET}]"
+          '';
+        };
+      }
+    );
 }
