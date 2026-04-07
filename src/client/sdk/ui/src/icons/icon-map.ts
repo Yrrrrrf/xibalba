@@ -118,4 +118,5 @@ export const NAV_ICONS = {
   "/dashboard": LayoutDashboard,
   "/menu": Utensils,
   "/profile": Store,
+  "/admin": Shield,
 } as const;

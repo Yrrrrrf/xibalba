@@ -3,6 +3,7 @@
   import { Utensils, DollarSign, Tag, FileText, Image, Plus } from 'lucide-svelte';
   import type { DishFormData } from "@sdk/core";
   import { DISH_CATEGORIES } from "@sdk/core";
+  import { FormInput, FormSelect, SubmitButton } from "../primitives/mod.ts";
   import * as m from "../../../src/i18n/paraglide/messages.js";
 
   interface Props {
@@ -45,122 +46,69 @@
       onsubmit?.({ ...form, price: Number(form.price) });
     }
   }
+
+  const categoryOptions = DISH_CATEGORIES.map(c => ({
+    value: c.key,
+    label: c.label
+  }));
 </script>
 
 <form onsubmit={handleSubmit} class="flex flex-col gap-4">
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     <!-- Nombre -->
-    <div class="form-control">
-      <label class="label" for="prod-nombre">
-        <span class="label-text font-semibold flex items-center gap-1.5">
-          <Utensils size={14} class="text-primary" />
-          {m.food_dish()}
-        </span>
-      </label>
-      <input
-        id="prod-nombre"
-        type="text"
+    <div>
+      <FormInput
+        label={m.food_dish()}
         placeholder="ej. Tacos al Pastor x3"
-        class="input input-bordered bg-base-200/50 text-base-content placeholder:text-base-content/40 focus:border-primary/50 {errors.name
-          ? 'border-error'
-          : ''}"
         bind:value={form.name}
       />
       {#if errors.name}
-        <div class="label">
-          <span class="label-text-alt text-error">{errors.name}</span>
-        </div>
+        <div class="label pt-0"><span class="label-text-alt text-error">{errors.name}</span></div>
       {/if}
     </div>
 
     <!-- Precio -->
-    <div class="form-control">
-      <label class="label" for="prod-precio">
-        <span class="label-text font-semibold flex items-center gap-1.5">
-          <DollarSign size={14} class="text-success" />
-          {m.food_price()} (USD)
-        </span>
-      </label>
-      <input
-        id="prod-precio"
+    <div>
+      <FormInput
         type="number"
+        label={`${m.food_price()} (USD)`}
         placeholder="ej. 8.50"
-        step="0.01"
-        min="0"
-        class="input input-bordered bg-base-200/50 text-base-content placeholder:text-base-content/40 focus:border-primary/50 {errors.price
-          ? 'border-error'
-          : ''}"
         bind:value={form.price}
       />
       {#if errors.price}
-        <div class="label">
-          <span class="label-text-alt text-error">{errors.price}</span>
-        </div>
+        <div class="label pt-0"><span class="label-text-alt text-error">{errors.price}</span></div>
       {/if}
     </div>
   </div>
 
   <!-- Categoría -->
-  <div class="form-control">
-    <label class="label" for="prod-cat">
-      <span class="label-text font-semibold flex items-center gap-1.5">
-        <Tag size={14} class="text-info" />
-        {m.food_category()}
-      </span>
-    </label>
-    <select
-      id="prod-cat"
-      class="select select-bordered bg-base-200/50 text-base-content focus:border-primary/50"
-      bind:value={form.category}
-    >
-      {#each DISH_CATEGORIES as cat}
-        <option value={cat.key} class="bg-base-100 text-base-content"
-          >{cat.label}</option
-        >
-      {/each}
-    </select>
-  </div>
+  <FormSelect
+    label={m.food_category()}
+    options={categoryOptions}
+    bind:value={form.category}
+    placeholder="Selecciona Categoría"
+  />
 
   <!-- Descripción -->
-  <div class="form-control">
-    <label class="label" for="prod-desc">
-      <span class="label-text font-semibold flex items-center gap-1.5">
-        <FileText size={14} class="text-base-content/50" />
-        {m.biz_description()}
-      </span>
-    </label>
-    <textarea
-      id="prod-desc"
-      rows="3"
+  <div>
+    <FormInput
+      type="textarea"
+      label={m.biz_description()}
       placeholder="Describe tu platillo, ingredientes especiales..."
-      class="textarea textarea-bordered bg-base-200/50 text-base-content placeholder:text-base-content/40 focus:border-primary/50 {errors.description
-        ? 'border-error'
-        : ''}"
       bind:value={form.description}
-    ></textarea>
+    />
     {#if errors.description}
-      <div class="label">
-        <span class="label-text-alt text-error">{errors.description}</span>
-      </div>
+      <div class="label pt-0"><span class="label-text-alt text-error">{errors.description}</span></div>
     {/if}
   </div>
 
   <!-- URL Imagen -->
-  <div class="form-control">
-    <label class="label" for="prod-img">
-      <span class="label-text font-semibold flex items-center gap-1.5">
-        <Image size={14} class="text-base-content/50" />
-        {m.form_image_label()}
-      </span>
-    </label>
-    <input
-      id="prod-img"
-      type="url"
-      placeholder="https://..."
-      class="input input-bordered bg-base-200/50 text-base-content placeholder:text-base-content/40 focus:border-primary/50 input-sm"
-      bind:value={form.image_url}
-    />
-  </div>
+  <FormInput
+    type="url"
+    label={m.form_image_label()}
+    placeholder="https://..."
+    bind:value={form.image_url}
+  />
 
   <!-- Disponible -->
   <div class="form-control">
@@ -181,8 +129,12 @@
         >{m.form_cancel()}</button
       >
     {/if}
-    <button type="submit" class="btn btn-primary gap-2">
-      <Plus size={18} /> {m.form_submit()}
-    </button>
+    <div class="w-32">
+      <SubmitButton variant="primary">
+        <div class="flex items-center gap-2">
+          <Plus size={18} /> {m.form_submit()}
+        </div>
+      </SubmitButton>
+    </div>
   </div>
 </form>

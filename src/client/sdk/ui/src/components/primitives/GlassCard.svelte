@@ -69,24 +69,40 @@
   {onclick}
   style="transform-style: preserve-3d; {style}"
   class="group relative flex flex-col
-         glass backdrop-blur-2xl bg-base-100/10 hover:bg-base-100/20 transition-all duration-500
-         border border-white/20 dark:border-white/10
-         shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] hover:shadow-2xl hover:shadow-primary/30
+         glass backdrop-blur-3xl bg-base-100/10 hover:bg-base-100/20 transition-all duration-700
+         border border-white/10 dark:border-white/5
+         shadow-[0_8px_40px_-12px_rgba(0,0,0,0.5)] hover:shadow-2xl hover:shadow-primary/20
          rounded-3xl overflow-hidden will-change-transform
          {onclick ? 'cursor-pointer' : ''}
          {className}"
 >
+  <!-- PREMIUM GLASS REFLEX (Reflejo diagonal estilo Dash) -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl z-0">
+    <!-- Main subtle diagonal reflex -->
+    <div class="absolute inset-0 bg-gradient-to-br from-white/15 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-1000"></div>
+    
+    <!-- Sharp moving shimmer/reflex line -->
+    <div class="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-1000
+                bg-[linear-gradient(110deg,transparent_35%,rgba(255,255,255,0.6)_50%,transparent_65%)]
+                bg-[length:200%_100%] animate-[shimmer_12s_infinite]"></div>
+    
+    <!-- Outer rim light -->
+    <div class="absolute inset-0 border border-white/5 rounded-3xl pointer-events-none"></div>
+  </div>
+
   {#if accent}
     <div
-      class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r {accent} opacity-80 rounded-t-3xl"
+      class="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r {accent} opacity-100 rounded-t-3xl z-20"
     ></div>
   {/if}
 
-  {@render children()}
+  <div class="relative z-10 h-full flex flex-col">
+    {@render children()}
+  </div>
 
   <!-- Bottom shimmer glow on hover -->
   <div
-    class="absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent
-              opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+    class="absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent
+              opacity-10 group-hover:opacity-100 transition-opacity duration-700 z-20"
   ></div>
 </div>

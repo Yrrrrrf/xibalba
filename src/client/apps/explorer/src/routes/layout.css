@@ -44,4 +44,204 @@
   --radius-selector: 1rem;
   --radius-field: 0.5rem;
   --radius-box: 1rem;
+
+  /* Glassmorphism custom variables */
+  --glass-blur: 40px;
+  --glass-opacity: 5%;
+  --glass-reflex-opacity: 15%;
+  --glass-reflex-degree: 120deg;
+}
+
+/* 1. Argentina (La Albiceleste) - Celeste y Blanco Premium */
+@plugin "daisyui/theme" {
+  name: "argentina";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(14% 0.03 200); /* Atmósfera celeste nocturna */
+  --color-base-200: oklch(18% 0.04 200);
+  --color-base-300: oklch(10% 0.04 200);
+  --color-base-content: oklch(99% 0.01 200); /* Contraste máximo */
+  --color-primary: #74ACDF;
+  --color-primary-content: #000000;
+  --color-secondary: #ffffff;
+  --color-secondary-content: #74ACDF;
+  --color-accent: #FFB81C;
+  --color-accent-content: #000000;
+  --radius-selector: 1.5rem;
+}
+
+/* 2. Brasil (La Verdeamarela) - Brillo Amazónico */
+@plugin "daisyui/theme" {
+  name: "brasil";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(14% 0.06 145); /* Atmósfera verde selva profunda */
+  --color-base-200: oklch(18% 0.08 145);
+  --color-base-300: oklch(10% 0.08 145);
+  --color-base-content: oklch(99% 0.01 145);
+  --color-primary: #FFDC02;
+  --color-primary-content: #002776;
+  --color-secondary: #009B3A;
+  --color-secondary-content: #ffffff;
+  --color-accent: #002776;
+  --color-accent-content: #ffffff;
+  --radius-selector: 1.5rem;
+}
+
+/* 3. México (El Tri) - Pasión Esmeralda */
+@plugin "daisyui/theme" {
+  name: "mexico";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(14% 0.05 160); /* Atmósfera verde bandera oscura */
+  --color-base-200: oklch(18% 0.06 160);
+  --color-base-300: oklch(10% 0.06 160);
+  --color-base-content: oklch(99% 0.01 160);
+  --color-primary: #006847;
+  --color-primary-content: #ffffff;
+  --color-secondary: #CE1126;
+  --color-secondary-content: #ffffff;
+  --color-accent: #ffffff;
+  --color-accent-content: #006847;
+  --radius-selector: 1.5rem;
+}
+
+/* 4. USA (The Stars and Stripes) - Deep Liberty Blue */
+@plugin "daisyui/theme" {
+  name: "usa";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(14% 0.06 265); /* Atmósfera azul marino intenso */
+  --color-base-200: oklch(18% 0.08 265);
+  --color-base-300: oklch(10% 0.08 265);
+  --color-base-content: oklch(99% 0.01 265);
+  --color-primary: #BF0A30; /* El rojo resalta más como primario aquí */
+  --color-primary-content: #ffffff;
+  --color-secondary: #002868;
+  --color-secondary-content: #ffffff;
+  --color-accent: #ffffff;
+  --color-accent-content: #002868;
+  --radius-selector: 1.5rem;
+}
+
+/* 5. Francia (Les Bleus) - Royal Majesty */
+@plugin "daisyui/theme" {
+  name: "francia";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(14% 0.06 275); /* Atmósfera azul real profunda */
+  --color-base-200: oklch(18% 0.08 275);
+  --color-base-content: oklch(99% 0.01 275);
+  --color-primary: #002654;
+  --color-primary-content: #ffffff;
+  --color-secondary: #ED2939;
+  --color-secondary-content: #ffffff;
+  --color-accent: #C5A059;
+  --color-accent-content: #000000;
+  --radius-selector: 1.5rem;
+}
+
+/* 6. Inglaterra (Three Lions) - St. George's Knight */
+@plugin "daisyui/theme" {
+  name: "inglaterra";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(14% 0.02 20); /* Neutral calido muy oscuro con tinte rojizo */
+  --color-base-200: oklch(18% 0.03 20);
+  --color-base-content: oklch(99% 0.01 20);
+  --color-primary: #ffffff;
+  --color-primary-content: #00247D;
+  --color-secondary: #CE1124;
+  --color-secondary-content: #ffffff;
+  --color-accent: #00247D;
+  --color-accent-content: #ffffff;
+  --radius-selector: 1.5rem;
+}
+
+/* 7. España (La Roja) - Fuego y Tierra Iberica */
+@plugin "daisyui/theme" {
+  name: "espana";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(14% 0.08 28); /* Tinte Tierra/Marojo Cálido */
+  --color-base-200: oklch(18% 0.1 28);
+  --color-base-content: oklch(99% 0.01 28);
+  --color-primary: #AA151B; /* Rojo Bandera */
+  --color-primary-content: #ffffff;
+  --color-secondary: #F1BF00; /* Oro Español */
+  --color-secondary-content: #000000;
+  --color-accent: #FFD700; /* Brillo extra en oro */
+  --color-accent-content: #000000;
+  --radius-selector: 1.5rem;
+}
+
+/* 8. Alemania (Die Mannschaft) - Precise Darkness */
+@plugin "daisyui/theme" {
+  name: "alemania";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: #000000;
+  --color-base-200: #121212;
+  --color-base-content: #ffffff;
+  --color-primary: #ffffff;
+  --color-primary-content: #000000;
+  --color-secondary: #FFCC00;
+  --color-secondary-content: #000000;
+  --color-accent: #DD0000;
+  --color-accent-content: #ffffff;
+  --radius-selector: 1.5rem;
+}
+
+/* 9. Portugal (A Seleção) - Floresta e Conquista */
+@plugin "daisyui/theme" {
+  name: "portugal";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(14% 0.08 145); /* CAMBIO: Fondo Verde Bosque (Alma de la bandera) */
+  --color-base-200: oklch(18% 0.09 145);
+  --color-base-content: oklch(99% 0.01 145);
+  --color-primary: #046A38; /* Verde como primario para diferenciarlo */
+  --color-primary-content: #ffffff;
+  --color-secondary: #E42518; /* Rojo como secundario */
+  --color-secondary-content: #ffffff;
+  --color-accent: #F2A900; /* Oro Quinas */
+  --color-accent-content: #000000;
+  --radius-selector: 1.5rem;
+}
+
+/* 10. Japón (Samurai Blue) - Minimalismo de Ultramar */
+@plugin "daisyui/theme" {
+  name: "japon";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(14% 0.05 255); /* CAMBIO: Fondo Azul Samurai (Indigo Profundo) */
+  --color-base-200: oklch(18% 0.06 255);
+  --color-base-content: oklch(99% 0.01 255);
+  --color-primary: #000555; /* Azul Japón */
+  --color-primary-content: #ffffff;
+  --color-secondary: #ED2939; /* Rojo Sol Naciente */
+  --color-secondary-content: #ffffff;
+  --color-accent: #ffffff; /* Blanco Puro */
+  --color-accent-content: #000555;
+  --radius-selector: 1.5rem;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.1); }
 }
