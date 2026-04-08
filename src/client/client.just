@@ -61,6 +61,12 @@ test:
     bun test
     @echo "✓ Client tests passed"
 
+[doc('Verify PWA installability flags')]
+[group('Dev')]
+pwa-check:
+    sh ./scripts/pwa-check.sh
+    @echo "✓ PWA installability checks completed"
+
 # ── Deploy (Tauri) ─────────────────────────────────────
 
 [doc('Build the Tauri app for production')]

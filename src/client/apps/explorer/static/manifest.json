@@ -1,13 +1,22 @@
 {
+  "id": "/",
   "name": "Xibalbá — Descubre lo local",
   "short_name": "Xibalbá",
   "description": "Conecta turistas con negocios locales",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "background_color": "#0d1b2a",
   "theme_color": "#e63946",
   "orientation": "portrait",
+  "categories": ["food", "travel", "lifestyle"],
   "icons": [
+    {
+      "src": "/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
     {
       "src": "/pwa-192x192.png",
       "sizes": "192x192",
@@ -17,6 +26,40 @@
       "src": "/pwa-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/mobile-discover.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Descubre comida local cerca de ti"
+    },
+    {
+      "src": "/screenshots/mobile-menu.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Explora menús de restaurantes"
+    },
+    {
+      "src": "/screenshots/desktop-discover.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Discover local food near you"
     }
   ]
 }
