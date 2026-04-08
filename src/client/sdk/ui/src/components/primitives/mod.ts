@@ -5,3 +5,4 @@ export { default as StatusBadge } from "./StatusBadge.svelte";
 export { default as PriceTag } from "./PriceTag.svelte";
 export { default as ImageWithFallback } from "./ImageWithFallback.svelte";
 export { default as EmptyState } from "./EmptyState.svelte";
+export { default as QRCode } from "./QRCode.svelte";

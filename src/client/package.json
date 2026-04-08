@@ -26,6 +26,7 @@
     "leaflet": "*",
     "lucide-static": "*",
     "lucide-svelte": "1.0.1",
+    "qr-code-styling": "^1.9.2",
     "rune-lab": "*",
     "surrealdb": "",
     "svelte": "*",
