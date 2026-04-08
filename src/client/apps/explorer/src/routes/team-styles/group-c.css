@@ -2,87 +2,87 @@
 
 /* Brazil */
 [data-theme="brazil"] {
-  --color-primary: #FEDD00;
-  --color-primary-content: #1A1600;
+  --color-primary: #fedd00;
+  --color-primary-content: #1a1600;
   --color-secondary: #009739;
   --color-secondary-content: #ffffff;
   --color-accent: #002776;
   --color-accent-content: #ffffff;
-  --color-neutral: #0D2818;
+  --color-neutral: #0d2818;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FFFEF5;
-  --color-base-200: #FFFDF0;
-  --color-base-300: #FFFCE5;
-  --color-base-content: #1C1C1A;
+  --color-base-100: #fffef5;
+  --color-base-200: #fffdf0;
+  --color-base-300: #fffce5;
+  --color-base-content: #1c1c1a;
 
   --color-info: #002776;
   --color-success: #009739;
-  --color-warning: #FEDD00;
+  --color-warning: #fedd00;
   --color-error: #f87272;
 }
 
 /* Morocco */
 [data-theme="morocco"] {
-  --color-primary: #C1272D;
+  --color-primary: #c1272d;
   --color-primary-content: #ffffff;
   --color-secondary: #006233;
   --color-secondary-content: #ffffff;
-  --color-accent: #8B1A1F;
+  --color-accent: #8b1a1f;
   --color-accent-content: #ffffff;
-  --color-neutral: #1A0F0F;
+  --color-neutral: #1a0f0f;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FDF7F7;
-  --color-base-200: #F9EFEF;
-  --color-base-300: #F3E2E2;
-  --color-base-content: #1C1A1A;
+  --color-base-100: #fdf7f7;
+  --color-base-200: #f9efef;
+  --color-base-300: #f3e2e2;
+  --color-base-content: #1c1a1a;
 
   --color-info: #3abff8;
   --color-success: #006233;
   --color-warning: #fbbd23;
-  --color-error: #C1272D;
+  --color-error: #c1272d;
 }
 
 /* Haiti */
 [data-theme="haiti"] {
-  --color-primary: #00209F;
+  --color-primary: #00209f;
   --color-primary-content: #ffffff;
-  --color-secondary: #D21034;
+  --color-secondary: #d21034;
   --color-secondary-content: #ffffff;
-  --color-accent: #001A7A;
+  --color-accent: #001a7a;
   --color-accent-content: #ffffff;
-  --color-neutral: #0D1226;
+  --color-neutral: #0d1226;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F5F7FD;
-  --color-base-200: #EBF0FA;
-  --color-base-300: #DDE5F5;
-  --color-base-content: #1A1B1C;
+  --color-base-100: #f5f7fd;
+  --color-base-200: #ebf0fa;
+  --color-base-300: #dde5f5;
+  --color-base-content: #1a1b1c;
 
-  --color-info: #00209F;
+  --color-info: #00209f;
   --color-success: #36d399;
   --color-warning: #fbbd23;
-  --color-error: #D21034;
+  --color-error: #d21034;
 }
 
 /* Scotland */
 [data-theme="scotland"] {
-  --color-primary: #005EB8;
+  --color-primary: #005eb8;
   --color-primary-content: #ffffff;
-  --color-secondary: #FFFFFF;
-  --color-secondary-content: #005EB8;
-  --color-accent: #003D7A;
+  --color-secondary: #ffffff;
+  --color-secondary-content: #005eb8;
+  --color-accent: #003d7a;
   --color-accent-content: #ffffff;
-  --color-neutral: #0D1B2A;
+  --color-neutral: #0d1b2a;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F5F9FD;
-  --color-base-200: #EBF3FA;
-  --color-base-300: #DDE9F5;
-  --color-base-content: #1A1B1C;
+  --color-base-100: #f5f9fd;
+  --color-base-200: #ebf3fa;
+  --color-base-300: #dde9f5;
+  --color-base-content: #1a1b1c;
 
-  --color-info: #005EB8;
+  --color-info: #005eb8;
   --color-success: #36d399;
   --color-warning: #fbbd23;
   --color-error: #f87272;

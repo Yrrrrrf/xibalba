@@ -2,88 +2,88 @@
 
 /* Belgium */
 [data-theme="belgium"] {
-  --color-primary: #EF3340;
+  --color-primary: #ef3340;
   --color-primary-content: #ffffff;
-  --color-secondary: #FDDA24;
+  --color-secondary: #fdda24;
   --color-secondary-content: #1a1400;
   --color-accent: #000000;
-  --color-accent-content: #FDDA24;
+  --color-accent-content: #fdda24;
   --color-neutral: #111111;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FFFAF5;
-  --color-base-200: #FFF3EB;
-  --color-base-300: #FFE6DD;
-  --color-base-content: #1C1B1A;
+  --color-base-100: #fffaf5;
+  --color-base-200: #fff3eb;
+  --color-base-300: #ffe6dd;
+  --color-base-content: #1c1b1a;
 
   --color-info: #3abff8;
   --color-success: #36d399;
-  --color-warning: #FDDA24;
-  --color-error: #EF3340;
+  --color-warning: #fdda24;
+  --color-error: #ef3340;
 }
 
 /* Egypt */
 [data-theme="egypt"] {
-  --color-primary: #CE1126;
+  --color-primary: #ce1126;
   --color-primary-content: #ffffff;
-  --color-secondary: #C09300;
+  --color-secondary: #c09300;
   --color-secondary-content: #ffffff;
   --color-accent: #000000;
-  --color-accent-content: #C09300;
-  --color-neutral: #1A0D0D;
+  --color-accent-content: #c09300;
+  --color-neutral: #1a0d0d;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FDFAF5;
-  --color-base-200: #F9F2EB;
-  --color-base-300: #F3E5DD;
-  --color-base-content: #1C1B1A;
+  --color-base-100: #fdfaf5;
+  --color-base-200: #f9f2eb;
+  --color-base-300: #f3e5dd;
+  --color-base-content: #1c1b1a;
 
   --color-info: #3abff8;
   --color-success: #36d399;
-  --color-warning: #C09300;
-  --color-error: #CE1126;
+  --color-warning: #c09300;
+  --color-error: #ce1126;
 }
 
 /* Iran */
 [data-theme="iran"] {
-  --color-primary: #239F40;
+  --color-primary: #239f40;
   --color-primary-content: #ffffff;
-  --color-secondary: #DA0000;
+  --color-secondary: #da0000;
   --color-secondary-content: #ffffff;
-  --color-accent: #FFFFFF;
-  --color-accent-content: #239F40;
-  --color-neutral: #0D1E12;
+  --color-accent: #ffffff;
+  --color-accent-content: #239f40;
+  --color-neutral: #0d1e12;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F6FDF7;
-  --color-base-200: #EEFAEF;
-  --color-base-300: #E2F5E5;
-  --color-base-content: #1A1C1A;
+  --color-base-100: #f6fdf7;
+  --color-base-200: #eefaef;
+  --color-base-300: #e2f5e5;
+  --color-base-content: #1a1c1a;
 
   --color-info: #3abff8;
-  --color-success: #239F40;
+  --color-success: #239f40;
   --color-warning: #fbbd23;
-  --color-error: #DA0000;
+  --color-error: #da0000;
 }
 
 /* New Zealand */
 [data-theme="new-zealand"] {
-  --color-primary: #00247D;
+  --color-primary: #00247d;
   --color-primary-content: #ffffff;
-  --color-secondary: #CC142B;
+  --color-secondary: #cc142b;
   --color-secondary-content: #ffffff;
-  --color-accent: #001A5E;
+  --color-accent: #001a5e;
   --color-accent-content: #ffffff;
-  --color-neutral: #0D1228;
+  --color-neutral: #0d1228;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F5F7FD;
-  --color-base-200: #EBF0FA;
-  --color-base-300: #DDE5F5;
-  --color-base-content: #1A1B1C;
+  --color-base-100: #f5f7fd;
+  --color-base-200: #ebf0fa;
+  --color-base-300: #dde5f5;
+  --color-base-content: #1a1b1c;
 
-  --color-info: #00247D;
+  --color-info: #00247d;
   --color-success: #36d399;
   --color-warning: #fbbd23;
-  --color-error: #CC142B;
+  --color-error: #cc142b;
 }

@@ -2,88 +2,88 @@
 
 /* Spain */
 [data-theme="spain"] {
-  --color-primary: #AA151B;
+  --color-primary: #aa151b;
   --color-primary-content: #ffffff;
-  --color-secondary: #F1BF00;
-  --color-secondary-content: #1A1400;
-  --color-accent: #7A0F14;
+  --color-secondary: #f1bf00;
+  --color-secondary-content: #1a1400;
+  --color-accent: #7a0f14;
   --color-accent-content: #ffffff;
-  --color-neutral: #1E0C0A;
+  --color-neutral: #1e0c0a;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FFFCF5;
-  --color-base-200: #FFF8EB;
-  --color-base-300: #FFF1DD;
-  --color-base-content: #1C1B1A;
+  --color-base-100: #fffcf5;
+  --color-base-200: #fff8eb;
+  --color-base-300: #fff1dd;
+  --color-base-content: #1c1b1a;
 
   --color-info: #3abff8;
   --color-success: #36d399;
-  --color-warning: #F1BF00;
-  --color-error: #AA151B;
+  --color-warning: #f1bf00;
+  --color-error: #aa151b;
 }
 
 /* Cape Verde */
 [data-theme="cape-verde"] {
   --color-primary: #003893;
   --color-primary-content: #ffffff;
-  --color-secondary: #CF2027;
+  --color-secondary: #cf2027;
   --color-secondary-content: #ffffff;
-  --color-accent: #F7D116;
-  --color-accent-content: #1A1600;
-  --color-neutral: #0D1528;
+  --color-accent: #f7d116;
+  --color-accent-content: #1a1600;
+  --color-neutral: #0d1528;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F5F8FD;
-  --color-base-200: #EBF2FA;
-  --color-base-300: #DDE8F5;
-  --color-base-content: #1A1B1C;
+  --color-base-100: #f5f8fd;
+  --color-base-200: #ebf2fa;
+  --color-base-300: #dde8f5;
+  --color-base-content: #1a1b1c;
 
   --color-info: #003893;
   --color-success: #36d399;
-  --color-warning: #F7D116;
-  --color-error: #CF2027;
+  --color-warning: #f7d116;
+  --color-error: #cf2027;
 }
 
 /* Saudi Arabia */
 [data-theme="saudi-arabia"] {
-  --color-primary: #006C35;
+  --color-primary: #006c35;
   --color-primary-content: #ffffff;
-  --color-secondary: #FFFFFF;
-  --color-secondary-content: #006C35;
-  --color-accent: #004D26;
+  --color-secondary: #ffffff;
+  --color-secondary-content: #006c35;
+  --color-accent: #004d26;
   --color-accent-content: #ffffff;
-  --color-neutral: #0D1E12;
+  --color-neutral: #0d1e12;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F5FBF6;
-  --color-base-200: #EBF7EE;
-  --color-base-300: #DDF1E2;
-  --color-base-content: #1A1C1A;
+  --color-base-100: #f5fbf6;
+  --color-base-200: #ebf7ee;
+  --color-base-300: #ddf1e2;
+  --color-base-content: #1a1c1a;
 
   --color-info: #3abff8;
-  --color-success: #006C35;
+  --color-success: #006c35;
   --color-warning: #fbbd23;
   --color-error: #f87272;
 }
 
 /* Uruguay */
 [data-theme="uruguay"] {
-  --color-primary: #0038A8;
+  --color-primary: #0038a8;
   --color-primary-content: #ffffff;
-  --color-secondary: #FCD116;
-  --color-secondary-content: #1A1600;
-  --color-accent: #5CBFEC;
-  --color-accent-content: #0A1B28;
-  --color-neutral: #0D1528;
+  --color-secondary: #fcd116;
+  --color-secondary-content: #1a1600;
+  --color-accent: #5cbfec;
+  --color-accent-content: #0a1b28;
+  --color-neutral: #0d1528;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F5F8FD;
-  --color-base-200: #EBF2FA;
-  --color-base-300: #DDE8F5;
-  --color-base-content: #1A1B1C;
+  --color-base-100: #f5f8fd;
+  --color-base-200: #ebf2fa;
+  --color-base-300: #dde8f5;
+  --color-base-content: #1a1b1c;
 
-  --color-info: #0038A8;
+  --color-info: #0038a8;
   --color-success: #36d399;
-  --color-warning: #FCD116;
+  --color-warning: #fcd116;
   --color-error: #f87272;
 }

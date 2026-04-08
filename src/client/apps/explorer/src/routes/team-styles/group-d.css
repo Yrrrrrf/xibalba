@@ -2,75 +2,75 @@
 
 /* USA */
 [data-theme="usa"] {
-  --color-primary: #0A3161;
+  --color-primary: #0a3161;
   --color-primary-content: #ffffff;
-  --color-secondary: #B31942;
+  --color-secondary: #b31942;
   --color-secondary-content: #ffffff;
-  --color-accent: #FFFFFF;
-  --color-accent-content: #0A3161;
-  --color-neutral: #0A1628;
+  --color-accent: #ffffff;
+  --color-accent-content: #0a3161;
+  --color-neutral: #0a1628;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F8FAFD;
-  --color-base-200: #F1F5FA;
-  --color-base-300: #E6EDF5;
-  --color-base-content: #1A1B1C;
+  --color-base-100: #f8fafd;
+  --color-base-200: #f1f5fa;
+  --color-base-300: #e6edf5;
+  --color-base-content: #1a1b1c;
 
-  --color-info: #0A3161;
+  --color-info: #0a3161;
   --color-success: #36d399;
   --color-warning: #fbbd23;
-  --color-error: #B31942;
+  --color-error: #b31942;
 }
 
 /* Paraguay */
 [data-theme="paraguay"] {
-  --color-primary: #D52B1E;
+  --color-primary: #d52b1e;
   --color-primary-content: #ffffff;
-  --color-secondary: #0038A8;
+  --color-secondary: #0038a8;
   --color-secondary-content: #ffffff;
-  --color-accent: #8B1C14;
+  --color-accent: #8b1c14;
   --color-accent-content: #ffffff;
-  --color-neutral: #1A1028;
+  --color-neutral: #1a1028;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FDFAFC;
-  --color-base-200: #FAF5F8;
-  --color-base-300: #F5EBF2;
-  --color-base-content: #1C1A1B;
+  --color-base-100: #fdfafc;
+  --color-base-200: #faf5f8;
+  --color-base-300: #f5ebf2;
+  --color-base-content: #1c1a1b;
 
-  --color-info: #0038A8;
+  --color-info: #0038a8;
   --color-success: #36d399;
   --color-warning: #fbbd23;
-  --color-error: #D52B1E;
+  --color-error: #d52b1e;
 }
 
 /* Australia */
 [data-theme="australia"] {
-  --color-primary: #00008B;
+  --color-primary: #00008b;
   --color-primary-content: #ffffff;
-  --color-secondary: #FFCD00;
+  --color-secondary: #ffcd00;
   --color-secondary-content: #1a1400;
-  --color-accent: #FF0000;
+  --color-accent: #ff0000;
   --color-accent-content: #ffffff;
-  --color-neutral: #0D0D2B;
+  --color-neutral: #0d0d2b;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F5F5FD;
-  --color-base-200: #EBEBFA;
-  --color-base-300: #DDDDF5;
-  --color-base-content: #1A1A1C;
+  --color-base-100: #f5f5fd;
+  --color-base-200: #ebebfa;
+  --color-base-300: #ddddf5;
+  --color-base-content: #1a1a1c;
 
-  --color-info: #00008B;
+  --color-info: #00008b;
   --color-success: #36d399;
-  --color-warning: #FFCD00;
-  --color-error: #FF0000;
+  --color-warning: #ffcd00;
+  --color-error: #ff0000;
 }
 
 /* UEFA Playoff C */
 [data-theme="playoff-c"] {
   --color-primary: #003399;
   --color-primary-content: #ffffff;
-  --color-secondary: #CCCCCC;
+  --color-secondary: #cccccc;
   --color-secondary-content: #1a1a1a;
   --color-accent: #333333;
   --color-accent-content: #ffffff;

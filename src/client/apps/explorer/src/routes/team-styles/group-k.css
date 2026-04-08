@@ -2,33 +2,33 @@
 
 /* Portugal */
 [data-theme="portugal"] {
-  --color-primary: #FF0000;
+  --color-primary: #ff0000;
   --color-primary-content: #ffffff;
   --color-secondary: #006600;
   --color-secondary-content: #ffffff;
-  --color-accent: #FFCC00;
+  --color-accent: #ffcc00;
   --color-accent-content: #000000;
-  --color-neutral: #1E0A0A;
+  --color-neutral: #1e0a0a;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FFFAF5;
-  --color-base-200: #FFF3EB;
-  --color-base-300: #FFE6DD;
-  --color-base-content: #1C1B1A;
+  --color-base-100: #fffaf5;
+  --color-base-200: #fff3eb;
+  --color-base-300: #ffe6dd;
+  --color-base-content: #1c1b1a;
 
   --color-info: #3abff8;
   --color-success: #006600;
-  --color-warning: #FFCC00;
-  --color-error: #FF0000;
+  --color-warning: #ffcc00;
+  --color-error: #ff0000;
 }
 
 /* Playoff IC 1 */
 [data-theme="playoff-ic1"] {
-  --color-primary: #2D6A4F;
+  --color-primary: #2d6a4f;
   --color-primary-content: #ffffff;
-  --color-secondary: #CCCCCC;
+  --color-secondary: #cccccc;
   --color-secondary-content: #1a1a1a;
-  --color-accent: #1B4332;
+  --color-accent: #1b4332;
   --color-accent-content: #ffffff;
   --color-neutral: #1a1a1a;
   --color-neutral-content: #ffffff;
@@ -41,44 +41,44 @@
 
 /* Uzbekistan */
 [data-theme="uzbekistan"] {
-  --color-primary: #0099B5;
+  --color-primary: #0099b5;
   --color-primary-content: #ffffff;
-  --color-secondary: #1EB53A;
+  --color-secondary: #1eb53a;
   --color-secondary-content: #ffffff;
-  --color-accent: #CE1126;
+  --color-accent: #ce1126;
   --color-accent-content: #ffffff;
-  --color-neutral: #0D1E28;
+  --color-neutral: #0d1e28;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F5FCFD;
-  --color-base-200: #EBF7FA;
-  --color-base-300: #DDF1F5;
-  --color-base-content: #1A1C1C;
+  --color-base-100: #f5fcfd;
+  --color-base-200: #ebf7fa;
+  --color-base-300: #ddf1f5;
+  --color-base-content: #1a1c1c;
 
-  --color-info: #0099B5;
-  --color-success: #1EB53A;
+  --color-info: #0099b5;
+  --color-success: #1eb53a;
   --color-warning: #fbbd23;
-  --color-error: #CE1126;
+  --color-error: #ce1126;
 }
 
 /* Colombia */
 [data-theme="colombia"] {
-  --color-primary: #FCD116;
-  --color-primary-content: #1A1400;
+  --color-primary: #fcd116;
+  --color-primary-content: #1a1400;
   --color-secondary: #003893;
   --color-secondary-content: #ffffff;
-  --color-accent: #CE1126;
+  --color-accent: #ce1126;
   --color-accent-content: #ffffff;
-  --color-neutral: #0D1528;
+  --color-neutral: #0d1528;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FFFEF5;
-  --color-base-200: #FFFDF0;
-  --color-base-300: #FFFCE5;
-  --color-base-content: #1C1C1A;
+  --color-base-100: #fffef5;
+  --color-base-200: #fffdf0;
+  --color-base-300: #fffce5;
+  --color-base-content: #1c1c1a;
 
   --color-info: #003893;
   --color-success: #36d399;
-  --color-warning: #FCD116;
-  --color-error: #CE1126;
+  --color-warning: #fcd116;
+  --color-error: #ce1126;
 }

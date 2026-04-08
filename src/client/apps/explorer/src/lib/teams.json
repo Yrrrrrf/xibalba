@@ -1,50 +1,240 @@
 [
-  { "slug": "mexico", "name": "México", "group": "A", "confederation": "CONCACAF" },
-  { "slug": "south-africa", "name": "South Africa", "group": "A", "confederation": "CAF" },
-  { "slug": "south-korea", "name": "South Korea", "group": "A", "confederation": "AFC" },
-  { "slug": "playoff-d", "name": "UEFA Playoff D", "group": "A", "confederation": "UEFA" },
-  { "slug": "canada", "name": "Canada", "group": "B", "confederation": "CONCACAF" },
-  { "slug": "playoff-a", "name": "UEFA Playoff A", "group": "B", "confederation": "UEFA" },
+  {
+    "slug": "mexico",
+    "name": "México",
+    "group": "A",
+    "confederation": "CONCACAF"
+  },
+  {
+    "slug": "south-africa",
+    "name": "South Africa",
+    "group": "A",
+    "confederation": "CAF"
+  },
+  {
+    "slug": "south-korea",
+    "name": "South Korea",
+    "group": "A",
+    "confederation": "AFC"
+  },
+  {
+    "slug": "playoff-d",
+    "name": "UEFA Playoff D",
+    "group": "A",
+    "confederation": "UEFA"
+  },
+  {
+    "slug": "canada",
+    "name": "Canada",
+    "group": "B",
+    "confederation": "CONCACAF"
+  },
+  {
+    "slug": "playoff-a",
+    "name": "UEFA Playoff A",
+    "group": "B",
+    "confederation": "UEFA"
+  },
   { "slug": "qatar", "name": "Qatar", "group": "B", "confederation": "AFC" },
-  { "slug": "switzerland", "name": "Switzerland", "group": "B", "confederation": "UEFA" },
-  { "slug": "brazil", "name": "Brazil", "group": "C", "confederation": "CONMEBOL" },
-  { "slug": "morocco", "name": "Morocco", "group": "C", "confederation": "CAF" },
-  { "slug": "haiti", "name": "Haiti", "group": "C", "confederation": "CONCACAF" },
-  { "slug": "scotland", "name": "Scotland", "group": "C", "confederation": "UEFA" },
+  {
+    "slug": "switzerland",
+    "name": "Switzerland",
+    "group": "B",
+    "confederation": "UEFA"
+  },
+  {
+    "slug": "brazil",
+    "name": "Brazil",
+    "group": "C",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "slug": "morocco",
+    "name": "Morocco",
+    "group": "C",
+    "confederation": "CAF"
+  },
+  {
+    "slug": "haiti",
+    "name": "Haiti",
+    "group": "C",
+    "confederation": "CONCACAF"
+  },
+  {
+    "slug": "scotland",
+    "name": "Scotland",
+    "group": "C",
+    "confederation": "UEFA"
+  },
   { "slug": "usa", "name": "USA", "group": "D", "confederation": "CONCACAF" },
-  { "slug": "paraguay", "name": "Paraguay", "group": "D", "confederation": "CONMEBOL" },
-  { "slug": "australia", "name": "Australia", "group": "D", "confederation": "AFC" },
-  { "slug": "playoff-c", "name": "UEFA Playoff C", "group": "D", "confederation": "UEFA" },
-  { "slug": "germany", "name": "Germany", "group": "E", "confederation": "UEFA" },
-  { "slug": "curacao", "name": "Curaçao", "group": "E", "confederation": "CONCACAF" },
-  { "slug": "ivory-coast", "name": "Ivory Coast", "group": "E", "confederation": "CAF" },
-  { "slug": "ecuador", "name": "Ecuador", "group": "E", "confederation": "CONMEBOL" },
-  { "slug": "netherlands", "name": "Netherlands", "group": "F", "confederation": "UEFA" },
+  {
+    "slug": "paraguay",
+    "name": "Paraguay",
+    "group": "D",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "slug": "australia",
+    "name": "Australia",
+    "group": "D",
+    "confederation": "AFC"
+  },
+  {
+    "slug": "playoff-c",
+    "name": "UEFA Playoff C",
+    "group": "D",
+    "confederation": "UEFA"
+  },
+  {
+    "slug": "germany",
+    "name": "Germany",
+    "group": "E",
+    "confederation": "UEFA"
+  },
+  {
+    "slug": "curacao",
+    "name": "Curaçao",
+    "group": "E",
+    "confederation": "CONCACAF"
+  },
+  {
+    "slug": "ivory-coast",
+    "name": "Ivory Coast",
+    "group": "E",
+    "confederation": "CAF"
+  },
+  {
+    "slug": "ecuador",
+    "name": "Ecuador",
+    "group": "E",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "slug": "netherlands",
+    "name": "Netherlands",
+    "group": "F",
+    "confederation": "UEFA"
+  },
   { "slug": "japan", "name": "Japan", "group": "F", "confederation": "AFC" },
-  { "slug": "playoff-b", "name": "UEFA Playoff B", "group": "F", "confederation": "UEFA" },
-  { "slug": "tunisia", "name": "Tunisia", "group": "F", "confederation": "CAF" },
-  { "slug": "belgium", "name": "Belgium", "group": "G", "confederation": "UEFA" },
+  {
+    "slug": "playoff-b",
+    "name": "UEFA Playoff B",
+    "group": "F",
+    "confederation": "UEFA"
+  },
+  {
+    "slug": "tunisia",
+    "name": "Tunisia",
+    "group": "F",
+    "confederation": "CAF"
+  },
+  {
+    "slug": "belgium",
+    "name": "Belgium",
+    "group": "G",
+    "confederation": "UEFA"
+  },
   { "slug": "egypt", "name": "Egypt", "group": "G", "confederation": "CAF" },
   { "slug": "iran", "name": "Iran", "group": "G", "confederation": "AFC" },
-  { "slug": "new-zealand", "name": "New Zealand", "group": "G", "confederation": "OFC" },
+  {
+    "slug": "new-zealand",
+    "name": "New Zealand",
+    "group": "G",
+    "confederation": "OFC"
+  },
   { "slug": "spain", "name": "Spain", "group": "H", "confederation": "UEFA" },
-  { "slug": "cape-verde", "name": "Cape Verde", "group": "H", "confederation": "CAF" },
-  { "slug": "saudi-arabia", "name": "Saudi Arabia", "group": "H", "confederation": "AFC" },
-  { "slug": "uruguay", "name": "Uruguay", "group": "H", "confederation": "CONMEBOL" },
+  {
+    "slug": "cape-verde",
+    "name": "Cape Verde",
+    "group": "H",
+    "confederation": "CAF"
+  },
+  {
+    "slug": "saudi-arabia",
+    "name": "Saudi Arabia",
+    "group": "H",
+    "confederation": "AFC"
+  },
+  {
+    "slug": "uruguay",
+    "name": "Uruguay",
+    "group": "H",
+    "confederation": "CONMEBOL"
+  },
   { "slug": "france", "name": "France", "group": "I", "confederation": "UEFA" },
-  { "slug": "senegal", "name": "Senegal", "group": "I", "confederation": "CAF" },
-  { "slug": "playoff-ic2", "name": "Playoff IC 2", "group": "I", "confederation": "FIFA" },
+  {
+    "slug": "senegal",
+    "name": "Senegal",
+    "group": "I",
+    "confederation": "CAF"
+  },
+  {
+    "slug": "playoff-ic2",
+    "name": "Playoff IC 2",
+    "group": "I",
+    "confederation": "FIFA"
+  },
   { "slug": "norway", "name": "Norway", "group": "I", "confederation": "UEFA" },
-  { "slug": "argentina", "name": "Argentina", "group": "J", "confederation": "CONMEBOL" },
-  { "slug": "algeria", "name": "Algeria", "group": "J", "confederation": "CAF" },
-  { "slug": "austria", "name": "Austria", "group": "J", "confederation": "UEFA" },
+  {
+    "slug": "argentina",
+    "name": "Argentina",
+    "group": "J",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "slug": "algeria",
+    "name": "Algeria",
+    "group": "J",
+    "confederation": "CAF"
+  },
+  {
+    "slug": "austria",
+    "name": "Austria",
+    "group": "J",
+    "confederation": "UEFA"
+  },
   { "slug": "jordan", "name": "Jordan", "group": "J", "confederation": "AFC" },
-  { "slug": "portugal", "name": "Portugal", "group": "K", "confederation": "UEFA" },
-  { "slug": "playoff-ic1", "name": "Playoff IC 1", "group": "K", "confederation": "FIFA" },
-  { "slug": "uzbekistan", "name": "Uzbekistan", "group": "K", "confederation": "AFC" },
-  { "slug": "colombia", "name": "Colombia", "group": "K", "confederation": "CONMEBOL" },
-  { "slug": "england", "name": "England", "group": "L", "confederation": "UEFA" },
-  { "slug": "croatia", "name": "Croatia", "group": "L", "confederation": "UEFA" },
+  {
+    "slug": "portugal",
+    "name": "Portugal",
+    "group": "K",
+    "confederation": "UEFA"
+  },
+  {
+    "slug": "playoff-ic1",
+    "name": "Playoff IC 1",
+    "group": "K",
+    "confederation": "FIFA"
+  },
+  {
+    "slug": "uzbekistan",
+    "name": "Uzbekistan",
+    "group": "K",
+    "confederation": "AFC"
+  },
+  {
+    "slug": "colombia",
+    "name": "Colombia",
+    "group": "K",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "slug": "england",
+    "name": "England",
+    "group": "L",
+    "confederation": "UEFA"
+  },
+  {
+    "slug": "croatia",
+    "name": "Croatia",
+    "group": "L",
+    "confederation": "UEFA"
+  },
   { "slug": "ghana", "name": "Ghana", "group": "L", "confederation": "CAF" },
-  { "slug": "panama", "name": "Panama", "group": "L", "confederation": "CONCACAF" }
+  {
+    "slug": "panama",
+    "name": "Panama",
+    "group": "L",
+    "confederation": "CONCACAF"
+  }
 ]

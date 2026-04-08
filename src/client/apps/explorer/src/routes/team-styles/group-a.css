@@ -4,17 +4,17 @@
 [data-theme="mexico"] {
   --color-primary: #006847;
   --color-primary-content: #ffffff;
-  --color-secondary: #CE1126;
+  --color-secondary: #ce1126;
   --color-secondary-content: #ffffff;
-  --color-accent: #6D3E1E;
+  --color-accent: #6d3e1e;
   --color-accent-content: #ffffff;
-  --color-neutral: #1A3C2A;
+  --color-neutral: #1a3c2a;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F5FBF7;
-  --color-base-200: #EBF7EF;
-  --color-base-300: #DDF1E5;
-  --color-base-content: #1A1C1B;
+  --color-base-100: #f5fbf7;
+  --color-base-200: #ebf7ef;
+  --color-base-300: #ddf1e5;
+  --color-base-content: #1a1c1b;
 
   --color-info: #3abff8;
   --color-info-content: #002b3d;
@@ -22,7 +22,7 @@
   --color-success-content: #003320;
   --color-warning: #fbbd23;
   --color-warning-content: #382800;
-  --color-error: #CE1126;
+  --color-error: #ce1126;
   --color-error-content: #ffffff;
 
   --radius-box: 1rem;
@@ -34,43 +34,43 @@
 [data-theme="south-africa"] {
   --color-primary: #007749;
   --color-primary-content: #ffffff;
-  --color-secondary: #FFB81C;
+  --color-secondary: #ffb81c;
   --color-secondary-content: #1a1400;
   --color-accent: #002395;
   --color-accent-content: #ffffff;
-  --color-neutral: #0A0A0A;
+  --color-neutral: #0a0a0a;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F7FBF5;
-  --color-base-200: #EEF7EA;
-  --color-base-300: #E2F1DB;
-  --color-base-content: #1A1C1A;
+  --color-base-100: #f7fbf5;
+  --color-base-200: #eef7ea;
+  --color-base-300: #e2f1db;
+  --color-base-content: #1a1c1a;
 
   --color-info: #002395;
   --color-info-content: #ffffff;
   --color-success: #007749;
   --color-success-content: #ffffff;
-  --color-warning: #FFB81C;
+  --color-warning: #ffb81c;
   --color-warning-content: #1a1400;
-  --color-error: #DE3831;
+  --color-error: #de3831;
   --color-error-content: #ffffff;
 }
 
 /* South Korea */
 [data-theme="south-korea"] {
-  --color-primary: #C60C30;
+  --color-primary: #c60c30;
   --color-primary-content: #ffffff;
   --color-secondary: #003478;
   --color-secondary-content: #ffffff;
-  --color-accent: #1D1D1B;
+  --color-accent: #1d1d1b;
   --color-accent-content: #ffffff;
   --color-neutral: #101828;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FAFAFA;
-  --color-base-200: #F2F2F2;
-  --color-base-300: #E5E5E5;
-  --color-base-content: #1A1A1A;
+  --color-base-100: #fafafa;
+  --color-base-200: #f2f2f2;
+  --color-base-300: #e5e5e5;
+  --color-base-content: #1a1a1a;
 
   --color-info: #003478;
   --color-info-content: #ffffff;
@@ -78,7 +78,7 @@
   --color-success-content: #003320;
   --color-warning: #fbbd23;
   --color-warning-content: #382800;
-  --color-error: #C60C30;
+  --color-error: #c60c30;
   --color-error-content: #ffffff;
 }
 
@@ -86,7 +86,7 @@
 [data-theme="playoff-d"] {
   --color-primary: #003399;
   --color-primary-content: #ffffff;
-  --color-secondary: #CCCCCC;
+  --color-secondary: #cccccc;
   --color-secondary-content: #1a1a1a;
   --color-accent: #333333;
   --color-accent-content: #ffffff;

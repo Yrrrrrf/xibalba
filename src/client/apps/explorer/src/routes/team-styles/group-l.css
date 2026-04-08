@@ -2,88 +2,88 @@
 
 /* England */
 [data-theme="england"] {
-  --color-primary: #CF081F;
+  --color-primary: #cf081f;
   --color-primary-content: #ffffff;
-  --color-secondary: #FFFFFF;
-  --color-secondary-content: #CF081F;
-  --color-accent: #1C2C5B;
+  --color-secondary: #ffffff;
+  --color-secondary-content: #cf081f;
+  --color-accent: #1c2c5b;
   --color-accent-content: #ffffff;
-  --color-neutral: #1A0D0D;
+  --color-neutral: #1a0d0d;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FFFAFB;
-  --color-base-200: #FFF2F4;
-  --color-base-300: #FFE5E9;
-  --color-base-content: #1C1A1A;
+  --color-base-100: #fffafb;
+  --color-base-200: #fff2f4;
+  --color-base-300: #ffe5e9;
+  --color-base-content: #1c1a1a;
 
-  --color-info: #1C2C5B;
+  --color-info: #1c2c5b;
   --color-success: #36d399;
   --color-warning: #fbbd23;
-  --color-error: #CF081F;
+  --color-error: #cf081f;
 }
 
 /* Croatia */
 [data-theme="croatia"] {
-  --color-primary: #FF0000;
+  --color-primary: #ff0000;
   --color-primary-content: #ffffff;
   --color-secondary: #171796;
   --color-secondary-content: #ffffff;
-  --color-accent: #FFFFFF;
-  --color-accent-content: #FF0000;
-  --color-neutral: #1A0A14;
+  --color-accent: #ffffff;
+  --color-accent-content: #ff0000;
+  --color-neutral: #1a0a14;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FFFAFA;
-  --color-base-200: #FFF2F2;
-  --color-base-300: #FFE5E5;
-  --color-base-content: #1C1A1A;
+  --color-base-100: #fffafa;
+  --color-base-200: #fff2f2;
+  --color-base-300: #ffe5e5;
+  --color-base-content: #1c1a1a;
 
   --color-info: #171796;
   --color-success: #36d399;
   --color-warning: #fbbd23;
-  --color-error: #FF0000;
+  --color-error: #ff0000;
 }
 
 /* Ghana */
 [data-theme="ghana"] {
-  --color-primary: #CE1126;
+  --color-primary: #ce1126;
   --color-primary-content: #ffffff;
-  --color-secondary: #FCD116;
-  --color-secondary-content: #1A1400;
-  --color-accent: #006B3F;
+  --color-secondary: #fcd116;
+  --color-secondary-content: #1a1400;
+  --color-accent: #006b3f;
   --color-accent-content: #ffffff;
   --color-neutral: #111111;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FFFCF5;
-  --color-base-200: #FFF8EB;
-  --color-base-300: #FFF1DD;
-  --color-base-content: #1C1B1A;
+  --color-base-100: #fffcf5;
+  --color-base-200: #fff8eb;
+  --color-base-300: #fff1dd;
+  --color-base-content: #1c1b1a;
 
   --color-info: #3abff8;
-  --color-success: #006B3F;
-  --color-warning: #FCD116;
-  --color-error: #CE1126;
+  --color-success: #006b3f;
+  --color-warning: #fcd116;
+  --color-error: #ce1126;
 }
 
 /* Panama */
 [data-theme="panama"] {
-  --color-primary: #005EB8;
+  --color-primary: #005eb8;
   --color-primary-content: #ffffff;
-  --color-secondary: #D21034;
+  --color-secondary: #d21034;
   --color-secondary-content: #ffffff;
-  --color-accent: #003D7A;
+  --color-accent: #003d7a;
   --color-accent-content: #ffffff;
-  --color-neutral: #0D1528;
+  --color-neutral: #0d1528;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F8FAFD;
-  --color-base-200: #F1F5FA;
-  --color-base-300: #E6EDF5;
-  --color-base-content: #1A1B1C;
+  --color-base-100: #f8fafd;
+  --color-base-200: #f1f5fa;
+  --color-base-300: #e6edf5;
+  --color-base-content: #1a1b1c;
 
-  --color-info: #005EB8;
+  --color-info: #005eb8;
   --color-success: #36d399;
   --color-warning: #fbbd23;
-  --color-error: #D21034;
+  --color-error: #d21034;
 }

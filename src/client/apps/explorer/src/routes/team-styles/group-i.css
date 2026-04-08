@@ -4,53 +4,53 @@
 [data-theme="france"] {
   --color-primary: #002395;
   --color-primary-content: #ffffff;
-  --color-secondary: #ED2939;
+  --color-secondary: #ed2939;
   --color-secondary-content: #ffffff;
-  --color-accent: #001A6E;
+  --color-accent: #001a6e;
   --color-accent-content: #ffffff;
-  --color-neutral: #0D1228;
+  --color-neutral: #0d1228;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F8F9FD;
-  --color-base-200: #F1F3FA;
-  --color-base-300: #E6EAF5;
-  --color-base-content: #1A1B1C;
+  --color-base-100: #f8f9fd;
+  --color-base-200: #f1f3fa;
+  --color-base-300: #e6eaf5;
+  --color-base-content: #1a1b1c;
 
   --color-info: #002395;
   --color-success: #36d399;
   --color-warning: #fbbd23;
-  --color-error: #ED2939;
+  --color-error: #ed2939;
 }
 
 /* Senegal */
 [data-theme="senegal"] {
-  --color-primary: #00853F;
+  --color-primary: #00853f;
   --color-primary-content: #ffffff;
-  --color-secondary: #FDEF42;
-  --color-secondary-content: #1A1800;
-  --color-accent: #E31B23;
+  --color-secondary: #fdef42;
+  --color-secondary-content: #1a1800;
+  --color-accent: #e31b23;
   --color-accent-content: #ffffff;
-  --color-neutral: #0D1E10;
+  --color-neutral: #0d1e10;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #F5FBF5;
-  --color-base-200: #EBF7EB;
-  --color-base-300: #DDF1DD;
-  --color-base-content: #1A1C1A;
+  --color-base-100: #f5fbf5;
+  --color-base-200: #ebf7eb;
+  --color-base-300: #ddf1dd;
+  --color-base-content: #1a1c1a;
 
   --color-info: #3abff8;
-  --color-success: #00853F;
-  --color-warning: #FDEF42;
-  --color-error: #E31B23;
+  --color-success: #00853f;
+  --color-warning: #fdef42;
+  --color-error: #e31b23;
 }
 
 /* Playoff IC 2 */
 [data-theme="playoff-ic2"] {
-  --color-primary: #2D6A4F;
+  --color-primary: #2d6a4f;
   --color-primary-content: #ffffff;
-  --color-secondary: #CCCCCC;
+  --color-secondary: #cccccc;
   --color-secondary-content: #1a1a1a;
-  --color-accent: #1B4332;
+  --color-accent: #1b4332;
   --color-accent-content: #ffffff;
   --color-neutral: #1a1a1a;
   --color-neutral-content: #ffffff;
@@ -63,24 +63,24 @@
 
 /* Norway */
 [data-theme="norway"] {
-  --color-primary: #EF2B2D;
+  --color-primary: #ef2b2d;
   --color-primary-content: #ffffff;
   --color-secondary: #002868;
   --color-secondary-content: #ffffff;
-  --color-accent: #A31D1F;
+  --color-accent: #a31d1f;
   --color-accent-content: #ffffff;
-  --color-neutral: #1A0D0D;
+  --color-neutral: #1a0d0d;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FFFAFA;
-  --color-base-200: #FFF2F2;
-  --color-base-300: #FFE5E5;
-  --color-base-content: #1C1A1A;
+  --color-base-100: #fffafa;
+  --color-base-200: #fff2f2;
+  --color-base-300: #ffe5e5;
+  --color-base-content: #1c1a1a;
 
   --color-info: #002868;
   --color-success: #36d399;
   --color-warning: #fbbd23;
-  --color-error: #EF2B2D;
+  --color-error: #ef2b2d;
 
   --depth: 0;
 }

@@ -2,53 +2,53 @@
 
 /* Netherlands */
 [data-theme="netherlands"] {
-  --color-primary: #FF6600;
+  --color-primary: #ff6600;
   --color-primary-content: #ffffff;
-  --color-secondary: #21468B;
+  --color-secondary: #21468b;
   --color-secondary-content: #ffffff;
-  --color-accent: #AE1C28;
+  --color-accent: #ae1c28;
   --color-accent-content: #ffffff;
-  --color-neutral: #1A0E05;
+  --color-neutral: #1a0e05;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FFFAF5;
-  --color-base-200: #FFF3EB;
-  --color-base-300: #FFE6DD;
-  --color-base-content: #1C1B1A;
+  --color-base-100: #fffaf5;
+  --color-base-200: #fff3eb;
+  --color-base-300: #ffe6dd;
+  --color-base-content: #1c1b1a;
 
-  --color-info: #21468B;
+  --color-info: #21468b;
   --color-success: #36d399;
-  --color-warning: #FF6600;
-  --color-error: #AE1C28;
+  --color-warning: #ff6600;
+  --color-error: #ae1c28;
 }
 
 /* Japan */
 [data-theme="japan"] {
-  --color-primary: #BC002D;
+  --color-primary: #bc002d;
   --color-primary-content: #ffffff;
-  --color-secondary: #FFFFFF;
-  --color-secondary-content: #BC002D;
-  --color-accent: #002B5C;
+  --color-secondary: #ffffff;
+  --color-secondary-content: #bc002d;
+  --color-accent: #002b5c;
   --color-accent-content: #ffffff;
-  --color-neutral: #1A0A10;
+  --color-neutral: #1a0a10;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FFFBFC;
-  --color-base-200: #FFF5F7;
-  --color-base-300: #FFEBEF;
-  --color-base-content: #1C1A1A;
+  --color-base-100: #fffbfc;
+  --color-base-200: #fff5f7;
+  --color-base-300: #ffebef;
+  --color-base-content: #1c1a1a;
 
-  --color-info: #002B5C;
+  --color-info: #002b5c;
   --color-success: #36d399;
   --color-warning: #fbbd23;
-  --color-error: #BC002D;
+  --color-error: #bc002d;
 }
 
 /* UEFA Playoff B */
 [data-theme="playoff-b"] {
   --color-primary: #003399;
   --color-primary-content: #ffffff;
-  --color-secondary: #CCCCCC;
+  --color-secondary: #cccccc;
   --color-secondary-content: #1a1a1a;
   --color-accent: #333333;
   --color-accent-content: #ffffff;
@@ -63,22 +63,22 @@
 
 /* Tunisia */
 [data-theme="tunisia"] {
-  --color-primary: #E70013;
+  --color-primary: #e70013;
   --color-primary-content: #ffffff;
-  --color-secondary: #FFFFFF;
-  --color-secondary-content: #E70013;
-  --color-accent: #9B000D;
+  --color-secondary: #ffffff;
+  --color-secondary-content: #e70013;
+  --color-accent: #9b000d;
   --color-accent-content: #ffffff;
-  --color-neutral: #1E0A0A;
+  --color-neutral: #1e0a0a;
   --color-neutral-content: #ffffff;
 
-  --color-base-100: #FFFAFA;
-  --color-base-200: #FFF2F2;
-  --color-base-300: #FFE5E5;
-  --color-base-content: #1C1A1A;
+  --color-base-100: #fffafa;
+  --color-base-200: #fff2f2;
+  --color-base-300: #ffe5e5;
+  --color-base-content: #1c1a1a;
 
   --color-info: #3abff8;
   --color-success: #36d399;
   --color-warning: #fbbd23;
-  --color-error: #E70013;
+  --color-error: #e70013;
 }
