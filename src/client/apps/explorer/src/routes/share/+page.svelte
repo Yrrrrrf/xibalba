@@ -1,10 +1,6 @@
 <script lang="ts">
   import { QRCode, m, ICONS } from "@sdk/ui";
 
-  /**
-   * Replace this with your actual deployed URL once Phase 3 is done.
-   * e.g. "https://xibalba.pages.dev"
-   */
   const appUrl = "http://3.141.197.76:4173";
 </script>
 
