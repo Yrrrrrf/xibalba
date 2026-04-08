@@ -5,9 +5,6 @@
     MoneyPlugin,
     localStorageDriver,
     PalettesPlugin,
-    ThemeSelector,
-    LanguageSelector,
-    CurrencySelector,
   } from "rune-lab";
   import { createAuthStore } from "@sdk/state";
   import { goto } from "$app/navigation";
@@ -18,7 +15,7 @@
 
   let { children } = $props();
   const auth = createAuthStore();
-</script>
+  </script>
 
 <RuneProvider
   config={{
