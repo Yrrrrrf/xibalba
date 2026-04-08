@@ -35,12 +35,13 @@
   onclick={onselect}
   use={[tilt]}
   {accent}
-  class="cursor-pointer will-change-transform group"
+  enableShimmer={true}
+  class="cursor-pointer will-change-transform group h-full"
   style="transform-style: preserve-3d;"
 >
   <!-- ── IMAGEN con efecto pop-out ──────────────────────────── -->
   <figure
-    class="relative overflow-hidden rounded-t-3xl h-48 bg-gradient-to-br {accent}"
+    class="relative overflow-hidden rounded-t-3xl h-48 sm:h-56 bg-gradient-to-br {accent}"
   >
     <ImageWithFallback
       src={dish.image_url}

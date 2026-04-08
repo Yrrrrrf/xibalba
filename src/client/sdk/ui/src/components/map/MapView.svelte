@@ -9,12 +9,14 @@
     height?: string;
     businesses?: Business[];
     showUserLocation?: boolean;
+    onbusinessselect?: (b: Business) => void;
   }
 
   let {
     height = "420px",
     businesses = [],
     showUserLocation = true,
+    onbusinessselect,
   }: Props = $props();
 
   // Centro: Ciudad de México (sede Mundial 2026)
@@ -106,6 +108,7 @@
       });
       L.marker([c.lat, c.lng], { icon })
         .addTo(map!)
+        .on('click', () => onbusinessselect?.(c))
         .bindPopup(buildPopup(c), { maxWidth: 220 });
     }
 

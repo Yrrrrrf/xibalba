@@ -49,12 +49,13 @@
   onclick={onselect}
   use={[tilt]}
   accent={colorAccent}
-  class="cursor-pointer will-change-transform group"
+  enableShimmer={true}
+  class="cursor-pointer will-change-transform group h-full"
   style="transform-style: preserve-3d;"
 >
   <!-- Image -->
   <figure
-    class="relative overflow-hidden rounded-t-3xl h-44 bg-gradient-to-br {colorAccent}"
+    class="relative overflow-hidden rounded-t-3xl h-44 sm:h-52 bg-gradient-to-br {colorAccent}"
   >
     <ImageWithFallback
       src={image_url}

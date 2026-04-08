@@ -4,3 +4,4 @@ export { default as AdminDashboard } from "./AdminDashboard.svelte";
 export { default as MerchantCard } from "./MerchantCard.svelte";
 export { default as DishForm } from "./DishForm.svelte";
 export { default as LocationPicker } from "./LocationPicker.svelte";
+export { default as BusinessDetailModal } from "./BusinessDetailModal.svelte";

@@ -2,7 +2,7 @@
   import { authStore } from "@sdk/state";
   import { AdminDashboard, ICONS, m } from "@sdk/ui";
 
-  const authStore = authStore;
+
 
   let adminMerchants = $state([
     { id: "m1", name: "Tacos El Rey", category: "Comida Mexicana", status: "active", reports: 0 },

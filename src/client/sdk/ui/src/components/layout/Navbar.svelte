@@ -3,11 +3,12 @@
   import { authStore } from "@sdk/state";
   import { ThemeSelector, LanguageSelector, CurrencySelector } from "rune-lab";
   import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
 
   const auth = authStore;
 </script>
 
-<header class="sticky top-0 z-[100] w-full bg-base-100/30 backdrop-blur-xl border-b border-base-content/5">
+<header class="sticky top-0 z-[100] w-full transition-all duration-300 { $page.url.pathname === '/' ? 'bg-transparent border-transparent' : 'bg-base-100/30 backdrop-blur-xl border-b border-base-content/5' }">
   <div class="container mx-auto relative px-2 sm:px-4 py-2 sm:py-3 flex flex-wrap md:flex-nowrap items-center justify-between gap-y-3">
     
     <a href="/" class="flex items-center gap-1.5 sm:gap-2 hover:scale-105 transition-transform duration-300 w-auto">

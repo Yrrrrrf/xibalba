@@ -6,8 +6,8 @@ const config = {
   preprocess: vitePreprocess(),
   kit: {
     adapter: adapter({
-      // fallback: "index.html",
-      // strict: true,
+      fallback: "index.html",
+      strict: false,
     }),
     alias: {
       "@sdk/ui": "../../sdk/ui/src/mod.ts",

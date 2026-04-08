@@ -5,7 +5,7 @@
   import { m } from "@sdk/ui";
 
   const dishStore = createDishStore();
-  const authStore = authStore;
+
 
   const stats = $derived([
     {
