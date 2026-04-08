@@ -1,0 +1,22 @@
+{
+    "name": "Xibalbá — Descubre lo local",
+    "short_name": "Xibalbá",
+    "description": "Conecta turistas con negocios locales",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0d1b2a",
+    "theme_color": "#e63946",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/pwa-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/pwa-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
