@@ -63,4 +63,6 @@ test:
 [doc('Build the Tauri app for production')]
 [group('Deploy')]
 deploy:
+    podman-compose down -v
+    podman-compose up --build --no-cache
     @echo "✓ Tauri app built for production"
