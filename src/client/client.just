@@ -33,7 +33,7 @@ quality: typecheck
 [group('Build')]
 sync-ui:
     # Compile Paraglide
-    deno run -A npm:@inlang/paraglide-js compile --project ./sdk/ui/src/i18n/project.inlang --outdir ./sdk/ui/src/i18n/paraglide
+    bunx @inlang/paraglide-js compile --project ./sdk/ui/src/i18n/project.inlang --outdir ./sdk/ui/src/i18n/paraglide
     # SvelteKit sync
     bun run --cwd sdk/ui svelte-kit sync
     # bun run --cwd apps/explorer svelte-kit sync
@@ -47,7 +47,7 @@ build: sync-ui
 [doc('Run the client in development mode')]
 [group('Dev')]
 run app=`ls apps/`: sync-ui
-    yog reborn --deep
+    # yog reborn --deep
     # todo: Add a way to run all apps at once
     # todo: Somehow orchestrate the apps to run in parallel
     # bun run --cwd apps/{{ app }} vite dev --host
