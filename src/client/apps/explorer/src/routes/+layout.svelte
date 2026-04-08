@@ -10,11 +10,13 @@
   import { goto } from "$app/navigation";
   import { m, ICONS } from "@sdk/ui";
   import { setLocale } from "$lib/paraglide/runtime";
+  import { createPwaInstallStore } from "$lib/pwa.svelte";
 
   const RuneProvider: any = RP;
 
   let { children } = $props();
   const auth = createAuthStore();
+  const pwa = createPwaInstallStore();
   </script>
 
 <RuneProvider
@@ -46,6 +48,14 @@
         </div>
 
         <div class="flex items-center gap-3">
+          {#if pwa.isInstallable}
+            <button
+              onclick={() => pwa.prompt()}
+              class="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-xl bg-primary/10 border border-primary/20 text-primary hover:bg-primary hover:text-primary-content transition-all duration-300"
+            >
+              Install App
+            </button>
+          {/if}
           <button
             onclick={() => {
               auth.logout();
