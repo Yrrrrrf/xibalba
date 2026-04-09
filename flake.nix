@@ -5,7 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
-    # ← pull directly from the sub-flakes, no duplication
     client.url = "path:./src/client";
     server.url = "path:./src/server";
   };
@@ -22,30 +21,23 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-
-        clientPkgs = client.packages.${system}.devPackages;
-        serverPkgs = server.packages.${system}.devPackages;
-        infraPkgs = with pkgs; [
-          docker-compose
-          curl
-          jq
-        ];
+        clientShell = client.devShells.${system}.default;
+        serverShell = server.devShells.${system}.default;
       in
       {
         devShells.default = pkgs.mkShell {
           name = "xibalba";
-          packages = clientPkgs ++ serverPkgs ++ infraPkgs;
-          shellHook = ''echo "Xibalbá"'';
-        };
 
-        devShells.client = pkgs.mkShell {
-          name = "xibalba-client";
-          packages = clientPkgs ++ infraPkgs;
-        };
+          inputsFrom = [
+            clientShell
+            serverShell
+          ];
 
-        devShells.server = pkgs.mkShell {
-          name = "xibalba-server";
-          packages = serverPkgs ++ infraPkgs;
+          shellHook = ''
+            PURPLE=$(tput setaf 5)
+            RESET=$(tput sgr0)
+            echo "🦇 ''${PURPLE}Xibalbá''${RESET} — all systems go"
+          '';
         };
       }
     );
