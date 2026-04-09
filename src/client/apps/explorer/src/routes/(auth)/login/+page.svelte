@@ -1,7 +1,8 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { authStore, type UserRole } from "@sdk/state";
-  import { m } from "@sdk/ui";
+  import { m, ICONS, GlassCard } from "@sdk/ui";
+  import { Shield, MapPin, Store, Globe, Apple, Circle } from "lucide-svelte";
 
   const auth = authStore;
   let loadingRole = $state<UserRole>(null);
@@ -27,85 +28,110 @@
 </script>
 
 <svelte:head>
-  <title>Acceso Rápido — {m.app_name()}</title>
+  <title>Acceso — {m.app_name()}</title>
 </svelte:head>
 
-<div class="text-center -mt-8 mb-10">
-  <h1 class="text-4xl font-black mb-3 tracking-tight text-base-content drop-shadow-sm">Panel de Acceso</h1>
-  <p class="text-base-content/60 text-sm font-medium">Selecciona tu rol para ingresar a la plataforma.</p>
+<div class="text-center mb-10">
+  <h1 class="text-4xl font-black italic uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-base-content to-base-content/40">Panel de Acceso</h1>
+  <p class="text-base-content/50 text-[10px] font-black uppercase tracking-widest mt-2 italic">Selecciona tu rol para ingresar</p>
 </div>
 
-<div class="grid grid-cols-1 gap-4 w-full max-w-md mx-auto">
+<div class="grid grid-cols-1 gap-4 w-full">
   <!-- TURISTA -->
   <button 
     onclick={() => loginAs("tourist")}
-    class="group relative overflow-hidden rounded-2xl border-2 border-primary/10 bg-base-200/40 p-6 text-left transition-all hover:border-primary hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/10 active:scale-[0.98]"
+    class="group w-full"
     disabled={!!loadingRole}
   >
-    <div class="flex items-center gap-5">
-      <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-content">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
+    <GlassCard 
+      class="p-6 text-left transition-all group-hover:-translate-y-1 group-hover:shadow-primary/10 {loadingRole === 'tourist' ? 'border-primary ring-2 ring-primary/20' : 'border-white/5'}"
+      enable3D={true}
+    >
+      <div class="flex items-center gap-5">
+        <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all group-hover:bg-primary group-hover:text-primary-content shadow-inner">
+          <MapPin size={28} />
+        </div>
+        <div class="flex-1">
+          <h3 class="text-xl font-black italic uppercase tracking-tighter">Turista</h3>
+          <p class="text-[10px] font-bold opacity-40 uppercase tracking-widest">Explora destinos y sabores</p>
+        </div>
+        {#if loadingRole === 'tourist'}
+          <span class="loading loading-spinner loading-md text-primary"></span>
+        {/if}
       </div>
-      <div>
-        <h3 class="text-xl font-bold text-base-content">Turista</h3>
-        <p class="text-sm text-base-content/60">Explora destinos y experiencias</p>
-      </div>
-      {#if loadingRole === 'tourist'}
-        <div class="ml-auto"><span class="loading loading-spinner loading-md text-primary"></span></div>
-      {/if}
-    </div>
+    </GlassCard>
   </button>
 
   <!-- COMERCIANTE -->
   <button 
     onclick={() => loginAs("business")}
-    class="group relative overflow-hidden rounded-2xl border-2 border-secondary/10 bg-base-200/40 p-6 text-left transition-all hover:border-secondary hover:bg-secondary/5 hover:shadow-xl hover:shadow-secondary/10 active:scale-[0.98]"
+    class="group w-full"
     disabled={!!loadingRole}
   >
-    <div class="flex items-center gap-5">
-      <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-secondary/10 text-secondary transition-transform group-hover:scale-110 group-hover:bg-secondary group-hover:text-secondary-content">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-        </svg>
+    <GlassCard 
+      class="p-6 text-left transition-all group-hover:-translate-y-1 group-hover:shadow-secondary/10 {loadingRole === 'business' ? 'border-secondary ring-2 ring-secondary/20' : 'border-white/5'}"
+      enable3D={true}
+    >
+      <div class="flex items-center gap-5">
+        <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary/10 text-secondary transition-all group-hover:bg-secondary group-hover:text-secondary-content shadow-inner">
+          <Store size={28} />
+        </div>
+        <div class="flex-1">
+          <h3 class="text-xl font-black italic uppercase tracking-tighter">Comerciante</h3>
+          <p class="text-[10px] font-bold opacity-40 uppercase tracking-widest">Gestiona tu negocio</p>
+        </div>
+        {#if loadingRole === 'business'}
+          <span class="loading loading-spinner loading-md text-secondary"></span>
+        {/if}
       </div>
-      <div>
-        <h3 class="text-xl font-bold text-base-content">Comerciante</h3>
-        <p class="text-sm text-base-content/60">Gestiona tu negocio y ventas</p>
-      </div>
-      {#if loadingRole === 'business'}
-        <div class="ml-auto"><span class="loading loading-spinner loading-md text-secondary"></span></div>
-      {/if}
-    </div>
+    </GlassCard>
   </button>
 
   <!-- ADMIN -->
   <button 
     onclick={() => loginAs("admin")}
-    class="group relative overflow-hidden rounded-2xl border-2 border-accent/10 bg-base-200/40 p-6 text-left transition-all hover:border-accent hover:bg-accent/5 hover:shadow-xl hover:shadow-accent/10 active:scale-[0.98]"
+    class="group w-full"
     disabled={!!loadingRole}
   >
-    <div class="flex items-center gap-5">
-      <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 text-accent transition-transform group-hover:scale-110 group-hover:bg-accent group-hover:text-accent-content">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
+    <GlassCard 
+      class="p-6 text-left transition-all group-hover:-translate-y-1 group-hover:shadow-error/10 {loadingRole === 'admin' ? 'border-error ring-2 ring-error/20' : 'border-white/5'}"
+      enable3D={true}
+    >
+      <div class="flex items-center gap-5">
+        <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-error/10 text-error transition-all group-hover:bg-error group-hover:text-error-content shadow-inner">
+          <Shield size={28} />
+        </div>
+        <div class="flex-1">
+          <h3 class="text-xl font-black italic uppercase tracking-tighter">Administrador</h3>
+          <p class="text-[10px] font-bold opacity-40 uppercase tracking-widest">Supervisión total</p>
+        </div>
+        {#if loadingRole === 'admin'}
+          <span class="loading loading-spinner loading-md text-error"></span>
+        {/if}
       </div>
-      <div>
-        <h3 class="text-xl font-bold text-base-content">Administrador</h3>
-        <p class="text-sm text-base-content/60">Control total del ecosistema</p>
-      </div>
-      {#if loadingRole === 'admin'}
-        <div class="ml-auto"><span class="loading loading-spinner loading-md text-accent"></span></div>
-      {/if}
-    </div>
+    </GlassCard>
   </button>
 </div>
 
-<div class="mt-12 text-center opacity-50 hover:opacity-100 transition-opacity">
-  <p class="text-xs font-semibold uppercase tracking-widest text-base-content">
-    Xibalbá • Plataforma de Exploración
+<!-- 3.12.2 — OAuth Placeholder Buttons -->
+<div class="mt-10 space-y-6">
+   <div class="divider text-[9px] font-black uppercase tracking-[0.3em] opacity-20 italic">o continúa con</div>
+   
+   <div class="grid grid-cols-3 gap-4">
+      <button class="btn btn-outline border-white/5 bg-white/5 h-14 rounded-2xl btn-disabled opacity-30 grayscale">
+         <Globe size={20} />
+      </button>
+      <button class="btn btn-outline border-white/5 bg-white/5 h-14 rounded-2xl btn-disabled opacity-30 grayscale">
+         <Apple size={20} />
+      </button>
+      <button class="btn btn-outline border-white/5 bg-white/5 h-14 rounded-2xl btn-disabled opacity-30 grayscale">
+         <Circle size={20} />
+      </button>
+   </div>
+</div>
+
+<div class="mt-12 text-center">
+  <p class="text-[9px] font-black uppercase tracking-[0.4em] opacity-20">
+    XIBALBÁ // PROTOCOLO_DE_ACCESO // V1.2
   </p>
 </div>

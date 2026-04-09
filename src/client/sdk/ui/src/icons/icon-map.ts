@@ -1,3 +1,5 @@
+import ChevronUp from "lucide-svelte/icons/chevron-up";
+import LogOut from "lucide-svelte/icons/log-out";
 import Trophy from "lucide-svelte/icons/trophy";
 import Compass from "lucide-svelte/icons/compass";
 import Heart from "lucide-svelte/icons/heart";
@@ -99,6 +101,9 @@ export const ICONS = {
   cooking_pot: CookingPot,
   shopping_cart: ShoppingCart,
   bar_chart: ChartColumnBig,
+  flame: Flame,
+  chevron_up: ChevronUp,
+  logout: LogOut,
 } as const;
 
 export const CATEGORY_ICONS = {

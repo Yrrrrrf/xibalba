@@ -6,7 +6,7 @@
     seed?: string;
   }
 
-  let { src, alt, class: className = '', seed = 'fallback' }: Props = $props();
+  let { src, alt, class: className = "", seed = "fallback" }: Props = $props();
 
   function handleError(e: Event) {
     const t = e.currentTarget as HTMLImageElement;
@@ -14,9 +14,4 @@
   }
 </script>
 
-<img
-  {src}
-  {alt}
-  class={className}
-  onerror={handleError}
-/>
+<img {src} {alt} class={className} onerror={handleError} />

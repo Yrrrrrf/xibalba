@@ -6,6 +6,7 @@
     class?: string;
     style?: string;
     accent?: string;
+    title?: string;
   }
 
   let {
@@ -13,6 +14,7 @@
     class: className = "",
     style = "",
     accent = "",
+    title = "",
   }: Props = $props();
 </script>
 
@@ -33,6 +35,11 @@
   {/if}
 
   <div class="relative z-10 w-full h-full">
+    {#if title}
+      <div class="px-8 pt-8 pb-2">
+        <h3 class="text-[10px] font-black uppercase tracking-[0.3em] opacity-40">{title}</h3>
+      </div>
+    {/if}
     {@render children()}
   </div>
 </div>

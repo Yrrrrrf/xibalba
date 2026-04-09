@@ -9,3 +9,33 @@
 }
 
 @import "./team-styles/mod.css";
+
+@layer utilities {
+  .mask-fade-right {
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  }
+
+  .animate-width {
+    animation: width 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@keyframes width {
+  from {
+    width: 0;
+  }
+  to {
+    width: 12rem;
+  }
+}
+
+/* Consistent Focus States for Accessibility */
+:focus-visible {
+  outline: 2px solid oklch(var(--p));
+  outline-offset: 2px;
+}
+
+/* Scroll-aware transitions */
+.scrolled-past-threshold {
+  @apply translate-y-0 opacity-100;
+}

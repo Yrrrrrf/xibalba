@@ -47,14 +47,14 @@
 
           <div class="dropdown dropdown-end">
             <div
-              tabindex="0"
+              tabindex="-1"
               role="button"
               class="btn btn-primary btn-sm shadow-lg shadow-primary/20"
             >
               Regístrate
             </div>
             <ul
-              tabindex="0"
+              tabindex="-1"
               class="dropdown-content menu bg-base-100/90 backdrop-blur-3xl border border-white/5 rounded-box z-[1] w-64 p-2 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.5)] mt-4"
             >
               <li>
@@ -134,8 +134,8 @@
 
       <!-- MOBILE NAV (Hamburger Menu) -->
       <div class="dropdown dropdown-end md:hidden">
-        <label
-          tabindex="0"
+        <div
+          tabindex="-1"
           role="button"
           class="btn btn-ghost btn-circle btn-sm"
         >
@@ -153,9 +153,9 @@
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
-        </label>
+        </div>
         <ul
-          tabindex="0"
+          tabindex="-1"
           class="menu dropdown-content bg-base-100/95 backdrop-blur-3xl rounded-box z-[1] mt-4 w-64 p-4 shadow-2xl border border-white/10 flex flex-col gap-2"
         >
           {#if !auth.role}
@@ -205,5 +205,4 @@
         </ul>
       </div>
     </div>
-  </div>
 </header>

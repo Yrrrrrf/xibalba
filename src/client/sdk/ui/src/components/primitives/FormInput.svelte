@@ -2,7 +2,7 @@
   interface Props {
     value?: string | number;
     label?: string;
-    type?: "text" | "password" | "email" | "number" | "tel" | "textarea";
+    type?: "text" | "password" | "email" | "number" | "tel" | "textarea" | "url";
     placeholder?: string;
     class?: string;
     required?: boolean;

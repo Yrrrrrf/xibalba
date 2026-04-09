@@ -7,9 +7,22 @@
     MoneyPlugin,
   } from "rune-lab";
   import { setLocale } from "$lib/i18n/paraglide/runtime";
+  import { ICONS } from "@sdk/ui";
 
   let { children } = $props();
+
+  let scrolled = $state(false);
+
+  function handleScroll() {
+    scrolled = window.scrollY > 300;
+  }
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 </script>
+
+<svelte:window onscroll={handleScroll} />
 
 <!-- <RuneProvider
   config={{
@@ -23,7 +36,7 @@
 > -->
 
 <RuneProvider
-  config={{
+  config={() => ({
     favicon: "/img/rune.png",
     app: {
       name: "Rune Lab",
@@ -104,9 +117,22 @@
         ],
       },
     },
-  }}
+  })}
   plugins={[LayoutPlugin, PalettesPlugin, MoneyPlugin]}
-  onLanguageChange={(l) => setLocale(l)}
+  onLanguageChange={(l: any) => setLocale(l)}
 >
-  {@render children()}
+  <main class="animate-in fade-in slide-in-from-bottom-4 duration-700">
+    {@render children()}
+  </main>
+
+  <!-- Scroll-to-Top Button -->
+  <button
+    onclick={scrollToTop}
+    class="fixed bottom-8 right-8 btn btn-circle btn-primary shadow-[0_20px_40px_-10px_oklch(var(--p)/0.5)] z-50 transition-all duration-500 hover:scale-110 active:scale-95 {scrolled
+      ? 'translate-y-0 opacity-100 pointer-events-auto'
+      : 'translate-y-12 opacity-0 pointer-events-none'}"
+    aria-label="Scroll to top"
+  >
+    <ICONS.chevron_up size={24} strokeWidth={3} />
+  </button>
 </RuneProvider>

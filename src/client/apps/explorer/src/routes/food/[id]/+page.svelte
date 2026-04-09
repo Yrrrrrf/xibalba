@@ -7,7 +7,7 @@
 
   const dishStore = createDishStore();
   const id = $page.params.id;
-  const dish = $derived(dishStore.findById(id));
+  const dish = $derived(dishStore.findById(id || ""));
 
   onMount(() => {
     if (!dish) {
