@@ -1,49 +1,19 @@
 <script lang="ts">
   import "./layout.css";
   import {
-    RuneProvider as RP,
+    RuneProvider,
+    LayoutPlugin,
+    PalettesPlugin,
     MoneyPlugin,
-    localStorageDriver,
+    type NavigationSection,
+    version,
   } from "rune-lab";
-  import { setLocale } from "$lib/paraglide/runtime";
-  import { m, DynamicBackground, Navbar, Footer, BottomNav } from "@sdk/ui";
-
-  const RuneProvider: any = RP;
+  import { setLocale } from "$lib/i18n/paraglide/runtime";
 
   let { children } = $props();
-
-  const moneyConfig = {
-    defaultCurrency: "USD",
-    currencies: [
-      { code: "USD", symbol: "$", decimals: 2 },
-      { code: "MXN", symbol: "$", decimals: 2 },
-      { code: "EUR", symbol: "€", decimals: 2 },
-      { code: "JPY", symbol: "¥", decimals: 0 },
-    ],
-    exchangeRates: {
-      base: "USD",
-      rates: {
-        MXN: 17.23,
-        EUR: 0.91,
-        JPY: 151.3,
-      },
-    },
-  };
-
-  function handleThemeChange(newTheme: string) {
-    if (typeof document !== "undefined") {
-      document.documentElement.setAttribute("data-theme", newTheme);
-    }
-  }
-
-  function handleLanguageChange(newLang: string, oldLang: string) {
-    if (typeof window !== "undefined" && oldLang && newLang !== oldLang) {
-      window.location.reload();
-    }
-  }
 </script>
 
-<RuneProvider
+<!-- <RuneProvider
   config={{
     app: { name: "Xibalbá", version: "1.0.0" },
     persistence: localStorageDriver,
@@ -67,27 +37,18 @@
   }}
   plugins={[MoneyPlugin, PalettesPlugin]}
   onLanguageChange={(l: any) => setLocale(l.code)}
+> -->
+
+<RuneProvider
+  config={{
+    favicon: "/img/rune.png",
+    app: {
+      name: "Rune Lab",
+      author: "Yrrrrrf",
+    },
+  }}
+  plugins={[LayoutPlugin, PalettesPlugin, MoneyPlugin]}
+  onLanguageChange={(l) => setLocale(l)}
 >
-  <div
-    class="min-h-screen bg-transparent text-base-content flex flex-col selection:bg-primary/30 relative z-0"
-  >
-    <!-- Componente centralizado de Animación y Tramado -->
-    <DynamicBackground />
-
-    <!-- Componente centralizado de Barra Superior y Perfil -->
-    <Navbar />
-
-    <!-- Área de Contenido Principal -->
-    <div class="flex-1 flex flex-col pb-24 md:pb-0 relative z-10">
-      <div class="flex-1">
-        {@render children()}
-      </div>
-
-      <!-- Componente centralizado de Pie de Página -->
-      <Footer />
-    </div>
-  </div>
-
-  <!-- Mobile Floating Navigation -->
-  <BottomNav />
+  {@render children()}
 </RuneProvider>

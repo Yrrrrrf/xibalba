@@ -36,8 +36,8 @@ sync-ui:
     bunx @inlang/paraglide-js compile --project ./sdk/ui/src/i18n/project.inlang --outdir ./sdk/ui/src/i18n/paraglide
     # SvelteKit sync
     bun run --cwd sdk/ui svelte-kit sync
-    # bun run --cwd apps/explorer svelte-kit sync
-    # bun run --cwd apps/vision svelte-kit sync
+    bun run --cwd apps/explorer svelte-kit sync
+    bun run --cwd apps/vision svelte-kit sync
 
 [doc('Build Client')]
 [group('Build')]
