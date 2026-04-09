@@ -47,7 +47,6 @@ build: sync-ui
 [doc('Run the client in development mode')]
 [group('Dev')]
 run app=`ls apps/`: sync-ui
-    # yog reborn --deep
     # todo: Add a way to run all apps at once
     # todo: Somehow orchestrate the apps to run in parallel
     # bun run --cwd apps/{{ app }} vite dev --host
