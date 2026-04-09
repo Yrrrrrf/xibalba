@@ -5,7 +5,7 @@
 @plugin "@tailwindcss/typography";
 
 @plugin "daisyui" {
-    themes: all;
+  themes: all;
 }
 
 @import "./team-styles/mod.css";

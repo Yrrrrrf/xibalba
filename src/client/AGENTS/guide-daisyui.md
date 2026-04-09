@@ -50,8 +50,8 @@ _Using hardcoded color names_
 ```html
 <div class="bg-zinc-100">
   <div class="border-zinc-200 bg-zinc-50 text-zinc-800">
-    This is a hardcoded dark text on a light background, it needs double the amount of class names
-    to support dark mode.
+    This is a hardcoded dark text on a light background, it needs double the
+    amount of class names to support dark mode.
   </div>
 </div>
 ```
@@ -80,8 +80,8 @@ _Using semantic color names_
 ```html
 <div class="bg-base-200">
   <div class="bg-base-100 border-base-300 text-base-content">
-    This is dark text on a light background, which switches to light text on a dark background in
-    dark mode.
+    This is dark text on a light background, which switches to light text on a
+    dark background in dark mode.
   </div>
 </div>
 ```
@@ -147,7 +147,11 @@ _Using semantic color names_
 <input type="checkbox" class="checkbox checkbox-secondary" />
 ```
 
-These components automatically set the correct background color, text color, border color, etc as needed so you don't need to set those colors manually. For example `btn-primary` sets `primary` color for background and border, and sets `primary-content` color for the text automatically as default. You can customize them using utility classes if you want to change the color.
+These components automatically set the correct background color, text color,
+border color, etc as needed so you don't need to set those colors manually. For
+example `btn-primary` sets `primary` color for background and border, and sets
+`primary-content` color for the text automatically as default. You can customize
+them using utility classes if you want to change the color.
 
 <Translate text="You can also use color names in utility classes just like Tailwind's original color names." />
 <Translate text="These are utility classes that can be used with a color name:" />
@@ -172,7 +176,8 @@ These components automatically set the correct background color, text color, bor
 | `placeholder-{COLOR_NAME}` |                                                                                                                                |
 | `ring-offset-{COLOR_NAME}` |                                                                                                                                |
 
-So you can use `bg-primary`, `border-secondary`, etc. Read more about [daisyUI color utility classes](/docs/utilities/).
+So you can use `bg-primary`, `border-secondary`, etc. Read more about
+[daisyUI color utility classes](/docs/utilities/).
 
 ### Opacity values
 
@@ -182,13 +187,16 @@ You can also use opacity values with color names.
 <div class="bg-primary/50">Primary background with 50% opacity</div>
 ```
 
-- If you're using daisyUI as a Tailwind CSS plugin, the number can be any value between 0 and 100.
+- If you're using daisyUI as a Tailwind CSS plugin, the number can be any value
+  between 0 and 100.
 
-- If you're using the daisyUI CDN file, only opacity values of 10, 20, 30, 40, 50, 60, 70, 80, 90 are available.
+- If you're using the daisyUI CDN file, only opacity values of 10, 20, 30, 40,
+  50, 60, 70, 80, 90 are available.
 
 ## Color opacity and muted colors
 
-`base-content` is the text color of the page by default. It's a dark color on light themes and it's a light color on dark themes.
+`base-content` is the text color of the page by default. It's a dark color on
+light themes and it's a light color on dark themes.
 
 <div class="grid md:grid-cols-2 gap-10">
   <div class="relative bg-base-100 p-10 border border-base-content/10 rounded-box" data-theme="nord">
@@ -201,7 +209,9 @@ You can also use opacity values with color names.
   </div>
 </div>
 
-Sometimes we need a muted text. something with less contrast. The best way to do this is using Tailwind CSS color opacity modifier by adding a `/50` (or any other value) to the end of color name. Like `text-base-content/50`
+Sometimes we need a muted text. something with less contrast. The best way to do
+this is using Tailwind CSS color opacity modifier by adding a `/50` (or any
+other value) to the end of color name. Like `text-base-content/50`
 
 <div class="grid md:grid-cols-2 gap-10">
   <div class="relative bg-base-100 p-10 border border-base-content/10 rounded-box" data-theme="nord">
@@ -220,8 +230,10 @@ Sometimes we need a muted text. something with less contrast. The best way to do
   </div>
 </div>
 
-The advantage of using opacity is that it gives a constant result on all themes, for all colors.  
-You can use it with any opacity value, you can use it for any color. For example primary-content:
+The advantage of using opacity is that it gives a constant result on all themes,
+for all colors.\
+You can use it with any opacity value, you can use it for any color. For example
+primary-content:
 
 <div class="grid md:grid-cols-2 gap-10">
   <div class="relative bg-primary p-10 border border-primary-content/10 rounded-box" data-theme="nord">
@@ -249,8 +261,10 @@ desc: daisyUI provides a few useful utility classes and CSS variables to help yo
 
 ## <Translate text="Color utility classes" />
 
-All daisyUI colors can be used as utility classes. Just like any other Tailwind CSS color.  
-For example you can use `primary` color with any of Tailwind CSS color utilities.
+All daisyUI colors can be used as utility classes. Just like any other Tailwind
+CSS color.\
+For example you can use `primary` color with any of Tailwind CSS color
+utilities.
 
 Read more about [color names](/docs/colors).
 
@@ -274,7 +288,8 @@ Read more about [color names](/docs/colors).
 | `placeholder-primary` | Sets the placeholder text color to the primary color        |
 | `ring-offset-primary` | Sets the ring offset color to the primary color             |
 
-You can use `bg-primary` to set the background color to the primary color and `text-primary-content` to set the text color to the primary color.
+You can use `bg-primary` to set the background color to the primary color and
+`text-primary-content` to set the text color to the primary color.
 
 ```html
 <div class="bg-primary text-primary-content">Primary color</div>
@@ -283,13 +298,17 @@ You can use `bg-primary` to set the background color to the primary color and `t
 You can also control the opacity of the color like
 
 ```html
-<div class="bg-primary text-primary-content/60">Primary-content color with 60% opacity</div>
+<div class="bg-primary text-primary-content/60">
+  Primary-content color with 60% opacity
+</div>
 ```
 
 ## <Translate text="Border radius" />
 
-Tailwind CSS provides fixed values for border radius, such as `rounded-sm`, `rounded-lg`, `rounded-xl`, etc.  
-daisyUI provides a few more border radius values which are tokenized for components and can be customized based on the theme.
+Tailwind CSS provides fixed values for border radius, such as `rounded-sm`,
+`rounded-lg`, `rounded-xl`, etc.\
+daisyUI provides a few more border radius values which are tokenized for
+components and can be customized based on the theme.
 
 Change the theme to see the border radius changes:
 
@@ -319,7 +338,8 @@ Change the theme to see the border radius changes:
 
 ## Theme CSS variables
 
-These CSS variables can be customized for each themes. Read more about [color names](/docs/colors).
+These CSS variables can be customized for each themes. Read more about
+[color names](/docs/colors).
 
 | CSS Variable                | Description                                                     |
 | --------------------------- | --------------------------------------------------------------- |
@@ -354,13 +374,22 @@ These CSS variables can be customized for each themes. Read more about [color na
 
 ## <Translate text="Component specific CSS variables" />
 
-For advanced use: These CSS variables are being used internally for a specific components. You probably won't need to customize them, but you can if you want to.
+For advanced use: These CSS variables are being used internally for a specific
+components. You probably won't need to customize them, but you can if you want
+to.
 
-If you are using a prefix for daisyUI, these CSS variables will be prefixed with that prefix as well. For example if prefix is `daisy-`, The `--alert-color` CSS variable will be `--daisy-alert-color`.
+If you are using a prefix for daisyUI, these CSS variables will be prefixed with
+that prefix as well. For example if prefix is `daisy-`, The `--alert-color` CSS
+variable will be `--daisy-alert-color`.
 
 > :INFO:
 >
-> These variables are for internal use. They are not subject of semantic versioning and some of them may be modified or removed in future minor versions, in which case your custom styles might lose their effect, so if you want to modify these variables and your UI really depends on the customized value, make sure you are using a fixed version of daisyUI, not the latest version.
+> These variables are for internal use. They are not subject of semantic
+> versioning and some of them may be modified or removed in future minor
+> versions, in which case your custom styles might lose their effect, so if you
+> want to modify these variables and your UI really depends on the customized
+> value, make sure you are using a fixed version of daisyUI, not the latest
+> version.
 
 | Component       | CSS Variable                  | Description                                              |
 | --------------- | ----------------------------- | -------------------------------------------------------- |

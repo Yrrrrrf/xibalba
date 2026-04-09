@@ -34,20 +34,20 @@
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div
     class="fixed inset-0 z-[1001] flex items-end sm:items-center justify-center p-0 sm:p-8 sm:pt-28
-           bg-base-300/60 backdrop-blur-md transition-all duration-300"
+           bg-base-300/40 backdrop-blur-[20px] transition-all duration-700 ease-in-out"
     onclick={handleBackdrop}
   >
-    <!-- Modal Panel -->
+    <!-- Modal Panel (The Abyss Slide) -->
     <div
       class="relative w-full max-w-3xl h-fit max-h-[100vh] sm:max-h-[88vh] overflow-y-auto
-             bg-base-100 backdrop-blur-2xl
-             border-t sm:border border-base-content/10
-             rounded-t-[2.5rem] sm:rounded-3xl shadow-2xl
-             flex flex-col animate-in fade-in slide-in-from-bottom-10 duration-500"
+             bg-base-100/90 backdrop-blur-[30px]
+             border-t-2 sm:border-2 border-white/20
+             rounded-t-[3rem] sm:rounded-[2.5rem] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)]
+             flex flex-col animate-in fade-in slide-in-from-bottom-full duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
     >
       <!-- ── HERO IMAGE ─────────────────────────────────── -->
       <div
-        class="relative h-[35vh] sm:h-72 flex-shrink-0 overflow-hidden rounded-t-[2.5rem] sm:rounded-t-3xl"
+        class="relative h-[40vh] sm:h-80 flex-shrink-0 overflow-hidden rounded-t-[3rem] sm:rounded-t-[2.5rem]"
       >
         <ImageWithFallback
           src="/images/places/placeholder-business.jpg" 

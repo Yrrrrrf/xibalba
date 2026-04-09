@@ -5,115 +5,60 @@
     children: Snippet;
     class?: string;
     style?: string;
-    accent?: string;
     onclick?: () => void;
-    use?: any[]; // Kept for backward compatibility
-    enableTilt?: boolean;
-    enableShimmer?: boolean;
+    glowColor?: string;
   }
 
   let {
     children,
     class: className = "",
     style = "",
-    accent = "",
     onclick,
-    use = [],
-    enableTilt = true,
-    enableShimmer = true,
+    glowColor = "oklch(var(--p))",
   }: Props = $props();
-
-  // ── Optimized Tilt action for Performance ───────────────────────────
-  function tilt(node: HTMLElement) {
-    if (!enableTilt) return {};
-    
-    // Bail out immediately on mobile/touch - no listeners added at all
-    const isMobile = window.matchMedia("(pointer: coarse)").matches;
-    if (isMobile) return {};
-
-    let raf = 0;
-
-    function onMove(e: MouseEvent) {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const rect = node.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const cx = rect.width / 2;
-        const cy = rect.height / 2;
-        const rx = ((y - cy) / cy) * -8; // Slightly reduced angle
-        const ry = ((x - cx) / cx) * 8;
-        node.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px) scale(1.01)`;
-        node.style.transition = "transform 0.1s ease-out";
-      });
-    }
-
-    function onLeave() {
-      cancelAnimationFrame(raf);
-      node.style.transition = "transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)";
-      node.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)";
-    }
-
-    node.addEventListener("mousemove", onMove, { passive: true });
-    node.addEventListener("mouseleave", onLeave);
-
-    return {
-      destroy() {
-        node.removeEventListener("mousemove", onMove);
-        node.removeEventListener("mouseleave", onLeave);
-      },
-    };
-  }
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div
-  use:tilt
-  {onclick}
-  style="transform-style: preserve-3d; {style}"
-  class="group relative flex flex-col
-         glass backdrop-blur-2xl bg-base-100/[0.08] hover:bg-base-100/[0.12] transition-all duration-500
-         border border-white/[0.08] dark:border-white/[0.05]
-         shadow-[0_8px_32px_-12px_rgba(0,0,0,0.4)] hover:shadow-2xl hover:shadow-primary/10
-         rounded-3xl overflow-hidden will-change-transform
-         {onclick ? 'cursor-pointer' : ''}
-         {className}"
->
-  <!-- PREMIUM GLASS REFLEX (Reflejo diagonal optimizado) -->
-  {#if enableShimmer}
-    <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl z-0">
-      <!-- Main subtle diagonal reflex -->
-      <div 
-        class="absolute inset-0 bg-gradient-to-br from-white/[0.12] via-transparent to-transparent 
-               opacity-30 group-hover:opacity-50 transition-opacity duration-1000"
-      ></div>
-      
-      <!-- Sharp moving shimmer line - Optimized with slower cycle -->
-      <div 
-        class="absolute inset-0 opacity-[0.02] group-hover:opacity-[0.06] transition-opacity duration-1000
-               bg-[linear-gradient(110deg,transparent_40%,rgba(255,255,255,0.5)_50%,transparent_60%)]
-               bg-[length:200%_100%] animate-[shimmer_15s_linear_infinite]"
-      ></div>
-      
-      <!-- Outer rim light -->
-      <div class="absolute inset-0 border border-white/[0.03] rounded-3xl pointer-events-none"></div>
-    </div>
-  {/if}
-
-  {#if accent}
-    <div
-      class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r {accent} opacity-90 rounded-t-3xl z-20"
-    ></div>
-  {/if}
-
-  <div class="relative z-10 h-full flex flex-col">
-    {@render children()}
-  </div>
-
-  <!-- Bottom shimmer glow on hover -->
+<div {onclick} style="{style}; --glow-color: {glowColor};" class="hover-3d">
+  <!-- Card Content wrapper -->
   <div
-    class="absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent
-           opacity-0 group-hover:opacity-80 transition-opacity duration-700 z-20"
-  ></div>
+    class="group relative flex flex-col h-full w-full
+           glass backdrop-blur-2xl bg-base-100/[0.08] hover:bg-base-100/[0.12] transition-all duration-500
+           border border-white/[0.1] dark:border-white/[0.05]
+           shadow-[0_8px_32px_-12px_rgba(0,0,0,0.4)] hover:shadow-[0_20px_60px_-15px_var(--glow-color)]
+           rounded-[2.5rem] overflow-hidden will-change-transform"
+  >
+    <!-- MYTHIC AURA GLOW (Breathing behind the card) -->
+    <div
+      class="absolute inset-0 z-[-1] opacity-0 group-hover:opacity-20 blur-[60px] transition-all duration-1000
+             bg-[radial-gradient(circle_at_center,var(--glow-color)_0%,transparent_70%)] animate-pulse"
+    ></div>
+
+    <!-- PREMIUM GLASS REFLEX -->
+    <div
+      class="absolute inset-0 pointer-events-none overflow-hidden rounded-[2.5rem] z-0"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-white/[0.15] via-transparent to-transparent
+               opacity-20 group-hover:opacity-40 transition-opacity duration-1000"
+      ></div>
+
+      <div
+        class="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-1000
+               bg-[linear-gradient(110deg,transparent_45%,rgba(255,255,255,0.6)_50%,transparent_55%)]
+               bg-[length:200%_100%] animate-[shimmer_12s_linear_infinite]"
+      ></div>
+    </div>
+
+    <!-- Bottom highlight -->
+    <div
+      class="absolute inset-x-12 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--glow-color)] to-transparent
+             opacity-0 group-hover:opacity-100 transition-all duration-1000 blur-[1px] z-20"
+    ></div>
+
+    <div class="relative z-10 h-full flex flex-col">
+      {@render children()}
+    </div>
+  </div>
 </div>

@@ -29,19 +29,25 @@
   const accent = $derived(
     CATEGORY_BG_ACCENTS[dish.category] ?? "from-primary/20 to-primary/10",
   );
+
+  const glowColor = $derived(
+    dish.category === 'mexican' ? '#10b981' : 
+    dish.category === 'seafood' ? '#3b82f6' : 
+    dish.category === 'mystic' ? '#a855f7' : 'oklch(var(--p))'
+  );
 </script>
 
 <GlassCard
   onclick={onselect}
-  use={[tilt]}
   {accent}
+  {glowColor}
+  enable3D={true}
   enableShimmer={true}
   class="cursor-pointer will-change-transform group h-full"
-  style="transform-style: preserve-3d;"
 >
   <!-- ── IMAGEN con efecto pop-out ──────────────────────────── -->
   <figure
-    class="relative overflow-hidden rounded-t-3xl h-48 sm:h-56 bg-gradient-to-br {accent}"
+    class="relative overflow-hidden rounded-t-[2.5rem] h-48 sm:h-56 bg-gradient-to-br {accent}"
   >
     <ImageWithFallback
       src={dish.image_url}
