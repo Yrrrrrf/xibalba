@@ -7,11 +7,9 @@
   class="min-h-screen bg-transparent text-base-content flex flex-col selection:bg-primary/30 relative z-0"
 >
   <!-- Componente centralizado de Animación y Tramado -->
-  <div class="flex gap-8">
-    <ThemeSelector />
-    <LanguageSelector />
-    <CurrencySelector />
-  </div>
+  <ThemeSelector />
+  <LanguageSelector />
+  <CurrencySelector />
 
   <!-- Componente centralizado de Barra Superior y Perfil -->
   <Navbar />

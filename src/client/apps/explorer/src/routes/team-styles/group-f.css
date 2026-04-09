@@ -1,84 +1,108 @@
 /* ── Group F: Netherlands, Japan, Playoff B, Tunisia ── */
 
 /* Netherlands */
-[data-theme="netherlands"] {
-  --color-primary: #ff6600;
-  --color-primary-content: #ffffff;
-  --color-secondary: #21468b;
-  --color-secondary-content: #ffffff;
-  --color-accent: #ae1c28;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1a0e05;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "netherlands";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(69.58% 0.204 43);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(40.76% 0.123 261);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(48.59% 0.179 24);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(17.78% 0.028 60);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fffaf5;
-  --color-base-200: #fff3eb;
-  --color-base-300: #ffe6dd;
-  --color-base-content: #1c1b1a;
+  --color-base-100: oklch(98.76% 0.009 68);
+  --color-base-200: oklch(97.14% 0.017 56);
+  --color-base-300: oklch(94.28% 0.03 41);
+  --color-base-content: oklch(22.28% 0.002 68);
 
-  --color-info: #21468b;
-  --color-success: #36d399;
-  --color-warning: #ff6600;
-  --color-error: #ae1c28;
+  --color-info: oklch(40.76% 0.123 261);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(69.58% 0.204 43);
+  --color-error: oklch(48.59% 0.179 24);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Japan */
-[data-theme="japan"] {
-  --color-primary: #bc002d;
-  --color-primary-content: #ffffff;
-  --color-secondary: #ffffff;
-  --color-secondary-content: #bc002d;
-  --color-accent: #002b5c;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1a0a10;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "japan";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(50.28% 0.202 21);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(100% 0 0);
+  --color-secondary-content: oklch(50.28% 0.202 21);
+  --color-accent: oklch(29.47% 0.099 255);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(17.18% 0.03 357);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fffbfc;
-  --color-base-200: #fff5f7;
-  --color-base-300: #ffebef;
-  --color-base-content: #1c1a1a;
+  --color-base-100: oklch(99.14% 0.004 360);
+  --color-base-200: oklch(97.85% 0.011 3);
+  --color-base-300: oklch(95.71% 0.022 4);
+  --color-base-content: oklch(22.01% 0.003 17);
 
-  --color-info: #002b5c;
-  --color-success: #36d399;
-  --color-warning: #fbbd23;
-  --color-error: #bc002d;
+  --color-info: oklch(29.47% 0.099 255);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(50.28% 0.202 21);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* UEFA Playoff B */
-[data-theme="playoff-b"] {
-  --color-primary: #003399;
-  --color-primary-content: #ffffff;
-  --color-secondary: #cccccc;
-  --color-secondary-content: #1a1a1a;
-  --color-accent: #333333;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1a1a1a;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "playoff-b";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(37.08% 0.173 262);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(84.52% 0 0);
+  --color-secondary-content: oklch(21.78% 0 0);
+  --color-accent: oklch(32.11% 0 0);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(21.78% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5f5f5;
-  --color-base-200: #eeeeee;
-  --color-base-300: #e0e0e0;
-  --color-base-content: #1a1a1a;
+  --color-base-100: oklch(97.02% 0 0);
+  --color-base-200: oklch(94.91% 0 0);
+  --color-base-300: oklch(90.67% 0 0);
+  --color-base-content: oklch(21.78% 0 0);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Tunisia */
-[data-theme="tunisia"] {
-  --color-primary: #e70013;
-  --color-primary-content: #ffffff;
-  --color-secondary: #ffffff;
-  --color-secondary-content: #e70013;
-  --color-accent: #9b000d;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1e0a0a;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "tunisia";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(58.33% 0.238 28);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(100% 0 0);
+  --color-secondary-content: oklch(58.33% 0.238 28);
+  --color-accent: oklch(43.37% 0.177 27);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(17.69% 0.035 21);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fffafa;
-  --color-base-200: #fff2f2;
-  --color-base-300: #ffe5e5;
-  --color-base-content: #1c1a1a;
+  --color-base-100: oklch(98.89% 0.005 17);
+  --color-base-200: oklch(97.13% 0.014 17);
+  --color-base-300: oklch(94.3% 0.029 18);
+  --color-base-content: oklch(22.01% 0.003 17);
 
-  --color-info: #3abff8;
-  --color-success: #36d399;
-  --color-warning: #fbbd23;
-  --color-error: #e70013;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(58.33% 0.238 28);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }

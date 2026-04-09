@@ -1,84 +1,108 @@
 /* ── Group D: USA, Paraguay, Australia, Playoff C ── */
 
 /* USA */
-[data-theme="usa"] {
-  --color-primary: #0a3161;
-  --color-primary-content: #ffffff;
-  --color-secondary: #b31942;
-  --color-secondary-content: #ffffff;
-  --color-accent: #ffffff;
-  --color-accent-content: #0a3161;
-  --color-neutral: #0a1628;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "usa";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(31.69% 0.095 256);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(49.8% 0.185 14);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(100% 0 0);
+  --color-accent-content: oklch(31.69% 0.095 256);
+  --color-neutral: oklch(19.98% 0.04 258);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f8fafd;
-  --color-base-200: #f1f5fa;
-  --color-base-300: #e6edf5;
-  --color-base-content: #1a1b1c;
+  --color-base-100: oklch(98.44% 0.005 258);
+  --color-base-200: oklch(96.85% 0.008 254);
+  --color-base-300: oklch(94.31% 0.013 252);
+  --color-base-content: oklch(22.15% 0.002 248);
 
-  --color-info: #0a3161;
-  --color-success: #36d399;
-  --color-warning: #fbbd23;
-  --color-error: #b31942;
+  --color-info: oklch(31.69% 0.095 256);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(49.8% 0.185 14);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Paraguay */
-[data-theme="paraguay"] {
-  --color-primary: #d52b1e;
-  --color-primary-content: #ffffff;
-  --color-secondary: #0038a8;
-  --color-secondary-content: #ffffff;
-  --color-accent: #8b1c14;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1a1028;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "paraguay";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(56.71% 0.207 30);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(39.57% 0.186 262);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(41.69% 0.148 29);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(20% 0.048 301);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fdfafc;
-  --color-base-200: #faf5f8;
-  --color-base-300: #f5ebf2;
-  --color-base-content: #1c1a1b;
+  --color-base-100: oklch(98.8% 0.004 337);
+  --color-base-200: oklch(97.48% 0.007 340);
+  --color-base-300: oklch(94.99% 0.014 336);
+  --color-base-content: oklch(22.05% 0.004 346);
 
-  --color-info: #0038a8;
-  --color-success: #36d399;
-  --color-warning: #fbbd23;
-  --color-error: #d52b1e;
+  --color-info: oklch(39.57% 0.186 262);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(56.71% 0.207 30);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Australia */
-[data-theme="australia"] {
-  --color-primary: #00008b;
-  --color-primary-content: #ffffff;
-  --color-secondary: #ffcd00;
-  --color-secondary-content: #1a1400;
-  --color-accent: #ff0000;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0d0d2b;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "australia";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(28.78% 0.199 264);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(86.72% 0.177 91);
+  --color-secondary-content: oklch(19.3% 0.04 95);
+  --color-accent: oklch(62.8% 0.258 29);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(18.08% 0.059 279);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5f5fd;
-  --color-base-200: #ebebfa;
-  --color-base-300: #ddddf5;
-  --color-base-content: #1a1a1c;
+  --color-base-100: oklch(97.24% 0.011 286);
+  --color-base-200: oklch(94.45% 0.02 286);
+  --color-base-300: oklch(90.48% 0.033 286);
+  --color-base-content: oklch(21.86% 0.004 286);
 
-  --color-info: #00008b;
-  --color-success: #36d399;
-  --color-warning: #ffcd00;
-  --color-error: #ff0000;
+  --color-info: oklch(28.78% 0.199 264);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(86.72% 0.177 91);
+  --color-error: oklch(62.8% 0.258 29);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* UEFA Playoff C */
-[data-theme="playoff-c"] {
-  --color-primary: #003399;
-  --color-primary-content: #ffffff;
-  --color-secondary: #cccccc;
-  --color-secondary-content: #1a1a1a;
-  --color-accent: #333333;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1a1a1a;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "playoff-c";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(37.08% 0.173 262);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(84.52% 0 0);
+  --color-secondary-content: oklch(21.78% 0 0);
+  --color-accent: oklch(32.11% 0 0);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(21.78% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5f5f5;
-  --color-base-200: #eeeeee;
-  --color-base-300: #e0e0e0;
-  --color-base-content: #1a1a1a;
+  --color-base-100: oklch(97.02% 0 0);
+  --color-base-200: oklch(94.91% 0 0);
+  --color-base-300: oklch(90.67% 0 0);
+  --color-base-content: oklch(21.78% 0 0);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }

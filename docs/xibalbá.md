@@ -5,8 +5,7 @@ tags:
 
 # [Xibalbá](https://github.com/Yrrrrrf/xibalba)
 
-> Xibalbá is a project that is being developed to be used in the inventory
-> system.
+> Xibalbá is a project that is being developed to be used in the inventory system.
 
 ## Metadata
 

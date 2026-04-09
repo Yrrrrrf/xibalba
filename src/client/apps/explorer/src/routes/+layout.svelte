@@ -28,21 +28,81 @@
     app: {
       name: "Rune Lab",
       author: "Yrrrrrf",
-      // "rune-lab.layout": {
-      //   customThemes: [
-      //     { name: "mundial", icon: "🌍" },
-      //     { name: "argentina", icon: "🥩" },
-      //     { name: "brasil", icon: "🍖" },
-      //     { name: "mexico", icon: "🌮" },
-      //     { name: "usa", icon: "🍔" },
-      //     { name: "francia", icon: "🥐" },
-      //     { name: "inglaterra", icon: "🥧" },
-      //     { name: "espana", icon: "🥘" },
-      //     { name: "alemania", icon: "🥨" },
-      //     { name: "portugal", icon: "🍮" },
-      //     { name: "japon", icon: "🍣" },
-      //   ],
-      // },
+      "rune-lab.layout": {
+        customThemes: [
+          // --- Group A ---
+          { name: "mexico", icon: "🇲🇽" },
+          { name: "south-africa", icon: "🇿🇦" },
+          { name: "south-korea", icon: "🇰🇷" },
+          { name: "playoff-d", icon: "⚽" },
+
+          // --- Group B ---
+          { name: "canada", icon: "🇨🇦" },
+          { name: "playoff-a", icon: "⚽" },
+          { name: "qatar", icon: "🇶🇦" },
+          { name: "switzerland", icon: "🇨🇭" },
+
+          // --- Group C ---
+          { name: "brazil", icon: "🇧🇷" },
+          { name: "morocco", icon: "🇲🇦" },
+          { name: "haiti", icon: "🇭🇹" },
+          { name: "scotland", icon: "🏴󠁧󠁢󠁳󠁣󠁴󠁿" },
+
+          // --- Group D ---
+          { name: "usa", icon: "🇺🇸" },
+          { name: "paraguay", icon: "🇵🇾" },
+          { name: "australia", icon: "🇦🇺" },
+          { name: "playoff-c", icon: "⚽" },
+
+          // --- Group E ---
+          { name: "germany", icon: "🇩🇪" },
+          { name: "curacao", icon: "🇨🇼" },
+          { name: "ivory-coast", icon: "🇨🇮" },
+          { name: "ecuador", icon: "🇪🇨" },
+
+          // --- Group F ---
+          { name: "netherlands", icon: "🇳🇱" },
+          { name: "japan", icon: "🇯🇵" },
+          { name: "playoff-b", icon: "⚽" },
+          { name: "tunisia", icon: "🇹🇳" },
+
+          // --- Group G ---
+          { name: "belgium", icon: "🇧🇪" },
+          { name: "egypt", icon: "🇪🇬" },
+          { name: "iran", icon: "🇮🇷" },
+          { name: "new-zealand", icon: "🇳🇿" },
+
+          // --- Group H ---
+          { name: "spain", icon: "🇪🇸" },
+          { name: "cape-verde", icon: "🇨🇻" },
+          { name: "saudi-arabia", icon: "🇸🇦" },
+          { name: "uruguay", icon: "🇺🇾" },
+
+          // --- Group I ---
+          { name: "france", icon: "🇫🇷" },
+          { name: "senegal", icon: "🇸🇳" },
+          { name: "playoff-ic2", icon: "⚽" },
+          { name: "norway", icon: "🇳🇴" },
+
+          // --- Group J ---
+          { name: "argentina", icon: "🇦🇷" },
+          { name: "algeria", icon: "🇩🇿" },
+          { name: "austria", icon: "🇦🇹" },
+          { name: "jordan", icon: "🇯🇴" },
+
+          // --- Group K ---
+          { name: "portugal", icon: "🇵🇹" },
+          { name: "playoff-ic1", icon: "⚽" },
+          { name: "uzbekistan", icon: "🇺🇿" },
+          { name: "colombia", icon: "🇨🇴" },
+
+          // --- Group L ---
+          { name: "england", icon: "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
+          { name: "croatia", icon: "🇭🇷" },
+          { name: "ghana", icon: "🇬🇭" },
+          { name: "panama", icon: "🇵🇦" },
+        ],
+      },
     },
   }}
   plugins={[LayoutPlugin, PalettesPlugin, MoneyPlugin]}

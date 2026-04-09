@@ -1,89 +1,113 @@
 /* ── Group G: Belgium, Egypt, Iran, New Zealand ── */
 
 /* Belgium */
-[data-theme="belgium"] {
-  --color-primary: #ef3340;
-  --color-primary-content: #ffffff;
-  --color-secondary: #fdda24;
-  --color-secondary-content: #1a1400;
-  --color-accent: #000000;
-  --color-accent-content: #fdda24;
-  --color-neutral: #111111;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "belgium";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(62.24% 0.221 23);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(89.15% 0.177 97);
+  --color-secondary-content: oklch(19.3% 0.04 95);
+  --color-accent: oklch(0% 0 0);
+  --color-accent-content: oklch(89.15% 0.177 97);
+  --color-neutral: oklch(17.76% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fffaf5;
-  --color-base-200: #fff3eb;
-  --color-base-300: #ffe6dd;
-  --color-base-content: #1c1b1a;
+  --color-base-100: oklch(98.76% 0.009 68);
+  --color-base-200: oklch(97.14% 0.017 56);
+  --color-base-300: oklch(94.28% 0.03 41);
+  --color-base-content: oklch(22.28% 0.002 68);
 
-  --color-info: #3abff8;
-  --color-success: #36d399;
-  --color-warning: #fdda24;
-  --color-error: #ef3340;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(89.15% 0.177 97);
+  --color-error: oklch(62.24% 0.221 23);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Egypt */
-[data-theme="egypt"] {
-  --color-primary: #ce1126;
-  --color-primary-content: #ffffff;
-  --color-secondary: #c09300;
-  --color-secondary-content: #ffffff;
-  --color-accent: #000000;
-  --color-accent-content: #c09300;
-  --color-neutral: #1a0d0d;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "egypt";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(54.12% 0.213 25);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(68.68% 0.141 87);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(0% 0 0);
+  --color-accent-content: oklch(68.68% 0.141 87);
+  --color-neutral: oklch(17.77% 0.023 20);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fdfaf5;
-  --color-base-200: #f9f2eb;
-  --color-base-300: #f3e5dd;
-  --color-base-content: #1c1b1a;
+  --color-base-100: oklch(98.6% 0.007 81);
+  --color-base-200: oklch(96.47% 0.012 68);
+  --color-base-300: oklch(93.08% 0.019 52);
+  --color-base-content: oklch(22.28% 0.002 68);
 
-  --color-info: #3abff8;
-  --color-success: #36d399;
-  --color-warning: #c09300;
-  --color-error: #ce1126;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(68.68% 0.141 87);
+  --color-error: oklch(54.12% 0.213 25);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Iran */
-[data-theme="iran"] {
-  --color-primary: #239f40;
-  --color-primary-content: #ffffff;
-  --color-secondary: #da0000;
-  --color-secondary-content: #ffffff;
-  --color-accent: #ffffff;
-  --color-accent-content: #239f40;
-  --color-neutral: #0d1e12;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "iran";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(61.67% 0.171 147);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(55.79% 0.229 29);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(100% 0 0);
+  --color-accent-content: oklch(61.67% 0.171 147);
+  --color-neutral: oklch(21.58% 0.033 152);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f6fdf7;
-  --color-base-200: #eefaef;
-  --color-base-300: #e2f5e5;
-  --color-base-content: #1a1c1a;
+  --color-base-100: oklch(98.71% 0.011 150);
+  --color-base-200: oklch(97.31% 0.019 148);
+  --color-base-300: oklch(95.17% 0.029 150);
+  --color-base-content: oklch(22.35% 0.005 145);
 
-  --color-info: #3abff8;
-  --color-success: #239f40;
-  --color-warning: #fbbd23;
-  --color-error: #da0000;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(61.67% 0.171 147);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(55.79% 0.229 29);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* New Zealand */
-[data-theme="new-zealand"] {
-  --color-primary: #00247d;
-  --color-primary-content: #ffffff;
-  --color-secondary: #cc142b;
-  --color-secondary-content: #ffffff;
-  --color-accent: #001a5e;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0d1228;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "new-zealand";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(31.22% 0.154 263);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(53.9% 0.21 24);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(25.75% 0.125 263);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(19.08% 0.045 272);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5f7fd;
-  --color-base-200: #ebf0fa;
-  --color-base-300: #dde5f5;
-  --color-base-content: #1a1b1c;
+  --color-base-100: oklch(97.63% 0.008 271);
+  --color-base-200: oklch(95.43% 0.014 264);
+  --color-base-300: oklch(92.06% 0.023 264);
+  --color-base-content: oklch(22.15% 0.002 248);
 
-  --color-info: #00247d;
-  --color-success: #36d399;
-  --color-warning: #fbbd23;
-  --color-error: #cc142b;
+  --color-info: oklch(31.22% 0.154 263);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(53.9% 0.21 24);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }

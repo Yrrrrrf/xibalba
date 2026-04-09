@@ -1,89 +1,113 @@
 /* ── Group C: Brazil, Morocco, Haiti, Scotland ── */
 
 /* Brazil */
-[data-theme="brazil"] {
-  --color-primary: #fedd00;
-  --color-primary-content: #1a1600;
-  --color-secondary: #009739;
-  --color-secondary-content: #ffffff;
-  --color-accent: #002776;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0d2818;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "brazil";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(89.78% 0.186 98);
+  --color-primary-content: oklch(19.88% 0.041 101);
+  --color-secondary: oklch(58.96% 0.172 148);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(31.05% 0.141 262);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(25.03% 0.045 155);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fffef5;
-  --color-base-200: #fffdf0;
-  --color-base-300: #fffce5;
-  --color-base-content: #1c1c1a;
+  --color-base-100: oklch(99.53% 0.012 101);
+  --color-base-200: oklch(99.21% 0.017 100);
+  --color-base-300: oklch(98.73% 0.03 101);
+  --color-base-content: oklch(22.57% 0.004 107);
 
-  --color-info: #002776;
-  --color-success: #009739;
-  --color-warning: #fedd00;
-  --color-error: #f87272;
+  --color-info: oklch(31.05% 0.141 262);
+  --color-success: oklch(58.96% 0.172 148);
+  --color-warning: oklch(89.78% 0.186 98);
+  --color-error: oklch(71.22% 0.165 22);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Morocco */
-[data-theme="morocco"] {
-  --color-primary: #c1272d;
-  --color-primary-content: #ffffff;
-  --color-secondary: #006233;
-  --color-secondary-content: #ffffff;
-  --color-accent: #8b1a1f;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1a0f0f;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "morocco";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(52.93% 0.189 25);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(43.53% 0.11 154);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(41.65% 0.148 25);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(18.35% 0.019 19);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fdf7f7;
-  --color-base-200: #f9efef;
-  --color-base-300: #f3e2e2;
-  --color-base-content: #1c1a1a;
+  --color-base-100: oklch(98.08% 0.006 17);
+  --color-base-200: oklch(95.99% 0.011 17);
+  --color-base-300: oklch(92.64% 0.019 17);
+  --color-base-content: oklch(22.01% 0.003 17);
 
-  --color-info: #3abff8;
-  --color-success: #006233;
-  --color-warning: #fbbd23;
-  --color-error: #c1272d;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(43.53% 0.11 154);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(52.93% 0.189 25);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Haiti */
-[data-theme="haiti"] {
-  --color-primary: #00209f;
-  --color-primary-content: #ffffff;
-  --color-secondary: #d21034;
-  --color-secondary-content: #ffffff;
-  --color-accent: #001a7a;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0d1226;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "haiti";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(34.61% 0.201 264);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(55.01% 0.215 21);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(29.13% 0.162 264);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(18.92% 0.041 271);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5f7fd;
-  --color-base-200: #ebf0fa;
-  --color-base-300: #dde5f5;
-  --color-base-content: #1a1b1c;
+  --color-base-100: oklch(97.63% 0.008 271);
+  --color-base-200: oklch(95.43% 0.014 264);
+  --color-base-300: oklch(92.06% 0.023 264);
+  --color-base-content: oklch(22.15% 0.002 248);
 
-  --color-info: #00209f;
-  --color-success: #36d399;
-  --color-warning: #fbbd23;
-  --color-error: #d21034;
+  --color-info: oklch(34.61% 0.201 264);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(55.01% 0.215 21);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Scotland */
-[data-theme="scotland"] {
-  --color-primary: #005eb8;
-  --color-primary-content: #ffffff;
-  --color-secondary: #ffffff;
-  --color-secondary-content: #005eb8;
-  --color-accent: #003d7a;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0d1b2a;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "scotland";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(48.92% 0.161 255);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(100% 0 0);
+  --color-secondary-content: oklch(48.92% 0.161 255);
+  --color-accent: oklch(36.43% 0.118 255);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(21.77% 0.036 251);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5f9fd;
-  --color-base-200: #ebf3fa;
-  --color-base-300: #dde9f5;
-  --color-base-content: #1a1b1c;
+  --color-base-100: oklch(98.02% 0.007 248);
+  --color-base-200: oklch(96.02% 0.013 244);
+  --color-base-300: oklch(92.86% 0.021 248);
+  --color-base-content: oklch(22.15% 0.002 248);
 
-  --color-info: #005eb8;
-  --color-success: #36d399;
-  --color-warning: #fbbd23;
-  --color-error: #f87272;
+  --color-info: oklch(48.92% 0.161 255);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(71.22% 0.165 22);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }

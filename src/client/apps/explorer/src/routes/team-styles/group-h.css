@@ -1,89 +1,113 @@
 /* ── Group H: Spain, Cape Verde, Saudi Arabia, Uruguay ── */
 
 /* Spain */
-[data-theme="spain"] {
-  --color-primary: #aa151b;
-  --color-primary-content: #ffffff;
-  --color-secondary: #f1bf00;
-  --color-secondary-content: #1a1400;
-  --color-accent: #7a0f14;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1e0c0a;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "spain";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(47.28% 0.181 26);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(82.58% 0.169 90);
+  --color-secondary-content: oklch(19.3% 0.04 95);
+  --color-accent: oklch(37.35% 0.14 26);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(18.13% 0.032 27);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fffcf5;
-  --color-base-200: #fff8eb;
-  --color-base-300: #fff1dd;
-  --color-base-content: #1c1b1a;
+  --color-base-100: oklch(99.14% 0.01 87);
+  --color-base-200: oklch(98.1% 0.019 83);
+  --color-base-300: oklch(96.39% 0.03 77);
+  --color-base-content: oklch(22.28% 0.002 68);
 
-  --color-info: #3abff8;
-  --color-success: #36d399;
-  --color-warning: #f1bf00;
-  --color-error: #aa151b;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(82.58% 0.169 90);
+  --color-error: oklch(47.28% 0.181 26);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Cape Verde */
-[data-theme="cape-verde"] {
-  --color-primary: #003893;
-  --color-primary-content: #ffffff;
-  --color-secondary: #cf2027;
-  --color-secondary-content: #ffffff;
-  --color-accent: #f7d116;
-  --color-accent-content: #1a1600;
-  --color-neutral: #0d1528;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "cape-verde";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(37.49% 0.159 261);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(54.98% 0.207 26);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(86.76% 0.175 95);
+  --color-accent-content: oklch(19.88% 0.041 101);
+  --color-neutral: oklch(19.91% 0.04 266);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5f8fd;
-  --color-base-200: #ebf2fa;
-  --color-base-300: #dde8f5;
-  --color-base-content: #1a1b1c;
+  --color-base-100: oklch(97.83% 0.007 261);
+  --color-base-200: oklch(95.82% 0.013 252);
+  --color-base-300: oklch(92.66% 0.021 253);
+  --color-base-content: oklch(22.15% 0.002 248);
 
-  --color-info: #003893;
-  --color-success: #36d399;
-  --color-warning: #f7d116;
-  --color-error: #cf2027;
+  --color-info: oklch(37.49% 0.159 261);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(86.76% 0.175 95);
+  --color-error: oklch(54.98% 0.207 26);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Saudi Arabia */
-[data-theme="saudi-arabia"] {
-  --color-primary: #006c35;
-  --color-primary-content: #ffffff;
-  --color-secondary: #ffffff;
-  --color-secondary-content: #006c35;
-  --color-accent: #004d26;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0d1e12;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "saudi-arabia";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(46.54% 0.122 152);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(100% 0 0);
+  --color-secondary-content: oklch(46.54% 0.122 152);
+  --color-accent: oklch(36.85% 0.094 153);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(21.58% 0.033 152);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5fbf6;
-  --color-base-200: #ebf7ee;
-  --color-base-300: #ddf1e2;
-  --color-base-content: #1a1c1a;
+  --color-base-100: oklch(98.22% 0.009 151);
+  --color-base-200: oklch(96.47% 0.017 154);
+  --color-base-300: oklch(93.92% 0.029 153);
+  --color-base-content: oklch(22.35% 0.005 145);
 
-  --color-info: #3abff8;
-  --color-success: #006c35;
-  --color-warning: #fbbd23;
-  --color-error: #f87272;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(46.54% 0.122 152);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(71.22% 0.165 22);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Uruguay */
-[data-theme="uruguay"] {
-  --color-primary: #0038a8;
-  --color-primary-content: #ffffff;
-  --color-secondary: #fcd116;
-  --color-secondary-content: #1a1600;
-  --color-accent: #5cbfec;
-  --color-accent-content: #0a1b28;
-  --color-neutral: #0d1528;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "uruguay";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(39.57% 0.186 262);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(87.24% 0.176 93);
+  --color-secondary-content: oklch(19.88% 0.041 101);
+  --color-accent: oklch(76.29% 0.113 230);
+  --color-accent-content: oklch(21.46% 0.034 243);
+  --color-neutral: oklch(19.91% 0.04 266);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5f8fd;
-  --color-base-200: #ebf2fa;
-  --color-base-300: #dde8f5;
-  --color-base-content: #1a1b1c;
+  --color-base-100: oklch(97.83% 0.007 261);
+  --color-base-200: oklch(95.82% 0.013 252);
+  --color-base-300: oklch(92.66% 0.021 253);
+  --color-base-content: oklch(22.15% 0.002 248);
 
-  --color-info: #0038a8;
-  --color-success: #36d399;
-  --color-warning: #fcd116;
-  --color-error: #f87272;
+  --color-info: oklch(39.57% 0.186 262);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(87.24% 0.176 93);
+  --color-error: oklch(71.22% 0.165 22);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }

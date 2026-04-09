@@ -1,86 +1,110 @@
 /* ── Group I: France, Senegal, Playoff IC 2, Norway ── */
 
 /* France */
-[data-theme="france"] {
-  --color-primary: #002395;
-  --color-primary-content: #ffffff;
-  --color-secondary: #ed2939;
-  --color-secondary-content: #ffffff;
-  --color-accent: #001a6e;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0d1228;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "france";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(33.83% 0.186 264);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(61.15% 0.227 24);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(27.65% 0.146 263);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(19.08% 0.045 272);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f8f9fd;
-  --color-base-200: #f1f3fa;
-  --color-base-300: #e6eaf5;
-  --color-base-content: #1a1b1c;
+  --color-base-100: oklch(98.25% 0.005 275);
+  --color-base-200: oklch(96.46% 0.01 273);
+  --color-base-300: oklch(93.72% 0.015 270);
+  --color-base-content: oklch(22.15% 0.002 248);
 
-  --color-info: #002395;
-  --color-success: #36d399;
-  --color-warning: #fbbd23;
-  --color-error: #ed2939;
+  --color-info: oklch(33.83% 0.186 264);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(61.15% 0.227 24);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Senegal */
-[data-theme="senegal"] {
-  --color-primary: #00853f;
-  --color-primary-content: #ffffff;
-  --color-secondary: #fdef42;
-  --color-secondary-content: #1a1800;
-  --color-accent: #e31b23;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0d1e10;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "senegal";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(53.96% 0.145 151);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(93.53% 0.18 105);
+  --color-secondary-content: oklch(20.48% 0.044 106);
+  --color-accent: oklch(58.41% 0.227 27);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(21.52% 0.036 148);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5fbf5;
-  --color-base-200: #ebf7eb;
-  --color-base-300: #ddf1dd;
-  --color-base-content: #1a1c1a;
+  --color-base-100: oklch(98.19% 0.01 145);
+  --color-base-200: oklch(96.39% 0.02 145);
+  --color-base-300: oklch(93.79% 0.034 145);
+  --color-base-content: oklch(22.35% 0.005 145);
 
-  --color-info: #3abff8;
-  --color-success: #00853f;
-  --color-warning: #fdef42;
-  --color-error: #e31b23;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(53.96% 0.145 151);
+  --color-warning: oklch(93.53% 0.18 105);
+  --color-error: oklch(58.41% 0.227 27);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Playoff IC 2 */
-[data-theme="playoff-ic2"] {
-  --color-primary: #2d6a4f;
-  --color-primary-content: #ffffff;
-  --color-secondary: #cccccc;
-  --color-secondary-content: #1a1a1a;
-  --color-accent: #1b4332;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1a1a1a;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "playoff-ic2";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(47.58% 0.078 162);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(84.52% 0 0);
+  --color-secondary-content: oklch(21.78% 0 0);
+  --color-accent: oklch(34.84% 0.055 163);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(21.78% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5f5f5;
-  --color-base-200: #eeeeee;
-  --color-base-300: #e0e0e0;
-  --color-base-content: #1a1a1a;
+  --color-base-100: oklch(97.02% 0 0);
+  --color-base-200: oklch(94.91% 0 0);
+  --color-base-300: oklch(90.67% 0 0);
+  --color-base-content: oklch(21.78% 0 0);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Norway */
-[data-theme="norway"] {
-  --color-primary: #ef2b2d;
-  --color-primary-content: #ffffff;
-  --color-secondary: #002868;
-  --color-secondary-content: #ffffff;
-  --color-accent: #a31d1f;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1a0d0d;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "norway";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(61.5% 0.228 27);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(29.85% 0.12 260);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(46.47% 0.169 26);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(17.77% 0.023 20);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fffafa;
-  --color-base-200: #fff2f2;
-  --color-base-300: #ffe5e5;
-  --color-base-content: #1c1a1a;
+  --color-base-100: oklch(98.89% 0.005 17);
+  --color-base-200: oklch(97.13% 0.014 17);
+  --color-base-300: oklch(94.3% 0.029 18);
+  --color-base-content: oklch(22.01% 0.003 17);
 
-  --color-info: #002868;
-  --color-success: #36d399;
-  --color-warning: #fbbd23;
-  --color-error: #ef2b2d;
+  --color-info: oklch(29.85% 0.12 260);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(61.5% 0.228 27);
 
   --depth: 0;
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }

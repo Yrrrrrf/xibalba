@@ -1,89 +1,113 @@
 /* ── Group J: Argentina, Algeria, Austria, Jordan ── */
 
 /* Argentina */
-[data-theme="argentina"] {
-  --color-primary: #74acdf;
-  --color-primary-content: #0a1e2f;
-  --color-secondary: #f6b40e;
-  --color-secondary-content: #1a1400;
-  --color-accent: #3b7bbe;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0d1828;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "argentina";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(72.55% 0.095 247);
+  --color-primary-content: oklch(22.81% 0.042 247);
+  --color-secondary: oklch(81.01% 0.165 82);
+  --color-secondary-content: oklch(19.3% 0.04 95);
+  --color-accent: oklch(57.27% 0.123 252);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(20.76% 0.036 258);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f8fcff;
-  --color-base-200: #f1f8fa;
-  --color-base-300: #e6f1f5;
-  --color-base-content: #1a1b1c;
+  --color-base-100: oklch(98.89% 0.006 240);
+  --color-base-200: oklch(97.44% 0.008 217);
+  --color-base-300: oklch(95.11% 0.013 221);
+  --color-base-content: oklch(22.15% 0.002 248);
 
-  --color-info: #74acdf;
-  --color-success: #36d399;
-  --color-warning: #f6b40e;
-  --color-error: #f87272;
+  --color-info: oklch(72.55% 0.095 247);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(81.01% 0.165 82);
+  --color-error: oklch(71.22% 0.165 22);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Algeria */
-[data-theme="algeria"] {
-  --color-primary: #006233;
-  --color-primary-content: #ffffff;
-  --color-secondary: #d21034;
-  --color-secondary-content: #ffffff;
-  --color-accent: #004225;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0d1a10;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "algeria";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(43.53% 0.11 154);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(55.01% 0.215 21);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(33.36% 0.079 157);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(20.2% 0.027 151);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5faf6;
-  --color-base-200: #ebf7ee;
-  --color-base-300: #ddf1e2;
-  --color-base-content: #1a1c1a;
+  --color-base-100: oklch(98.02% 0.007 152);
+  --color-base-200: oklch(96.47% 0.017 154);
+  --color-base-300: oklch(93.92% 0.029 153);
+  --color-base-content: oklch(22.35% 0.005 145);
 
-  --color-info: #3abff8;
-  --color-success: #006233;
-  --color-warning: #fbbd23;
-  --color-error: #d21034;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(43.53% 0.11 154);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(55.01% 0.215 21);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Austria */
-[data-theme="austria"] {
-  --color-primary: #ed2939;
-  --color-primary-content: #ffffff;
-  --color-secondary: #ffffff;
-  --color-secondary-content: #ed2939;
-  --color-accent: #a31d28;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1e0c0c;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "austria";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(61.15% 0.227 24);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(100% 0 0);
+  --color-secondary-content: oklch(61.15% 0.227 24);
+  --color-accent: oklch(46.58% 0.168 23);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(18.19% 0.031 21);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fffafa;
-  --color-base-200: #fff2f2;
-  --color-base-300: #ffe5e5;
-  --color-base-content: #1c1a1a;
+  --color-base-100: oklch(98.89% 0.005 17);
+  --color-base-200: oklch(97.13% 0.014 17);
+  --color-base-300: oklch(94.3% 0.029 18);
+  --color-base-content: oklch(22.01% 0.003 17);
 
-  --color-info: #3abff8;
-  --color-success: #36d399;
-  --color-warning: #fbbd23;
-  --color-error: #ed2939;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(61.15% 0.227 24);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Jordan */
-[data-theme="jordan"] {
-  --color-primary: #ce1126;
-  --color-primary-content: #ffffff;
-  --color-secondary: #007a3d;
-  --color-secondary-content: #ffffff;
-  --color-accent: #000000;
-  --color-accent-content: #ffffff;
-  --color-neutral: #111111;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "jordan";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(54.12% 0.213 25);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(50.77% 0.133 152);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(0% 0 0);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(17.76% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fafafa;
-  --color-base-200: #f2f2f2;
-  --color-base-300: #e5e5e5;
-  --color-base-content: #1a1a1a;
+  --color-base-100: oklch(98.51% 0 0);
+  --color-base-200: oklch(96.12% 0 0);
+  --color-base-300: oklch(92.19% 0 0);
+  --color-base-content: oklch(21.78% 0 0);
 
-  --color-info: #3abff8;
-  --color-success: #007a3d;
-  --color-warning: #fbbd23;
-  --color-error: #ce1126;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(50.77% 0.133 152);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(54.12% 0.213 25);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }

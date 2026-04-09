@@ -1,89 +1,113 @@
 /* ── Group E: Germany, Curaçao, Ivory Coast, Ecuador ── */
 
 /* Germany */
-[data-theme="germany"] {
-  --color-primary: #000000;
-  --color-primary-content: #ffcc00;
-  --color-secondary: #dd0000;
-  --color-secondary-content: #ffffff;
-  --color-accent: #ffcc00;
-  --color-accent-content: #000000;
-  --color-neutral: #111111;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "germany";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(0% 0 0);
+  --color-primary-content: oklch(86.52% 0.177 90);
+  --color-secondary: oklch(56.36% 0.231 29);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(86.52% 0.177 90);
+  --color-accent-content: oklch(0% 0 0);
+  --color-neutral: oklch(17.76% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fafafa;
-  --color-base-200: #f2f2f2;
-  --color-base-300: #e5e5e5;
-  --color-base-content: #1a1a1a;
+  --color-base-100: oklch(98.51% 0 0);
+  --color-base-200: oklch(96.12% 0 0);
+  --color-base-300: oklch(92.19% 0 0);
+  --color-base-content: oklch(21.78% 0 0);
 
-  --color-info: #3abff8;
-  --color-success: #36d399;
-  --color-warning: #ffcc00;
-  --color-error: #dd0000;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(86.52% 0.177 90);
+  --color-error: oklch(56.36% 0.231 29);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Curaçao */
-[data-theme="curacao"] {
-  --color-primary: #002b7f;
-  --color-primary-content: #ffffff;
-  --color-secondary: #f9e814;
-  --color-secondary-content: #1a1600;
-  --color-accent: #001a52;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0d1528;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "curacao";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(32.82% 0.149 262);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(91.58% 0.191 104);
+  --color-secondary-content: oklch(19.88% 0.041 101);
+  --color-accent: oklch(24.4% 0.108 261);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(19.91% 0.04 266);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5f8fd;
-  --color-base-200: #ebf2fa;
-  --color-base-300: #dde8f5;
-  --color-base-content: #1a1b1c;
+  --color-base-100: oklch(97.83% 0.007 261);
+  --color-base-200: oklch(95.82% 0.013 252);
+  --color-base-300: oklch(92.66% 0.021 253);
+  --color-base-content: oklch(22.15% 0.002 248);
 
-  --color-info: #002b7f;
-  --color-success: #36d399;
-  --color-warning: #f9e814;
-  --color-error: #f87272;
+  --color-info: oklch(32.82% 0.149 262);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(91.58% 0.191 104);
+  --color-error: oklch(71.22% 0.165 22);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Ivory Coast */
-[data-theme="ivory-coast"] {
-  --color-primary: #f77f00;
-  --color-primary-content: #ffffff;
-  --color-secondary: #009e60;
-  --color-secondary-content: #ffffff;
-  --color-accent: #cc6600;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1e1408;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "ivory-coast";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(71.94% 0.179 54);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(61.54% 0.146 157);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(62.01% 0.156 53);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(20.07% 0.027 71);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fffcf5;
-  --color-base-200: #fff8eb;
-  --color-base-300: #fff1dd;
-  --color-base-content: #1c1b1a;
+  --color-base-100: oklch(99.14% 0.01 87);
+  --color-base-200: oklch(98.1% 0.019 83);
+  --color-base-300: oklch(96.39% 0.03 77);
+  --color-base-content: oklch(22.28% 0.002 68);
 
-  --color-info: #3abff8;
-  --color-success: #009e60;
-  --color-warning: #f77f00;
-  --color-error: #f87272;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(61.54% 0.146 157);
+  --color-warning: oklch(71.94% 0.179 54);
+  --color-error: oklch(71.22% 0.165 22);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* Ecuador */
-[data-theme="ecuador"] {
-  --color-primary: #034ea2;
-  --color-primary-content: #ffffff;
-  --color-secondary: #ffd100;
-  --color-secondary-content: #1a1600;
-  --color-accent: #ed1c24;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0d1828;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "ecuador";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(43.65% 0.151 257);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(87.5% 0.179 93);
+  --color-secondary-content: oklch(19.88% 0.041 101);
+  --color-accent: oklch(60.3% 0.235 27);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(20.76% 0.036 258);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fdfef5;
-  --color-base-200: #fbfceb;
-  --color-base-300: #f5f7dd;
-  --color-base-content: #1c1c1a;
+  --color-base-100: oklch(99.38% 0.012 112);
+  --color-base-200: oklch(98.58% 0.022 110);
+  --color-base-300: oklch(96.78% 0.034 111);
+  --color-base-content: oklch(22.57% 0.004 107);
 
-  --color-info: #034ea2;
-  --color-success: #36d399;
-  --color-warning: #ffd100;
-  --color-error: #ed1c24;
+  --color-info: oklch(43.65% 0.151 257);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(87.5% 0.179 93);
+  --color-error: oklch(60.3% 0.235 27);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }

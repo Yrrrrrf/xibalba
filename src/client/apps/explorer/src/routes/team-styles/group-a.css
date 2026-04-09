@@ -1,105 +1,125 @@
 /* ── Group A: México, South Africa, South Korea, Playoff D ── */
 
 /* México */
-[data-theme="mexico"] {
-  --color-primary: #006847;
-  --color-primary-content: #ffffff;
-  --color-secondary: #ce1126;
-  --color-secondary-content: #ffffff;
-  --color-accent: #6d3e1e;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1a3c2a;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "mexico";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(45.76% 0.099 163);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(54.12% 0.213 25);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(41.45% 0.08 53);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(32.46% 0.052 159);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5fbf7;
-  --color-base-200: #ebf7ef;
-  --color-base-300: #ddf1e5;
-  --color-base-content: #1a1c1b;
+  --color-base-100: oklch(98.25% 0.008 157);
+  --color-base-200: oklch(96.5% 0.016 157);
+  --color-base-300: oklch(94.01% 0.026 160);
+  --color-base-content: oklch(22.39% 0.004 165);
 
-  --color-info: #3abff8;
-  --color-info-content: #002b3d;
-  --color-success: #36d399;
-  --color-success-content: #003320;
-  --color-warning: #fbbd23;
-  --color-warning-content: #382800;
-  --color-error: #ce1126;
-  --color-error-content: #ffffff;
-
+  --color-info: oklch(75.85% 0.137 232);
+  --color-info-content: oklch(27.15% 0.055 232);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-success-content: oklch(28.38% 0.062 162);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-warning-content: oklch(28.79% 0.059 85);
+  --color-error: oklch(54.12% 0.213 25);
+  --color-error-content: oklch(100% 0 0);
   --radius-box: 1rem;
   --radius-field: 0.5rem;
   --radius-selector: 1.5rem;
 }
 
 /* South Africa */
-[data-theme="south-africa"] {
-  --color-primary: #007749;
-  --color-primary-content: #ffffff;
-  --color-secondary: #ffb81c;
-  --color-secondary-content: #1a1400;
-  --color-accent: #002395;
-  --color-accent-content: #ffffff;
-  --color-neutral: #0a0a0a;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "south-africa";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(50.14% 0.117 158);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(82.77% 0.167 80);
+  --color-secondary-content: oklch(19.3% 0.04 95);
+  --color-accent: oklch(33.83% 0.186 264);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(14.48% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f7fbf5;
-  --color-base-200: #eef7ea;
-  --color-base-300: #e2f1db;
-  --color-base-content: #1a1c1a;
+  --color-base-100: oklch(98.34% 0.009 135);
+  --color-base-200: oklch(96.58% 0.02 136);
+  --color-base-300: oklch(94.1% 0.033 136);
+  --color-base-content: oklch(22.35% 0.005 145);
 
-  --color-info: #002395;
-  --color-info-content: #ffffff;
-  --color-success: #007749;
-  --color-success-content: #ffffff;
-  --color-warning: #ffb81c;
-  --color-warning-content: #1a1400;
-  --color-error: #de3831;
-  --color-error-content: #ffffff;
+  --color-info: oklch(33.83% 0.186 264);
+  --color-info-content: oklch(100% 0 0);
+  --color-success: oklch(50.14% 0.117 158);
+  --color-success-content: oklch(100% 0 0);
+  --color-warning: oklch(82.77% 0.167 80);
+  --color-warning-content: oklch(19.3% 0.04 95);
+  --color-error: oklch(59.49% 0.204 28);
+  --color-error-content: oklch(100% 0 0);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* South Korea */
-[data-theme="south-korea"] {
-  --color-primary: #c60c30;
-  --color-primary-content: #ffffff;
-  --color-secondary: #003478;
-  --color-secondary-content: #ffffff;
-  --color-accent: #1d1d1b;
-  --color-accent-content: #ffffff;
-  --color-neutral: #101828;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "south-korea";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(52.56% 0.207 21);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(34.11% 0.127 258);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(23% 0.004 107);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(20.99% 0.034 263);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #fafafa;
-  --color-base-200: #f2f2f2;
-  --color-base-300: #e5e5e5;
-  --color-base-content: #1a1a1a;
+  --color-base-100: oklch(98.51% 0 0);
+  --color-base-200: oklch(96.12% 0 0);
+  --color-base-300: oklch(92.19% 0 0);
+  --color-base-content: oklch(21.78% 0 0);
 
-  --color-info: #003478;
-  --color-info-content: #ffffff;
-  --color-success: #36d399;
-  --color-success-content: #003320;
-  --color-warning: #fbbd23;
-  --color-warning-content: #382800;
-  --color-error: #c60c30;
-  --color-error-content: #ffffff;
+  --color-info: oklch(34.11% 0.127 258);
+  --color-info-content: oklch(100% 0 0);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-success-content: oklch(28.38% 0.062 162);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-warning-content: oklch(28.79% 0.059 85);
+  --color-error: oklch(52.56% 0.207 21);
+  --color-error-content: oklch(100% 0 0);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
 
 /* UEFA Playoff D */
-[data-theme="playoff-d"] {
-  --color-primary: #003399;
-  --color-primary-content: #ffffff;
-  --color-secondary: #cccccc;
-  --color-secondary-content: #1a1a1a;
-  --color-accent: #333333;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1a1a1a;
-  --color-neutral-content: #ffffff;
+@plugin "daisyui/theme" {
+  name: "playoff-d";
+  color-scheme: light;
+  prefersdark: false;
+  --color-primary: oklch(37.08% 0.173 262);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(84.52% 0 0);
+  --color-secondary-content: oklch(21.78% 0 0);
+  --color-accent: oklch(32.11% 0 0);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(21.78% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
 
-  --color-base-100: #f5f5f5;
-  --color-base-200: #eeeeee;
-  --color-base-300: #e0e0e0;
-  --color-base-content: #1a1a1a;
+  --color-base-100: oklch(97.02% 0 0);
+  --color-base-200: oklch(94.91% 0 0);
+  --color-base-300: oklch(90.67% 0 0);
+  --color-base-content: oklch(21.78% 0 0);
 
-  --color-info: #3abff8;
-  --color-success: #36d399;
-  --color-warning: #fbbd23;
-  --color-error: #f87272;
+  --color-info: oklch(75.85% 0.137 232);
+  --color-success: oklch(77.33% 0.153 163);
+  --color-warning: oklch(83.3% 0.164 83);
+  --color-error: oklch(71.22% 0.165 22);
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1.5rem;
 }
