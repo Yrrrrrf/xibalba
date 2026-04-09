@@ -5,8 +5,6 @@
     LayoutPlugin,
     PalettesPlugin,
     MoneyPlugin,
-    type NavigationSection,
-    version,
   } from "rune-lab";
   import { setLocale } from "$lib/i18n/paraglide/runtime";
 
@@ -19,21 +17,6 @@
     persistence: localStorageDriver,
     dictionary: m,
     "rune-lab.money": moneyConfig,
-    // "rune-lab.layout": {
-    //   customThemes: [
-    //     { name: "mundial", icon: "🌍" },
-    //     { name: "argentina", icon: "🥩" },
-    //     { name: "brasil", icon: "🍖" },
-    //     { name: "mexico", icon: "🌮" },
-    //     { name: "usa", icon: "🍔" },
-    //     { name: "francia", icon: "🥐" },
-    //     { name: "inglaterra", icon: "🥧" },
-    //     { name: "espana", icon: "🥘" },
-    //     { name: "alemania", icon: "🥨" },
-    //     { name: "portugal", icon: "🍮" },
-    //     { name: "japon", icon: "🍣" },
-    //   ],
-    // },
   }}
   plugins={[MoneyPlugin, PalettesPlugin]}
   onLanguageChange={(l: any) => setLocale(l.code)}
@@ -45,6 +28,21 @@
     app: {
       name: "Rune Lab",
       author: "Yrrrrrf",
+      // "rune-lab.layout": {
+      //   customThemes: [
+      //     { name: "mundial", icon: "🌍" },
+      //     { name: "argentina", icon: "🥩" },
+      //     { name: "brasil", icon: "🍖" },
+      //     { name: "mexico", icon: "🌮" },
+      //     { name: "usa", icon: "🍔" },
+      //     { name: "francia", icon: "🥐" },
+      //     { name: "inglaterra", icon: "🥧" },
+      //     { name: "espana", icon: "🥘" },
+      //     { name: "alemania", icon: "🥨" },
+      //     { name: "portugal", icon: "🍮" },
+      //     { name: "japon", icon: "🍣" },
+      //   ],
+      // },
     },
   }}
   plugins={[LayoutPlugin, PalettesPlugin, MoneyPlugin]}

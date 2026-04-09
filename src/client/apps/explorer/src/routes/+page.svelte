@@ -1,19 +1,17 @@
 <script lang="ts">
-  import {
-    HeroCarousel,
-    RoleCards,
-    DynamicBackground,
-    Navbar,
-    Footer,
-    BottomNav,
-  } from "@sdk/ui";
+  import { HeroCarousel, RoleCards, Navbar, Footer, BottomNav } from "@sdk/ui";
+  import { ThemeSelector, LanguageSelector, CurrencySelector } from "rune-lab";
 </script>
 
 <div
   class="min-h-screen bg-transparent text-base-content flex flex-col selection:bg-primary/30 relative z-0"
 >
   <!-- Componente centralizado de Animación y Tramado -->
-  <DynamicBackground />
+  <div class="flex gap-8">
+    <ThemeSelector />
+    <LanguageSelector />
+    <CurrencySelector />
+  </div>
 
   <!-- Componente centralizado de Barra Superior y Perfil -->
   <Navbar />
