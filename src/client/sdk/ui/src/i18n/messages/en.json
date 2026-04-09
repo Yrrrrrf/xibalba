@@ -1,5 +1,6 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
+  "mundial": "Mundial",
   "hello_world": "Hello {name} in English",
   "label_status_draft": "Draft",
   "label_status_published": "Published",

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Heart, Utensils } from 'lucide-svelte';
+  import { Heart, Utensils } from "lucide-svelte";
   import { type Dish } from "@sdk/core";
   import {
     GlassCard,
@@ -35,12 +35,13 @@
   onclick={onselect}
   use={[tilt]}
   {accent}
-  class="cursor-pointer will-change-transform group"
+  enableShimmer={true}
+  class="cursor-pointer will-change-transform group h-full"
   style="transform-style: preserve-3d;"
 >
   <!-- ── IMAGEN con efecto pop-out ──────────────────────────── -->
   <figure
-    class="relative overflow-hidden rounded-t-3xl h-48 bg-gradient-to-br {accent}"
+    class="relative overflow-hidden rounded-t-3xl h-48 sm:h-56 bg-gradient-to-br {accent}"
   >
     <ImageWithFallback
       src={dish.image_url}
@@ -76,10 +77,18 @@
                 translate-y-full group-hover:translate-y-0
                 transition-transform duration-400 ease-out z-10"
     >
-      <p class="text-primary-content text-xs font-medium drop-shadow flex items-center gap-1.5">
-        <Utensils size={12} /> {dish.restaurant}
+      <p
+        class="text-primary-content text-xs font-medium drop-shadow flex items-center gap-1.5"
+      >
+        <Utensils size={12} />
+        {dish.restaurant}
       </p>
     </div>
+
+    <!-- Smooth Bottom Fade (Transition) -->
+    <div
+      class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-base-100 via-base-100/40 to-transparent pointer-events-none z-[1]"
+    ></div>
   </figure>
 
   <!-- ── BODY ────────────────────────────────────────────────── -->
@@ -107,10 +116,10 @@
           : 'bg-base-content/5 border border-base-content/10 text-base-content/60 hover:bg-error/10 hover:text-error'}"
         aria-label={m.food_dish()}
       >
-        <Heart 
-          size={16} 
+        <Heart
+          size={16}
           class="transition-transform duration-300 {liked ? 'scale-125' : ''}"
-          fill={liked ? "currentColor" : "none"} 
+          fill={liked ? "currentColor" : "none"}
           strokeWidth={2}
         />
         <span class="text-xs font-semibold">{localLikes}</span>

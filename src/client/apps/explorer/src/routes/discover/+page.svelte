@@ -4,9 +4,9 @@
     createGeoStore,
     createBusinessStore,
   } from "@sdk/state";
-  import { DishCard, DishDetailModal, ZoneSelector, MapView, ICONS } from "@sdk/ui";
+  import { DishCard, DishDetailModal, ZoneSelector, MapView, BusinessDetailModal, ICONS } from "@sdk/ui";
   import { DISH_CATEGORIES } from "@sdk/core";
-  import type { Dish } from "@sdk/core";
+  import type { Dish, Business } from "@sdk/core";
   import { m } from "@sdk/ui";
 
   const dishStore = createDishStore();
@@ -15,6 +15,10 @@
 
   let selectedDish = $state<Dish | null>(null);
   let isDetailOpen = $state(false);
+  
+  let selectedBusiness = $state<Business | null>(null);
+  let isBusinessModalOpen = $state(false);
+  
   let categoriaActiva = $state("Todos");
 
   const categorias = $derived([
@@ -74,7 +78,14 @@
   <div
     class="mb-8 rounded-3xl overflow-hidden shadow-2xl border border-base-content/10"
   >
-    <MapView businesses={businessesForMap} height="300px" />
+    <MapView 
+      businesses={businessesForMap} 
+      height="300px" 
+      onbusinessselect={(b) => {
+        selectedBusiness = b;
+        isBusinessModalOpen = true;
+      }}
+    />
   </div>
 
   <!-- Category filters -->
@@ -119,5 +130,13 @@
   open={isDetailOpen}
   onclose={() => {
     isDetailOpen = false;
+  }}
+/>
+
+<BusinessDetailModal
+  business={selectedBusiness}
+  open={isBusinessModalOpen}
+  onclose={() => {
+    isBusinessModalOpen = false;
   }}
 />

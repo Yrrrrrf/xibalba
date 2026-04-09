@@ -33,3 +33,5 @@ export function createAuthStore() {
     },
   };
 }
+
+export const authStore = createAuthStore();

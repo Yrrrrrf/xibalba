@@ -4,74 +4,90 @@
     RuneProvider as RP,
     MoneyPlugin,
     localStorageDriver,
-    PalettesPlugin,
   } from "rune-lab";
-  import { createAuthStore } from "@sdk/state";
-  import { goto } from "$app/navigation";
-  import { m, ICONS } from "@sdk/ui";
   import { setLocale } from "$lib/paraglide/runtime";
-  import { createPwaInstallStore } from "$lib/pwa.svelte";
+  import { m, DynamicBackground, Navbar, Footer, BottomNav } from "@sdk/ui";
 
   const RuneProvider: any = RP;
 
   let { children } = $props();
-  const auth = createAuthStore();
-  const pwa = createPwaInstallStore();
-  </script>
+
+  const moneyConfig = {
+    defaultCurrency: "USD",
+    currencies: [
+      { code: "USD", symbol: "$", decimals: 2 },
+      { code: "MXN", symbol: "$", decimals: 2 },
+      { code: "EUR", symbol: "€", decimals: 2 },
+      { code: "JPY", symbol: "¥", decimals: 0 },
+    ],
+    exchangeRates: {
+      base: "USD",
+      rates: {
+        MXN: 17.23,
+        EUR: 0.91,
+        JPY: 151.3,
+      },
+    },
+  };
+
+  function handleThemeChange(newTheme: string) {
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-theme", newTheme);
+    }
+  }
+
+  function handleLanguageChange(newLang: string, oldLang: string) {
+    if (typeof window !== "undefined" && oldLang && newLang !== oldLang) {
+      window.location.reload();
+    }
+  }
+</script>
 
 <RuneProvider
   config={{
     app: { name: "Xibalbá", version: "1.0.0" },
     persistence: localStorageDriver,
     dictionary: m,
+    "rune-lab.money": moneyConfig,
+    // "rune-lab.layout": {
+    //   customThemes: [
+    //     { name: "mundial", icon: "🌍" },
+    //     { name: "argentina", icon: "🥩" },
+    //     { name: "brasil", icon: "🍖" },
+    //     { name: "mexico", icon: "🌮" },
+    //     { name: "usa", icon: "🍔" },
+    //     { name: "francia", icon: "🥐" },
+    //     { name: "inglaterra", icon: "🥧" },
+    //     { name: "espana", icon: "🥘" },
+    //     { name: "alemania", icon: "🥨" },
+    //     { name: "portugal", icon: "🍮" },
+    //     { name: "japon", icon: "🍣" },
+    //   ],
+    // },
   }}
   plugins={[MoneyPlugin, PalettesPlugin]}
   onLanguageChange={(l: any) => setLocale(l.code)}
 >
   <div
-    class="min-h-screen bg-base-100 text-base-content flex flex-col selection:bg-primary/30"
+    class="min-h-screen bg-transparent text-base-content flex flex-col selection:bg-primary/30 relative z-0"
   >
-    <!-- Top Brand Bar -->
-    <header
-      class="sticky top-0 z-[100] bg-base-100/80 backdrop-blur-xl border-b border-base-content/5 px-4 py-3"
-    >
-      <div class="container mx-auto flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <div
-            class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shadow-lg shadow-primary/20 text-primary-content"
-          >
-            <ICONS.brand size={18} />
-          </div>
-          <span class="text-xl font-black tracking-tighter text-base-content">
-            {m.app_name()}
-          </span>
-        </div>
+    <!-- Componente centralizado de Animación y Tramado -->
+    <DynamicBackground />
 
-        <div class="flex items-center gap-3">
-          {#if pwa.isInstallable}
-            <button
-              onclick={() => pwa.prompt()}
-              class="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-xl bg-primary/10 border border-primary/20 text-primary hover:bg-primary hover:text-primary-content transition-all duration-300"
-            >
-              Install App
-            </button>
-          {/if}
-          <button
-            onclick={() => {
-              auth.logout();
-              goto("/login");
-            }}
-            class="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-xl bg-base-content/5 border border-base-content/10 hover:bg-error/10 hover:text-error transition-all duration-300"
-          >
-            {m.nav_logout()}
-          </button>
-        </div>
+    <!-- Componente centralizado de Barra Superior y Perfil -->
+    <Navbar />
+
+    <!-- Área de Contenido Principal -->
+    <div class="flex-1 flex flex-col pb-24 md:pb-0 relative z-10">
+      <div class="flex-1">
+        {@render children()}
       </div>
-    </header>
 
-    <!-- Main Content Area -->
-    <div class="flex-1 flex flex-col pb-20 md:pb-0">
-      {@render children()}
+      <!-- Componente centralizado de Pie de Página -->
+      <Footer />
     </div>
   </div>
+
+  <!-- Mobile Floating Navigation -->
+  <BottomNav />
 </RuneProvider>
