@@ -1,9 +1,9 @@
-set dotenv-load := true
+set dotenv-load
 
 [doc('Run project in development mode')]
 [group('Dev')]
 run:
-    just -f src/server/server.just run
+    # just -f src/server/server.just run
     just -f src/client/client.just run
 
 [doc('Test the entire project')]
